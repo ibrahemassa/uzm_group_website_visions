@@ -1,0 +1,178 @@
+/* Sergi · III · Kalıcı koleksiyon (projects index) and its two side rooms, Viktorya Park and Ağaçelebi Sarayları. */
+
+/* ── The hang: works on wires from two brass picture rails; a touch sets them swinging */
+.pr-hero { min-height: 0; }
+.pr-stage { padding-top: calc(var(--nav) + clamp(2.5rem, 5vh, 4.5rem)); padding-bottom: clamp(4rem, 3rem + 4vw, 7rem); }
+.pr-text { max-width: 44rem; }
+.pr-text > * + * { margin-top: 1rem; }
+.rails { margin-top: clamp(3rem, 2rem + 3vw, 5rem); display: grid; gap: clamp(3.5rem, 2rem + 4vw, 6rem); }
+.rail-row { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: start; padding-top: 0.6rem; }
+.rail-row::before { content: ""; position: absolute; left: calc(-1 * var(--gut)); right: calc(-1 * var(--gut)); top: 0; height: 0.45rem; background: linear-gradient(#d8c393, #9c8657 60%, #6d5a37); box-shadow: 0 2px 4px rgb(0 0 0 / 0.45), inset 0 1px 0 rgb(255 255 255 / 0.4); }
+.rail-row + .rail-row { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.hung { position: relative; display: grid; gap: 1.2rem; align-content: start; }
+.hw { display: block; color: inherit; padding-top: var(--drop); }
+.swing { position: relative; display: block; transform-origin: 50% calc(-1 * var(--drop)); }
+.wire { position: absolute; left: 0; right: 0; bottom: 100%; width: 100%; height: var(--drop); overflow: visible; }
+.wire path { fill: none; stroke: rgb(var(--light) / 0.55); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.swing::before { content: ""; position: absolute; left: 50%; top: calc(-1 * var(--drop) - 0.3rem); width: 0.7rem; height: 0.7rem; margin-left: -0.35rem; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #f3e3b8, #9c8657 60%, #4a3a22); box-shadow: 0 1px 2px rgb(0 0 0 / 0.5); }
+.hung .fr { --fw: clamp(0.5rem, 0.35rem + 0.45vw, 0.8rem); }
+.h-a .in, .h-c .in { aspect-ratio: 16 / 10; }
+.h-b .in { aspect-ratio: 4 / 3; }
+.h-d .in { aspect-ratio: 1600 / 442; }
+.hung .in img { transition: transform 1.4s var(--ease); }
+a.hw:hover .in img { transform: scale(1.03); }
+a.hw:hover .swing, a.hw:focus-visible .swing { animation: swing 2.6s var(--ease-io); }
+@keyframes swing { 0% { transform: rotate(0); } 18% { transform: rotate(1.4deg); } 42% { transform: rotate(-0.9deg); } 64% { transform: rotate(0.45deg); } 84% { transform: rotate(-0.18deg); } 100% { transform: rotate(0); } }
+.hung .lab { position: relative; width: min(100%, 26rem); }
+.hung .lab .ti { font-style: normal; font-size: 1.5rem; }
+.hung .lab .dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem 1rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--rule-l); font: 400 0.9375rem/1.3 var(--serif); }
+.hung .lab .dl b { display: block; margin-bottom: 0.25rem; font: 600 0.5rem/1.2 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.hung .lab a.go { padding-block: 0.4rem 0.1rem; }
+.h-d .hw { cursor: default; }
+@media (max-width: 52rem) {
+  .rail-row, .rail-row + .rail-row { grid-template-columns: 1fr; gap: 3rem; }
+  .hung { --drop: 1.6rem !important; }
+}
+
+/* ── Ziyaretçi haritası: the drawn sheet and the real map, printed on plaster */
+.mapx { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2rem, 1rem + 4vw, 5.5rem); align-items: start; padding-bottom: clamp(5rem, 3rem + 5vw, 8rem); }
+@media (max-width: 60rem) { .mapx { grid-template-columns: 1fr; } }
+.map-box { position: relative; }
+.map-frame { --mat: clamp(0.7rem, 0.5rem + 1vw, 1.5rem); }
+.map { position: relative; aspect-ratio: 1000 / 1053; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse 45% 40% at 52% 51%, rgb(74 24 32 / 0.06), transparent 70%), #ece5d8; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), inset 0 1px 4px rgb(0 0 0 / 0.2); }
+.map-cart { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding-top: 0.8rem; color: var(--ink2); }
+.map-cart b { font: 400 0.6875rem/1.3 var(--insc); letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
+.map-world { position: absolute; inset: 0; --z: 1; transform-origin: 0 0; transform: translate(calc(var(--tx, 0) * 100%), calc(var(--ty, 0) * 100%)) scale(var(--z)); transition: transform 1.5s var(--ease); }
+.map svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.map .grat line { stroke: rgb(31 27 24 / 0.1); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map .grat text { font: 500 11px/1 var(--sans); letter-spacing: 0.16em; fill: var(--ink3); transition: opacity 0.6s; }
+.map .rings circle { fill: none; stroke: rgb(74 24 32 / 0.45); stroke-width: 1; stroke-dasharray: 2 7; vector-effect: non-scaling-stroke; }
+.map .rings text { font: italic 400 17px/1 var(--serif); fill: var(--bordeaux); transition: opacity 0.6s; }
+.map .scale line { stroke: var(--ink2); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map .scale text, .map .north text { font: 500 11px/1 var(--sans); letter-spacing: 0.22em; fill: var(--ink2); transition: opacity 0.6s; }
+.map .north path { fill: none; stroke: var(--bordeaux); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.map .north circle { fill: none; stroke: rgb(31 27 24 / 0.25); vector-effect: non-scaling-stroke; }
+.map.zoomed .grat text, .map.zoomed .rings text, .map.zoomed .scale text, .map.zoomed .north text { opacity: 0; }
+/* Pins: numbered museum markers; each keeps its size while the sheet zooms */
+.pin { position: absolute; left: var(--x); top: var(--y); width: 0; height: 0; padding: 0; border: 0; background: none; cursor: pointer; transform: scale(calc(1 / var(--z))); transform-origin: 0 0; transition: transform 1.5s var(--ease), opacity 0.5s var(--ease); z-index: 1; }
+.pin:focus-visible, .gpin:focus-visible { outline: none; }
+.pin-pt { position: absolute; left: -2px; top: -2px; width: 4px; height: 4px; border-radius: 50%; background: var(--bordeaux); }
+.pin-ln { position: absolute; left: 0; top: 0; width: var(--len, 0px); height: 1px; background: rgb(74 24 32 / 0.5); transform-origin: 0 0; rotate: var(--ang, 0deg); }
+.pin-mk { position: absolute; left: var(--dx, 0px); top: var(--dy, 0px); width: 30px; height: 30px; translate: -50% -50%; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid #f7f2e8; background: var(--bordeaux); color: #f7f2e8; font: 400 11px/1 var(--insc); letter-spacing: 0.04em; box-shadow: 0 2px 6px rgb(0 0 0 / 0.35); transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease), background-color 0.4s; }
+:is(.pin, .gpin).approx .pin-mk::before { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 1px dashed rgb(74 24 32 / 0.55); }
+:is(.pin, .gpin).flagship .pin-mk { width: 38px; height: 38px; background: var(--ink); font-size: 13px; }
+:is(.pin, .gpin).flagship .pin-mk::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 1px solid var(--bordeaux); animation: halo 3.2s var(--ease) infinite; }
+@keyframes halo { 0% { transform: scale(1); opacity: 0.8; } 80%, 100% { transform: scale(2.6); opacity: 0; } }
+.pin-lb { position: absolute; top: var(--dy, 0px); left: calc(var(--dx, 0px) + 24px); translate: 0 -50%; white-space: nowrap; pointer-events: none; padding: 0.3rem 0.5rem; background: rgb(247 242 232 / 0.92); box-shadow: 0 1px 3px rgb(0 0 0 / 0.18); font: 600 10px/1.3 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); transition: opacity 0.4s; }
+.pin-lb small { display: block; margin-top: 0.2rem; font: italic 400 12px/1 var(--serif); letter-spacing: 0.02em; text-transform: none; color: var(--ink2); }
+:is(.pin, .gpin).l .pin-lb { left: auto; right: calc(24px - var(--dx, 0px)); text-align: right; }
+:is(.pin, .gpin).flagship .pin-lb { left: calc(var(--dx, 0px) + 30px); }
+:is(.pin, .gpin).b .pin-lb { top: calc(var(--dy, 0px) + 26px); left: var(--dx, 0px); translate: -50% 0; text-align: center; }
+:is(.pin, .gpin).flagship.l .pin-lb { left: auto; right: calc(30px - var(--dx, 0px)); }
+:is(.pin, .gpin):hover .pin-mk, :is(.pin, .gpin).on .pin-mk, :is(.pin, .gpin):focus-visible .pin-mk { transform: scale(1.18); box-shadow: 0 0 0 6px rgb(74 24 32 / 0.16), 0 2px 6px rgb(0 0 0 / 0.35); }
+:is(.pin, .gpin):focus-visible .pin-mk { outline: 2px solid var(--ink); outline-offset: 4px; }
+.map.hl :is(.pin, .gpin):not(.on) { opacity: 0.45; }
+.pin.sel { z-index: 2; }
+@media (max-width: 47.5rem) {
+  .pin-mk { width: 26px; height: 26px; font-size: 10px; }
+  :is(.pin, .gpin).flagship .pin-mk { width: 30px; height: 30px; }
+  .pin-lb { opacity: 0; }
+  :is(.pin, .gpin).sel .pin-lb { opacity: 1; }
+}
+/* The real map (projects-map.mjs) fades in over the drawn sheet, which stays as the fallback. */
+.map-gl.map-gl { position: absolute; inset: 0; z-index: 2; opacity: 0; transition: opacity 1.4s var(--ease); background: #ece5d8; }
+.map.gl .map-gl { opacity: 1; }
+.map.gl .map-world { visibility: hidden; transition: visibility 0s 1.4s; }
+.map-loading { position: absolute; left: 18px; top: 16px; z-index: 5; display: flex; align-items: center; gap: 0.6rem; font: 500 10px/1 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink2); }
+.map-loading::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--bordeaux); animation: blink 1.4s var(--ease) infinite; }
+@keyframes blink { 50% { opacity: 0.2; } }
+.gpin { width: 0; height: 0; padding: 0; border: 0; background: none; cursor: pointer; }
+.gpin.sel { z-index: 3; }
+.gpin:not(.flagship):not(.approx):not(.on):not(.sel) .pin-lb { opacity: 0; }
+.map-gl .maplibregl-canvas:focus-visible { outline: 2px solid var(--bordeaux); outline-offset: -6px; }
+.map-gl .maplibregl-ctrl-top-right { top: 10px; right: 10px; }
+.map .map-gl .maplibregl-ctrl-group { background: rgb(247 242 232 / 0.94); border: 1px solid rgb(31 27 24 / 0.25); border-radius: 0; box-shadow: 0 2px 6px rgb(0 0 0 / 0.15); }
+.map .map-gl .maplibregl-ctrl-group button { width: 36px; height: 36px; }
+.map .map-gl .maplibregl-ctrl-group button + button { border-top: 1px solid rgb(31 27 24 / 0.15); }
+.map-gl .maplibregl-ctrl-bottom-right { right: 8px; bottom: 8px; }
+.map .map-gl .maplibregl-ctrl-attrib { background: rgb(247 242 232 / 0.86); color: var(--ink2); font: 400 11px/1.5 var(--sans); }
+.map .map-gl .maplibregl-ctrl-attrib a { color: var(--ink); }
+.map .map-gl .maplibregl-cooperative-gesture-screen { background: rgb(31 27 24 / 0.72); color: var(--ivory); font: 400 15px/1.5 var(--sans); padding: 2rem; }
+.map-card { position: absolute; left: calc(var(--mat, 1rem) + 24px); bottom: calc(var(--mat, 1rem) + 3.2rem); z-index: 5; width: min(21rem, calc(100% - 4rem)); padding: 1.1rem 1.2rem 0.9rem; background: var(--card); color: var(--ink); box-shadow: 0 1rem 2rem -1rem rgb(0 0 0 / 0.5); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.6s var(--ease), transform 0.8s var(--ease); }
+.map-card.top { top: calc(var(--mat, 1rem) + 24px); bottom: auto; }
+.map-card.right { left: auto; right: calc(var(--mat, 1rem) + 24px); }
+.map-card.show { opacity: 1; transform: none; pointer-events: auto; }
+.map-card .k { font: 600 0.5625rem/1.3 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.map-card h3 { margin-top: 0.4rem; font: italic 400 1.35rem/1.15 var(--serif); }
+.map-card p { margin-top: 0.35rem; font-size: 0.875rem; color: var(--ink2); }
+.map-card .d { font-size: 0.75rem; }
+.map-card-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.25rem 1rem; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--rule-l); }
+.map-card-foot a { font: 600 0.5625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--bordeaux); padding-block: 0.6rem; }
+.map-x { min-height: 2.75rem; border: 0; background: none; cursor: pointer; font: 500 0.625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink2); }
+.map-x:hover { color: var(--ink); }
+@media (max-width: 40rem) { .map-card { position: static; width: auto; margin-top: 1rem; display: none; transform: none; } .map-card.show { display: block; } }
+/* The legend */
+.places-head { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.8rem; font: 600 0.5625rem/1.4 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink3); }
+.places { border-top: 1px solid var(--ink); }
+.places li { border-bottom: 1px solid var(--rule-l); transition: background-color 0.5s var(--ease); }
+.places li.on { background: linear-gradient(90deg, rgb(74 24 32 / 0.07), transparent 80%); }
+.place { width: 100%; display: grid; grid-template-columns: 2.4rem 1fr auto; gap: 0.2rem 1rem; align-items: baseline; padding: 1.05rem 0.4rem 1.05rem 0; border: 0; background: none; cursor: pointer; text-align: left; color: var(--ink); }
+.place-n { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--bordeaux); color: #f7f2e8; font: 400 0.6875rem/1 var(--insc); align-self: center; }
+.place-t { display: grid; gap: 0.25rem; }
+.place-k { font: 600 0.5625rem/1.3 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.place-nm { font: 400 1.25rem/1.25 var(--serif); transition: color 0.4s; }
+.place-nt { font-size: 0.875rem; line-height: 1.5; color: var(--ink2); }
+.place-d { font: 400 1.05rem/1 var(--serif); color: var(--ink2); font-variant-numeric: lining-nums; white-space: nowrap; }
+.place-d small { font: italic 400 0.8em/1 var(--serif); }
+.place[aria-pressed="true"] .place-nm { color: var(--bordeaux); }
+.places .go { margin: -0.3rem 0 1rem 3.4rem; }
+.places-note { margin-top: 1.25rem; font-size: 0.8125rem; color: var(--ink2); }
+
+/* ── Envanter */
+.register .tbl { min-width: 46rem; }
+.tbl .kn { font: 400 0.75rem/1.6 var(--insc); letter-spacing: 0.08em; color: var(--ivory3); white-space: nowrap; }
+.st { display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+.st::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; border: 1px solid currentColor; }
+.st.live::before { background: rgb(var(--light)); border-color: rgb(var(--light)); box-shadow: 0 0 0 4px rgb(var(--light) / 0.15); }
+
+/* ════ Project rooms (Viktorya Park, Ağaçelebi Sarayları) ════ */
+.pj-hero .ph-work .in { aspect-ratio: 3 / 2; }
+.pj-hero .lab .dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem 1rem; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px solid var(--rule-l); font: 400 0.9375rem/1.3 var(--serif); }
+.pj-hero .lab .dl b { display: block; margin-bottom: 0.2rem; font: 600 0.5rem/1.2 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.proj-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: start; }
+.proj-wall { font: 400 clamp(1.5rem, 1.1rem + 1.3vw, 2.3rem)/1.28 var(--serif); text-wrap: pretty; }
+.proj-wall::first-letter { float: left; font: 400 3.9em/0.8 var(--insc); margin: 0.07em 0.12em 0 0; color: var(--bordeaux); }
+.proj-body { margin-top: 1.6rem; color: var(--ink2); max-width: 40rem; }
+.proj-sub { margin: 2.6rem 0 0.8rem; color: var(--bordeaux); }
+.proj-label { position: sticky; top: calc(var(--nav) + 1.5rem); background: var(--card); padding: clamp(1.4rem, 1rem + 1vw, 2rem); box-shadow: 0 1px 1px rgb(0 0 0 / 0.08), 0 1.6rem 2.6rem -1.6rem rgb(0 0 0 / 0.45); }
+.proj-label .insc { color: var(--bordeaux); margin-bottom: 0.9rem; font-size: 0.6875rem; }
+.proj-label .btn { margin-top: 1.4rem; width: 100%; }
+.proj-figs { margin-top: clamp(3rem, 2rem + 3vw, 5rem); padding-bottom: clamp(4rem, 3rem + 4vw, 7rem); }
+@media (max-width: 52rem) { .proj-grid { grid-template-columns: 1fr; } .proj-label { position: static; } }
+
+/* A single large work with a wall quote beside it */
+.quote-wall { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: center; padding-bottom: clamp(5rem, 3rem + 5vw, 8rem); }
+.quote-wall figure { position: relative; display: grid; gap: 1rem; }
+.quote-wall .pool { left: -10%; right: -10%; top: -25%; height: 115%; }
+.quote-wall .in { aspect-ratio: 3 / 2; }
+.quote-wall blockquote { font: italic 400 clamp(1.8rem, 1.3rem + 1.6vw, 2.8rem)/1.18 var(--serif); color: var(--ivory); text-wrap: balance; }
+.quote-wall blockquote::before { content: "“"; display: block; font: 400 4rem/0.6 var(--serif); color: rgb(var(--light) / 0.7); margin-bottom: 0.6rem; }
+.quote-wall .cite { margin-top: 1.2rem; font: 400 0.6875rem/1.3 var(--insc); letter-spacing: 0.24em; text-transform: uppercase; color: var(--ivory2); }
+@media (max-width: 52rem) { .quote-wall { grid-template-columns: 1fr; } }
+
+/* Arched niches cut into the plaster wall (Ağaçelebi's arches) */
+.niches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 1rem + 2vw, 3rem); padding-bottom: clamp(5rem, 3rem + 5vw, 8rem); }
+.niche { display: grid; gap: 1rem; justify-items: center; text-align: center; }
+.niche .arch { position: relative; width: 100%; aspect-ratio: 3 / 4.2; border-radius: 999px 999px 0 0; overflow: hidden; background: #c9bfae; box-shadow: inset 0 1.2rem 2rem -0.6rem rgb(0 0 0 / 0.55), inset 0 0 0 1px rgb(0 0 0 / 0.18), 0 1px 0 rgb(255 255 255 / 0.6); padding: clamp(0.6rem, 0.4rem + 0.8vw, 1.2rem) clamp(0.6rem, 0.4rem + 0.8vw, 1.2rem) 0; }
+.niche .arch-in { position: relative; width: 100%; height: 100%; border-radius: 999px 999px 0 0; overflow: hidden; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.2); }
+.niche .arch-in img { width: 100%; height: 100%; object-fit: cover; transform: translateY(var(--py, 0)) scale(1.12); }
+.niche .arch-in::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgb(255 240 210 / 0.18), transparent 40%); pointer-events: none; }
+.niche .sill { width: 104%; height: 0.8rem; margin-top: -1rem; background: linear-gradient(#efe8db, #cfc5b5); box-shadow: 0 0.6rem 1rem -0.5rem rgb(0 0 0 / 0.45); }
+.niche .lab { margin-top: 0.4rem; }
+@media (max-width: 52rem) { .niches { grid-template-columns: 1fr; } .niche .arch { max-width: 22rem; } }
+
+/* The study collection: photographs, each with a loupe */
+.study { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 1rem + 2vw, 3rem) clamp(1rem, 0.6rem + 1.5vw, 2rem); }
+.study .wk .in { aspect-ratio: 3 / 2; }
+@media (max-width: 52rem) { .study { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 34rem) { .study { grid-template-columns: 1fr; } }

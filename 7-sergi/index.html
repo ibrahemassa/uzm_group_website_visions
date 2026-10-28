@@ -1,0 +1,1358 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>Sergi · UZM Group</title>
+<meta name="description" content="Vizyon 7 · Sergi: Levan Bahçeşehir, içinde yürünen bir sergi gibi. UZM Group ana sayfa tasarım önerisi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@300;400;500;600&family=Marcellus&display=swap">
+<link rel="preload" as="image" href="../assets/img/film--levan-hero.webp" media="(min-width: 700px)">
+<link rel="preload" as="image" href="../assets/img/film--levan-hero-tall.webp" media="(max-width: 699px)">
+<script>document.documentElement.classList.add("js");</script>
+<style>
+/* ── Tokens. A classical museum: plaster, bordeaux and Prussian-blue rooms, dark oak frames, warm gallery light. */
+:root {
+  --night: #120d0e;
+  --plaster: #ece6dc;
+  --bordeaux: #4a1820;
+  --prussian: #1c2b3a;
+  --oak: #2a1f18;
+  --ivory: #f3eee5;
+  --ivory2: rgb(243 238 229 / 0.74);
+  --ivory3: rgb(243 238 229 / 0.5);
+  --ink: #1f1b18;
+  --ink2: #5a5148;
+  --ink3: #8a8075;
+  --card: #f6f1e8;
+  --light: 255 234 204;
+  --rule-d: rgb(243 238 229 / 0.16);
+  --rule-l: rgb(31 27 24 / 0.16);
+  --serif: "EB Garamond", Garamond, Georgia, serif;
+  --insc: "Marcellus", "EB Garamond", Georgia, serif;
+  --sans: "Figtree", system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --gut: clamp(1rem, 0.4rem + 3vw, 3.5rem);
+  --nav: 4.25rem;
+  /* Plaster mottling (warm, for light walls) and a faint lime-wash (for dark walls); both tile without seams. */
+  --tex-l: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640'%3E%3Cfilter id='p' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .009' numOctaves='5' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .29 0 0 0 0 .21 .3 0 0 0 -.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --tex-d: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640'%3E%3Cfilter id='p' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .009' numOctaves='5' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .94 0 0 0 0 .86 .2 0 0 0 -.075'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0' width='1' height='1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--night); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-stopped { overflow: hidden; }
+body { margin: 0; background: var(--night); color: var(--ivory); font: 400 1rem/1.62 var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
+body::after { content: ""; position: fixed; inset: 0; z-index: 80; pointer-events: none; background: var(--grain); opacity: 0.045; }
+img, video, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+h1, h2, h3, p, dl, dd, ol, ul, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+em { font-style: italic; }
+:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.shell { width: 100%; max-width: 90rem; margin-inline: auto; padding-inline: var(--gut); }
+
+/* ── Type */
+.insc { font: 400 0.75rem/1.2 var(--insc); letter-spacing: 0.3em; text-transform: uppercase; }
+.tag { font: 500 0.625rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; }
+.h2 { font: 400 clamp(2rem, 1.35rem + 2.1vw, 3.25rem)/1.06 var(--serif); letter-spacing: -0.012em; }
+.h2 em { font-style: italic; }
+.lede { font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); line-height: 1.65; max-width: 34rem; }
+.on-dark .lede, .on-dark .muted { color: var(--ivory2); }
+.on-light { color: var(--ink); }
+.on-light .lede, .on-light .muted { color: var(--ink2); }
+
+/* Doorway inscription at the top of every room: the room numeral and its name between two hairlines. */
+.lintel { display: flex; align-items: center; justify-content: center; gap: 1.25rem; padding-block: clamp(2.5rem, 2rem + 2vw, 4rem) clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+.lintel::before, .lintel::after { content: ""; height: 1px; flex: 0 1 9rem; background: currentColor; opacity: 0.28; }
+.lintel .insc { white-space: nowrap; }
+
+/* ── Buttons: square, engraved, quiet */
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.7rem; height: 3rem; padding: 0 1.4rem; font: 500 0.6875rem/1 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid transparent; cursor: pointer; transition: background-color 0.4s, color 0.4s, border-color 0.4s; white-space: nowrap; }
+.btn svg { width: 0.9rem; height: 0.9rem; transition: transform 0.5s var(--ease); }
+.btn:hover svg { transform: translateX(3px); }
+.btn-ivory { background: var(--ivory); color: var(--ink); }
+.btn-ivory:hover { background: #fff; }
+.btn-line { border-color: currentColor; background: transparent; }
+.on-dark .btn-line { border-color: rgb(243 238 229 / 0.4); }
+.on-dark .btn-line:hover { border-color: var(--ivory); background: rgb(243 238 229 / 0.06); }
+.btn-ink { background: var(--ink); color: var(--ivory); }
+.btn-ink:hover { background: #000; }
+.on-light .btn-line { border-color: rgb(31 27 24 / 0.35); }
+.on-light .btn-line:hover { border-color: var(--ink); }
+
+/* ── Frames: dark oak, a lit bevel, a soft cast shadow; .mat adds an ivory passe-partout */
+.fr { position: relative; padding: var(--fw, 0.6rem); background: linear-gradient(145deg, #4a382b 0%, #1f1712 36%, #3a2b20 58%, #15100c 100%); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.55), inset 0 0 0 1px rgb(255 238 214 / 0.08), inset 1px 1px 0 1px rgb(255 238 214 / 0.06), 0 2.4rem 3.6rem -1.8rem rgb(0 0 0 / 0.8), 0 0.7rem 1.4rem -0.7rem rgb(0 0 0 / 0.55); }
+.fr .in { position: relative; overflow: hidden; background: #0d0a09; }
+.fr .in::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.42), inset 0 3px 9px rgb(0 0 0 / 0.42); }
+.fr .in img, .fr .in video { width: 100%; height: 100%; object-fit: cover; }
+.fr.mat .in { background: #f1ebe0; padding: var(--mat, 1.4rem); }
+.fr.mat .in::after { box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.25), inset 0 2px 5px rgb(0 0 0 / 0.18); }
+.fr.mat .win { position: relative; overflow: hidden; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), inset 0 1px 4px rgb(0 0 0 / 0.3); }
+.fr.mat .win::after { content: ""; position: absolute; inset: 0; box-shadow: inset 1px 1px 3px rgb(0 0 0 / 0.35); pointer-events: none; }
+.fr.mat .win img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Museum label: who, what (italic), medium, a line of text */
+.lab { background: var(--card); color: var(--ink); padding: 0.85rem 1rem 0.95rem; font: 400 0.78rem/1.5 var(--sans); box-shadow: 0 1px 1px rgb(0 0 0 / 0.14), 0 0.75rem 1.5rem -1rem rgb(0 0 0 / 0.7); }
+.lab .no { display: block; font: 600 0.5625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.lab .ti { display: block; font: italic 400 1.1875rem/1.2 var(--serif); margin: 0.4rem 0 0.3rem; color: var(--ink); }
+.lab .me { display: block; font-size: 0.6875rem; color: var(--ink2); letter-spacing: 0.02em; }
+.lab .tx { display: block; margin-top: 0.45rem; color: var(--ink2); }
+
+/* Light: a pool on the wall and a cone from the ceiling, dimmed until the room is entered. */
+.pool { position: absolute; pointer-events: none; background: radial-gradient(closest-side, rgb(var(--light) / 0.34), rgb(var(--light) / 0.12) 55%, transparent); opacity: 0.25; transition: opacity 1.6s var(--ease); }
+.cone { position: absolute; pointer-events: none; background: linear-gradient(rgb(var(--light) / 0.26), rgb(var(--light) / 0.07) 60%, rgb(var(--light) / 0)); clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%); filter: blur(18px); opacity: 0; transition: opacity 1.4s var(--ease); }
+.lit .pool { opacity: 1; }
+.lit .cone { opacity: 0.75; }
+
+/* ── Nav: a slim visitor bar; tone flips with the wall under it */
+.nav { position: fixed; z-index: 60; inset: 0 0 auto; height: var(--nav); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; padding-inline: var(--gut); color: var(--ivory); transition: color 0.5s, background-color 0.5s, transform 0.6s var(--ease); }
+.nav::before { content: ""; position: absolute; inset: 0 0 -1.5rem; z-index: -1; background: linear-gradient(rgb(14 9 10 / 0.6), transparent); transition: opacity 0.5s; pointer-events: none; }
+.nav[data-tone="light"] { color: var(--ink); }
+.nav[data-tone="light"]::before { opacity: 0; }
+.brand { justify-self: start; display: block; width: 4.6rem; }
+.brand svg { width: 100%; height: auto; }
+.where { background: none; cursor: pointer; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.75rem; height: 2.25rem; padding: 0 1rem 0 0.4rem; border: 1px solid currentColor; border-color: color-mix(in srgb, currentColor 28%, transparent); border-radius: 999px; font: 400 0.6875rem/1 var(--insc); letter-spacing: 0.26em; text-transform: uppercase; }
+.where .n { display: grid; place-items: center; min-width: 1.6rem; height: 1.6rem; padding: 0 0.3rem; border-radius: 999px; background: currentColor; }
+.where .n span { color: var(--night); font: 400 0.6875rem/1 var(--insc); letter-spacing: 0.06em; }
+.nav[data-tone="light"] .where .n span { color: var(--plaster); }
+.where .t { display: inline-block; transition: opacity 0.35s, transform 0.5s var(--ease); }
+.where.swap .t, .where.swap .n span { opacity: 0; transform: translateY(0.35rem); }
+.where .n span { display: inline-block; transition: opacity 0.35s, transform 0.5s var(--ease); }
+.nav-r { justify-self: end; display: flex; align-items: center; gap: 0.5rem; }
+.nav-r .tel { font: 500 0.75rem/1 var(--sans); letter-spacing: 0.08em; margin-right: 0.6rem; }
+.nav .btn { height: 2.4rem; padding: 0 1rem; font-size: 0.625rem; }
+.nav .btn-line { border-color: color-mix(in srgb, currentColor 40%, transparent); }
+.nav .btn-line:hover { border-color: currentColor; }
+.nav .btn-solid { background: currentColor; }
+.nav .btn-solid span { color: var(--night); }
+.nav[data-tone="light"] .btn-solid span { color: var(--plaster); }
+.guide-btn svg { width: 1rem; height: 1rem; }
+@media (max-width: 52rem) {
+  .nav { grid-template-columns: auto 1fr auto; --nav: 3.75rem; }
+  .nav-r .tel, .nav .btn-solid { display: none; }
+  .where { justify-self: center; padding-right: 0.8rem; gap: 0.55rem; letter-spacing: 0.18em; font-size: 0.625rem; }
+  .brand { width: 3.9rem; }
+}
+@media (max-width: 23rem) { .where .t { display: none; } .where { padding-right: 0.4rem; } }
+
+/* ── Visitor guide (Rehber): the floor plan leaflet */
+.guide { position: fixed; inset: 0; z-index: 70; display: grid; align-items: start; overflow-y: auto; background: rgb(10 7 8 / 0.6); opacity: 0; visibility: hidden; transition: opacity 0.5s var(--ease), visibility 0s 0.5s; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.guide.on { opacity: 1; visibility: visible; transition: opacity 0.5s var(--ease); }
+.g-paper { position: relative; margin: clamp(0.75rem, 2vw, 2rem) auto; width: min(64rem, calc(100% - 1.5rem)); background: var(--plaster) var(--tex-l); color: var(--ink); padding: clamp(1.5rem, 1rem + 2.5vw, 3rem); box-shadow: 0 2rem 5rem -2rem rgb(0 0 0 / 0.8); transform: translateY(1.5rem) rotate(-0.4deg); transition: transform 0.7s var(--ease); }
+.guide.on .g-paper { transform: none; }
+.g-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--rule-l); }
+.g-head h2 { font: 400 clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem)/1.1 var(--serif); margin-top: 0.6rem; }
+.g-x { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 1px solid var(--rule-l); background: none; cursor: pointer; flex: none; }
+.g-x svg { width: 1rem; height: 1rem; }
+.g-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.5rem, 1rem + 2vw, 3rem); padding-top: 1.75rem; align-items: start; }
+.g-plan { width: 100%; height: auto; }
+.g-plan .rm rect { fill: rgb(255 255 255 / 0.35); stroke: var(--ink); stroke-width: 2; transition: fill 0.3s; }
+.g-plan .rm:hover rect, .g-plan .rm.cur rect { fill: rgb(74 24 32 / 0.12); }
+.g-plan .rm text { font: 400 15px var(--insc); fill: var(--ink); letter-spacing: 0.08em; }
+.g-plan .rm .s { font: 500 9px var(--sans); letter-spacing: 0.12em; fill: var(--ink2); text-transform: uppercase; }
+.g-plan .door { stroke: var(--plaster); stroke-width: 5; }
+.g-plan .here { fill: var(--bordeaux); }
+.g-plan .here-r { fill: none; stroke: var(--bordeaux); stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: ping 2s var(--ease) infinite; }
+@keyframes ping { from { transform: scale(0.6); opacity: 1; } to { transform: scale(2.4); opacity: 0; } }
+.g-list li { border-bottom: 1px solid var(--rule-l); }
+.g-list a { display: grid; grid-template-columns: 2.6rem 1fr; align-items: baseline; gap: 0 0.75rem; padding: 0.8rem 0; transition: padding-left 0.4s var(--ease); }
+.g-list a:hover { padding-left: 0.4rem; }
+.g-list b { font: 400 0.9375rem/1 var(--insc); color: var(--bordeaux); letter-spacing: 0.06em; }
+.g-list span { font: 400 1.3rem/1.2 var(--serif); }
+.g-list em { grid-column: 2; font: 400 0.8125rem/1.45 var(--sans); color: var(--ink2); font-style: normal; }
+.g-note { margin-top: 1.5rem; font-size: 0.75rem; color: var(--ink2); }
+@media (max-width: 47.99rem) { .g-grid { grid-template-columns: 1fr; } }
+
+/* ── I · Giriş: a dark gallery, the film projected in a heavy frame under the spots */
+.hero { position: relative; min-height: 100svh; overflow-x: clip; display: flex; flex-direction: column; overflow: hidden; background: #1a0c0f; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: var(--tex-d), radial-gradient(70% 62% at 50% 34%, #3d1720 0%, #24100f 48%, #120809 100%); }
+.hero-wash { position: absolute; z-index: -1; left: 50%; top: 2%; width: 118vw; height: 92svh; transform: translateX(-50%); background: radial-gradient(closest-side, rgb(var(--light) / 0.16), rgb(var(--light) / 0.05) 55%, transparent); opacity: 0; }
+.hero .track { position: absolute; left: 0; right: 0; top: 0; height: 0.5rem; background: linear-gradient(#0a0607, #1b0d10); box-shadow: 0 1px 0 rgb(255 238 214 / 0.05); }
+.spot { position: absolute; top: 0.3rem; z-index: 1; width: 1.6rem; transform: translateX(-50%); }
+.spot i { display: block; width: 0.55rem; height: 0.9rem; margin: 0 auto; background: #0c0809; border-radius: 0 0 2px 2px; }
+.spot b { display: block; width: 1.5rem; height: 1.15rem; margin: 0 auto; background: linear-gradient(90deg, #0e0a0b, #2a2022 45%, #0e0a0b); border-radius: 2px 2px 40% 40%; transform: rotate(var(--tilt, 0deg)); }
+.spot b::after { content: ""; display: block; width: 0.9rem; height: 0.25rem; margin: 0.88rem auto 0; border-radius: 50%; background: rgb(var(--light)); box-shadow: 0 0 0.8rem 0.3rem rgb(var(--light) / 0.6); opacity: 0; }
+.hero .cone { top: 1.6rem; height: 74%; filter: blur(14px); }
+.hero-stage { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: calc(var(--nav) + clamp(0.6rem, 2vh, 1.6rem)); padding-bottom: clamp(1.2rem, 3vh, 2.4rem); gap: clamp(1.2rem, 3.2vh, 2.4rem); --frame-top: 7rem; }
+.hero-work { position: relative; align-self: center; width: min(82vw, calc((100svh - 23rem) * 2.37 + 1.6rem)); min-width: min(100%, 38rem); }
+.hero-work .fr { --fw: clamp(0.55rem, 0.4rem + 0.5vw, 0.9rem); }
+.hero-work .in { aspect-ratio: 1920 / 810; }
+.hero-work .in img, .hero-work .in video { position: absolute; inset: 0; }
+.hero-work video { opacity: 0; transition: opacity 1.4s var(--ease); }
+.hero-work.playing video { opacity: 1; }
+.hero-work .in .glare { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(115deg, rgb(255 255 255 / 0) 30%, rgb(255 255 255 / 0.06) 44%, rgb(255 255 255 / 0) 58%); }
+.hero-work .tc { position: absolute; right: 0; top: calc(100% + 0.65rem); font: 500 0.625rem/1 var(--sans); letter-spacing: 0.14em; color: var(--ivory3); text-transform: uppercase; }
+.hero-text { width: min(82vw, calc((100svh - 23rem) * 2.37 + 1.6rem)); min-width: min(100%, 38rem); align-self: center; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2rem; }
+.hero h1 { font: 400 clamp(2.1rem, 1.3rem + 2.3vw, 3.4rem)/1.04 var(--serif); letter-spacing: -0.015em; }
+.hero h1 em { color: rgb(var(--light) / 0.92); }
+.hero h1 .w { display: inline-block; }
+.hero-text > div > p { margin-top: 0.9rem; max-width: 33rem; color: var(--ivory2); font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem); }
+.hero-text .acts { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.hero .lab { width: 17.5rem; }
+.hero .lab .me { margin-top: 0.15rem; }
+.cue { position: absolute; left: 50%; bottom: 0.9rem; transform: translateX(-50%); display: grid; justify-items: center; gap: 0.4rem; font: 500 0.5625rem/1 var(--sans); letter-spacing: 0.24em; text-transform: uppercase; color: var(--ivory3); }
+.cue i { width: 1px; height: 1.6rem; background: linear-gradient(currentColor, transparent); animation: cue 2.4s var(--ease-io) infinite; transform-origin: top; }
+@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+@media (max-width: 52rem) {
+  .hero-work, .hero-text { width: 100%; min-width: 0; }
+  .hero-stage { padding-inline: var(--gut); }
+  .hero-text { grid-template-columns: 1fr; gap: 1.25rem; }
+  .hero .lab { display: none; }
+}
+@media (max-width: 699px) {
+  .hero-work .in { aspect-ratio: auto; height: max(18rem, calc(100svh - 24rem)); }
+  .hero h1 .w { display: block; }
+  .hero-work .tc { display: none; }
+  .cue { display: none; }
+}
+
+/* Lights on: the spots warm up one by one, then the film and the wall text arrive. */
+.js .hero .cone, .js .hero-wash { opacity: 0; }
+.js .hero-work .fr { opacity: 0.25; filter: brightness(0.35); transition: opacity 1.4s var(--ease), filter 1.6s var(--ease); }
+.js .hero-text > * { opacity: 0; transform: translateY(1.2rem); transition: opacity 1s var(--ease), transform 1.2s var(--ease); }
+.js .hero .w { opacity: 0; transform: translateY(0.6em); transition: opacity 0.9s var(--ease), transform 1.1s var(--ease); }
+.lights .hero .cone { animation: flick 1.1s var(--d, 0s) var(--ease) forwards; }
+.lights .spot b::after { animation: bulb 1.1s var(--d, 0s) var(--ease) forwards; }
+.lights .hero-wash { animation: wash 1.8s 0.5s var(--ease) forwards; }
+.lights .hero-work .fr { opacity: 1; filter: none; transition-delay: 0.45s; }
+.lights .hero-text > * { opacity: 1; transform: none; transition-delay: calc(1s + var(--i, 0) * 0.12s); }
+.lights .hero .w { opacity: 1; transform: none; transition-delay: calc(0.9s + var(--i, 0) * 0.07s); }
+@keyframes flick { 0% { opacity: 0; } 12% { opacity: 0.7; } 18% { opacity: 0.1; } 30% { opacity: 0.85; } 38% { opacity: 0.35; } 100% { opacity: 0.85; } }
+@keyframes bulb { 0% { opacity: 0; } 12% { opacity: 1; } 18% { opacity: 0.2; } 30% { opacity: 1; } 38% { opacity: 0.5; } 100% { opacity: 1; } }
+@keyframes wash { to { opacity: 1; } }
+
+/* ── II · Küratörden: the introductory wall text */
+.curator { position: relative; background: var(--plaster); color: var(--ink); isolation: isolate; overflow-x: clip; }
+.curator::before, .konum-room::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--tex-l); pointer-events: none; }
+.cur-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: end; padding-bottom: clamp(3rem, 2rem + 4vw, 6rem); }
+.cur-wall { font: 400 clamp(1.75rem, 1.2rem + 1.7vw, 2.75rem)/1.22 var(--serif); letter-spacing: -0.01em; text-wrap: pretty; }
+.cur-wall em { font-style: italic; color: var(--bordeaux); }
+.cur-wall::first-letter { float: left; font: 400 4.1em/0.8 var(--insc); margin: 0.07em 0.12em 0 0; color: var(--bordeaux); }
+.cur-side p { color: var(--ink2); font-size: 0.9375rem; line-height: 1.7; }
+.cur-side .sig { margin-top: 1.25rem; font: italic 400 1.25rem/1 var(--serif); color: var(--ink); }
+.cur-side .sig span { display: block; margin-top: 0.4rem; font: 500 0.625rem/1 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink3); font-style: normal; }
+.kunye { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule-l); }
+.kunye > div { padding: 1.6rem 1.25rem 2.2rem 0; border-right: 1px solid var(--rule-l); }
+.kunye > div + div { padding-left: 1.5rem; }
+.kunye > div:last-child { border-right: 0; }
+.kunye dt { font: 600 0.5625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.kunye dd { margin: 0.9rem 0 0; }
+.kunye .v { font: 400 clamp(2.2rem, 1.6rem + 1.6vw, 3.25rem)/1 var(--serif); font-variant-numeric: lining-nums; }
+.kunye .v small { font-size: 0.4em; margin-left: 0.15em; }
+.kunye .l { display: block; margin-top: 0.55rem; font-size: 0.875rem; color: var(--ink); }
+.kunye .s { display: block; margin-top: 0.15rem; font-size: 0.75rem; color: var(--ink2); }
+.enter { display: flex; justify-content: center; padding: clamp(2.5rem, 2rem + 2vw, 4rem) 0 clamp(3rem, 2rem + 3vw, 5rem); }
+.enter a { display: grid; justify-items: center; gap: 0.7rem; font: 400 0.6875rem/1 var(--insc); letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink2); }
+.enter a i { width: 1px; height: 2.4rem; background: currentColor; transform-origin: top; animation: cue 2.4s var(--ease-io) infinite; }
+@media (max-width: 52rem) {
+  .cur-grid { grid-template-columns: 1fr; }
+  .kunye { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kunye > div:nth-child(2) { border-right: 0; }
+  .kunye > div:nth-child(3) { padding-left: 0; }
+  .kunye > div:nth-child(n + 3) { border-top: 1px solid var(--rule-l); }
+}
+
+/* ── II · The walk: a first-person stroll through three galleries in CSS 3D */
+.walk { position: relative; height: 900svh; background: #0b0809; }
+.stage { position: sticky; top: 0; height: 100svh; overflow: hidden; perspective-origin: 50% 44%; background: #0b0809; contain: strict; }
+.world { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
+.world > div { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.w-lin { display: grid; place-items: center; align-content: center; gap: 0.6em; text-align: center; }
+.w-lin b { font: 400 1em/1 var(--insc); letter-spacing: 0.34em; text-transform: uppercase; padding-left: 0.34em; }
+.w-lin small { font: 500 0.36em/1 var(--sans); letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.7; padding-left: 0.3em; }
+.easel { -webkit-box-reflect: below 0 linear-gradient(transparent 74%, rgb(0 0 0 / 0.3)); }
+.easel > * { position: absolute; }
+.e-glass { background: rgb(214 228 234 / 0.07); border: 1px solid rgb(255 255 255 / 0.14); border-top-color: rgb(255 255 255 / 0.32); box-shadow: inset 1px 0 0 rgb(255 255 255 / 0.1); }
+.e-base { background: linear-gradient(#a19c94, #7c776f 70%, #6a655e); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.25); }
+.e-cone { background: linear-gradient(rgb(var(--light) / 0.3), rgb(var(--light) / 0.06) 70%, rgb(var(--light) / 0)); clip-path: polygon(47% 0, 53% 0, 100% 100%, 0 100%); }
+.e-head { background: #0d0a0a; border-radius: 0 0 30% 30%; }
+.e-fr { background: linear-gradient(145deg, #4a382b, #1c1510 40%, #36281e 62%, #120d0a); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.5), inset 0 0 0 1px rgb(255 238 214 / 0.08); }
+.e-fr img { position: absolute; width: 100%; height: 100%; object-fit: cover; }
+.w-pool { background: radial-gradient(closest-side, rgb(var(--light) / 0.16), rgb(var(--light) / 0)); }
+.w-track { background: rgb(var(--light) / 0.22); }
+.fog, .vig, .w-end { position: absolute; inset: 0; pointer-events: none; }
+.vig { background: radial-gradient(ellipse 80% 75% at 50% 44%, transparent 52%, rgb(0 0 0 / 0.5)); }
+.w-end { background: var(--prussian); opacity: 0; }
+.walk-top { position: absolute; left: 0; right: 0; top: calc(var(--nav) + 1rem); display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; pointer-events: none; color: var(--ivory); }
+.walk-top .rm { display: grid; gap: 0.55rem; }
+.walk-top .rm b { font: italic 400 clamp(1.6rem, 1.2rem + 1.2vw, 2.25rem)/1 var(--serif); transition: opacity 0.4s, transform 0.6s var(--ease); text-shadow: 0 1px 12px rgb(0 0 0 / 0.5); }
+.walk-top .rm.swap b { opacity: 0; transform: translateY(0.4rem); }
+.walk-top .hint { display: flex; align-items: center; gap: 0.8rem; font: 500 0.625rem/1 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ivory2); transition: opacity 0.6s; }
+.walk-top .hint i { width: 2.6rem; height: 1px; background: currentColor; transform-origin: left; animation: hint 2.2s var(--ease-io) infinite; }
+@keyframes hint { 0% { transform: scaleX(0); } 60% { transform: scaleX(1); } 100% { transform: scaleX(1); opacity: 0; } }
+.hud { position: absolute; left: var(--gut); bottom: 4.5rem; width: min(19rem, calc(100% - 2 * var(--gut))); pointer-events: none; }
+.hud .lab { transition: opacity 0.45s var(--ease), transform 0.6s var(--ease); }
+.hud.off .lab { opacity: 0; transform: translateY(0.6rem); }
+.hud.swap .lab { opacity: 0; transform: translateY(-0.4rem); }
+.mmap { position: absolute; right: var(--gut); bottom: 4.5rem; width: 13.5rem; color: var(--ivory); pointer-events: none; }
+.mmap svg { width: 100%; height: auto; overflow: visible; }
+.mmap .k { font: 500 0.5625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ivory3); margin-bottom: 0.6rem; display: flex; justify-content: space-between; }
+.mmap text { font: 400 7px var(--insc); fill: var(--ivory2); letter-spacing: 0.08em; }
+@media (max-width: 52rem) {
+  .mmap { display: none; }
+  .hud { bottom: 4.25rem; }
+  .walk-top .hint span { display: none; }
+}
+/* Flat gallery for reduced motion: the same works, hung on a plain wall. */
+.flat-grid { display: none; }
+.walk.flat { height: auto; }
+.walk.flat .stage { display: none; }
+.walk.flat .flat-grid { display: block; padding-bottom: 4rem; }
+.flat-room { padding-block: 2rem; }
+.flat-room .hang { grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+
+/* ── III · Konutlar: six works on a Prussian-blue wall */
+.room { position: relative; isolation: isolate; overflow-x: clip; }
+.room-blue { background: var(--prussian); }
+.room-blue::before, .room-red::before, .room-night::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--tex-d); pointer-events: none; }
+.room-red { background: var(--bordeaux); }
+.room-night { background: #100b0c; }
+.room-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: end; padding-bottom: clamp(3rem, 2rem + 3vw, 5rem); }
+.room-head .lede { justify-self: end; }
+@media (max-width: 52rem) { .room-head { grid-template-columns: 1fr; } .room-head .lede { justify-self: start; } }
+.hang { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(3rem, 2rem + 3vw, 5.5rem) clamp(1.5rem, 1rem + 2.5vw, 4rem); }
+@media (max-width: 62rem) { .hang { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 34rem) { .hang { grid-template-columns: 1fr; } }
+.wk { position: relative; display: grid; gap: 1.1rem; align-content: start; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; }
+.wk .pool { left: -18%; right: -18%; top: -38%; height: 120%; }
+.wk .fr { transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease); }
+.wk .in { aspect-ratio: 5 / 4; }
+.wk .in img { transition: transform 1.4s var(--ease); }
+.wk .lab { width: min(100%, 16rem); transition: transform 0.7s var(--ease); }
+.wk .lab .go { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.6rem; font: 600 0.5625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--bordeaux); }
+.wk:hover .fr, .wk:focus-visible .fr { transform: translateY(-0.4rem); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.55), inset 0 0 0 1px rgb(255 238 214 / 0.08), 0 3.4rem 4.4rem -2rem rgb(0 0 0 / 0.85), 0 1rem 1.8rem -0.9rem rgb(0 0 0 / 0.6); }
+.wk:hover .in img { transform: scale(1.035); }
+.wk:hover .pool { opacity: 1; filter: brightness(1.25); }
+.room-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: clamp(3rem, 2rem + 3vw, 5rem) 0 clamp(4rem, 3rem + 3vw, 6rem); border-bottom: 1px solid var(--rule-d); color: var(--ivory2); font-size: 0.875rem; }
+.ln-arrow { display: inline-flex; align-items: center; gap: 0.5rem; font: 500 0.6875rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 0.35rem; }
+
+/* Inspection: the work lifts off the wall and comes to you */
+.inspect { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--ivory); overflow: hidden; }
+.inspect::backdrop { background: transparent; }
+.ins-bg { position: absolute; inset: 0; background: radial-gradient(70% 70% at 38% 45%, #22364a, #0f1822 70%); opacity: 0; transition: opacity 0.6s var(--ease); }
+.ins-bg::after { content: ""; position: absolute; inset: 0; background: var(--tex-d); opacity: 0.8; }
+.inspect.on .ins-bg { opacity: 0.97; }
+.ins-wrap { position: relative; height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(20rem, 25rem); gap: clamp(2rem, 1rem + 3vw, 4.5rem); align-items: center; padding: 5rem var(--gut) 4rem; overflow-y: auto; }
+.ins-work { position: relative; display: grid; justify-items: center; }
+.ins-work .pool { left: -10%; right: -10%; top: -30%; height: 110%; opacity: 1; }
+.ins-work .fr { width: min(100%, calc((100svh - 10rem) * 1.25)); --fw: clamp(0.7rem, 0.5rem + 0.6vw, 1.1rem); transform-origin: 0 0; will-change: transform; }
+.ins-work .in { aspect-ratio: 5 / 4; }
+.ins-work .in img { position: absolute; inset: 0; transition: opacity 0.6s var(--ease); }
+.ins-work .in .plan { object-fit: contain; background: #f6f2ea; padding: 4%; opacity: 0; }
+.ins-work.show-plan .in .plan { opacity: 1; }
+.ins-work .tg { position: absolute; left: calc(var(--fw) + 0.75rem); top: calc(var(--fw) + 0.75rem); z-index: 2; padding: 0.45rem 0.6rem; background: rgb(18 13 14 / 0.6); color: var(--ivory); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.ins-work.show-plan .tg { background: rgb(31 27 24 / 0.08); color: var(--ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.ins-card { background: var(--card); color: var(--ink); padding: clamp(1.4rem, 1rem + 1.2vw, 2.2rem); box-shadow: 0 2rem 4rem -2rem rgb(0 0 0 / 0.8); opacity: 0; transform: translateX(1.5rem); transition: opacity 0.6s var(--ease), transform 0.8s var(--ease); }
+.inspect.on .ins-card { opacity: 1; transform: none; transition-delay: 0.25s; }
+.ins-card .no { font: 600 0.5625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.ins-card h3 { font: 400 clamp(1.8rem, 1.4rem + 1vw, 2.4rem)/1.05 var(--serif); margin: 0.6rem 0 0.7rem; }
+.ins-card .bl { color: var(--ink2); font-size: 0.9375rem; }
+.seg { display: inline-flex; margin-top: 1.4rem; border: 1px solid var(--rule-l); padding: 0.2rem; }
+.seg button { height: 2.2rem; padding: 0 1rem; border: 0; background: none; cursor: pointer; font: 500 0.625rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink2); transition: background-color 0.3s, color 0.3s; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--ivory); }
+.ins-card dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.6rem; border-top: 1px solid var(--rule-l); }
+.ins-card dl div { padding: 0.9rem 0.6rem 0 0; }
+.ins-card dt { font: 600 0.5625rem/1 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink3); }
+.ins-card dd { margin: 0.45rem 0 0; font: 400 1.0625rem/1.25 var(--serif); font-variant-numeric: lining-nums; }
+.ins-card .pc { margin-top: 1.1rem; font-size: 0.75rem; color: var(--ink2); }
+.ins-nav { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 1.6rem; padding-top: 1.1rem; border-top: 1px solid var(--rule-l); }
+.ins-nav .pn { display: flex; gap: 0.4rem; }
+.sq { width: 2.6rem; height: 2.6rem; display: grid; place-items: center; border: 1px solid var(--rule-l); background: none; cursor: pointer; transition: background-color 0.3s, border-color 0.3s; }
+.sq:hover { border-color: var(--ink); }
+.sq svg { width: 0.95rem; height: 0.95rem; }
+.ins-x { position: absolute; right: var(--gut); top: 1rem; z-index: 3; width: 2.9rem; height: 2.9rem; display: grid; place-items: center; border: 1px solid rgb(243 238 229 / 0.35); background: rgb(18 13 14 / 0.3); color: var(--ivory); cursor: pointer; opacity: 0; transition: opacity 0.5s; }
+.ins-x svg { width: 1rem; height: 1rem; }
+.inspect.on .ins-x { opacity: 1; }
+.ins-swap .ins-work .in, .ins-swap .ins-card > * { opacity: 0.001; transition: opacity 0.25s; }
+@media (max-width: 52rem) {
+  .ins-wrap { grid-template-columns: 1fr; align-items: start; padding-top: 4.5rem; gap: 1.5rem; }
+  .ins-work .fr { width: 100%; }
+}
+
+/* ── IV · Olanaklar: a salon hang on the bordeaux wall that assembles as you arrive */
+.salon { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: clamp(3.6rem, 1.6rem + 3.3vw, 5.6rem); gap: clamp(0.9rem, 0.5rem + 1vw, 1.6rem); }
+.salon::after { content: ""; position: absolute; inset: -7rem -5rem; z-index: 1; background: radial-gradient(closest-side, rgb(18 4 7 / 0.66) 72%, rgb(18 4 7 / 0)); opacity: 0; transition: opacity 0.6s var(--ease); pointer-events: none; }
+.salon.hov::after { opacity: 1; }
+.s-it { position: relative; grid-column: var(--c); grid-row: var(--r); will-change: transform, opacity; }
+.s-it .fr { position: absolute; inset: 0; --fw: clamp(0.35rem, 0.25rem + 0.3vw, 0.55rem); }
+.s-it .in { height: 100%; }
+.s-it.pr .in { display: grid; place-items: center; align-content: center; gap: 0.5rem; padding: 0.5rem; text-align: center; background: #efe7da; color: var(--ink); }
+.s-it.pr .nm { font: 400 clamp(0.62rem, 0.5rem + 0.3vw, 0.8125rem)/1.35 var(--insc); letter-spacing: 0.14em; text-transform: uppercase; }
+.s-it.pr .rl { width: 1.4rem; height: 1px; background: var(--bordeaux); }
+.s-it.im { cursor: pointer; }
+.s-it.im::before { content: ""; position: absolute; left: -35%; right: -35%; top: -70%; height: 175%; z-index: -1; background: radial-gradient(closest-side, rgb(var(--light) / 0.32), transparent); opacity: 0; transition: opacity 0.6s var(--ease); pointer-events: none; }
+.s-it.im .tg { position: absolute; left: calc(var(--fw) + 0.5rem); bottom: calc(var(--fw) + 0.5rem); z-index: 2; padding: 0.4rem 0.55rem; background: rgb(18 13 14 / 0.55); color: var(--ivory); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.s-it .tip { position: absolute; left: 0; top: calc(100% + 0.7rem); z-index: 3; width: max(100%, 15rem); max-width: 17rem; opacity: 0; transform: translateY(-0.4rem); transition: opacity 0.4s var(--ease), transform 0.6s var(--ease); pointer-events: none; }
+.s-it.flip .tip { left: auto; right: 0; }
+.s-it.up .tip { top: auto; bottom: calc(100% + 0.7rem); }
+.s-it.on { z-index: 2; }
+.s-it.on::before { opacity: 1; }
+.s-it.on .tip { opacity: 1; transform: none; }
+.salon-note { padding: clamp(3rem, 2rem + 3vw, 5rem) 0 clamp(4rem, 3rem + 3vw, 6rem); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--ivory2); font-size: 0.875rem; }
+@media (max-width: 47.99rem) {
+  .salon { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(3.4rem, 15vw, 4.6rem); }
+  .s-it { grid-column: var(--mc); grid-row: var(--mr); }
+}
+
+/* ── V · Konum ve arşiv: a framed map, an engraved distance table, then the site archive vitrine */
+.konum-room { position: relative; background: var(--plaster); color: var(--ink); isolation: isolate; overflow-x: clip; }
+.konum { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 4vw, 5.5rem); align-items: start; }
+.konum-r { padding-top: clamp(0rem, 3vw, 3rem); }
+.konum .pool { left: -12%; right: -12%; top: -30%; height: 110%; }
+.konum-map { position: relative; }
+.konum-map .fr { --mat: clamp(1rem, 0.6rem + 1.2vw, 1.8rem); }
+.konum-map .win { aspect-ratio: 1600 / 893; }
+.konum-map .cart { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-top: 0.9rem; color: var(--ink2); }
+.konum-map .cart b { font: 400 clamp(0.62rem, 0.55rem + 0.25vw, 0.75rem)/1.3 var(--insc); letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink); }
+.dist { margin-top: 2rem; border-top: 1px solid var(--rule-l); }
+.dist li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 0.3rem 1rem; padding: 1.1rem 0 1rem; border-bottom: 1px solid var(--rule-l); }
+.dist .pl { font: 400 1.25rem/1.1 var(--serif); }
+.dist .pl small { display: block; margin-top: 0.3rem; font: 400 0.75rem/1.3 var(--sans); color: var(--ink2); }
+.dist .mn { font: 400 2rem/1 var(--serif); font-variant-numeric: lining-nums; }
+.dist .mn small { font: 500 0.625rem/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; margin-left: 0.25rem; color: var(--ink2); }
+.dist .bar { grid-column: 1 / -1; position: relative; height: 0.55rem; margin-top: 0.35rem; }
+.dist .bar::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--rule-l); }
+.dist .bar i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--k) * 100%); border-left: 1px solid var(--ink); border-right: 1px solid var(--ink); transform-origin: left; transform: scaleX(0); transition: transform 1.6s var(--ease); }
+.dist .bar i::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--ink); }
+.in .dist .bar i, .dist.in .bar i { transform: scaleX(1); }
+.dist li:nth-child(2) .bar i { transition-delay: 0.15s; }
+.dist li:nth-child(3) .bar i { transition-delay: 0.3s; }
+.konum .fine { margin-top: 1rem; font-size: 0.75rem; color: var(--ink2); }
+.bridge { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 1.5rem; align-items: end; margin-top: clamp(2.5rem, 2rem + 2vw, 4rem); max-width: 36rem; margin-left: auto; }
+.bridge .in { aspect-ratio: 4 / 5; }
+.bridge .lab { box-shadow: 0 1px 1px rgb(0 0 0 / 0.08), 0 0.75rem 1.5rem -1rem rgb(0 0 0 / 0.35); }
+@media (max-width: 52rem) { .konum { grid-template-columns: 1fr; } .bridge { margin-left: 0; grid-template-columns: minmax(0, 8rem) minmax(0, 1fr); } }
+
+.arsiv-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: end; padding: clamp(5rem, 3rem + 5vw, 8rem) 0 clamp(2.5rem, 2rem + 2vw, 3.5rem); }
+.arsiv-head .lede { justify-self: end; }
+@media (max-width: 52rem) { .arsiv-head { grid-template-columns: 1fr; } .arsiv-head .lede { justify-self: start; } }
+.vitrine { position: relative; padding: clamp(0.7rem, 0.5rem + 0.8vw, 1.2rem); background: linear-gradient(145deg, #3c2c21, #1d1510 50%, #2f2219); box-shadow: 0 2.4rem 4rem -2rem rgb(0 0 0 / 0.55), inset 0 0 0 1px rgb(255 238 214 / 0.06); --gx: 30%; }
+.vit-bed { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 0.6rem + 1.4vw, 2rem); padding: clamp(1.2rem, 0.8rem + 1.6vw, 2.4rem); background: #ded5c4 var(--tex-l); box-shadow: inset 0 6px 18px rgb(0 0 0 / 0.35), inset 0 0 0 1px rgb(0 0 0 / 0.2); }
+.vit-glass { position: absolute; inset: clamp(0.7rem, 0.5rem + 0.8vw, 1.2rem); pointer-events: none; background: linear-gradient(112deg, rgb(255 255 255 / 0) calc(var(--gx) - 18%), rgb(255 255 255 / 0.2) var(--gx), rgb(255 255 255 / 0) calc(var(--gx) + 14%)), linear-gradient(rgb(255 255 255 / 0.08), rgb(255 255 255 / 0) 30%); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25); z-index: 2; }
+.ix { position: relative; background: #fbf8f1; color: var(--ink); padding: 0.6rem 0.6rem 1rem; box-shadow: 0 1px 2px rgb(0 0 0 / 0.2), 0 0.6rem 1.2rem -0.7rem rgb(0 0 0 / 0.5); transform: rotate(var(--rot, 0deg)); transition: transform 0.7s var(--ease), box-shadow 0.7s var(--ease); z-index: 1; }
+.ix:hover { transform: translateY(-0.6rem) rotate(0deg) scale(1.025); box-shadow: 0 1px 2px rgb(0 0 0 / 0.2), 0 1.6rem 2.4rem -1.2rem rgb(0 0 0 / 0.55); z-index: 3; }
+.ix .ph { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #ccc; }
+.ix .ph img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) contrast(1.02); }
+.ix .ph .tg { position: absolute; left: 0.4rem; top: 0.4rem; padding: 0.3rem 0.4rem; background: rgb(251 248 241 / 0.85); color: var(--ink); font-size: 0.5rem; }
+.ix .rule { height: 2px; background: var(--bordeaux); margin: 0.75rem 0 0.6rem; width: 2rem; }
+.ix .k { font: 600 0.5625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--bordeaux); }
+.ix h3 { font: 400 1.25rem/1.15 var(--serif); margin: 0.45rem 0 0.35rem; }
+.ix p { font-size: 0.8125rem; line-height: 1.5; color: var(--ink2); }
+.arsiv-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: 2rem 0 clamp(5rem, 3rem + 4vw, 7rem); color: var(--ink2); font-size: 0.875rem; }
+@media (max-width: 52rem) { .vit-bed { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ix p { font-size: 0.75rem; } }
+@media (max-width: 30rem) { .ix h3 { font-size: 1.05rem; } .ix p { display: none; } }
+
+/* ── VI · Kalıcı koleksiyon: two finished projects under the spots, two stone plaques */
+.coll { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(3rem, 2rem + 4vw, 6rem) clamp(2rem, 1rem + 3vw, 4.5rem); }
+.piece { position: relative; display: grid; gap: 1.3rem; align-content: start; }
+.piece .pool { left: -15%; right: -15%; top: -35%; height: 115%; }
+.piece .cone { left: 15%; right: 15%; top: -9rem; height: calc(9rem + 70%); }
+.piece:nth-child(2) { margin-top: clamp(0rem, 6vw, 6rem); }
+.piece .in { aspect-ratio: 16 / 11; }
+.piece .lab { width: min(100%, 24rem); padding: 1.1rem 1.2rem 1.2rem; }
+.piece .lab .ti { font-style: normal; font-size: 1.5rem; }
+.piece .lab dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem 1rem; margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px solid var(--rule-l); }
+.piece .lab dt { font: 600 0.5rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.piece .lab dd { margin: 0.3rem 0 0; font: 400 0.9375rem/1.3 var(--serif); }
+.extra { margin-top: clamp(3rem, 2rem + 3vw, 5rem); padding: 1.3rem 0; border-top: 1px solid var(--rule-d); border-bottom: 1px solid var(--rule-d); color: var(--ivory2); font-size: 0.9375rem; }
+.extra b { font: 400 1.2rem/1 var(--serif); color: var(--ivory); margin-right: 0.6rem; }
+.plaques { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 0.6rem + 1.4vw, 2rem); padding: clamp(3rem, 2rem + 3vw, 5rem) 0 clamp(5rem, 3rem + 4vw, 7rem); }
+.plq { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.25rem; align-items: start; padding: clamp(1.3rem, 1rem + 1vw, 2rem); background: linear-gradient(160deg, #3b3734, #2a2725 60%, #33302d); color: #d7d0c4; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), inset 0 -1px 0 rgb(0 0 0 / 0.5), 0 1.6rem 2.6rem -1.6rem rgb(0 0 0 / 0.8); isolation: isolate; }
+.plq::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--tex-d); opacity: 0.9; }
+.plq::after { content: ""; position: absolute; inset: 0.5rem; border: 1px solid rgb(0 0 0 / 0.35); box-shadow: 0 1px 0 rgb(255 255 255 / 0.06); pointer-events: none; }
+.plq .ic { width: 3.4rem; height: 3.4rem; display: grid; place-items: center; color: #d7d0c4; filter: drop-shadow(0 -1px 0 rgb(0 0 0 / 0.6)) drop-shadow(0 1px 0 rgb(255 255 255 / 0.08)); }
+.plq .ic svg { width: 100%; height: 100%; }
+.plq h3 { font: 400 0.9375rem/1.35 var(--insc); letter-spacing: 0.12em; text-transform: uppercase; text-shadow: 0 -1px 0 rgb(0 0 0 / 0.7), 0 1px 0 rgb(255 255 255 / 0.07); }
+.plq p { margin-top: 0.6rem; font-size: 0.8125rem; line-height: 1.6; color: #aca499; }
+@media (max-width: 52rem) { .coll, .plaques { grid-template-columns: 1fr; } .piece:nth-child(2) { margin-top: 0; } }
+
+/* ── Özel gösterim: the invitation card, lit on the bordeaux wall */
+.davet { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: center; padding-bottom: clamp(5rem, 3rem + 5vw, 8rem); }
+.davet .office { position: relative; }
+.davet .office .in { aspect-ratio: 5 / 4; }
+.davet .office .tg { position: absolute; left: calc(var(--fw) + 0.6rem); bottom: calc(var(--fw) + 0.6rem); padding: 0.4rem 0.55rem; background: rgb(18 13 14 / 0.55); color: var(--ivory); }
+.davet .office figcaption { margin-top: 0.9rem; font-size: 0.75rem; color: var(--ivory3); }
+.card-wrap { position: relative; perspective: 1400px; }
+.card-wrap .cone { left: 5%; right: 5%; top: -10rem; height: calc(10rem + 60%); }
+.card-wrap .pool { left: -20%; right: -20%; top: -30%; height: 130%; }
+.invite { position: relative; padding: clamp(1.8rem, 1.2rem + 2.4vw, 3.4rem); background: #f7f2e8 var(--tex-l); color: var(--ink); box-shadow: 0 0 0 1px rgb(0 0 0 / 0.06), 0 3rem 5rem -2.5rem rgb(0 0 0 / 0.85), 0 1rem 2rem -1rem rgb(0 0 0 / 0.5); transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transform-style: preserve-3d; will-change: transform; }
+.invite::before { content: ""; position: absolute; inset: 0.7rem; border: 1px solid rgb(74 24 32 / 0.45); outline: 1px solid rgb(74 24 32 / 0.18); outline-offset: 3px; pointer-events: none; }
+.invite::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgb(255 255 255 / 0) calc(var(--sx, 40%) - 20%), rgb(255 255 255 / 0.4) var(--sx, 40%), rgb(255 255 255 / 0) calc(var(--sx, 40%) + 20%)); mix-blend-mode: soft-light; }
+.invite .emb { width: 5.4rem; color: #e9e2d5; filter: drop-shadow(0 1px 0 rgb(255 255 255 / 0.9)) drop-shadow(0 -1px 0 rgb(0 0 0 / 0.22)); margin: 0 auto; }
+.invite .emb svg { width: 100%; height: auto; }
+.invite .insc { display: block; text-align: center; color: var(--bordeaux); margin-top: 1.4rem; }
+.invite h2 { text-align: center; font: 400 clamp(1.9rem, 1.4rem + 1.6vw, 2.9rem)/1.08 var(--serif); margin-top: 1rem; }
+.invite h2 em { color: var(--bordeaux); }
+.invite > p { text-align: center; margin: 1rem auto 0; max-width: 26rem; color: var(--ink2); font-size: 0.9375rem; }
+.invite dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--rule-l); text-align: center; }
+.invite dt { font: 600 0.5rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.invite dd { margin: 0.45rem 0 0; font-size: 0.8125rem; line-height: 1.45; }
+.invite .acts { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.8rem; }
+@media (max-width: 52rem) { .davet { grid-template-columns: 1fr; } .davet .office { order: 2; } .invite dl { grid-template-columns: 1fr; gap: 0.9rem; } }
+
+/* ── Footer: the colophon */
+.foot { background: #0d090a; color: var(--ivory2); padding: clamp(4rem, 3rem + 3vw, 6rem) 0 calc(2rem + 4rem); font-size: 0.875rem; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.foot .brand-f { width: 6rem; color: var(--ivory); }
+.foot .brand-f + p { margin-top: 1.2rem; max-width: 22rem; }
+.foot h4 { margin: 0 0 0.9rem; font: 400 0.6875rem/1 var(--insc); letter-spacing: 0.26em; text-transform: uppercase; color: var(--ivory3); }
+.foot li + li { margin-top: 0.35rem; }
+.foot a:hover { color: var(--ivory); }
+.foot-low { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--rule-d); font-size: 0.75rem; color: var(--ivory3); }
+@media (max-width: 52rem) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .foot-grid > :first-child { grid-column: 1 / -1; } }
+
+/* ── Film dialog */
+.film { width: min(92vw, 80rem); max-width: none; padding: 0; border: 0; background: transparent; color: var(--ivory); }
+.film::backdrop { background: rgb(8 5 6 / 0.92); }
+.film .fr { --fw: 0.8rem; }
+.film video { width: 100%; aspect-ratio: 1920 / 810; background: #000; }
+.film .bar { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font: 500 0.625rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ivory3); }
+.film .bar button { background: none; border: 1px solid rgb(243 238 229 / 0.35); height: 2.4rem; padding: 0 1rem; cursor: pointer; font: inherit; color: var(--ivory); letter-spacing: 0.16em; }
+
+/* ── Presenter pill */
+.pres { position: fixed; z-index: 65; left: 0.875rem; bottom: 0.875rem; display: flex; align-items: center; gap: 0.1rem; height: 2.5rem; padding: 0 0.3rem; border-radius: 999px; font: 500 0.6875rem/1 var(--sans); letter-spacing: 0.04em; color: var(--ivory); background: rgb(20 13 14 / 0.74); border: 1px solid rgb(243 238 229 / 0.2); -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%); }
+.pres a { display: inline-flex; align-items: center; height: 1.9rem; padding: 0 0.7rem; border-radius: 999px; transition: background-color 0.3s; }
+.pres a:hover { background: rgb(243 238 229 / 0.1); }
+.pres .arw { width: 1.9rem; padding: 0; justify-content: center; font-size: 0.95rem; }
+.pres .cur-v { padding: 0 0.65rem; color: var(--ivory2); border-inline: 1px solid rgb(243 238 229 / 0.14); height: 1.1rem; display: inline-flex; align-items: center; }
+.pres .cur-v b { color: var(--ivory); font-weight: 600; }
+@media (max-width: 40rem) { .pres .full, .pres .now { display: none; } }
+
+/* ── Cursor (desktop): a fine ring that names what a click does */
+.cur { position: fixed; left: 0; top: 0; z-index: 90; width: 2.4rem; height: 2.4rem; margin: -1.2rem 0 0 -1.2rem; border: 1px solid #fff; border-radius: 50%; pointer-events: none; mix-blend-mode: difference; display: none; place-items: center; transition: width 0.45s var(--ease), height 0.45s var(--ease), margin 0.45s var(--ease), opacity 0.3s; }
+.fine .cur { display: grid; }
+.cur span { font: 600 0.5rem/1 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; color: #fff; opacity: 0; transition: opacity 0.3s; }
+.cur.big { width: 5.2rem; height: 5.2rem; margin: -2.6rem 0 0 -2.6rem; }
+.cur.big span { opacity: 1; }
+.cur.hide { opacity: 0; }
+
+/* ── Reveal */
+.js [data-rv] { opacity: 0; transform: translateY(1.6rem); transition: opacity 1.1s var(--ease), transform 1.3s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+.js [data-rv].in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+  .js [data-rv] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="uzm-group" viewBox="0 0 2858.218249 1253.285931"><g transform="translate(-3.017733,1253.095662) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M46 12514 c-14 -14 -16 -221 -16 -2132 0 -2647 2 -2713 100 -3372 17 -121 50 -286 81 -410 6 -25 17 -74 25 -109 8 -35 19 -72 25 -82 5 -10 14 -38 19 -61 8 -41 17 -69 63 -198 21 -57 59 -153 83 -207 8 -17 14 -34 14 -37 0 -4 22 -50 48 -104 45 -90 71 -137 111 -204 9 -14 30 -51 48 -80 115 -199 367 -484 563 -639 156 -124 186 -144 358 -245 49 -29 221 -114 230 -114 4 0 19 -6 34 -14 14 -8 43 -19 63 -26 20 -7 49 -18 63 -26 15 -8 36 -14 47 -14 11 0 38 -9 60 -20 22 -11 47 -19 55 -20 8 0 44 -8 80 -19 139 -42 393 -89 545 -102 406 -34 762 -35 1130 -5 169 15 276 31 500 76 130 27 353 94 495 150 75 30 244 103 255 111 13 9 79 46 125 71 19 10 47 26 62 36 15 9 52 33 84 52 99 61 305 230 414 339 101 101 272 306 335 401 17 25 33 47 36 50 3 3 14 19 23 35 9 17 25 44 36 60 11 17 27 44 36 60 8 17 26 48 38 70 75 131 71 123 123 235 22 47 44 96 48 110 4 14 11 30 15 35 4 6 13 27 20 48 7 22 18 51 26 65 8 15 14 34 14 42 0 8 9 33 20 55 11 22 20 49 20 60 0 11 9 38 20 60 11 22 19 50 20 62 0 13 7 40 16 62 14 36 21 62 54 206 6 28 18 77 26 110 8 33 21 98 28 145 8 47 19 110 24 140 19 95 43 302 59 502 14 167 17 503 20 2491 4 2297 4 2297 -22 2307 -44 17 -1700 13 -1714 -3 -7 -10 -11 -665 -13 -2323 -3 -2503 -3 -2504 -59 -2839 -19 -116 -25 -145 -53 -265 -24 -99 -95 -302 -146 -415 -5 -11 -14 -31 -20 -45 -5 -14 -20 -41 -32 -62 -13 -20 -38 -62 -57 -94 -101 -174 -360 -433 -516 -517 -70 -37 -155 -77 -165 -77 -5 0 -27 -9 -47 -20 -21 -11 -46 -20 -57 -20 -11 0 -47 -9 -80 -19 -227 -71 -916 -68 -1099 4 -20 8 -45 15 -55 15 -9 1 -35 9 -57 20 -22 11 -47 20 -55 20 -8 0 -26 9 -40 20 -14 11 -31 20 -38 20 -12 0 -72 36 -117 70 -48 36 -192 181 -244 245 -161 197 -295 526 -346 850 -8 50 -19 117 -24 150 -25 145 -31 704 -31 2943 0 2332 0 2332 -26 2342 -16 6 -341 10 -859 10 -744 0 -835 -2 -849 -16z"/> <path d="M8003 12520 c-23 -9 -23 -9 -23 -860 0 -850 0 -850 26 -860 16 -7 1312 -10 3629 -10 3604 0 3604 0 3615 -21 17 -31 -5 -78 -39 -85 -14 -3 -39 -11 -56 -19 -32 -15 -93 -38 -165 -61 -25 -8 -59 -21 -77 -29 -17 -8 -37 -15 -43 -15 -7 0 -31 -8 -54 -19 -23 -10 -56 -23 -73 -30 -18 -6 -48 -16 -65 -22 -18 -7 -53 -19 -78 -29 -25 -10 -60 -22 -77 -29 -18 -6 -48 -16 -65 -22 -18 -7 -51 -20 -74 -30 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -29 -14 -40 -14 -11 0 -37 -9 -58 -20 -20 -11 -44 -20 -52 -20 -8 0 -34 -8 -57 -19 -24 -10 -58 -24 -75 -30 -84 -29 -101 -35 -139 -52 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -29 -14 -40 -14 -11 0 -37 -9 -58 -20 -20 -11 -44 -20 -52 -20 -8 0 -34 -8 -57 -19 -24 -10 -58 -24 -75 -30 -84 -29 -101 -35 -139 -52 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -29 -14 -40 -14 -11 0 -37 -9 -58 -20 -20 -11 -44 -20 -52 -20 -8 0 -34 -8 -57 -19 -24 -10 -58 -24 -75 -30 -84 -29 -101 -35 -139 -52 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -28 -14 -39 -14 -10 0 -37 -8 -60 -19 -38 -17 -59 -25 -141 -53 -16 -6 -50 -18 -75 -28 -25 -10 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -30 -9 -51 -20 -20 -11 -42 -20 -49 -20 -12 0 -37 -9 -168 -60 -25 -9 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -30 -9 -51 -20 -20 -11 -42 -20 -49 -20 -12 0 -37 -9 -168 -60 -25 -9 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -30 -9 -51 -20 -20 -11 -42 -20 -49 -20 -12 0 -37 -9 -168 -60 -25 -9 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -26 -7 -43 -16 -16 -9 -43 -20 -60 -25 -41 -11 -145 -48 -170 -59 -11 -5 -38 -16 -60 -24 -22 -7 -56 -19 -75 -26 -19 -7 -55 -21 -80 -30 -131 -51 -156 -60 -167 -60 -7 0 -19 -10 -27 -22 -14 -20 -16 -207 -16 -1795 0 -1773 0 -1773 26 -1783 35 -14 7553 -14 7588 0 26 10 26 10 26 860 0 850 0 850 -26 860 -16 7 -1333 10 -3690 10 -3664 0 -3664 0 -3676 25 -15 34 9 68 64 88 112 40 134 48 153 57 11 5 40 17 65 26 109 39 126 45 145 54 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 30 13 55 23 160 60 23 9 51 20 62 25 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 31 13 57 24 157 59 25 9 54 21 65 26 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 30 13 61 25 147 55 19 7 53 20 75 30 22 10 56 23 75 30 19 7 53 18 75 26 22 8 52 21 67 29 14 8 31 15 38 15 7 0 26 7 43 15 30 13 61 25 147 55 19 7 53 20 75 30 22 10 56 23 75 30 19 7 53 18 75 26 22 8 52 21 67 29 14 8 31 15 38 15 7 0 26 7 43 15 30 13 61 25 147 55 19 7 53 20 75 30 22 10 56 23 75 30 90 31 117 42 145 54 17 7 46 19 65 26 85 30 117 42 147 55 17 8 36 15 43 15 7 0 24 7 38 15 15 8 45 21 67 29 22 8 56 19 75 26 19 7 53 20 75 30 22 10 56 23 75 30 86 30 117 42 147 55 17 8 36 15 43 15 7 0 24 7 38 15 15 8 45 21 67 29 22 8 56 19 75 26 19 7 53 20 75 30 22 10 56 23 75 30 86 30 117 42 147 55 17 8 36 15 43 15 7 0 24 7 38 15 15 8 45 21 67 29 22 8 56 19 75 26 19 7 49 19 65 26 17 7 49 20 73 29 108 39 129 47 159 60 17 8 36 15 42 15 6 0 30 9 53 19 24 11 70 29 103 41 33 12 74 28 90 36 17 7 49 20 73 29 108 39 129 47 159 60 17 8 36 15 42 15 6 0 30 9 53 19 24 11 70 29 103 41 33 12 74 28 90 36 17 7 49 20 73 29 23 8 61 22 85 30 23 9 51 20 62 25 11 5 38 16 60 24 22 8 65 24 95 36 54 21 110 42 200 74 25 9 54 21 65 26 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 30 13 55 23 160 60 23 9 51 20 62 25 11 5 52 21 90 35 89 33 166 66 183 78 9 8 12 366 12 1733 0 1724 0 1724 -26 1734 -33 13 -7440 12 -7471 0z"/> <path d="M16806 12514 c-24 -24 -24 -8044 0 -8068 14 -14 105 -16 852 -16 510 0 843 4 852 10 13 8 16 459 20 3922 l5 3913 29 0 c33 0 42 -19 76 -150 11 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 27 -95 34 -125 7 -30 20 -77 29 -105 16 -53 47 -156 77 -265 10 -36 27 -96 38 -135 11 -38 29 -101 40 -140 11 -38 30 -103 41 -142 12 -40 30 -104 41 -143 11 -38 29 -101 40 -140 11 -38 29 -103 41 -142 11 -40 29 -103 40 -140 10 -38 28 -101 40 -140 11 -40 30 -104 41 -143 11 -38 29 -101 40 -140 11 -38 28 -100 39 -137 10 -38 28 -101 40 -140 11 -40 29 -102 39 -138 10 -36 28 -99 40 -140 12 -41 30 -104 40 -140 10 -36 28 -99 40 -140 12 -41 30 -105 41 -142 10 -38 28 -98 38 -135 61 -216 100 -349 118 -408 9 -27 22 -75 29 -105 7 -30 22 -86 34 -125 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 28 -97 36 -130 20 -83 34 -114 55 -125 25 -14 3664 -13 3690 0 10 6 19 18 19 28 0 9 9 44 19 77 11 33 28 92 39 130 11 39 30 104 42 145 12 41 30 104 40 140 36 127 62 216 81 275 10 33 19 68 19 78 0 11 7 33 15 50 8 18 21 59 29 92 8 33 24 92 36 130 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 99 38 135 21 66 29 95 62 210 10 36 28 98 39 138 12 39 30 105 42 145 11 39 30 104 41 142 11 39 29 102 40 140 11 39 28 99 38 135 10 36 28 98 39 138 12 39 30 102 40 140 11 37 25 85 31 107 7 22 21 69 32 105 10 36 28 97 38 135 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 27 93 34 120 7 28 20 73 29 100 16 50 42 142 78 268 24 85 53 187 80 280 11 39 29 102 40 140 10 37 28 99 39 137 11 39 29 102 40 140 19 65 43 151 70 245 7 22 21 69 32 105 10 36 28 97 38 135 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 23 84 28 100 6 17 21 63 33 103 22 67 26 73 49 70 25 -3 25 -3 28 -3916 2 -3913 2 -3913 28 -3922 16 -6 342 -10 859 -10 744 0 835 2 849 16 24 24 24 8044 0 8068 -14 14 -185 16 -1730 16 -1111 0 -1722 -3 -1734 -10 -19 -10 -32 -41 -69 -167 -11 -40 -31 -106 -42 -145 -12 -40 -30 -97 -40 -126 -11 -30 -19 -64 -19 -75 0 -12 -6 -34 -14 -49 -8 -15 -17 -42 -21 -60 -7 -34 -34 -123 -66 -216 -11 -30 -19 -64 -19 -75 0 -12 -6 -34 -14 -49 -8 -15 -17 -42 -21 -60 -3 -18 -14 -58 -24 -88 -10 -30 -27 -86 -39 -125 -11 -38 -29 -101 -41 -140 -11 -38 -27 -92 -36 -120 -9 -27 -20 -66 -24 -86 -4 -19 -11 -41 -16 -48 -4 -7 -16 -44 -26 -82 -29 -105 -56 -201 -67 -234 -6 -16 -15 -46 -22 -65 -6 -19 -20 -65 -31 -102 -33 -116 -57 -200 -79 -273 -12 -38 -28 -95 -36 -125 -9 -30 -22 -69 -30 -87 -8 -17 -14 -40 -14 -51 0 -11 -8 -44 -19 -74 -32 -93 -59 -182 -66 -216 -4 -18 -13 -45 -21 -60 -8 -15 -14 -37 -14 -49 0 -11 -8 -45 -19 -75 -10 -29 -28 -86 -40 -125 -51 -177 -65 -221 -81 -273 -9 -30 -26 -86 -38 -125 -38 -132 -65 -220 -82 -275 -18 -57 -46 -152 -82 -275 -11 -38 -29 -94 -39 -123 -11 -30 -19 -64 -19 -75 0 -12 -6 -34 -14 -49 -8 -15 -17 -42 -21 -60 -7 -34 -34 -123 -66 -216 -11 -30 -19 -63 -19 -74 0 -11 -6 -34 -14 -51 -8 -18 -21 -57 -30 -87 -8 -30 -24 -86 -36 -125 -22 -73 -46 -157 -79 -272 -11 -38 -24 -83 -30 -100 -6 -18 -16 -48 -22 -65 -11 -34 -37 -123 -68 -239 -10 -37 -22 -73 -26 -80 -5 -7 -12 -29 -16 -48 -4 -20 -15 -58 -24 -86 -9 -27 -25 -80 -35 -117 -43 -147 -64 -215 -81 -268 -10 -30 -21 -70 -24 -88 -4 -18 -13 -45 -21 -60 -8 -15 -14 -37 -14 -49 0 -11 -8 -45 -19 -75 -32 -93 -59 -182 -66 -216 -4 -18 -13 -45 -21 -60 -8 -15 -14 -37 -14 -49 0 -11 -8 -45 -19 -75 -10 -29 -28 -86 -40 -125 -51 -177 -65 -221 -81 -273 -9 -30 -27 -88 -39 -127 -26 -88 -57 -195 -72 -246 -16 -55 -33 -67 -93 -67 -74 0 -72 -3 -136 235 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -27 93 -34 120 -9 35 -20 54 -37 62 -19 10 -408 13 -1786 13 -1588 0 -1763 -2 -1777 -16z"/> <path d="M9905 1920 c-55 -4 -122 -14 -148 -23 -26 -10 -55 -17 -65 -17 -9 -1 -35 -9 -57 -20 -22 -11 -47 -20 -55 -20 -8 -1 -35 -15 -60 -30 -25 -16 -61 -38 -80 -49 -43 -24 -167 -151 -206 -211 -93 -146 -133 -316 -134 -570 0 -350 71 -571 237 -731 73 -71 227 -169 265 -169 7 0 25 -7 41 -15 15 -7 69 -21 120 -30 50 -9 94 -20 95 -25 6 -17 324 -12 346 5 10 8 39 17 65 21 25 3 61 15 79 25 18 10 37 19 42 19 22 0 103 66 135 108 18 26 43 59 54 73 11 14 23 38 26 52 4 15 12 27 17 27 7 0 8 -41 4 -124 -10 -178 -24 -166 194 -166 167 0 180 1 190 19 6 13 10 185 10 491 0 470 0 470 -26 480 -39 15 -1007 13 -1022 -2 -13 -13 -18 -262 -6 -292 5 -14 42 -16 306 -16 194 0 306 -4 319 -11 18 -9 20 -17 14 -52 -4 -23 -14 -53 -23 -67 -10 -14 -22 -37 -28 -51 -15 -34 -86 -90 -154 -121 -105 -49 -166 -62 -322 -66 -158 -4 -236 11 -347 69 -100 52 -185 173 -222 317 -27 106 -27 363 0 460 54 195 159 305 350 368 102 33 301 35 406 3 188 -57 320 -169 339 -288 5 -33 12 -44 33 -52 36 -13 358 -8 373 7 14 14 -14 197 -35 226 -8 13 -15 28 -15 35 0 25 -86 137 -147 192 -139 126 -357 203 -618 221 -142 10 -145 10 -290 0z"/> <path d="M14310 1910 c-89 -15 -188 -40 -216 -55 -16 -8 -36 -15 -44 -15 -8 0 -26 -9 -40 -20 -14 -11 -31 -20 -38 -20 -14 0 -99 -58 -157 -107 -34 -29 -55 -53 -112 -128 -25 -32 -63 -96 -63 -105 0 -6 -7 -25 -16 -42 -9 -17 -27 -76 -41 -131 -23 -96 -24 -113 -21 -326 4 -233 14 -298 59 -411 9 -25 20 -52 23 -60 10 -26 72 -121 119 -183 29 -37 136 -126 187 -156 89 -52 233 -105 315 -116 28 -4 60 -13 72 -21 32 -20 369 -20 408 0 15 8 51 17 79 21 186 24 400 145 517 292 49 61 139 227 139 256 0 8 10 43 21 78 33 98 33 542 1 638 -12 35 -22 67 -22 72 0 8 -42 97 -71 149 -55 99 -251 280 -304 280 -8 0 -16 4 -19 9 -14 23 -189 78 -321 101 -60 10 -392 10 -455 0z m429 -376 c86 -24 174 -70 230 -120 48 -44 111 -125 111 -144 0 -5 10 -29 23 -52 21 -40 22 -55 22 -233 0 -176 -2 -193 -23 -237 -12 -26 -22 -52 -22 -58 0 -15 -66 -108 -109 -154 -126 -134 -347 -187 -591 -141 -149 27 -295 136 -358 267 -44 92 -54 125 -63 207 -46 385 124 631 471 681 76 12 242 3 309 -16z"/> <path d="M11483 1880 c-23 -9 -23 -9 -23 -900 0 -595 3 -898 10 -911 10 -18 23 -19 190 -19 167 0 180 1 190 19 6 12 10 116 10 269 0 228 2 250 18 265 17 15 64 17 464 17 418 0 446 -1 461 -18 15 -16 17 -50 17 -266 0 -151 4 -255 10 -267 10 -18 23 -19 190 -19 167 0 180 1 190 19 6 13 10 173 10 451 0 503 20 450 -171 450 -115 0 -155 11 -85 24 18 4 41 15 51 26 10 11 27 20 38 20 34 0 134 113 152 172 30 102 13 284 -36 378 -12 25 -26 47 -29 50 -4 3 -12 15 -19 27 -11 22 -143 133 -158 133 -4 1 -26 9 -48 20 -22 11 -47 19 -56 20 -9 0 -45 10 -80 22 -63 21 -77 22 -669 25 -367 1 -614 -1 -627 -7z m1140 -389 c43 -10 88 -27 100 -38 65 -58 76 -72 91 -117 21 -65 20 -100 -5 -174 -29 -87 -118 -152 -229 -167 -76 -10 -667 -6 -696 5 -24 10 -24 10 -24 240 0 140 4 239 10 251 10 18 25 19 343 19 288 -1 342 -3 410 -19z"/> <path d="M15952 1879 c-23 -9 -23 -9 -19 -586 2 -401 7 -599 16 -648 54 -305 164 -470 384 -577 31 -15 70 -28 85 -28 15 0 45 -9 67 -20 51 -26 340 -30 378 -6 12 8 48 19 79 25 32 6 71 17 87 26 17 8 36 15 43 16 28 2 165 107 205 159 70 90 78 102 107 170 15 36 31 73 37 83 9 17 34 126 49 222 14 85 12 1149 -2 1163 -18 18 -362 17 -376 -1 -7 -9 -12 -199 -15 -587 -3 -513 -5 -581 -21 -630 -47 -149 -118 -238 -223 -279 -55 -21 -73 -23 -170 -18 -126 5 -173 24 -227 91 -97 119 -98 127 -105 824 -5 511 -8 594 -21 602 -19 12 -328 12 -358 -1z"/> <path d="M18002 1868 c-15 -15 -18 -1751 -2 -1793 10 -25 10 -25 197 -23 l188 3 5 317 c3 191 9 321 15 327 6 5 157 11 360 14 350 4 350 4 430 35 44 16 100 40 125 52 49 25 140 113 162 157 8 15 19 37 25 48 84 159 79 467 -11 599 -91 134 -181 200 -335 249 -63 19 -94 21 -606 24 -422 3 -543 1 -553 -9z m1032 -338 c114 -32 159 -78 178 -178 22 -117 -28 -231 -124 -283 -42 -23 -50 -23 -356 -27 -230 -2 -317 0 -328 9 -17 14 -21 430 -4 473 10 26 10 26 287 26 246 0 286 -2 347 -20z"/> </g></symbol><symbol id="belediye" viewBox="0 0 1078.881718 944.504027"><g transform="translate(-647.910015,1071.844275) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M11747 10706 c-15 -8 -51 -22 -80 -30 -82 -23 -178 -53 -222 -69 l-40 -15 -5 -974 -5 -973 -35 0 -35 0 -5 537 c-3 362 -8 541 -16 548 -6 6 -34 19 -62 30 -29 11 -73 29 -99 39 -27 11 -64 25 -83 31 -19 7 -53 21 -75 32 -22 10 -53 20 -70 21 -30 2 -30 2 -35 -618 l-5 -620 -35 0 -35 0 -5 620 -5 620 -34 -3 c-19 -1 -49 -11 -66 -22 -18 -11 -39 -20 -46 -20 -8 -1 -32 -9 -54 -20 -22 -11 -46 -19 -53 -20 -7 0 -30 -9 -50 -20 -20 -10 -48 -21 -62 -24 -14 -3 -34 -12 -45 -20 -19 -14 -20 -29 -25 -553 l-5 -538 -70 -3 c-129 -4 -115 42 -115 -375 0 -204 5 -388 10 -422 6 -33 15 -87 21 -119 5 -32 16 -68 24 -80 8 -11 15 -27 15 -36 1 -8 18 -44 40 -79 21 -36 37 -68 34 -73 -3 -4 -25 -8 -49 -8 -24 0 -55 -4 -69 -10 -26 -10 -26 -10 -26 -363 0 -314 2 -364 20 -448 53 -254 178 -453 365 -581 55 -38 156 -88 177 -88 8 0 23 -6 34 -14 46 -33 192 -48 548 -57 222 -6 355 -14 363 -21 10 -8 13 -53 13 -179 0 -156 1 -169 19 -179 26 -13 316 -13 342 0 18 10 19 23 19 179 0 125 3 171 13 179 8 7 130 13 332 17 334 6 465 19 560 56 28 10 55 19 60 19 16 1 95 42 160 84 189 120 321 330 376 596 17 83 19 138 19 443 0 347 0 347 -26 357 -14 6 -45 10 -69 10 -24 0 -46 4 -49 8 -3 5 11 33 31 63 102 154 113 224 113 715 0 452 14 402 -115 406 l-70 3 -5 537 c-3 362 -8 541 -16 548 -6 6 -34 19 -62 30 -29 11 -73 29 -99 39 -27 11 -64 25 -83 31 -19 7 -53 21 -75 32 -22 10 -53 20 -70 21 -30 2 -30 2 -35 -618 l-5 -620 -35 0 -35 0 -5 620 c-5 620 -5 620 -35 618 -16 -1 -48 -11 -70 -21 -22 -11 -56 -25 -75 -32 -19 -6 -56 -20 -82 -31 -27 -10 -72 -28 -100 -39 -29 -11 -59 -28 -65 -37 -10 -13 -13 -138 -13 -545 0 -528 0 -528 -26 -538 -56 -22 -54 -71 -56 982 l-3 970 -40 15 c-41 15 -133 44 -220 69 -27 8 -65 21 -83 30 -18 8 -45 14 -60 12 -27 -3 -27 -3 -32 -1178 l-5 -1175 -32 -3 c-18 -2 -34 -2 -35 0 -2 2 -5 532 -8 1178 l-5 1175 -30 3 c-16 1 -42 -4 -58 -12z m-502 -2500 c80 -12 139 -30 185 -57 8 -5 31 -18 51 -28 88 -48 181 -189 200 -301 10 -61 12 -399 3 -424 -9 -23 -24 -20 -70 17 -23 18 -61 41 -85 51 -24 10 -60 25 -79 34 -27 12 -88 17 -265 22 -178 5 -237 10 -260 21 -16 9 -55 28 -85 44 -128 65 -213 158 -255 280 -22 60 -25 88 -25 201 0 88 4 134 12 142 18 18 554 16 673 -2z m1943 2 c8 -8 12 -54 12 -142 0 -113 -3 -141 -25 -201 -42 -122 -127 -215 -255 -280 -30 -16 -68 -35 -85 -44 -24 -12 -81 -16 -275 -21 -212 -4 -248 -7 -270 -22 -13 -10 -31 -18 -39 -18 -15 0 -116 -64 -126 -80 -12 -20 -45 -10 -51 16 -4 14 -4 118 -2 232 5 199 6 210 32 272 66 155 200 251 396 285 102 18 671 20 688 3z m-1993 -1158 c110 -10 127 -14 203 -52 113 -56 185 -128 243 -245 44 -88 44 -88 47 -248 2 -90 -1 -166 -7 -174 -8 -12 -67 -14 -362 -12 -373 3 -383 4 -474 54 -11 6 -31 16 -46 24 -38 19 -146 120 -162 151 -7 15 -18 36 -24 47 -46 83 -53 121 -53 282 0 110 4 163 12 171 15 15 449 16 623 2z m1989 -6 c13 -13 16 -43 16 -170 0 -157 -7 -196 -53 -279 -6 -11 -17 -32 -24 -47 -16 -31 -124 -132 -162 -151 -15 -8 -35 -18 -46 -24 -91 -50 -101 -51 -473 -54 -298 -2 -355 0 -363 12 -6 8 -9 83 -7 174 3 160 3 160 47 248 58 117 130 189 243 245 103 52 165 59 545 61 226 1 264 -1 277 -15z"/> <path d="M9433 6629 c-8 -8 -13 -40 -13 -78 0 -76 26 -337 35 -351 3 -5 12 -38 20 -72 27 -119 94 -282 150 -363 98 -144 241 -281 345 -333 14 -7 43 -23 65 -37 22 -14 47 -28 55 -31 8 -3 33 -13 55 -23 105 -48 136 -61 148 -61 7 0 29 -9 50 -20 20 -11 45 -20 55 -20 9 0 34 -9 55 -20 20 -11 44 -20 52 -20 8 0 34 -9 57 -19 24 -10 68 -29 98 -41 58 -23 72 -30 127 -61 69 -39 89 -54 144 -109 95 -95 135 -180 148 -319 6 -64 12 -87 26 -98 15 -10 89 -13 352 -13 393 0 359 -17 348 175 -6 109 -42 299 -65 344 -5 9 -22 46 -39 82 -36 79 -100 166 -173 235 -56 53 -195 144 -219 144 -8 0 -20 5 -25 10 -12 12 -132 57 -184 70 -211 49 -429 111 -498 141 -23 11 -47 19 -52 19 -11 0 -100 43 -183 89 -192 105 -317 272 -366 491 -45 196 -176 285 -436 297 -91 4 -123 2 -132 -8z"/> <path d="M14100 6633 c-55 -10 -153 -44 -195 -68 -66 -39 -123 -127 -146 -225 -49 -219 -174 -386 -366 -491 -83 -46 -172 -89 -183 -89 -5 0 -29 -8 -52 -19 -69 -30 -287 -92 -498 -141 -52 -13 -172 -58 -184 -70 -5 -5 -17 -10 -25 -10 -23 0 -157 -89 -218 -144 -69 -62 -137 -154 -174 -235 -17 -36 -34 -73 -39 -82 -23 -45 -59 -235 -65 -344 -11 -192 -45 -175 348 -175 263 0 337 3 352 13 14 11 20 34 26 98 13 139 53 224 148 319 55 55 75 70 144 109 55 31 69 38 127 61 30 12 74 31 98 41 23 10 49 19 57 19 8 0 32 9 52 20 21 11 46 20 55 20 10 0 35 9 55 20 21 11 43 20 50 20 12 0 43 13 148 61 22 10 47 20 55 23 8 3 33 17 55 31 22 14 51 30 65 37 104 52 247 189 345 333 56 81 123 244 150 363 8 34 17 67 20 72 9 14 35 275 35 351 0 37 -5 70 -12 77 -12 12 -170 15 -228 5z"/> <path d="M9128 3896 c-185 -67 -276 -173 -286 -332 -7 -126 34 -213 133 -278 57 -39 128 -63 351 -120 27 -7 69 -25 92 -39 76 -49 80 -95 11 -143 -40 -28 -47 -29 -148 -28 -100 0 -109 2 -166 33 -33 18 -74 46 -90 62 -44 41 -57 37 -146 -38 -99 -86 -102 -102 -25 -167 29 -25 57 -46 62 -46 5 0 20 -9 34 -20 14 -11 34 -20 45 -20 11 0 32 -6 46 -14 14 -7 43 -16 65 -20 55 -11 64 -22 64 -77 0 -62 13 -69 128 -69 104 0 122 11 122 77 0 45 9 56 60 71 205 61 307 173 317 347 12 195 -101 305 -378 369 -207 47 -253 67 -262 113 -20 106 137 160 286 97 34 -15 75 -37 90 -50 16 -13 34 -24 41 -24 21 0 186 141 186 160 0 22 -79 88 -140 117 -91 44 -151 56 -290 60 -123 3 -141 1 -202 -21z"/> <path d="M12685 3914 c-58 -13 -133 -40 -157 -56 -14 -10 -31 -18 -36 -18 -19 0 -127 -128 -141 -166 -25 -71 -26 -199 0 -258 47 -109 138 -168 344 -220 33 -8 86 -21 117 -29 145 -38 196 -125 106 -184 -39 -26 -48 -28 -147 -27 -119 1 -157 14 -243 85 -26 21 -54 39 -63 39 -22 0 -185 -141 -185 -160 0 -50 188 -169 310 -195 51 -11 60 -22 60 -76 0 -62 12 -69 130 -69 102 0 110 6 110 90 0 35 3 40 28 46 169 38 277 110 337 224 41 79 42 219 2 296 -56 106 -151 162 -348 208 -35 8 -92 21 -126 29 -150 35 -186 115 -84 184 65 44 225 23 296 -37 50 -43 77 -45 117 -8 7 7 39 32 71 56 75 56 78 85 13 134 -105 81 -201 110 -366 114 -69 2 -134 1 -145 -2z"/> <path d="M6492 3888 c-13 -13 -18 -1110 -6 -1142 5 -14 47 -16 360 -16 333 0 358 1 416 21 93 31 139 67 193 149 28 43 29 50 30 160 0 115 0 115 -36 165 -19 28 -49 59 -66 70 -17 11 -39 25 -49 32 -18 12 -17 14 11 35 115 87 154 217 104 348 -35 94 -107 150 -224 176 -82 18 -715 20 -733 2z m580 -234 c105 -40 115 -133 22 -195 -35 -23 -270 -29 -292 -7 -15 15 -16 156 -2 192 9 26 11 26 120 26 77 0 122 -5 152 -16z m55 -470 c37 -27 50 -80 34 -134 -19 -65 -60 -80 -221 -80 -154 0 -150 -3 -150 130 0 113 0 113 171 108 121 -3 141 -6 166 -24z"/> <path d="M7997 3886 c-16 -13 -35 -52 -67 -146 -7 -19 -21 -54 -31 -78 -11 -23 -19 -48 -19 -55 -1 -6 -9 -30 -20 -52 -11 -22 -20 -47 -20 -55 0 -8 -9 -33 -20 -55 -11 -22 -19 -46 -20 -54 0 -8 -8 -32 -19 -55 -10 -23 -24 -57 -31 -76 -6 -19 -23 -64 -37 -100 -13 -36 -28 -79 -34 -97 -5 -18 -16 -45 -24 -60 -8 -15 -15 -34 -15 -42 0 -8 -8 -32 -19 -55 -27 -61 -43 -107 -48 -143 -5 -33 -5 -33 135 -33 151 0 154 1 172 57 28 87 49 136 61 144 8 5 103 9 211 9 l198 0 23 -47 c14 -27 27 -64 31 -84 13 -72 33 -80 197 -77 137 3 144 4 142 23 -1 20 -25 93 -43 130 -11 25 -48 129 -59 170 -5 17 -16 44 -25 60 -9 17 -16 36 -16 43 0 8 -7 28 -15 45 -16 35 -39 98 -61 167 -8 25 -21 59 -29 77 -8 17 -15 37 -15 43 0 7 -8 31 -19 54 -17 38 -23 55 -52 139 -6 17 -20 51 -30 75 -11 23 -19 51 -19 62 0 10 -12 32 -26 49 -26 31 -26 31 -172 31 -108 -1 -152 -4 -165 -14z m178 -397 c30 -74 54 -146 66 -194 6 -21 15 -45 20 -52 6 -6 9 -22 7 -35 -3 -22 -7 -23 -109 -26 -156 -4 -155 -10 -58 263 10 28 21 63 24 78 8 40 25 29 50 -34z"/> <path d="M10286 3878 c-25 -39 -86 -194 -86 -218 0 -9 -6 -25 -14 -36 -8 -11 -19 -40 -26 -64 -7 -24 -18 -53 -26 -64 -8 -11 -14 -28 -14 -38 0 -10 -8 -37 -19 -60 -10 -24 -24 -58 -30 -75 -6 -18 -16 -48 -22 -65 -6 -18 -18 -46 -25 -63 -15 -35 -39 -100 -60 -165 -8 -25 -18 -54 -24 -65 -5 -11 -16 -39 -25 -62 -8 -24 -22 -62 -30 -85 -31 -81 -29 -83 128 -86 l137 -3 25 57 c14 31 25 65 25 74 0 10 12 32 26 49 26 31 26 31 209 31 200 0 232 -6 241 -49 3 -14 14 -44 25 -67 10 -23 19 -48 19 -56 0 -33 25 -39 171 -36 144 3 144 3 147 29 2 15 -6 44 -17 65 -12 21 -21 45 -21 52 0 8 -7 28 -15 45 -16 35 -39 98 -61 167 -8 25 -21 59 -29 77 -8 17 -15 37 -15 43 0 7 -8 31 -19 54 -10 23 -23 56 -30 74 -6 17 -16 47 -22 65 -7 17 -19 52 -29 77 -10 25 -22 60 -29 78 -6 17 -16 47 -22 65 -7 17 -20 50 -30 73 -11 23 -19 47 -19 55 -1 8 -9 32 -20 54 -11 22 -19 48 -20 57 0 31 -36 38 -189 38 -145 0 -151 -1 -165 -22z m193 -386 c5 -26 17 -61 25 -77 9 -17 16 -38 16 -48 0 -10 9 -38 21 -63 12 -27 19 -60 17 -82 -3 -37 -3 -37 -112 -37 -133 0 -141 6 -110 87 32 83 55 150 65 193 21 83 62 98 78 27z"/> <path d="M11172 3888 c-13 -13 -18 -1110 -6 -1142 9 -24 299 -24 308 0 3 9 6 85 6 171 l0 155 62 64 c68 72 80 76 101 37 7 -16 23 -45 35 -65 12 -21 31 -54 42 -73 11 -19 29 -51 40 -70 11 -19 29 -51 40 -70 11 -19 30 -52 41 -72 56 -99 40 -93 225 -93 198 0 191 -10 98 147 -10 17 -48 81 -84 143 -36 62 -75 128 -87 148 -12 21 -27 46 -32 57 -6 11 -22 38 -36 60 -14 22 -32 54 -40 72 -8 17 -19 34 -25 38 -5 3 -10 15 -10 25 0 17 131 184 288 367 92 107 90 108 -98 108 l-155 0 -189 -235 c-103 -129 -193 -235 -200 -235 -8 0 -12 66 -14 224 -1 145 -6 229 -13 238 -15 18 -279 19 -297 1z"/> <path d="M13440 3874 c-6 -15 -10 -236 -10 -559 0 -323 4 -544 10 -559 10 -26 10 -26 444 -26 506 0 456 -14 456 128 0 130 19 122 -304 122 -266 0 -266 0 -276 26 -14 36 -13 167 2 182 9 9 76 12 238 12 162 0 229 3 238 12 8 8 12 47 12 108 0 61 -4 100 -12 108 -9 9 -76 12 -238 12 -162 0 -229 3 -238 12 -19 19 -16 163 4 182 13 14 53 16 284 16 315 0 290 -11 290 128 0 133 42 122 -464 122 -426 0 -426 0 -436 -26z"/> <path d="M14532 3888 c-13 -13 -18 -1110 -6 -1142 9 -24 299 -24 308 0 3 9 6 106 6 217 0 111 4 208 8 215 7 9 52 12 193 10 l184 -3 5 -215 c3 -118 9 -221 13 -227 6 -9 46 -13 142 -13 123 0 135 2 145 19 6 13 10 209 10 569 0 519 -1 550 -18 565 -24 22 -265 25 -279 5 -4 -7 -10 -107 -13 -223 l-5 -210 -184 -3 c-141 -2 -186 1 -193 10 -4 7 -8 103 -8 214 0 142 -3 203 -12 212 -17 17 -279 17 -296 0z"/> <path d="M15757 3882 c-13 -14 -17 -39 -17 -106 0 -106 0 -106 160 -106 160 0 160 0 160 108 0 122 -1 122 -162 122 -108 0 -127 -2 -141 -18z"/> <path d="M16277 3882 c-15 -17 -17 -71 -17 -566 0 -358 4 -554 10 -567 10 -17 22 -19 146 -19 165 0 154 -15 154 220 0 190 0 190 75 190 41 0 85 -38 112 -95 8 -16 36 -66 63 -110 27 -44 54 -91 60 -104 6 -13 24 -41 41 -62 31 -39 31 -39 190 -39 196 0 190 -11 82 156 -7 10 -23 36 -35 58 -26 44 -30 50 -78 126 -61 95 -64 107 -32 127 54 35 122 107 143 152 11 25 26 57 32 70 19 39 14 178 -8 236 -35 93 -85 148 -175 194 -83 43 -158 51 -467 51 -258 0 -281 -1 -296 -18z m556 -238 c66 -22 87 -53 87 -126 0 -73 -9 -91 -63 -125 -36 -22 -56 -27 -139 -31 -157 -7 -148 -16 -148 143 0 117 2 135 18 144 28 17 192 13 245 -5z"/> <path d="M15752 3548 c-16 -16 -17 -769 -2 -799 10 -17 23 -19 150 -19 127 0 140 2 150 19 15 30 14 783 -2 799 -17 17 -279 17 -296 0z"/> <path d="M12463 2273 c-9 -3 -13 -29 -13 -78 0 -92 5 -95 128 -95 111 0 122 9 122 96 0 33 -5 65 -12 72 -12 12 -198 16 -225 5z"/> <path d="M14745 2257 c-154 -58 -240 -228 -192 -382 34 -110 81 -140 346 -220 126 -38 162 -87 107 -146 -62 -67 -218 -45 -312 44 -25 22 -37 27 -55 22 -35 -11 -129 -105 -129 -128 0 -24 89 -112 123 -123 12 -3 42 -16 67 -27 72 -33 302 -31 383 4 74 33 137 85 172 145 41 70 42 208 2 276 -27 47 -103 118 -126 118 -7 0 -25 7 -40 15 -16 8 -57 21 -92 29 -172 39 -209 59 -209 113 0 14 13 37 29 54 26 25 37 29 86 29 58 0 149 -34 175 -65 20 -24 38 -18 101 33 87 70 88 106 6 160 -83 53 -123 64 -257 68 -110 3 -132 1 -185 -19z"/> <path d="M15407 2273 c-12 -12 -8 -148 5 -161 8 -8 48 -12 115 -12 102 0 104 0 113 26 14 36 12 128 -2 142 -13 13 -219 18 -231 5z"/> <path d="M8120 2244 c-6 -15 -10 -203 -10 -464 0 -261 4 -449 10 -464 10 -26 10 -26 289 -26 273 0 282 1 334 24 95 42 167 148 167 248 0 63 -37 149 -80 188 -45 41 -49 59 -19 86 75 68 98 218 46 307 -63 107 -139 127 -476 127 -251 0 -251 0 -261 -26z m469 -194 c63 -32 70 -83 17 -136 -35 -35 -35 -35 -138 -32 l-103 3 -3 70 c-5 117 -7 115 99 115 69 0 98 -4 128 -20z m17 -378 c53 -28 56 -125 5 -162 -39 -27 -235 -31 -245 -4 -11 29 -6 160 7 173 15 16 201 11 233 -7z"/> <path d="M9030 2251 c-6 -13 -10 -179 -10 -471 0 -292 4 -458 10 -471 10 -18 25 -19 346 -19 382 0 354 -9 354 110 0 91 4 90 -236 90 -204 0 -204 0 -214 26 -14 36 -12 138 2 152 8 8 63 12 183 12 120 0 175 4 183 12 16 16 16 160 0 176 -8 8 -63 12 -183 12 -120 0 -175 4 -183 12 -14 14 -16 106 -2 142 10 26 10 26 220 26 241 0 230 -5 230 105 0 113 27 105 -354 105 -321 0 -336 -1 -346 -19z"/> <path d="M9880 2244 c-6 -15 -10 -203 -10 -464 0 -261 4 -449 10 -464 10 -26 10 -26 340 -26 378 0 350 -9 350 110 0 91 3 90 -235 90 -176 0 -204 2 -209 16 -3 9 -6 177 -6 374 0 197 -3 365 -6 374 -5 13 -25 16 -115 16 -108 0 -110 0 -119 -26z"/> <path d="M10680 2244 c-13 -34 -13 -894 0 -928 10 -26 10 -26 357 -24 l348 3 3 88 c4 111 13 107 -253 107 -237 0 -218 -10 -213 115 l3 70 190 6 c105 3 191 6 193 7 1 1 2 43 2 92 0 50 -1 91 -2 92 -2 1 -88 4 -193 7 l-190 6 -3 73 c-2 46 2 79 9 88 9 11 52 14 214 14 240 0 235 -2 235 104 0 115 30 106 -356 106 -334 0 -334 0 -344 -26z"/> <path d="M11526 2254 c-8 -20 -8 -928 0 -948 10 -25 477 -23 549 2 103 36 177 101 217 193 22 51 23 65 23 284 0 224 -1 231 -25 280 -50 103 -126 159 -257 189 -104 23 -498 24 -507 0z m444 -212 c30 -12 53 -30 72 -57 27 -40 27 -41 28 -208 0 -161 -1 -169 -25 -207 -36 -57 -97 -82 -195 -78 l-75 3 -3 270 c-2 245 -1 271 15 283 24 17 130 14 183 -6z"/> <path d="M12784 2239 c3 -17 12 -42 18 -54 7 -13 27 -50 44 -82 17 -32 45 -84 62 -115 17 -31 37 -67 43 -80 7 -13 16 -30 20 -38 119 -221 109 -187 109 -376 0 -95 3 -179 6 -188 9 -24 219 -24 228 0 3 9 6 92 6 185 0 183 -3 171 69 299 4 8 13 25 20 38 6 13 26 49 43 80 17 31 44 82 60 112 16 30 49 92 73 138 25 46 45 90 45 98 0 11 -21 14 -108 14 -133 0 -124 8 -222 -190 -39 -80 -77 -146 -85 -148 -16 -4 -16 -3 -115 188 l-75 145 -124 3 c-124 3 -124 3 -117 -29z"/> <path d="M13720 2244 c-6 -15 -10 -203 -10 -464 0 -261 4 -449 10 -464 10 -26 10 -26 344 -26 387 0 356 -10 356 110 0 91 3 90 -251 90 -199 0 -199 0 -209 26 -14 36 -12 138 2 152 8 8 63 12 183 12 120 0 175 4 183 12 16 16 16 160 0 176 -8 8 -63 12 -183 12 -120 0 -175 4 -183 12 -14 14 -16 106 -2 142 10 26 10 26 218 26 248 0 242 -3 242 104 0 115 30 106 -356 106 -334 0 -334 0 -344 -26z"/> <path d="M12446 1974 c-3 -9 -6 -159 -6 -334 0 -175 3 -325 6 -334 5 -13 25 -16 115 -16 108 0 110 0 119 26 6 14 10 154 10 324 0 170 -4 310 -10 324 -9 26 -11 26 -119 26 -90 0 -110 -3 -115 -16z"/> <path d="M15406 1974 c-3 -9 -6 -159 -6 -334 0 -175 3 -325 6 -334 5 -13 25 -16 115 -16 108 0 110 0 119 26 6 14 10 154 10 324 0 170 -4 310 -10 324 -9 26 -11 26 -119 26 -90 0 -110 -3 -115 -16z"/> </g></symbol></svg>
+
+<header class="nav" id="nav" data-tone="dark">
+  <a class="brand" href="#giris" aria-label="UZM Group, başa dönün"><svg viewBox="0 0 2858.218249 1253.285931" aria-hidden="true"><use href="#uzm-group" /></svg></a>
+  <button class="where" id="where" type="button" aria-label="Ziyaretçi rehberini açın" data-guide><span class="n"><span>I</span></span><span class="t">Giriş</span></button>
+  <div class="nav-r">
+    <a class="tel" href="tel:+904447039">444 70 39</a>
+    <button class="btn btn-line guide-btn" type="button" data-guide aria-haspopup="dialog"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 3.5 5.5 2l5 1.5 4-1.5v10.5l-4 1.5-5-1.5-4 1.5zM5.5 2v10.5M10.5 3.5V14" fill="none" stroke="currentColor" stroke-width="1.1" /></svg>Rehber</button>
+    <a class="btn btn-solid" href="#davet"><span>Ziyaret planlayın</span></a>
+  </div>
+</header>
+
+<div class="guide" id="guide" role="dialog" aria-modal="true" aria-labelledby="g-title">
+  <div class="g-paper">
+    <div class="g-head">
+      <div><p class="insc" style="color:var(--bordeaux)">Ziyaretçi rehberi</p><h2 id="g-title">Levan Bahçeşehir, <em>salon salon.</em></h2></div>
+      <button class="g-x" type="button" aria-label="Rehberi kapatın"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="1.3" /></svg></button>
+    </div>
+    <div class="g-grid">
+      <svg class="g-plan" viewBox="0 0 640 330" role="img" aria-label="Sergi kat planı">
+        <a class="rm" href="#giris" data-r="I"><rect x="20" y="160" width="100" height="100" /><text x="70" y="207" text-anchor="middle">I</text><text class="s" x="70" y="224" text-anchor="middle">Giriş</text></a>
+        <a class="rm" href="#sergi" data-r="II"><rect x="120" y="160" width="230" height="100" /><text x="235" y="207" text-anchor="middle">II</text><text class="s" x="235" y="224" text-anchor="middle">Sergi</text><line x1="197" y1="160" x2="197" y2="195" stroke="#1f1b18" stroke-width="1" /><line x1="197" y1="225" x2="197" y2="260" stroke="#1f1b18" stroke-width="1" /><line x1="273" y1="160" x2="273" y2="195" stroke="#1f1b18" stroke-width="1" /><line x1="273" y1="225" x2="273" y2="260" stroke="#1f1b18" stroke-width="1" /></a>
+        <a class="rm" href="#konutlar" data-r="III"><rect x="350" y="40" width="140" height="120" /><text x="420" y="97" text-anchor="middle">III</text><text class="s" x="420" y="114" text-anchor="middle">Konutlar</text></a>
+        <a class="rm" href="#olanaklar" data-r="IV"><rect x="350" y="160" width="140" height="100" /><text x="420" y="207" text-anchor="middle">IV</text><text class="s" x="420" y="224" text-anchor="middle">Olanaklar</text></a>
+        <a class="rm" href="#konum" data-r="V"><rect x="490" y="40" width="130" height="120" /><text x="555" y="97" text-anchor="middle">V</text><text class="s" x="555" y="114" text-anchor="middle">Konum, arşiv</text></a>
+        <a class="rm" href="#koleksiyon" data-r="VI"><rect x="490" y="160" width="130" height="100" /><text x="555" y="207" text-anchor="middle">VI</text><text class="s" x="555" y="224" text-anchor="middle">Koleksiyon</text></a>
+        <a class="rm" href="#davet" data-r="—"><rect x="350" y="260" width="270" height="50" /><text class="s" x="485" y="289" text-anchor="middle">Özel gösterim</text></a>
+        <line class="door" x1="120" y1="196" x2="120" y2="224" /><line class="door" x1="350" y1="196" x2="350" y2="224" /><line class="door" x1="405" y1="160" x2="435" y2="160" /><line class="door" x1="490" y1="86" x2="490" y2="114" /><line class="door" x1="540" y1="160" x2="570" y2="160" /><line class="door" x1="540" y1="260" x2="570" y2="260" />
+        <path d="M70 318V264M62 274l8-10 8 10" fill="none" stroke="#1f1b18" stroke-width="1.2" /><text x="84" y="316" style="font:500 9px var(--sans);letter-spacing:.12em;fill:#5a5148">GİRİŞ</text>
+        <g id="here"><circle class="here-r" cx="70" cy="240" r="6" /><circle class="here" cx="70" cy="240" r="4.5" /></g>
+      </svg>
+      <ol class="g-list">
+        <li><a href="#giris"><b>I</b><span>Giriş</span><em>Levan Bahçeşehir tanıtım filmi</em></a></li>
+        <li><a href="#sergi"><b>II</b><span>Sergi</span><em>Küratörden; ardından üç salonda bir yürüyüş</em></a></li>
+        <li><a href="#konutlar"><b>III</b><span>Konutlar</span><em>Altı konut tipi; görsel, plan ve alanlar</em></a></li>
+        <li><a href="#olanaklar"><b>IV</b><span>Olanaklar</span><em>Golf sahasından hamama, sakinlere özel</em></a></li>
+        <li><a href="#konum"><b>V</b><span>Konum ve arşiv</span><em>Mesafeler ve şantiyeden kayıtlar</em></a></li>
+        <li><a href="#koleksiyon"><b>VI</b><span>Kalıcı koleksiyon</span><em>UZM Yapı'nın tamamladığı projeler</em></a></li>
+        <li><a href="#davet"><b>·</b><span>Özel gösterim</span><em>Satış ofisinde sizi ağırlayalım</em></a></li>
+      </ol>
+    </div>
+    <p class="g-note">Levan Bahçeşehir görselleri ve film görselleştirmedir; şantiye ve tamamlanan projeler fotoğraftır.</p>
+  </div>
+</div>
+
+<nav class="pres" aria-label="Vizyonlar arasında gezinme">
+  <a href="../index.html" aria-label="Tüm vizyonlar">←<span class="full">&nbsp;Tüm vizyonlar</span></a>
+  <span class="cur-v">Vizyon&nbsp;<b>7 / 8</b><span class="now">&nbsp;· Sergi</span></span>
+  <a class="site" href="../sergi-site/index.html" title="Sergi vizyonunun tam sitesi">Tam site</a>
+  <a class="arw" href="../6-zirve/index.html" aria-label="Önceki vizyon: Zirve" title="Önceki vizyon: Zirve">‹</a>
+  <a class="arw" href="../maket-site/index.html" aria-label="Sonraki vizyon: Maket" title="Sonraki vizyon: Maket">›</a>
+</nav>
+
+<div class="cur" id="cur" aria-hidden="true"><span></span></div>
+
+<main>
+  <!-- I · Giriş -->
+  <section class="hero on-dark" id="giris" data-room="I" data-name="Giriş" data-tone="dark" aria-label="Levan Bahçeşehir filmi">
+    <div class="track" aria-hidden="true"></div>
+    <div class="hero-wash" aria-hidden="true"></div>
+    <div class="spot" style="left:30%;--tilt:8deg" aria-hidden="true"><i></i><b></b></div>
+    <div class="spot" style="left:70%;--tilt:-8deg" aria-hidden="true"><i></i><b></b></div>
+    <div class="cone" style="left:6%;width:48%;--d:0.15s" aria-hidden="true"></div>
+    <div class="cone" style="left:46%;width:48%;--d:0.25s" aria-hidden="true"></div>
+    <div class="hero-stage">
+      <div class="hero-work" id="heroWork" data-cursor="Filmi izleyin">
+        <div class="fr">
+          <div class="in">
+            <picture>
+              <source media="(max-width: 699px)" srcset="../assets/img/film--levan-hero-tall.webp">
+              <img src="../assets/img/film--levan-hero.webp" alt="" fetchpriority="high">
+            </picture>
+            <video id="heroVid" muted loop playsinline preload="auto" aria-hidden="true"></video>
+            <div class="glare"></div>
+          </div>
+        </div>
+        <span class="tc" aria-hidden="true">Görselleştirme · <span id="tc">00:00</span> / 00:33</span>
+      </div>
+      <div class="hero-text">
+        <div>
+          <h1><span class="w" style="--i:0">Sağlam yapı.</span> <em class="w" style="--i:2">Tutulan söz.</em></h1>
+          <p style="--i:1">Başakşehir Belediyesi iş birliğiyle, Türkiye'nin golf sahasına sahip ilk konut projesini inşa ediyoruz.</p>
+          <div class="acts" style="--i:2">
+            <a class="btn btn-ivory" href="#sergi">Sergiye girin <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" /></svg></a>
+            <button class="btn btn-line" type="button" id="filmOpen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor" /></svg>Filmi izleyin</button>
+          </div>
+        </div>
+        <p class="lab" style="--i:3"><span class="no">I · Giriş</span><span class="ti">Levan Bahçeşehir</span><span class="me">UZM Group · Tanıtım filmi, görselleştirme</span><span class="tx">Başakşehir Belediyesi iş birliğiyle. Başakşehir, İstanbul.</span></p>
+      </div>
+    </div>
+    <div class="cue" aria-hidden="true">Kaydırın<i></i></div>
+  </section>
+
+  <!-- II · Küratörden -->
+  <section class="curator on-light" id="sergi" data-room="II" data-name="Sergi" data-tone="light">
+    <div class="shell">
+      <div class="lintel" data-rv><span class="insc">II · Sergi — Küratörden</span></div>
+      <div class="cur-grid">
+        <p class="cur-wall" data-rv>Her projeyi arsadan anahtara aynı ilkeyle yürütüyoruz: <em>şeffaf süreç, sağlam yapı, verilen takvime sadakat.</em></p>
+        <div class="cur-side" data-rv style="--i:1">
+          <p>UZM Group, İstanbul merkezli bir inşaat ve proje geliştirme grubudur. İnşaat şirketi UZM Yapı ile 2020'den bu yana Büyükçekmece ve Arnavutköy'de villa projeleri tamamladı; bugün Başakşehir Belediyesi iş birliğiyle, Türkiye'nin golf sahasına sahip ilk konut projesi Levan Bahçeşehir'i inşa ediyor.</p>
+          <p class="sig">UZM Group<span>Sergiye giriş metni</span></p>
+        </div>
+      </div>
+      <dl class="kunye">
+        <div data-rv><dt>Kuruluş</dt><dd><span class="v" data-count="2016" data-plain>2016</span><span class="l">Kuruluş yılı</span><span class="s">İstanbul</span></dd></div>
+        <div data-rv style="--i:1"><dt>Projeler</dt><dd><span class="v" data-count="4">4</span><span class="l">Konut projesi</span><span class="s">2020'den bu yana İstanbul'da</span></dd></div>
+        <div data-rv style="--i:2"><dt>Tamamlanan</dt><dd><span class="v" data-count="23">23</span><span class="l">Villa tamamlandı</span><span class="s">Viktorya Park ve Ağaçelebi Sarayları</span></dd></div>
+        <div data-rv style="--i:3"><dt>Alan</dt><dd><span class="v"><span data-count="31546">31.546</span><small>m²</small></span><span class="l">Tamamlanan proje alanı</span><span class="s">Büyükçekmece ve Arnavutköy</span></dd></div>
+      </dl>
+      <div class="enter"><a href="#yuruyus">Salonlara geçin<i></i></a></div>
+    </div>
+  </section>
+
+  <!-- II · Yürüyüş -->
+  <section class="walk" id="yuruyus" data-room="II" data-name="Sergi" data-tone="dark" aria-label="Sergi yürüyüşü: Levan Bahçeşehir görselleri">
+    <div class="stage" id="stage" aria-hidden="true">
+      <div class="world" id="world"></div>
+      <div class="fog" id="fog"></div>
+      <div class="vig"></div>
+      <div class="w-end" id="wEnd"></div>
+      <div class="walk-top shell">
+        <div class="rm" id="wRoom"><span class="insc">II · Sergi</span><b>Giriş holü</b></div>
+        <div class="hint" id="wHint"><span>Kaydırarak yürüyün</span><i></i></div>
+      </div>
+      <div class="hud off" id="hud"><p class="lab"><span class="no"></span><span class="ti"></span><span class="me"></span><span class="tx"></span></p></div>
+      <div class="mmap" id="mmap"><div class="k"><span>Buradasınız</span><span id="mmCount">01 / 12</span></div><svg id="mmSvg" viewBox="0 0 220 44"></svg></div>
+    </div>
+    <div class="flat-grid shell" id="flat"></div>
+    <ol class="sr" id="walkList"></ol>
+  </section>
+
+  <!-- III · Konutlar -->
+  <section class="room room-blue on-dark" id="konutlar" data-room="III" data-name="Konutlar" data-tone="dark">
+    <div class="shell">
+      <div class="lintel" data-rv><span class="insc">III · Konutlar</span></div>
+      <div class="room-head">
+        <h2 class="h2" data-rv>2+1 daireden <em>malikaneye.</em></h2>
+        <p class="lede" data-rv style="--i:1">Altı konut tipi, altı eser. Birini seçin; duvardan alıp yakından inceleyin: görseli, levan.com.tr'de yayımlanan planı ve alanları.</p>
+      </div>
+      <div class="hang" id="hang"></div>
+      <div class="room-foot"><span>Alanlar m² cinsinden, levan.com.tr'de yayımlandığı biçimiyle.</span><a class="ln-arrow" href="https://levan.com.tr/#konutlar" target="_blank" rel="noopener">Tüm planlar levan.com.tr'de ↗</a></div>
+    </div>
+  </section>
+
+  <!-- IV · Olanaklar -->
+  <section class="room room-red on-dark" id="olanaklar" data-room="IV" data-name="Olanaklar" data-tone="dark">
+    <div class="shell">
+      <div class="lintel" data-rv><span class="insc">IV · Olanaklar</span></div>
+      <div class="room-head">
+        <h2 class="h2" data-rv>Hepsi sakinlere özel, <em>hepsi birkaç adım ötede.</em></h2>
+        <p class="lede" data-rv style="--i:1">Golf sahası, tenis kortu, kapalı havuz, spor salonu, hamam ve sauna; evin hemen yanında.</p>
+      </div>
+      <div class="salon" id="salon"></div>
+      <div class="salon-note"><span>Bir esere gelin; ışık onun üzerinde toplanır.</span><span>Görseller görselleştirmedir.</span></div>
+    </div>
+  </section>
+
+  <!-- V · Konum ve arşiv -->
+  <section class="konum-room on-light lit-able" id="konum" data-room="V" data-name="Konum ve arşiv" data-short="Konum" data-tone="light">
+    <div class="shell">
+      <div class="lintel" data-rv><span class="insc">V · Konum ve arşiv</span></div>
+      <div class="konum">
+        <div class="konum-l">
+        <figure class="konum-map" data-rv>
+          <div class="pool"></div>
+          <div class="fr mat"><div class="in"><div class="win"><img src="../assets/img/levan--gece-vaziyet.webp" alt="Levan Bahçeşehir, Nakkaş–Başakşehir Otoyolu ve Sazlıdere Köprüsü, gece havadan" loading="lazy"></div><div class="cart"><b>Levan Bahçeşehir ve yeni yollar</b><span class="tag">Görselleştirme</span></div></div></div>
+        </figure>
+        <div class="bridge" data-rv>
+          <div class="fr"><div class="in"><img src="../assets/img/saha--kopru-pilon.webp" alt="Yapımı süren Sazlıdere Köprüsü'nün pilonu" loading="lazy"></div></div>
+          <p class="lab"><span class="no">V.1 · Fotoğraf</span><span class="ti">Sazlıdere Köprüsü</span><span class="me">Yapım aşamasında</span><span class="tx">Bahçeşehir'i şehrin doğusuna bağlayan en kısa, yüksek kapasiteli yol. Tamamlandığında projeden çıkan bir araç yaklaşık 15 dakikada 5. Levent'e ulaşacak.</span></p>
+        </div>
+        </div>
+        <div class="konum-r" data-rv style="--i:1">
+          <h2 class="h2">5. Levent'e yaklaşık <em>15 dakika.</em></h2>
+          <p class="lede" style="margin-top:1.1rem">Yapımı süren Sazlıdere Köprüsü ve yeni yollarla 5. Levent ve İSTOÇ yaklaşık 15, İstanbul Havalimanı yaklaşık 20 dakika uzaklıkta. Şehrin temposuna bağlanırken kazanılan zaman, Levan'daki hayata kalıyor.</p>
+          <ol class="dist" data-rv>
+            <li><span class="pl">5. Levent<small>Sazlıdere Köprüsü ile</small></span><span class="mn">~15<small>dk</small></span><span class="bar" style="--k:.75"><i></i></span></li>
+            <li><span class="pl">İSTOÇ<small>Ticaret aksına yakın</small></span><span class="mn">~15<small>dk</small></span><span class="bar" style="--k:.75"><i></i></span></li>
+            <li><span class="pl">İstanbul Havalimanı<small>Kuzey Marmara bağlantısı</small></span><span class="mn">~20<small>dk</small></span><span class="bar" style="--k:1"><i></i></span></li>
+          </ol>
+          <p class="fine">Yaklaşık sürüş süreleri, projenin yayımladığı biçimiyle. Sazlıdere Köprüsü yapım aşamasındadır.</p>
+        </div>
+      </div>
+      <div class="arsiv-head">
+        <div data-rv><p class="insc" style="color:var(--bordeaux);margin-bottom:1rem">Şantiye arşivi</p><h2 class="h2">Sahadan, <em>kayıt kayıt.</em></h2></div>
+        <p class="lede" data-rv style="--i:1">İnşaat sürüyor. Her adımı sahadan, olduğu gibi paylaşıyoruz; vitrindeki kartlar şantiye defterinden.</p>
+      </div>
+      <div class="vitrine" id="vitrine" data-rv>
+        <div class="vit-bed" id="vitBed"></div>
+        <div class="vit-glass"></div>
+      </div>
+      <div class="arsiv-foot"><span>Şantiyenin 360° turları levan.com.tr'de.</span><a class="ln-arrow" href="https://levan.com.tr/#insaat" target="_blank" rel="noopener">360° şantiye turları ↗</a></div>
+    </div>
+  </section>
+
+  <!-- VI · Kalıcı koleksiyon -->
+  <section class="room room-night on-dark" id="koleksiyon" data-room="VI" data-name="Kalıcı koleksiyon" data-short="Koleksiyon" data-tone="dark">
+    <div class="shell">
+      <div class="lintel" data-rv><span class="insc">VI · Kalıcı koleksiyon</span></div>
+      <div class="room-head">
+        <h2 class="h2" data-rv>Tamamlanan projeler, <em>tutulan sözler.</em></h2>
+        <p class="lede" data-rv style="--i:1">İnşaat şirketimiz UZM Yapı'nın İstanbul'da tamamladığı villa projeleri.</p>
+      </div>
+      <div class="coll">
+        <article class="piece" data-rv>
+          <div class="cone"></div><div class="pool"></div>
+          <div class="fr"><div class="in"><img src="../assets/img/agacelebi--havadan.webp" alt="Ağaçelebi Sarayları'nın havadan görünümü" loading="lazy"></div></div>
+          <div class="lab"><span class="no">VI.1 · Fotoğraf · Tamamlandı</span><span class="ti">Ağaçelebi Sarayları</span><span class="me">Bolluca, Arnavutköy / İstanbul</span>
+            <dl><div><dt>Proje alanı</dt><dd>26.346 m²</dd></div><div><dt>Villa</dt><dd>13 · özel havuzlu ve bahçeli</dd></div></dl></div>
+        </article>
+        <article class="piece" data-rv style="--i:1">
+          <div class="cone"></div><div class="pool"></div>
+          <div class="fr"><div class="in"><img src="../assets/img/viktorya--havuz.webp" alt="Viktorya Park Villaları havuz ve bahçe" loading="lazy"></div></div>
+          <div class="lab"><span class="no">VI.2 · Fotoğraf · Tamamlandı</span><span class="ti">Viktorya Park Villaları</span><span class="me">Büyükçekmece / İstanbul</span>
+            <dl><div><dt>Proje alanı</dt><dd>5.200 m²</dd></div><div><dt>Villa</dt><dd>10 · 4+2 ve 5+2, 470–590 m²</dd></div><div><dt>Durum</dt><dd>Tamamlandı, tapu hazır</dd></div></dl></div>
+        </article>
+      </div>
+      <p class="extra" data-rv><b>Altın Sarayı</b>Büyükçekmece. UZM Yapı'nın Büyükçekmece'deki ilk projelerinden.</p>
+      <div class="plaques">
+        <div class="plq" data-rv><div class="ic"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#belediye" /></svg></div><div><h3>Başakşehir Belediyesi iş birliğiyle</h3><p>Başakşehir Belediyesi'nin gayrimenkuldeki köklü tecrübesi, Levan Bahçeşehir için bir güven mührü.</p></div></div>
+        <div class="plq" data-rv style="--i:1"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M11.6 12H21M18 12v3M15.4 12v2.2" fill="none" stroke="currentColor" stroke-width="1.2" /></svg></div><div><h3>Site ve tesis yönetimi Emlak Yönetim'e emanet</h3><p>Yaşam standardı anahtar tesliminden sonra da korunuyor: sitenin ve tesislerin yönetimi Emlak Yönetim'in profesyonel tecrübesine emanet.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özel gösterim -->
+  <section class="room room-red on-dark" id="davet" data-room="·" data-name="Özel gösterim" data-tone="dark">
+    <div class="shell">
+      <div class="lintel" data-rv><span class="insc">Özel gösterim</span></div>
+      <div class="davet">
+        <figure class="office" data-rv>
+          <div class="pool"></div>
+          <div class="fr"><div class="in"><img src="../assets/img/saha--ofis-havadan.webp" alt="Levan Bahçeşehir satış ofisi ve çatısındaki UZM yazısı, havadan" loading="lazy"></div><span class="tg tag">Fotoğraf</span></div>
+          <figcaption>Levan Bahçeşehir satış ofisi, havadan.</figcaption>
+        </figure>
+        <div class="card-wrap" id="cardWrap" data-rv style="--i:1">
+          <div class="cone"></div><div class="pool"></div>
+          <div class="invite" id="invite">
+            <div class="emb"><svg viewBox="0 0 2858.218249 1253.285931" aria-hidden="true"><use href="#uzm-group" /></svg></div>
+            <span class="insc">Özel gösterim · Davetiye</span>
+            <h2>Sizi Levan'da <em>ağırlamak isteriz.</em></h2>
+            <p>Satış ofisimizde planları ve konut tiplerini birlikte inceleyelim, sorularınızı yanıtlayalım.</p>
+            <dl>
+              <div><dt>Satış ofisi</dt><dd>Bahçeşehir 1. Kısım, 2801. Sk., 34488 Başakşehir / İstanbul</dd></div>
+              <div><dt>Telefon</dt><dd><a href="tel:+904447039">444 70 39</a></dd></div>
+              <div><dt>E-posta</dt><dd><a href="mailto:info@levan.com.tr">info@levan.com.tr</a></dd></div>
+            </dl>
+            <div class="acts">
+              <a class="btn btn-ink" href="https://levan.com.tr/#iletisim" target="_blank" rel="noopener">Ziyaret planlayın <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" /></svg></a>
+              <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=41.0837055%2C28.6808779" target="_blank" rel="noopener">Yol tarifi ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" data-room="·" data-name="Özel gösterim" data-tone="dark">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><svg class="brand-f" viewBox="0 0 2858.218249 1253.285931" aria-label="UZM Group" role="img"><use href="#uzm-group" /></svg><p>Sağlam yapı. Tutulan söz. İstanbul merkezli inşaat ve proje geliştirme grubu.</p></div>
+      <div><h4>Merkez</h4><ul><li>Kayabaşı Mah. 15 Temmuz Sk. No: 2</li><li>Başakşehir / İstanbul</li></ul></div>
+      <div><h4>İletişim</h4><ul><li><a href="tel:+904447039">444 70 39</a></li><li><a href="mailto:info@uzmgroup.com.tr">info@uzmgroup.com.tr</a></li></ul></div>
+      <div><h4>Bağlantılar</h4><ul><li><a href="https://levan.com.tr/" target="_blank" rel="noopener">levan.com.tr</a></li><li><a href="https://www.instagram.com/levanbahcesehir/" target="_blank" rel="noopener">Levan Instagram</a></li><li><a href="https://www.instagram.com/uzm.group/" target="_blank" rel="noopener">UZM Instagram</a></li></ul></div>
+    </div>
+    <div class="foot-low"><span>© 2026 UZM Group · Konsept çalışma, Vizyon 7 — Sergi</span><span>Levan Bahçeşehir görselleri ve film görselleştirmedir; şantiye ve tamamlanan projeler fotoğraftır.</span></div>
+  </div>
+</footer>
+
+<dialog class="film" id="film" aria-label="Levan Bahçeşehir tanıtım filmi">
+  <div class="fr"><video id="filmVid" controls playsinline preload="none" poster="../assets/img/film--levan.webp"></video></div>
+  <div class="bar"><span>Levan Bahçeşehir · Görselleştirme</span><button type="button" id="filmClose">Kapat ×</button></div>
+</dialog>
+
+<dialog class="inspect" id="inspect" aria-labelledby="insTitle">
+  <div class="ins-bg"></div>
+  <button class="ins-x" type="button" id="insClose" aria-label="Kapatın"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" stroke="currentColor" stroke-width="1.3" /></svg></button>
+  <div class="ins-wrap">
+    <div class="ins-work" id="insWork">
+      <div class="pool"></div>
+      <div class="fr" id="insFrame"><div class="in"><img class="render" id="insImg" alt=""><img class="plan" id="insPlan" alt=""><span class="tg tag" id="insTag">Görselleştirme</span></div></div>
+    </div>
+    <div class="ins-card">
+      <p class="no" id="insNo"></p>
+      <h3 id="insTitle"></h3>
+      <p class="bl" id="insBlurb"></p>
+      <div class="seg" role="group" aria-label="Görünüm"><button type="button" aria-pressed="true" data-v="render">Görsel</button><button type="button" aria-pressed="false" data-v="plan">Plan</button></div>
+      <dl id="insDl"></dl>
+      <p class="pc" id="insPc"></p>
+      <div class="ins-nav">
+        <div class="pn"><button class="sq" type="button" id="insPrev" aria-label="Önceki konut tipi"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.3" /></svg></button><button class="sq" type="button" id="insNext" aria-label="Sonraki konut tipi"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3" /></svg></button></div>
+        <a class="ln-arrow" href="https://levan.com.tr/#konutlar" target="_blank" rel="noopener">levan.com.tr ↗</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+/* Sergi. One rAF drives Lenis, the 3D walk, the salon hang and the small lights; everything else waits for
+   IntersectionObserver. Every number on the page comes from the site's published data (src/data). */
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const smooth = (a, b, v) => { const t = clamp((v - a) / (b - a)); return t * t * (3 - 2 * t); };
+const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+const IMG = (k) => `../assets/img/${k}.webp`;
+if (fine && !reduce) document.documentElement.classList.add("fine");
+
+/* ── Data (published wording; areas from src/data/levan.ts) */
+const ROOMS = [
+  { name: "Mimari", ord: "Birinci salon", wall: [222, 213, 199], ceil: [40, 35, 31], ink: "#3a2f27", fog: [30, 24, 21] },
+  { name: "Bir gün", ord: "İkinci salon", wall: [82, 27, 36], ceil: [28, 9, 13], ink: "#eadfd2", fog: [22, 7, 10] },
+  { name: "Akşam", ord: "Üçüncü salon", wall: [30, 46, 62], ceil: [12, 18, 25], ink: "#e3e9ee", fog: [9, 13, 19] },
+];
+const VEST = { wall: [30, 20, 22], ceil: [14, 10, 11], ink: "#e9dfd3", fog: [12, 8, 9] };
+const EXIT = { wall: [28, 43, 58], ceil: [14, 21, 29] };
+const WALK = [
+  { room: 0, img: "levan--villa", r: 1.3, t: "Bahçeli bir villa", d: "Yatay mimari, müstakil yaşamın ferahlığını geri getiriyor." },
+  { room: 0, img: "levan--avlu", r: 1.777, t: "Bloklar arasında avlu", d: "Peyzajlı iç avlular, su öğeleri ve yürüyüş yolları." },
+  { room: 0, img: "levan--peyzaj", r: 1.778, t: "Gölet ve yürüyüş yolları", d: "Arazinin yüzde yetmişi yeşil." },
+  { room: 0, img: "levan--ikiz-villa", r: 1.3, t: "İkiz villa", d: "Bodrum, zemin ve birinci kattan oluşan yaşam; özel bahçe." },
+  { room: 1, img: "levan--gun--kahvalti", r: 2.37, t: "Kahvaltı, bahçede", d: "Güne gökyüzünün altında başlayın." },
+  { room: 1, img: "levan--gun--golf", r: 2.37, t: "Golf, kapınızın önünde", d: "Dışarıya açık bir kulüp değil; yalnızca Levan sakinleri için." },
+  { room: 1, img: "levan--gun--cocuklar", r: 2.37, t: "Çocuklar, dışarıda", d: "Yürüyüş yolları, çocuk oyun alanı ve futbol sahası, evin hemen yanında." },
+  { room: 1, img: "levan--gun--gun-batimi", r: 2.37, t: "Günün son ışığı", d: "Servilerin arasından süzülen akşam güneşi; komşunun duvarı değil, gökyüzü." },
+  { room: 2, img: "levan--villa-aksam", r: 2.37, t: "Akşam saatlerinde bir villa", d: "Özlediğiniz müstakil yaşam." },
+  { room: 2, img: "levan--ticari-cadde", r: 1.79, t: "Ticari cadde", d: "Akşam saatlerinde ticari cadde." },
+  { room: 2, img: "film--levan-dusk", r: 2.37, t: "Bloklar, gün batımında", d: "Bahçe kullanımlı zemin katlar ve geniş balkonlar." },
+  { room: 2, img: "levan--gun--gece", r: 2.37, t: "Ve gece, Levan'ın ışıkları", d: "Gün biter, ev kalır." },
+];
+const UNITS = [
+  { t: "2+1 Daire", img: "levan--ic--2-1-salon", alt: "2+1 dairede salon", plan: "levan--plan--2-1-a", pc: "Gösterilen plan: 2+1 A (net 64,83 m²).", bl: "Yeni başlangıçlar için: ferah, kullanışlı ve bahçe yaşamına açık.", net: "64,83–70,17", gross: "73,83–81,13" },
+  { t: "3+1 Daire", img: "levan--ic--3-1-salon", alt: "3+1 dairede salon", plan: "levan--plan--3-1-a", pc: "Gösterilen plan: 3+1 A (net 118,41 m²).", bl: "Aile yaşamına göre kurgulanmış geniş salonlar ve ebeveyn banyosu.", net: "113,07–123,43", gross: "127,93–141,21" },
+  { t: "4+1 Daire", img: "levan--avlu-aksam", alt: "Gün batımında bloklar arası avlu", plan: "levan--plan--4-1", pc: "Gösterilen plan: 4+1.", bl: "Kalabalık aileler için cömert metrekare, gün ışığı ve geniş balkonlar.", net: "155,71", gross: "178,13" },
+  { t: "4+1 İkiz Villa", img: "levan--ikiz-villa-gece", alt: "Gece aydınlatmasıyla ikiz villalar", plan: "levan--plan--ikiz-zemin", pc: "Gösterilen plan: zemin kat. Bodrum ve 1. kat planları levan.com.tr'de.", bl: "Bodrum, zemin ve birinci kattan oluşan yaşam; özel bahçe.", net: "271,02", gross: "310,12", garden: "85,74" },
+  { t: "5+1 Müstakil Villa", img: "levan--ic--mustakil-villa-salon", alt: "Müstakil villada salon", plan: "levan--plan--mustakil-zemin", pc: "Gösterilen plan: zemin kat. Bodrum ve 1. kat planları levan.com.tr'de.", bl: "Kendi bahçesi ve kendi kapısıyla; gökyüzüyle arada engel yok.", net: "329,89", gross: "378,10" },
+  { t: "6+1 Malikane", img: "levan--vaziyet-gunduz", alt: "Levan Bahçeşehir'in havadan görünümü", plan: "levan--plan--malikane", pc: "Gösterilen plan: malikane.", bl: "Levan'ın zirvesi: geniş tahsisli bahçesiyle.", net: "268,35", gross: "301,80", garden: "1.159,09" },
+];
+const SALON = [
+  { img: "levan--tesis--golf", t: "Golf sahası", d: "Türkiye'de golf sahasına sahip ilk konut projesi. Yaklaşık bir dönüm; yalnızca site sakinlerine özel.", c: "1 / 6", r: "1 / 4", mc: "1 / 7", mr: "1 / 3", pos: "70% 50%" },
+  { img: "levan--tesis--spor-salonu", t: "Spor salonu", d: "Günlük rutinin parçası; site sakinlerine özel.", c: "6 / 9", r: "1 / 4", mc: "1 / 4", mr: "3 / 5" },
+  { img: "levan--tesis--tenis", t: "Tenis kortu", d: "Aynı tutkuyu paylaşan komşularla dostane bir rekabet, günlük rutinin parçası.", c: "9 / 13", r: "1 / 3", mc: "4 / 7", mr: "3 / 4", flip: 1 },
+  { t: "Jakuzi", c: "9 / 11", r: "3 / 4", mc: "4 / 7", mr: "4 / 5" },
+  { t: "Buhar odası", c: "11 / 13", r: "3 / 4", mc: "3 / 5", mr: "7 / 8" },
+  { img: "levan--tesis--havuz", t: "Kapalı havuz", d: "Site sakinlerine özel; evin birkaç adım ötesinde.", c: "1 / 3", r: "4 / 7", mc: "1 / 3", mr: "5 / 8", up: 1 },
+  { t: "Müstakil yaşam", c: "3 / 5", r: "4 / 5", mc: "5 / 7", mr: "7 / 8" },
+  { t: "Site içi ring hattı", c: "3 / 5", r: "5 / 6", mc: "4 / 7", mr: "8 / 9" },
+  { t: "Futbol sahası", c: "3 / 5", r: "6 / 7", mc: "4 / 7", mr: "9 / 10" },
+  { img: "levan--tesis--hamam", t: "Hamam", d: "Hamam, sauna ve buhar odası: hepsi site sakinlerine özel.", c: "5 / 9", r: "4 / 7", mc: "3 / 7", mr: "5 / 7", up: 1 },
+  { img: "levan--tesis--sauna", t: "Sauna", d: "Site sakinlerine özel, hepsi birkaç adım ötede.", c: "9 / 13", r: "4 / 7", mc: "1 / 4", mr: "8 / 10", up: 1, flip: 1 },
+  { t: "Çocuk oyun alanı", c: "1 / 4", r: "7 / 8", mc: "1 / 4", mr: "10 / 11" },
+  { t: "Kapalı otopark", c: "4 / 6", r: "7 / 8", mc: "4 / 7", mr: "10 / 11" },
+  { t: "Akıllı ev sistemleri", c: "6 / 10", r: "7 / 8", mc: "1 / 4", mr: "11 / 12" },
+  { t: "Levan App", c: "10 / 13", r: "7 / 8", mc: "4 / 7", mr: "11 / 12" },
+];
+const DIARY = [
+  { img: "saha--temel-kazi", t: "Kazı başladı", d: "Temel kazı çalışmaları planlanan takvim doğrultusunda ilerliyor.", alt: "Temel kazısında çalışan bir ekskavatör" },
+  { img: "saha--vinc", t: "Hazırlık bitti, tam gaz", d: "Saha hazırlığı tamamlandı; makineler işbaşında.", alt: "Şantiyede bir vinç" },
+  { img: "saha--kepce", t: "Toprak kalkıyor", d: "Hafriyat sürüyor: toprak kalkıyor, hayaller yükseliyor.", alt: "Hafriyatta çalışan bir kepçe" },
+  { img: "saha--usta", t: "Hafriyat tamamlandı", d: "Hafriyat bitti; sıra fore kazıklarda.", alt: "Şantiyede çalışan bir usta" },
+  { img: "saha--ilk-beton", t: "İlk beton döküldü", d: "Fore kazıklar için dökülen ilk beton, metrelerce derinde yükseleceğimiz zemini oluşturuyor.", alt: "UZM Group yelekli bir çalışan beton mikserinin yanında" },
+  { img: "saha--beton-pompasi", t: "Temel hazırlığı son hız", d: "Şantiyede temel hazırlık çalışmaları son hız devam ediyor.", alt: "Beton pompası başında saha mühendisi ve operatör" },
+];
+const roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+const pad = (n) => String(n).padStart(2, "0");
+const arrow = '<svg viewBox="0 0 16 16" aria-hidden="true" width="10" height="10"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>';
+
+/* ── Smooth scroll */
+const lenis = !reduce && window.Lenis ? new window.Lenis({ lerp: 0.085, smoothWheel: true }) : null;
+const scrollY = () => (lenis ? lenis.animatedScroll : window.scrollY);
+const goTo = (el) => (lenis ? lenis.scrollTo(el, { duration: 1.8 }) : el.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }));
+document.addEventListener("click", (e) => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const t = $(a.getAttribute("href"));
+  if (!t) return;
+  e.preventDefault();
+  closeGuide();
+  goTo(t);
+});
+
+/* ── Lights on */
+requestAnimationFrame(() => setTimeout(() => document.documentElement.classList.add("lights"), 80));
+
+/* ── Hero film */
+const heroWork = $("#heroWork"), heroVid = $("#heroVid"), tc = $("#tc");
+const phone = matchMedia("(max-width: 699px)").matches;
+heroVid.src = phone ? "../assets/video/levan-film-720.mp4" : "../assets/video/levan-film-1920.mp4";
+heroVid.addEventListener("playing", () => heroWork.classList.add("playing"));
+if (!reduce) heroVid.play().catch(() => {});
+new IntersectionObserver(([e]) => { if (reduce || film.open) return; e.isIntersecting ? heroVid.play().catch(() => {}) : heroVid.pause(); }).observe(heroWork);
+heroVid.addEventListener("timeupdate", () => { const s = Math.floor(heroVid.currentTime); tc.textContent = `${pad(Math.floor(s / 60))}:${pad(s % 60)}`; });
+
+const film = $("#film"), filmVid = $("#filmVid");
+const openFilm = () => { if (!filmVid.src) filmVid.src = "../assets/video/levan-film-1920.mp4"; film.showModal(); filmVid.play().catch(() => {}); heroVid.pause(); lenis && lenis.stop(); };
+$("#filmOpen").addEventListener("click", openFilm);
+heroWork.addEventListener("click", openFilm);
+$("#filmClose").addEventListener("click", () => film.close());
+film.addEventListener("click", (e) => { if (e.target === film) film.close(); });
+film.addEventListener("close", () => { filmVid.pause(); lenis && lenis.start(); if (!reduce) heroVid.play().catch(() => {}); });
+
+/* ── Guide */
+const guide = $("#guide");
+let guideFrom = null;
+function openGuide() {
+  guideFrom = document.activeElement;
+  guide.classList.add("on");
+  lenis && lenis.stop();
+  $(".g-x", guide).focus({ preventScroll: true });
+}
+function closeGuide() {
+  if (!guide.classList.contains("on")) return;
+  guide.classList.remove("on");
+  lenis && lenis.start();
+  guideFrom && guideFrom.focus({ preventScroll: true });
+}
+$$("[data-guide]").forEach((b) => b.addEventListener("click", openGuide));
+$(".g-x", guide).addEventListener("click", closeGuide);
+guide.addEventListener("click", (e) => { if (e.target === guide) closeGuide(); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") closeGuide(); });
+const HERE = { I: [70, 240], II: [235, 240], III: [420, 135], IV: [420, 240], V: [555, 135], VI: [555, 240], "·": [485, 300] };
+
+/* ── Rooms: nav tone, the "where" plaque, the guide's "you are here" */
+const nav = $("#nav"), where = $("#where");
+const roomEls = $$("[data-room]");
+let roomMap = [], curRoom = null;
+function measureRooms() {
+  roomMap = roomEls.map((el) => { const r = el.getBoundingClientRect(); return { top: r.top + window.scrollY, bottom: r.bottom + window.scrollY, n: el.dataset.room, name: innerWidth < 600 && el.dataset.short ? el.dataset.short : el.dataset.name, tone: el.dataset.tone }; });
+}
+function setRoom(y) {
+  const p = y + 40;
+  const r = roomMap.find((m) => p >= m.top && p < m.bottom) || roomMap[0];
+  if (!r || r === curRoom) return;
+  const first = !curRoom;
+  curRoom = r;
+  nav.dataset.tone = r.tone;
+  const apply = () => { $(".n span", where).textContent = r.n; $(".t", where).textContent = r.name; where.classList.remove("swap"); };
+  if (first) apply(); else { where.classList.add("swap"); setTimeout(apply, 260); }
+  const h = HERE[r.n];
+  if (h) $("#here").setAttribute("transform", `translate(${h[0] - 70} ${h[1] - 240})`);
+  $$(".g-plan .rm").forEach((a) => a.classList.toggle("cur", a.dataset.r === r.n));
+}
+
+/* ── Reveals, lights, count-ups */
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+$$("[data-rv]").forEach((el) => io.observe(el));
+const lio = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle("lit", e.isIntersecting)), { threshold: 0.18 });
+$$(".room, .konum-room, .curator").forEach((el) => lio.observe(el));
+const fmt = new Intl.NumberFormat("tr-TR");
+const cio = new IntersectionObserver((es) => es.forEach((e) => {
+  if (!e.isIntersecting) return;
+  cio.unobserve(e.target);
+  const el = e.target, to = +el.dataset.count, plain = el.hasAttribute("data-plain");
+  if (reduce) return;
+  const from = plain ? to - 12 : 0, t0 = performance.now();
+  const step = (now) => { const k = easeOut(clamp((now - t0) / 1700)); const v = Math.round(lerp(from, to, k)); el.textContent = plain ? String(v) : fmt.format(v); if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}), { threshold: 0.6 });
+$$("[data-count]").forEach((el) => cio.observe(el));
+
+/* ── III · the hang */
+const hang = $("#hang");
+hang.innerHTML = UNITS.map((u, i) => `
+  <button class="wk" type="button" data-i="${i}" data-rv style="--i:${i % 3}" data-cursor="İnceleyin">
+    <span class="pool" aria-hidden="true"></span>
+    <span class="fr"><span class="in" style="display:block"><img src="${IMG(u.img)}" alt="${u.alt}" loading="lazy"></span></span>
+    <span class="lab"><span class="no">III.${i + 1} · Görselleştirme</span><span class="ti">${u.t}</span><span class="me">Net ${u.net} m²${u.garden ? ` · Bahçe ${u.garden} m²` : ""}</span><span class="go">Yakından inceleyin ${arrow}</span></span>
+  </button>`).join("");
+$$(".wk", hang).forEach((el) => io.observe(el));
+
+/* Inspection with a FLIP lift from the wall */
+const ins = $("#inspect"), insFrame = $("#insFrame"), insWork = $("#insWork");
+let insI = -1, insFrom = null, insBusy = false;
+function fillIns(i) {
+  const u = UNITS[i];
+  $("#insImg").src = IMG(u.img); $("#insImg").alt = u.alt;
+  $("#insPlan").src = IMG(u.plan); $("#insPlan").alt = `${u.t} planı`;
+  $("#insNo").textContent = `III.${i + 1} · Levan Bahçeşehir`;
+  $("#insTitle").textContent = u.t;
+  $("#insBlurb").textContent = u.bl;
+  $("#insDl").innerHTML = `<div><dt>Net alan</dt><dd>${u.net} m²</dd></div><div><dt>Brüt alan</dt><dd>${u.gross} m²</dd></div><div><dt>Bahçe</dt><dd>${u.garden ? u.garden + " m²" : "—"}</dd></div>`;
+  $("#insPc").textContent = u.pc;
+  setView("render");
+}
+function setView(v) {
+  insWork.classList.toggle("show-plan", v === "plan");
+  $("#insTag").textContent = v === "plan" ? "Plan · levan.com.tr" : "Görselleştirme";
+  $$(".seg button", ins).forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+}
+$$(".seg button", ins).forEach((b) => b.addEventListener("click", () => setView(b.dataset.v)));
+function flip(fromEl, toEl, reverse) {
+  const a = fromEl.getBoundingClientRect(), b = toEl.getBoundingClientRect();
+  const sx = a.width / b.width, sy = a.height / b.height, dx = a.left - b.left, dy = a.top - b.top;
+  const k = [{ transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` }, { transform: "none" }];
+  return toEl.animate(reverse ? k.reverse() : k, { duration: reverse ? 620 : 820, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" }).finished;
+}
+async function openIns(i, btn) {
+  if (insBusy) return;
+  insBusy = true; insI = i; insFrom = btn;
+  fillIns(i);
+  ins.showModal();
+  lenis && lenis.stop();
+  const src = $(".fr", btn);
+  if (!reduce) { src.style.visibility = "hidden"; requestAnimationFrame(() => ins.classList.add("on")); await flip(src, insFrame, false).catch(() => {}); }
+  else ins.classList.add("on");
+  insBusy = false;
+}
+async function closeIns() {
+  if (insBusy || !ins.open) return;
+  insBusy = true;
+  const src = insFrom && $(".fr", insFrom);
+  ins.classList.remove("on");
+  if (!reduce && src && insI === +insFrom.dataset.i) await flip(src, insFrame, true).catch(() => {});
+  ins.close();
+  insFrame.getAnimations().forEach((a) => a.cancel());
+  $$(".wk .fr", hang).forEach((f) => (f.style.visibility = ""));
+  lenis && lenis.start();
+  insFrom && insFrom.focus({ preventScroll: true });
+  insBusy = false;
+}
+function stepIns(d) {
+  if (insBusy) return;
+  const n = (insI + d + UNITS.length) % UNITS.length;
+  ins.classList.add("ins-swap");
+  setTimeout(() => { insI = n; fillIns(n); $$(".wk .fr", hang).forEach((f) => (f.style.visibility = "")); insFrom = $(`.wk[data-i="${n}"]`, hang); $(".fr", insFrom).style.visibility = "hidden"; requestAnimationFrame(() => ins.classList.remove("ins-swap")); }, 230);
+}
+hang.addEventListener("click", (e) => { const b = e.target.closest(".wk"); if (b) openIns(+b.dataset.i, b); });
+$("#insClose").addEventListener("click", closeIns);
+$("#insPrev").addEventListener("click", () => stepIns(-1));
+$("#insNext").addEventListener("click", () => stepIns(1));
+ins.addEventListener("cancel", (e) => { e.preventDefault(); closeIns(); });
+ins.addEventListener("keydown", (e) => { if (e.key === "ArrowRight") stepIns(1); if (e.key === "ArrowLeft") stepIns(-1); });
+ins.addEventListener("click", (e) => { if (e.target.classList.contains("ins-wrap") || e.target.classList.contains("ins-bg")) closeIns(); });
+
+/* ── IV · the salon hang */
+const salon = $("#salon");
+salon.innerHTML = SALON.map((s, i) => s.img
+  ? `<div class="s-it im${s.flip ? " flip" : ""}${s.up ? " up" : ""}" style="--c:${s.c};--r:${s.r};--mc:${s.mc};--mr:${s.mr}" data-cursor="Işık" tabindex="0" role="button" aria-label="${s.t}">
+      <div class="fr"><div class="in"><img src="${IMG(s.img)}" alt="${s.t}" loading="lazy" style="object-position:${s.pos || "50% 50%"}"></div><span class="tg tag">Görselleştirme</span></div>
+      <p class="lab tip"><span class="no">IV.${i + 1} · Görselleştirme</span><span class="ti">${s.t}</span><span class="tx">${s.d}</span></p>
+    </div>`
+  : `<div class="s-it pr" style="--c:${s.c};--r:${s.r};--mc:${s.mc};--mr:${s.mr}"><div class="fr"><div class="in"><span class="rl"></span><span class="nm">${s.t}</span><span class="rl"></span></div></div></div>`).join("");
+const sItems = $$(".s-it", salon).map((el, i) => {
+  const a = (i * 2.399963) % (Math.PI * 2);
+  return { el, dx: Math.cos(a) * (90 + (i % 4) * 40), dy: Math.sin(a) * 70 + 90, rot: ((i * 53) % 13) - 6, d: (i % 6) * 0.07 + Math.floor(i / 6) * 0.05 };
+});
+let salonP = -1;
+function updateSalon(vh) {
+  const r = salon.getBoundingClientRect();
+  if (r.bottom < -200 || r.top > vh + 200) return;
+  const p = reduce ? 1 : clamp((vh - r.top) / (vh * 0.8));
+  if (Math.abs(p - salonP) < 0.0005) return;
+  salonP = p;
+  for (const s of sItems) {
+    const q = easeOut(clamp((p - s.d) / 0.55)), k = 1 - q;
+    s.el.style.transform = k > 0.001 ? `translate3d(${s.dx * k}px, ${s.dy * k}px, 0) rotate(${s.rot * k}deg) scale(${0.88 + 0.12 * q})` : "none";
+    s.el.style.opacity = q;
+  }
+}
+const lightOn = (el, on) => {
+  el.classList.toggle("on", on);
+  salon.classList.toggle("hov", on);
+  if (!on) return;
+  const tip = $(".tip", el), r = el.getBoundingClientRect(), w = Math.min(272, Math.max(r.width, 240));
+  el.classList.toggle("flip", r.left + w > innerWidth - 8);
+};
+$$(".s-it.im", salon).forEach((el) => {
+  el.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") lightOn(el, true); });
+  el.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") lightOn(el, false); });
+  el.addEventListener("focus", () => lightOn(el, true));
+  el.addEventListener("blur", () => lightOn(el, false));
+  el.addEventListener("click", () => { const on = !el.classList.contains("on"); $$(".s-it.on", salon).forEach((o) => o.classList.remove("on")); lightOn(el, on); });
+});
+
+/* ── V · vitrine */
+const vit = $("#vitrine");
+$("#vitBed").innerHTML = DIARY.map((d, i) => `
+  <article class="ix" style="--rot:${[-1.6, 1.1, -0.7, 1.4, -1.2, 0.8][i]}deg">
+    <div class="ph"><img src="${IMG(d.img)}" alt="${d.alt}" loading="lazy"><span class="tg">Fotoğraf</span></div>
+    <div class="rule"></div><p class="k">Kayıt ${pad(i + 1)}</p><h3>${d.t}</h3><p>${d.d}</p>
+  </article>`).join("");
+vit.addEventListener("pointermove", (e) => { const r = vit.getBoundingClientRect(); vit.style.setProperty("--gx", `${((e.clientX - r.left) / r.width) * 100}%`); });
+
+/* ── Invitation tilt and sheen */
+const invite = $("#invite"), cardWrap = $("#cardWrap");
+let tilt = { x: 0, y: 0, tx: 0, ty: 0, sx: 40, tsx: 40 };
+if (fine && !reduce) {
+  $("#davet").addEventListener("pointermove", (e) => { const r = cardWrap.getBoundingClientRect(); const nx = clamp((e.clientX - r.left) / r.width, -0.4, 1.4) - 0.5, ny = clamp((e.clientY - r.top) / r.height, -0.4, 1.4) - 0.5; tilt.ty = nx * 9; tilt.tx = -ny * 7; tilt.tsx = 20 + (nx + 0.5) * 60; });
+  $("#davet").addEventListener("pointerleave", () => { tilt.tx = tilt.ty = 0; tilt.tsx = 40; });
+}
+
+/* ── Cursor */
+const cur = $("#cur");
+let cx = -100, cy = -100, ctx = -100, cty = -100;
+if (fine && !reduce) {
+  addEventListener("pointermove", (e) => { ctx = e.clientX; cty = e.clientY; const t = e.target.closest && e.target.closest("[data-cursor]"); cur.classList.toggle("big", !!t); if (t) $("span", cur).textContent = t.dataset.cursor; }, { passive: true });
+  document.addEventListener("pointerleave", () => cur.classList.add("hide"));
+  document.addEventListener("pointerenter", () => cur.classList.remove("hide"));
+}
+
+/* ── II · The walk */
+const walk = $("#yuruyus"), stage = $("#stage"), world = $("#world");
+const wTop = $(".walk-top"), mmap = $("#mmap");
+const fog = $("#fog"), wEnd = $("#wEnd"), hud = $("#hud"), wRoom = $("#wRoom"), wHint = $("#wHint");
+const can3d = !reduce && CSS.supports("transform-style", "preserve-3d");
+$("#walkList").innerHTML = WALK.map((w, i) => `<li>${ROOMS[w.room].name}: ${w.t}. ${w.d} Görselleştirme.</li>`).join("");
+let G = null;
+const rgb = (c, a = 1) => `rgb(${c[0]} ${c[1]} ${c[2]} / ${a})`;
+function buildWalk() {
+  const W = stage.clientWidth, H = stage.clientHeight, mob = W < 700;
+  const P = Math.round(H * (mob ? 0.95 : 1.12));
+  stage.style.perspective = `${P}px`;
+  world.style.transformOrigin = `0 0 ${P}px`;
+  const floorY = H * (mob ? 0.43 : 0.47), ceilY = -H * (mob ? 0.72 : 0.8), wallH = floorY - ceilY;
+  const h0 = H * (mob ? 0.2 : 0.33), maxW = W * (mob ? 0.76 : 0.46), gapX = W * (mob ? 0.06 : 0.05);
+  const spacing = P * (mob ? 1.15 : 1.0);
+  const works = WALK.map((w, i) => { let h = h0, ww = h * w.r; if (ww > maxW) { ww = maxW; h = ww / w.r; } return { ...w, i, w: ww, h, s: i % 2 ? 1 : -1 }; });
+  let need = 0;
+  works.forEach((w) => { w.x = w.s * (w.w / 2 + gapX); need = Math.max(need, Math.abs(w.x) + w.w / 2 + gapX); });
+  const hw = Math.max(W * (mob ? 0.66 : 0.58), need + W * 0.05);
+  const portals = [], spans = [];
+  let z = P * 0.8;
+  for (let r = 0; r < 3; r++) {
+    portals.push(z);
+    let zz = z + P * 1.0;
+    works.filter((w) => w.room === r).forEach((w) => { w.z = zz; zz += spacing; });
+    const end = zz - spacing + P * 1.0;
+    spans.push([z, end]);
+    z = end;
+  }
+  portals.push(z);
+  const zEnd = z + P * 0.75;
+
+  world.textContent = "";
+  const segs = [], easels = [];
+  const add = (cls, css, html) => { const d = document.createElement("div"); d.className = cls; d.style.cssText = css; if (html) d.innerHTML = html; world.appendChild(d); return d; };
+  const surfaces = (za, zb, c) => {
+    const seg = Infinity;
+    for (let a = za; a < zb - 1; a += seg) {
+      const b = Math.min(zb, a + seg), L = b - a + 1;
+      const parts = [
+        add("w-s", `width:${L}px;height:${wallH}px;background:${rgb(c.wall)};transform:translate3d(${-hw}px,${ceilY}px,${-a}px) rotateY(90deg)`),
+        add("w-s", `width:${L}px;height:${wallH}px;background:${rgb(c.wall)};transform:translate3d(${hw}px,${ceilY}px,${-b}px) rotateY(-90deg)`),
+        add("w-s", `width:${hw * 2}px;height:${L}px;background:rgb(26 19 16 / .82);transform:translate3d(${-hw}px,${floorY}px,${-a}px) rotateX(-90deg)`),
+        add("w-s", `width:${hw * 2}px;height:${L}px;background:${rgb(c.ceil)};transform:translate3d(${-hw}px,${ceilY}px,${-a}px) rotateX(-90deg)`),
+      ];
+      parts.forEach((el) => segs.push({ el, a, b }));
+    }
+  };
+  surfaces(-P * 0.3, portals[0], VEST);
+  spans.forEach(([a, b], r) => surfaces(a, b, ROOMS[r]));
+  surfaces(portals[3], portals[3] + P * 2.2, EXIT);
+  segs.push({ el: add("w-s", `width:${hw * 2}px;height:${wallH}px;background:${rgb(EXIT.wall)};transform:translate3d(${-hw}px,${ceilY}px,${-(portals[3] + P * 2.2)}px)`), a: portals[3] + P * 2.2, b: portals[3] + P * 2.2 });
+  // track lights along each room's ceiling
+  spans.forEach(([a, b]) => [-1, 1].forEach((s) => segs.push({ el: add("w-track", `width:${Math.max(2, W * 0.003)}px;height:${b - a}px;transform:translate3d(${s * hw * 0.42}px,${ceilY + 1}px,${-a}px) rotateX(-90deg)`), a, b })));
+  // doorways: the wall you face, with the next room's name over the door
+  const doorW = mob ? W * 0.94 : Math.max(W * 0.46, 2 * gapX + 60), doorTop = -H * (mob ? 0.33 : 0.36);
+  const fs = Math.max(13, H * (mob ? 0.024 : 0.03));
+  portals.forEach((zp, r) => {
+    const c = r === 0 ? VEST : ROOMS[r - 1];
+    const label = r < 3 ? `<b>${ROOMS[r].name}</b><small>${ROOMS[r].ord}</small>` : `<b>Konutlar</b><small>III · Sonraki oda</small>`;
+    const side = hw - doorW / 2;
+    segs.push({ el: add("w-s", `width:${side}px;height:${wallH}px;background:${rgb(c.wall)};transform:translate3d(${-hw}px,${ceilY}px,${-zp}px)`), a: zp, b: zp });
+    segs.push({ el: add("w-s", `width:${side}px;height:${wallH}px;background:${rgb(c.wall)};transform:translate3d(${doorW / 2}px,${ceilY}px,${-zp}px)`), a: zp, b: zp });
+    segs.push({ el: add("w-s w-lin", `width:${doorW}px;height:${doorTop - ceilY}px;background:${rgb(c.wall)};color:${c.ink};font-size:${fs}px;padding-top:${(doorTop - ceilY) * 0.18}px;box-shadow:inset 0 -${Math.max(3, H * 0.006)}px 0 rgb(0 0 0 / .18);transform:translate3d(${-doorW / 2}px,${ceilY}px,${-zp}px)`, label), a: zp, b: zp });
+  });
+  // the works on glass easels, each under its own spot, with a pool of light on the floor
+  works.forEach((w) => {
+    const pg = w.h * 0.08, gw = w.w + pg * 2, fb = Math.max(3, w.h * 0.03);
+    const frameTop = -H * 0.045 - ceilY - w.h / 2, baseH = H * (mob ? 0.06 : 0.075), bw = Math.max(w.w * 0.3, w.h * 0.34);
+    const glassTop = frameTop - w.h * 0.1, glassH = wallH - baseH * 0.55 - glassTop;
+    const coneW = w.w * 1.3;
+    const el = add("easel", `width:${gw}px;height:${wallH}px;transform:translate3d(${w.x - gw / 2}px,${ceilY}px,${-w.z}px)`, `
+      <div class="e-cone" style="left:${gw / 2 - coneW / 2}px;top:0;width:${coneW}px;height:${frameTop + w.h * 0.55}px"></div>
+      <div class="e-head" style="left:${gw / 2 - w.h * 0.03}px;top:0;width:${w.h * 0.06}px;height:${w.h * 0.09}px"></div>
+      <div class="e-glass" style="left:0;top:${glassTop}px;width:${gw}px;height:${glassH}px"></div>
+      <div class="e-fr" style="left:${pg}px;top:${frameTop}px;width:${w.w}px;height:${w.h}px"><img src="${IMG(w.img)}" alt="" style="left:${fb}px;top:${fb}px;width:${w.w - fb * 2}px;height:${w.h - fb * 2}px" ${w.i < 4 ? "" : 'loading="lazy"'} decoding="async"></div>
+      <div class="e-base" style="left:${gw / 2 - bw / 2}px;top:${wallH - baseH}px;width:${bw}px;height:${baseH}px"></div>`);
+    const pool = add("w-pool", `width:${w.w * 1.7}px;height:${P * 0.9}px;transform:translate3d(${w.x - w.w * 0.85}px,${floorY - 1}px,${-(w.z - P * 0.5)}px) rotateX(-90deg)`);
+    easels.push({ w, el, pool });
+  });
+  const top = walk.getBoundingClientRect().top + window.scrollY;
+  G = { W, H, P, mob, hw, works, easels, segs, portals, spans, zEnd, top, height: walk.offsetHeight, cam: 0, yaw: 0, pitch: 0, look: { x: 0, y: 0, tx: 0, ty: 0 }, bob: 0, phase: 0, amp: 0, last: 0, hudI: -2, room: -2 };
+  drawMap();
+}
+function drawMap() {
+  const svg = $("#mmSvg"), a = G.portals[0], b = G.portals[3], X = (z) => 6 + ((z - a) / (b - a)) * 208;
+  let s = `<line x1="0" y1="20" x2="220" y2="20" stroke="currentColor" stroke-opacity=".2" />`;
+  G.spans.forEach(([p, q], r) => { s += `<rect x="${X(p)}" y="12" width="${X(q) - X(p)}" height="16" fill="${rgb(ROOMS[r].wall, 0.9)}" stroke="rgb(243 238 229 / .35)" stroke-width=".6" /><text x="${(X(p) + X(q)) / 2}" y="40" text-anchor="middle">${ROOMS[r].name}</text>`; });
+  G.works.forEach((w) => { s += `<line x1="${X(w.z)}" x2="${X(w.z)}" y1="${w.s < 0 ? 12 : 22}" y2="${w.s < 0 ? 18 : 28}" stroke="${w.room === 0 ? "#3a2f27" : "#f3eee5"}" stroke-width="1.2" />`; });
+  s += `<g id="mmDot"><circle cx="0" cy="20" r="5" fill="none" stroke="#f3eee5" stroke-width=".8" opacity=".6" /><circle cx="0" cy="20" r="2.6" fill="#f3eee5" /></g>`;
+  svg.innerHTML = s;
+  G.mapX = X;
+  G.dot = $("#mmDot", svg);
+}
+function hudShow(i) {
+  if (i === G.hudI) return;
+  const prev = G.hudI;
+  G.hudI = i;
+  if (i < 0) { hud.classList.add("off"); return; }
+  const fill = () => {
+    const w = G.works[i];
+    const l = $(".lab", hud);
+    $(".no", l).textContent = `II · ${ROOMS[w.room].name} · No. ${pad(i + 1)}`;
+    $(".ti", l).textContent = w.t;
+    $(".me", l).textContent = "Levan Bahçeşehir · Görselleştirme";
+    $(".tx", l).textContent = w.d;
+    $("#mmCount").textContent = `${pad(i + 1)} / ${pad(G.works.length)}`;
+    hud.classList.remove("swap", "off");
+  };
+  if (prev < 0) fill(); else { hud.classList.add("swap"); setTimeout(() => { if (G.hudI === i) fill(); }, 260); }
+}
+function roomShow(r) {
+  if (r === G.room) return;
+  G.room = r;
+  wRoom.classList.add("swap");
+  setTimeout(() => { $("b", wRoom).textContent = r < 0 ? "Giriş holü" : r > 2 ? "Konutlar" : ROOMS[r].name; wRoom.classList.remove("swap"); }, 250);
+}
+function updateWalk(y, vh) {
+  if (!G) return;
+  const rel = y - G.top;
+  if (rel < -vh * 1.2 || rel > G.height + vh * 0.2) return;
+  const t = clamp(rel / (G.height - G.H));
+  const cam = t * G.zEnd, P = G.P;
+  const v = cam - G.last;
+  G.last = cam;
+  // head: sway toward the nearest work, a little bob while walking, and the mouse look
+  let sway = 0;
+  for (const e of G.easels) { const d = e.w.z - cam; sway += e.w.s * Math.exp(-(((d - P * 0.95) / (P * 0.65)) ** 2)); }
+  G.yaw = lerp(G.yaw, clamp(sway, -1, 1) * (G.mob ? 4 : 7) + G.look.x * 3.2, 0.08);
+  G.pitch = lerp(G.pitch, G.look.y * -1.8, 0.08);
+  G.amp = lerp(G.amp, clamp(Math.abs(v) / 14), 0.08);
+  G.phase += Math.abs(v) / (P * 0.5);
+  G.bob = Math.sin(G.phase * Math.PI * 2) * G.amp * (G.mob ? 1.6 : 2.6);
+  world.style.transform = `rotateX(${G.pitch.toFixed(3)}deg) rotateY(${G.yaw.toFixed(3)}deg) translate3d(0, ${G.bob.toFixed(2)}px, ${cam.toFixed(1)}px)`;
+  // culling: anything behind the eye or deep in the fog is hidden
+  for (const s of G.segs) { const vis = s.b > cam - P * 0.98 && s.a < cam + P * 9; if (vis !== s.vis) { s.vis = vis; s.el.style.visibility = vis ? "" : "hidden"; } }
+  let best = -1, bd = 1e9;
+  for (const e of G.easels) {
+    const d = e.w.z - cam;
+    const o = smooth(P * 8, P * 5.2, d) * smooth(-P * 0.985, -P * 0.93, d);
+    const vis = o > 0.005;
+    if (vis !== e.vis) { e.vis = vis; e.el.style.visibility = e.pool.style.visibility = vis ? "" : "hidden"; }
+    if (vis && Math.abs(o - (e.o || 0)) > 0.004) { e.o = o; e.el.style.opacity = o.toFixed(3); e.pool.style.opacity = o.toFixed(3); }
+    if (d > -P * 0.25 && d < P * 2.6) { const k = Math.abs(d - P * 0.7); if (k < bd) { bd = k; best = e.w.i; } }
+  }
+  hudShow(cam > G.zEnd - P * 0.5 ? -1 : best);
+  // which room is ahead, its fog colour, the minimap dot, the exit fade
+  const look = cam + P * 1.6;
+  let r = -1;
+  for (let k = 0; k < 4; k++) if (look >= G.portals[k]) r = k;
+  const here = cam + P * 0.4;
+  let rr = -1;
+  for (let k = 0; k < 4; k++) if (here >= G.portals[k]) rr = k;
+  roomShow(rr);
+  const fc = r < 0 ? VEST.fog : r > 2 ? [14, 21, 29] : ROOMS[r].fog;
+  fog.style.background = `radial-gradient(ellipse ${G.mob ? 46 : 30}% ${G.mob ? 22 : 30}% at 50% 44%, ${rgb(fc, 0.92)}, ${rgb(fc, 0.35)} 55%, ${rgb(fc, 0)})`;
+  if (G.dot) G.dot.setAttribute("transform", `translate(${G.mapX(clamp(cam + P, G.portals[0], G.portals[3])).toFixed(1)} 0)`);
+  wEnd.style.opacity = smooth(G.zEnd - P * 0.55, G.zEnd, cam).toFixed(3);
+  wHint.style.opacity = String(1 - smooth(P * 0.05, P * 0.5, cam));
+  const out = (1 - smooth(G.zEnd - P * 0.6, G.zEnd - P * 0.2, cam)).toFixed(3);
+  wTop.style.opacity = mmap.style.opacity = out;
+}
+function buildFlat() {
+  walk.classList.add("flat");
+  $("#flat").innerHTML = ROOMS.map((R, r) => `
+    <div class="flat-room"><div class="lintel"><span class="insc">II · ${R.name}</span></div><div class="hang">${WALK.map((w, i) => ({ w, i })).filter((x) => x.w.room === r).map(({ w, i }) => `
+      <figure class="wk" style="cursor:default"><span class="fr"><span class="in" style="display:block"><img src="${IMG(w.img)}" alt="${w.t}" loading="lazy"></span></span>
+      <figcaption class="lab"><span class="no">No. ${pad(i + 1)} · Görselleştirme</span><span class="ti">${w.t}</span><span class="tx">${w.d}</span></figcaption></figure>`).join("")}</div></div>`).join("");
+}
+if (can3d) {
+  buildWalk();
+  if (fine) addEventListener("pointermove", (e) => { if (!G) return; G.look.x = (e.clientX / innerWidth - 0.5) * 2; G.look.y = (e.clientY / innerHeight - 0.5) * 2; }, { passive: true });
+} else buildFlat();
+
+/* ── Resize */
+let rz;
+addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (can3d) buildWalk(); measureRooms(); curRoom = null; salonP = -1; }, 180); });
+addEventListener("load", () => { measureRooms(); if (G) { G.top = walk.getBoundingClientRect().top + window.scrollY; G.height = walk.offsetHeight; } });
+measureRooms();
+
+/* ── One loop */
+let frame = 0, lastY = 0;
+function loop(now) {
+  if (lenis) lenis.raf(now);
+  const y = scrollY(), vh = innerHeight;
+  updateWalk(y, vh);
+  updateSalon(vh);
+  if (frame++ % 4 === 0) setRoom(y);
+  if (fine && !reduce && frame % 6 === 0 && Math.abs(y - lastY) > 1) { const t = document.elementFromPoint(ctx, cty); const c = t && t.closest("[data-cursor]"); cur.classList.toggle("big", !!c); if (c) $("span", cur).textContent = c.dataset.cursor; }
+  if (frame % 6 === 0) lastY = y;
+  if (fine && !reduce) {
+    cx = lerp(cx, ctx, 0.2); cy = lerp(cy, cty, 0.2);
+    cur.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0)`;
+    tilt.x = lerp(tilt.x, tilt.tx, 0.08); tilt.y = lerp(tilt.y, tilt.ty, 0.08); tilt.sx = lerp(tilt.sx, tilt.tsx, 0.08);
+    invite.style.setProperty("--rx", `${tilt.x.toFixed(2)}deg`); invite.style.setProperty("--ry", `${tilt.y.toFixed(2)}deg`); invite.style.setProperty("--sx", `${tilt.sx.toFixed(1)}%`);
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+/* Maket · home. The model is a fixed stage behind every chapter; chapters are plates of text laid over it, and the
+   pinned chapters hold still while the scroll drives the model (camera, sun, highlighted homes, the rising blocks). */
+
+/* ── The stage ── */
+.stage { position: fixed; inset: 0; z-index: 0; opacity: var(--stage-o, 1); transition: opacity 0.25s linear; }
+.stage .maket-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
+.stage.dragging .maket-canvas { cursor: grabbing; }
+.stage.over .maket-canvas { cursor: pointer; }
+:is(html:not(.js), html.no-gl) .stage, html.no-gl .stage .maket-canvas { display: none; }
+
+/* MapLibre's own stylesheet makes its container position: relative; the id keeps this layer fixed */
+#mapstage { position: fixed; inset: 0; z-index: 1; opacity: var(--map-o, 0); pointer-events: none; transition: opacity 0.2s linear; background: var(--paper); }
+.mapstage .maplibregl-canvas { outline: none; }
+.mapstage .maplibregl-ctrl-attrib { pointer-events: auto; font-size: 10px; }
+.map-pin { display: grid; justify-items: center; gap: 0.35rem; pointer-events: none; }
+.map-pin i { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 4px rgb(24 24 26 / 0.15); }
+.map-pin span { font: 500 0.6875rem/1.2 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; background: var(--paper); color: var(--ink); padding: 0.35rem 0.55rem; border-radius: 0.4rem; white-space: nowrap; box-shadow: 0 6px 20px -8px rgb(0 0 0 / 0.25); }
+.map-pin b { font-weight: 500; color: var(--wood-ink); }
+.map-pin.levan i { width: 2.6rem; height: 2.6rem; background: radial-gradient(circle, #fbf9f5 0 45%, #2b2a28 46% 52%, transparent 53%); box-shadow: 0 10px 30px -6px rgb(0 0 0 / 0.35); }
+
+/* ── Chapters ── */
+main { position: relative; z-index: 2; }
+/* layers inside main: stage 0, map 1, labels 2, chapters 3 */
+.ch { position: relative; z-index: 3; min-height: 100svh; pointer-events: none; }
+.ch a, .ch button, .ch details, .ch .plate, .ch figure, .ch input, .ch .pcard { pointer-events: auto; }
+.ch-in { width: min(100% - 2 * var(--gut), var(--shell)); margin-inline: auto; min-height: 100svh; display: flex; align-items: center; padding-block: calc(var(--hdr) + 2rem) 3rem; }
+.ch .plate { width: min(100%, 31rem); }
+.ch-r .ch-in { justify-content: flex-end; }
+.ch .plate > * + * { margin-top: 1rem; }
+.ch .plate .lede { margin-top: 1.1rem; }
+.ch .plate .btns { margin-top: 1.6rem; }
+.ch-cap { position: absolute; right: var(--gut); bottom: 1.4rem; font: 500 0.6875rem/1.3 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.poster { display: none; }
+:is(html:not(.js), html.no-gl) .poster { display: block; width: min(100% - 2 * var(--gut), var(--shell)); margin: 0 auto 4rem; border-radius: var(--r); }
+
+/* Hero */
+.ch-hero .ch-in { align-items: flex-end; padding-bottom: clamp(3rem, 2rem + 4vh, 6rem); }
+.plate-hero { width: min(100%, 36rem) !important; }
+.plate-hero .display { margin-top: 0.9rem; }
+.hint { position: absolute; left: 50%; bottom: 1.4rem; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 0.6rem; font: 500 0.6875rem/1 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); opacity: 0; transition: opacity 1s var(--ease) 0.6s; }
+.ready-gl .hint { opacity: 1; }
+.hint-ico { width: 1.6rem; height: 0.8rem; border: 1px solid currentColor; border-radius: 50%; position: relative; }
+.hint-ico::after { content: ""; position: absolute; top: -3px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: currentColor; animation: orbit 3.2s linear infinite; offset-path: ellipse(50% 50% at 50% 50%); }
+@keyframes orbit { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+.hint-touch { display: none; }
+@media (pointer: coarse) { .hint-mouse { display: none; } .hint-touch { display: inline; } }
+
+/* Levan firsts */
+.firsts { display: grid; gap: 0.85rem; margin-top: 1.4rem !important; }
+.firsts li { display: grid; grid-template-columns: 1.8rem 1fr; gap: 0.4rem; padding-top: 0.85rem; border-top: 1px solid var(--rule-2); }
+.firsts b { font: 400 0.9rem/1.4 var(--f-display); color: var(--wood-ink); }
+.firsts p { color: var(--ink-2); font-size: 0.9375rem; margin-top: 0.2rem; }
+.partner { display: flex; gap: 0.9rem; align-items: center; padding-top: 1rem; border-top: 1px solid var(--rule-2); font-size: 0.875rem; color: var(--ink-2); }
+.partner img { width: 2.6rem; flex: none; }
+html[data-light="night"] .partner img { filter: invert(1) hue-rotate(180deg) brightness(1.4); }
+
+/* ── Pinned chapters ── */
+.pin { height: calc(var(--steps) * 100svh + 50svh); }
+.pin-sticky { position: sticky; top: 0; height: 100svh; }
+.pin-sticky .ch-in { height: 100svh; min-height: 0; }
+.pin-steps { position: absolute; inset: 0 0 50svh; display: grid; grid-template-rows: repeat(var(--steps), 1fr); visibility: hidden; }
+.pin-plates { display: grid; width: min(100%, 31rem); }
+.pin-plates > .plate { grid-area: 1 / 1; width: 100%; align-self: center; }
+.js .pin-plate { opacity: 0; visibility: hidden; transform: translateY(14px); transition: opacity 0.6s var(--ease), transform 0.8s var(--ease), visibility 0s linear 0.6s; }
+.js .pin-plate.on { opacity: 1; visibility: visible; transform: none; transition-delay: 0.08s, 0.08s, 0s; }
+:is(html:not(.js), html.no-gl) .pin { height: auto; }
+:is(html:not(.js), html.no-gl) .pin-sticky { position: static; height: auto; }
+:is(html:not(.js), html.no-gl) .pin-sticky .ch-in { height: auto; }
+:is(html:not(.js), html.no-gl) .pin-plates { gap: 1rem; }
+:is(html:not(.js), html.no-gl) .pin-plates > .plate { grid-area: auto; }
+:is(html:not(.js), html.no-gl) .pin-steps { display: none; }
+
+.kinds { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.4rem !important; }
+.kinds li { font: 500 0.71875rem/1 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 0.7rem; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-2); }
+.pin-plate .btn { margin-top: 1.2rem !important; }
+.pickers { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pickers button { min-height: 2.6rem; padding: 0.5rem 0.95rem; border-radius: 999px; border: 1px solid var(--rule); font-size: 0.9rem; transition: border-color 0.3s, background-color 0.3s, color 0.3s; }
+.pickers button:hover, .pickers button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* A day */
+.day-plate { display: grid; }
+.day-clock { font: 300 clamp(2.6rem, 2rem + 2vw, 3.6rem)/1 var(--f-display); letter-spacing: -0.03em; margin-top: 1.1rem !important; display: flex; align-items: baseline; }
+.day-clock i { font-style: normal; color: var(--ink-3); animation: tick 2s steps(1) infinite; }
+@keyframes tick { 50% { opacity: 0.25; } }
+.moments { display: grid; margin-top: 1.1rem !important; }
+.moments li { grid-area: 1 / 1; }
+.js .moments li { opacity: 0; transform: scale(0.98); transition: opacity 0.7s var(--ease), transform 0.9s var(--ease); }
+.js .moments li.on { opacity: 1; transform: none; }
+.moments figure { border-radius: 0.8rem; overflow: hidden; position: relative; }
+.moments img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; }
+.moments figcaption { position: absolute; left: 0.6rem; bottom: 0.6rem; display: flex; gap: 0.5rem; align-items: baseline; background: rgb(14 14 14 / 0.62); color: #f3efe8; padding: 0.4rem 0.65rem; border-radius: 999px; font-size: 0.8125rem; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.moments figcaption b { font: 500 0.75rem/1 var(--f-mono); }
+:is(html:not(.js), html.no-gl) .moments { gap: 0.6rem; }
+:is(html:not(.js), html.no-gl) .moments li { grid-area: auto; }
+.day-plate .note { margin-top: 0.9rem; }
+
+/* Location */
+.dests { margin-top: 1.4rem !important; border-top: 1px solid var(--rule-2); }
+.dests li { display: grid; grid-template-columns: 4.2rem 1fr; gap: 0.8rem; align-items: baseline; padding-block: 0.8rem; border-bottom: 1px solid var(--rule-2); }
+.dests b { font: 400 1.75rem/1 var(--f-display); letter-spacing: -0.02em; }
+.dests b small { font: 500 0.6875rem/1 var(--f-mono); margin-left: 0.2rem; color: var(--ink-3); letter-spacing: 0.04em; }
+.dests span { font-size: 0.875rem; color: var(--ink-3); }
+.dests strong { display: block; font-weight: 500; color: var(--ink); font-size: 1rem; }
+
+/* Building */
+.diary { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.45rem; margin-top: 1.4rem !important; }
+.diary figure { border-radius: 0.5rem; overflow: hidden; aspect-ratio: 3 / 4; cursor: zoom-in; }
+.diary img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease), filter 0.8s; filter: grayscale(0.6) contrast(0.95); }
+.diary li.on img, .diary figure:hover img { filter: none; transform: scale(1.04); }
+.diary time { display: block; font: 500 0.625rem/1.25 var(--f-mono); letter-spacing: 0.04em; color: var(--ink-3); margin-top: 0.45rem; text-transform: uppercase; }
+.diary p { font-size: 0.75rem; line-height: 1.3; color: var(--ink-2); margin-top: 0.15rem; }
+/* entries not yet reached: the photo waits in grey; the text stays fully legible */
+.js .diary li figure { opacity: 0.5; transition: opacity 0.5s; }
+.js .diary li.on figure, .js .diary li.done figure { opacity: 1; }
+
+/* Track record & questions: the model sinks back behind the paper */
+.ch-flat { min-height: 0; padding-block: clamp(5rem, 3rem + 6vw, 9rem); }
+.flat-head { max-width: 46rem; }
+.flat-head .h2 { margin-top: 0.8rem; }
+.flat-head .lede { margin-top: 1.2rem; }
+.figs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 3rem; }
+.figs > div { padding-top: 1rem; border-top: 1px solid var(--rule); display: grid; gap: 0.5rem; }
+.figs dd.num { font: 300 clamp(2.4rem, 1.8rem + 2vw, 3.6rem)/1 var(--f-display); letter-spacing: -0.03em; }
+.figs dd.num small { font-size: 0.4em; color: var(--ink-3); }
+.pcards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 0.5rem + 2vw, 2.5rem); margin-top: 3.5rem; }
+.pcard { display: grid; gap: 0.6rem; text-decoration: none; }
+.pcard-pic { border-radius: var(--r); overflow: hidden; aspect-ratio: 16 / 10; margin-bottom: 0.6rem; }
+.pcard-pic img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.pcard:hover .pcard-pic img { transform: scale(1.04); }
+.pcard p:last-child { color: var(--ink-2); }
+.also { margin-top: 2.5rem; color: var(--ink-2); }
+.faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 1rem + 4vw, 6rem); }
+.faq-grid .h2 { margin-block: 0.8rem 1.2rem; }
+.faq details { border-top: 1px solid var(--rule); padding-block: 1.1rem; }
+.faq details:last-child { border-bottom: 1px solid var(--rule); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 1rem; font: 400 1.2rem/1.35 var(--f-display); letter-spacing: -0.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--f-mono); color: var(--ink-3); transition: transform 0.4s var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { margin-top: 0.8rem; color: var(--ink-2); max-width: 40rem; }
+@media (max-width: 56rem) { .faq-grid, .pcards { grid-template-columns: 1fr; } .figs { grid-template-columns: 1fr; } }
+
+/* Invitation */
+.ch-invite .ch-in { justify-content: flex-end; }
+.plate-invite { width: min(100%, 33rem) !important; }
+.plate-invite address { font-style: normal; display: grid; gap: 0.3rem; margin-top: 1.6rem !important; padding-top: 1.2rem; border-top: 1px solid var(--rule-2); font-size: 0.875rem; color: var(--ink-2); }
+
+/* ── Phones: the model holds the top of the screen, the plates sit below as sheets ── */
+@media (max-width: 47.99rem) {
+  .ch-in { align-items: flex-end; padding-bottom: 1rem; }
+  .ch-r .ch-in, .ch-invite .ch-in { justify-content: flex-start; }
+  .ch .plate, .pin-plates { width: 100%; }
+  .ch .plate { padding: 1.2rem; }
+  .pin-sticky .ch-in { align-items: flex-end; }
+  .pin-plates > .plate { align-self: end; max-height: 56svh; overflow: auto; }
+  .day-plate .moments img { aspect-ratio: 16 / 7; }
+  .day-plate .h2 { font-size: 1.7rem; }
+  .diary { grid-template-columns: repeat(6, 4.4rem); overflow-x: auto; scrollbar-width: none; }
+  .diary p { display: none; }
+  .ch-cap { display: none; }
+  .hint { bottom: auto; top: calc(var(--hdr) + 0.6rem); }
+  .plate-hero .lede { font-size: 1rem; }
+}
+@media (max-width: 47.99rem) and (max-height: 760px) {
+  .ch-hero .plate .lede { display: none; }
+}
+
+.rm .stage { transition: none; }
+
+/* Without WebGL (or without script) the page reads as a plain document: pins collapse, every plate and moment shows,
+   and the model's rendered stills stand in for it. */
+:is(html:not(.js), html.no-gl) .pin-plate, :is(html:not(.js), html.no-gl) .moments li { opacity: 1; visibility: visible; transform: none; }
+:is(html:not(.js), html.no-gl) .ch { min-height: 0; }
+:is(html:not(.js), html.no-gl) .ch-in { min-height: 0; padding-block: 2rem; }
+:is(html:not(.js), html.no-gl) .ch-hero .ch-in { padding-top: calc(var(--hdr) + 3rem); }
+:is(html:not(.js), html.no-gl) .hint, :is(html:not(.js), html.no-gl) .ch-cap { display: none; }
+:is(html:not(.js), html.no-gl) .ch-r .ch-in, :is(html:not(.js), html.no-gl) .ch-invite .ch-in { justify-content: flex-start; }
+:is(html:not(.js), html.no-gl) body { background: var(--paper); }

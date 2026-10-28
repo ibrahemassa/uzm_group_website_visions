@@ -1,0 +1,232 @@
+/* Ufuk · Levan Bahçeşehir: the flagship as a feature film in eleven scenes. */
+
+.lv-logo { height: clamp(2.2rem, 1.6rem + 1.6vw, 3.2rem); width: auto; margin-bottom: 1.5rem; }
+.lv-slogan { margin-top: 1rem; font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem); font-weight: 600; font-stretch: 116%; text-transform: uppercase; letter-spacing: 0.02em; }
+.lv-slogan em { font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: none; font-size: 1.15em; letter-spacing: 0; font-stretch: 100%; }
+.ttl .lv-meta { margin: 1.25rem 0 0; }
+
+/* Sahne 01 · project and credits */
+.pj-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr); gap: clamp(2.5rem, 1rem + 5vw, 7rem); align-items: start; }
+.pj .h2 { margin-top: 1.1rem; }
+.pj-intro { margin-top: 2rem; font-size: clamp(1.15rem, 1rem + 0.55vw, 1.45rem); line-height: 1.5; font-weight: 500; font-stretch: 104%; max-width: 40rem; }
+.pj-body { margin-top: 1.5rem; color: var(--soft); max-width: 38rem; }
+.trust { margin-top: 2.75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); max-width: 38rem; }
+.trust-row { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.1rem; }
+.trust-bld { height: 3.6rem; width: auto; filter: invert(1); }
+.trust-x { width: 1.6rem; height: 1px; background: var(--g); transform: rotate(-45deg); }
+.trust-uzm { height: 2.6rem; width: auto; filter: invert(1); }
+.kunye { position: sticky; top: 7rem; padding: 2rem; border: 1px solid var(--line); background: var(--k2); }
+.kunye-logo { height: 2.8rem; width: auto; margin-bottom: 1.75rem; }
+.kunye .label { margin-bottom: 1rem; }
+
+/* Sahne 02 · the day clock above the scrubbed day */
+.day-clock { display: flex; align-items: center; gap: 0.8rem; font-size: 0.66rem; font-weight: 600; font-stretch: 116%; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); }
+.dc-bar { position: relative; width: clamp(6rem, 4rem + 8vw, 14rem); height: 1px; background: rgb(242 242 242 / 0.3); }
+.dc-bar i { position: absolute; top: -3px; left: calc(var(--k, 0) * 100%); width: 7px; height: 7px; border-radius: 50%; background: var(--w); translate: -50% 0; box-shadow: 0 0 10px rgb(255 255 255 / 0.8); }
+
+/* Sahne 03 · location */
+.konum-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.7fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: center; }
+.golf-fig { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.gf-n { margin-top: 0.75rem; font-size: clamp(2.6rem, 2rem + 2.4vw, 4.2rem); line-height: 1; }
+.gf-n small { font-size: 0.34em; color: var(--g); margin-left: 0.4rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+.gf-t { margin-top: 0.9rem; color: var(--soft); }
+.gf-note { margin-top: 1.5rem; line-height: 1.6; }
+
+.splice-fig { margin-top: clamp(4rem, 3rem + 4vw, 7rem); }
+.splice { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--k3); touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
+.splice img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.splice-night { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--x) * 1%)); }
+.splice-line { position: absolute; top: 0; bottom: 0; left: calc(var(--x) * 1%); width: 1px; background: var(--w); box-shadow: 0 0 14px rgb(255 255 255 / 0.6); }
+.splice-line::before, .splice-line::after { content: ""; position: absolute; left: -5px; width: 11px; height: 100%; background: repeating-linear-gradient(transparent 0 10px, rgb(242 242 242 / 0.9) 10px 14px, transparent 14px 26px); mask: linear-gradient(90deg, #000 0 3px, transparent 3px 8px, #000 8px); -webkit-mask: linear-gradient(90deg, #000 0 3px, transparent 3px 8px, #000 8px); opacity: 0.5; }
+.splice-knob { position: absolute; top: 50%; left: calc(var(--x) * 1%); translate: -50% -50%; width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--w); color: var(--k); display: grid; place-items: center; box-shadow: 0 6px 30px rgb(0 0 0 / 0.4); }
+.splice-knob:focus-visible { outline: 2px solid var(--w); outline-offset: 4px; }
+.splice-tag { position: absolute; top: 1rem; padding: 0.4rem 0.65rem; background: rgb(10 10 10 / 0.68); color: var(--w); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.splice-d { left: 1rem; }
+.splice-n { right: 1rem; }
+.splice-cap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 0.85rem; }
+
+.rg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 0.5rem + 2vw, 2.5rem); margin-top: clamp(4rem, 3rem + 4vw, 7rem); }
+.rg-ph { aspect-ratio: 4 / 3; overflow: hidden; background: var(--k3); }
+.rg-ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.rg li:hover img { transform: scale(1.05); }
+.rg .cap-note { margin-top: 0.6rem; }
+.rg .label { margin-top: 1.2rem; }
+.rg .h4 { margin-top: 0.5rem; }
+.rg li > p:last-child { margin-top: 0.7rem; color: var(--soft); font-size: 0.97rem; }
+
+/* Sahne 04 · six standards past one frame */
+.why { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(2rem, 1rem + 5vw, 7rem); align-items: start; }
+.why-stage { position: sticky; top: calc(50svh - min(34vw, 30rem) / 2); }
+.why-frame { position: relative; aspect-ratio: 4 / 3.3; overflow: hidden; background: var(--k3); }
+.why-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; clip-path: inset(0 0 0 100%); transform: scale(1.08); transition: clip-path 0.9s var(--ease), transform 1.6s var(--ease), opacity 0s 0.9s; }
+.why-frame img.on { opacity: 1; clip-path: inset(0); transform: none; transition: clip-path 0.9s var(--ease), transform 1.6s var(--ease), opacity 0s; z-index: 2; }
+.why-frame img.was { opacity: 1; z-index: 1; transition: none; clip-path: inset(0); }
+.why-meta { display: flex; justify-content: space-between; margin-top: 0.85rem; color: var(--g); }
+.why-item { min-height: 62svh; display: flex; flex-direction: column; justify-content: center; padding-block: 3rem; border-top: 1px solid var(--line); opacity: 0.32; transition: opacity 0.6s var(--ease); }
+.why-item:last-child { border-bottom: 1px solid var(--line); }
+.why-item.on { opacity: 1; }
+.why-pic { display: none; }
+.why-i { color: var(--w); margin-right: 0.6rem; }
+.why-item .h3 { margin-top: 1rem; }
+.why-item .body { margin-top: 1rem; color: var(--soft); max-width: 32rem; }
+
+/* Sahne 05 · site plan */
+.vz-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.7fr); gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: center; }
+.vz-map { position: relative; overflow: hidden; background: var(--k3); }
+.vz-map > img { width: 100%; height: auto; }
+.vz-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.vz-dim { opacity: 0; transition: opacity 0.6s var(--ease); }
+.vz-map.lit .vz-dim { opacity: 0.66; }
+.vz-hole { opacity: 0; transition: opacity 0.6s var(--ease); }
+.vz-hole.on { opacity: 1; }
+.vz-edge { fill: none; stroke: var(--w); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s var(--ease); }
+.vz-edge.on { stroke-dashoffset: 0; }
+.vz-pin { position: absolute; translate: -50% -50%; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: rgb(10 10 10 / 0.75); border: 1px solid var(--w); font-size: 0.74rem; font-weight: 650; display: grid; place-items: center; transition: background-color 0.3s, color 0.3s, transform 0.4s var(--ease); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.vz-pin[aria-pressed="true"], .vz-pin:hover { background: var(--w); color: var(--k); transform: scale(1.1); }
+.vz-fig .cap-note { margin-top: 0.8rem; }
+.zones { display: grid; }
+.zone { position: relative; padding: 1.5rem 0 1.6rem; border-top: 1px solid var(--line); transition: opacity 0.5s var(--ease); }
+.zone:last-child { border-bottom: 1px solid var(--line); }
+.zone.dim { opacity: 0.4; }
+.zone .h4 { margin-top: 0.5rem; }
+.zone .h4 button { text-align: left; font: inherit; letter-spacing: inherit; text-transform: inherit; padding: 0.25rem 0; }
+.zone .h4 button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.zone-sub { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--g); margin-top: 0.3rem; }
+.zone p:last-of-type { color: var(--soft); margin-top: 0.6rem; font-size: 0.96rem; }
+.zone-bar { position: absolute; left: 0; top: -1px; height: 1px; width: 100%; background: var(--w); transform-origin: left; transform: scaleX(0); }
+.zone.run .zone-bar { animation: zone var(--dwell, 3600ms) linear forwards; }
+.zone.on .zone-bar { transform: scaleX(1); }
+@keyframes zone { to { transform: scaleX(1); } }
+
+/* Sahne 06 · the light table */
+.units { padding-bottom: clamp(3rem, 2rem + 3vw, 5rem); }
+.unit-nav { position: sticky; top: 0; z-index: 30; transition: transform 0.6s var(--ease); }
+.hdr-in .unit-nav { transform: translateY(var(--hdr)); }
+.unit-nav .film-strip { padding-block: 1.05rem; --base: #151515; }
+.unit-nav ol { display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; }
+.unit-nav ol::-webkit-scrollbar { display: none; }
+.unit-nav a { display: flex; align-items: baseline; gap: 0.55rem; white-space: nowrap; padding: 0.55rem 0.9rem; font-size: 0.68rem; font-weight: 650; font-stretch: 116%; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(242 242 242 / 0.66); border: 1px solid transparent; transition: color 0.3s, border-color 0.3s, background-color 0.3s; }
+.unit-nav a b { font-weight: 600; color: var(--g); font-variant-numeric: tabular-nums; }
+.unit-nav a:hover { color: var(--w); }
+.unit-nav a[aria-current] { color: var(--w); border-color: rgb(242 242 242 / 0.5); background: rgb(242 242 242 / 0.06); }
+.unit-nav a[aria-current] b { color: var(--w); }
+.unit-list { padding-top: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+.unit { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(1.5rem, 0.5rem + 3vw, 4rem); padding-block: clamp(3rem, 2rem + 3vw, 5rem); border-top: 1px solid var(--line); scroll-margin-top: 5rem; }
+.unit:first-child { border-top: 0; }
+.lt { position: sticky; top: 6rem; align-self: start; background: #efeeea; color: var(--k); padding: clamp(0.75rem, 0.5rem + 1vw, 1.5rem); --fg: #0a0a0a; --line: rgb(10 10 10 / 0.14); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.06), 0 30px 80px rgb(0 0 0 / 0.5); }
+.lt-head { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.lt-head .tabs-row button { color: var(--k); }
+.lt-head .tabs-row button[aria-selected="true"] { background: var(--k); color: #efeeea; border-color: var(--k); }
+.lt-zoom { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.5rem; padding: 0 0.95rem; font-size: 0.66rem; font-weight: 650; font-stretch: 116%; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgb(10 10 10 / 0.3); transition: background-color 0.3s; margin-left: auto; }
+.lt-zoom:hover { background: rgb(10 10 10 / 0.07); }
+.lt-sheets { position: relative; }
+.lt-sheet + .lt-sheet { margin-top: 1rem; }
+.js .lt-sheet + .lt-sheet { margin-top: 0; }
+.js .lt-sheet:not(.on) { display: none; }
+.lt-sheet img { width: 100%; height: auto; mix-blend-mode: multiply; cursor: zoom-in; }
+.lt-sheet.on img { animation: sheet-in 0.6s var(--ease); }
+@keyframes sheet-in { from { opacity: 0; transform: translateY(0.6rem); } }
+.lt-note { margin-top: 0.6rem; font-size: 0.7rem; letter-spacing: 0.06em; color: rgb(10 10 10 / 0.66); }
+.unit-n { font-size: clamp(2.6rem, 2rem + 2vw, 4rem); line-height: 1; font-weight: 700; font-stretch: 125%; color: transparent; -webkit-text-stroke: 1px rgb(242 242 242 / 0.35); margin-bottom: 1rem; }
+.unit-info .label { margin-bottom: 0.7rem; }
+.unit-blurb { margin-top: 1rem; color: var(--soft); max-width: 28rem; }
+.unit-tbl { width: 100%; margin-top: 1.75rem; font-variant-numeric: tabular-nums; }
+.unit-tbl th, .unit-tbl td { text-align: left; padding: 0.75rem 0.75rem 0.75rem 0; border-bottom: 1px solid var(--line); }
+.unit-tbl thead th { font-size: 0.66rem; font-weight: 600; font-stretch: 116%; letter-spacing: 0.16em; text-transform: uppercase; color: var(--g); border-bottom-color: rgb(242 242 242 / 0.4); }
+.unit-tbl tbody th { font-weight: 650; font-stretch: 112%; }
+.unit-tbl td { font-size: 1.05rem; font-stretch: 108%; font-weight: 500; }
+.unit-tbl small { color: var(--g); font-size: 0.72em; }
+.unit-pic { position: relative; margin-top: 2rem; aspect-ratio: 16 / 9; overflow: hidden; background: var(--k3); }
+.unit-pic img { width: 100%; height: 100%; object-fit: cover; }
+.unit-pic figcaption { position: absolute; left: 0.85rem; bottom: 0.7rem; text-shadow: 0 1px 8px rgb(0 0 0 / 0.8); }
+
+.all-plans { padding-block: clamp(4rem, 3rem + 4vw, 7rem); }
+.all-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem 2rem; margin-bottom: 2rem; }
+.all-tbl tbody th { vertical-align: top; }
+.all-tbl tr.grp > * { border-top: 1px solid var(--fg); }
+.all-plans .cta { margin-top: 2.5rem; }
+.tbl-wrap:focus-visible { outline: 2px solid var(--fg); outline-offset: 4px; }
+
+/* Sahne 07 · amenities */
+.af { width: clamp(16rem, 12rem + 14vw, 26rem); }
+.af-ph { aspect-ratio: 4 / 3; overflow: hidden; background: #000; }
+.af-ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.af:hover .af-ph img { transform: scale(1.04); }
+.af .edge { padding-top: 0.6rem; font-size: 0.64rem; color: rgb(242 242 242 / 0.8); }
+.af .edge span { color: var(--g); margin-right: 0.4rem; }
+.amen-note { margin-top: 1.5rem; }
+.amen-h { margin-top: clamp(3rem, 2rem + 2vw, 4.5rem); margin-bottom: 1rem; }
+.amen-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; counter-reset: a; }
+.amen-list li { display: flex; gap: 1rem; align-items: baseline; padding: 0.95rem 0; border-top: 1px solid var(--line); font-size: 1.02rem; font-weight: 600; font-stretch: 112%; text-transform: uppercase; letter-spacing: 0.03em; }
+.amen-list li::before { counter-increment: a; content: counter(a, decimal-leading-zero); font-size: 0.66rem; color: var(--g); letter-spacing: 0.12em; font-weight: 600; }
+
+/* Sahne 08 · the 360° projector and the diary */
+.tour { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.6fr); gap: clamp(1.5rem, 1rem + 2vw, 3rem); align-items: stretch; }
+.tour-stage { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #000; }
+.tour-stage > img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.4) brightness(0.7); }
+.tour-stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+.tour-cover { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1rem; text-align: center; background: radial-gradient(closest-side, rgb(10 10 10 / 0.55), transparent); }
+.tour-stage.live .tour-cover, .tour-stage.live .tour-cap, .tour-stage.live .tour-tc { display: none; }
+.tour-start { display: grid; justify-items: center; gap: 1rem; }
+.tour-ring { width: 5.5rem; height: 5.5rem; border-radius: 50%; border: 1px solid var(--w); display: grid; place-items: center; transition: background-color 0.4s, color 0.4s, transform 0.6s var(--ease); background: rgb(10 10 10 / 0.4); }
+.tour-start:hover .tour-ring { background: var(--w); color: var(--k); transform: scale(1.06); }
+.tour-go { font-size: 0.78rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.16em; text-transform: uppercase; }
+.tour-cap { position: absolute; left: 1rem; bottom: 0.85rem; }
+.tour-tc { position: absolute; right: 1rem; top: 1rem; color: var(--soft); }
+.tour-reel { display: flex; flex-direction: column; }
+.tour-dates { margin-top: 0.8rem; }
+.tour-dates li { border-top: 1px solid var(--line); }
+.tour-dates li:last-child { border-bottom: 1px solid var(--line); }
+.tour-dates button { width: 100%; display: grid; grid-template-columns: 2rem 1fr auto; gap: 0.5rem; align-items: baseline; text-align: left; padding: 0.85rem 0.4rem; font-size: 0.95rem; font-weight: 600; font-stretch: 110%; color: rgb(242 242 242 / 0.66); transition: color 0.3s, background-color 0.3s; }
+.tour-dates button b { font-size: 0.66rem; color: var(--g); letter-spacing: 0.1em; font-variant-numeric: tabular-nums; }
+.tour-dates button small { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--g); }
+.tour-dates button:hover { color: var(--w); }
+.tour-dates button[aria-pressed="true"] { color: var(--w); background: rgb(242 242 242 / 0.06); }
+.tour-dates button[aria-pressed="true"] b { color: var(--w); }
+.tour-tab { margin-top: auto; padding-top: 1.25rem; }
+.diary { margin-top: clamp(4rem, 3rem + 4vw, 7rem); }
+.diary-h { margin-bottom: 1rem; }
+
+/* Sahne 09 · storyboard */
+.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.75rem, 0.5rem + 1vw, 1.5rem); }
+.board li.w { grid-column: span 2; }
+.board a { display: block; position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--k3); cursor: zoom-in; }
+.board li.w a { aspect-ratio: auto; height: 100%; min-height: 100%; }
+.board img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.board a:hover img { transform: scale(1.04); }
+.board .edge { display: block; margin-top: 0.5rem; }
+.gal-note { margin-top: 2rem; }
+
+@media (max-width: 1100px) {
+  .tour { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .pj-grid, .konum-grid, .vz-grid, .why { grid-template-columns: 1fr; }
+  .kunye { position: static; }
+  .why-stage { display: none; }
+  .why-item { min-height: 0; opacity: 1; padding-block: 2.5rem; }
+  .why-pic { display: block; position: relative; aspect-ratio: 16 / 10; overflow: hidden; margin-bottom: 1.5rem; background: var(--k3); }
+  .why-pic img { width: 100%; height: 100%; object-fit: cover; }
+  .why-pic .cap-note { position: absolute; left: 0.8rem; bottom: 0.6rem; text-shadow: 0 1px 8px rgb(0 0 0 / 0.8); }
+  .unit { grid-template-columns: 1fr; }
+  .lt { position: static; }
+  .rg { grid-template-columns: 1fr; gap: 3rem; }
+  .amen-list { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .scrub-top { flex-direction: column; align-items: flex-start; }
+  .splice { aspect-ratio: 4 / 5; }
+  .splice img { object-position: 46% 50%; }
+  .amen-list { grid-template-columns: 1fr; }
+  .board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .board li.w { grid-column: auto; }
+  .board li.w:first-child { grid-column: 1 / -1; }
+  .board li.w:not(:first-child) a { aspect-ratio: 4 / 3; height: auto; min-height: 0; }
+  .board li.w a { aspect-ratio: 16 / 9; height: auto; min-height: 0; }
+  .tour-stage { aspect-ratio: 4 / 3; }
+  .trust-row { gap: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .why-item { opacity: 1; }
+  .vz-edge { stroke-dashoffset: 0; }
+}

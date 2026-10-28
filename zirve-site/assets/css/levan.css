@@ -1,0 +1,192 @@
+/* Zirve · Levan Bahçeşehir. */
+
+.lv-hero { height: 100svh; max-height: none; }
+.lv-slogan { font: italic 300 clamp(1.4rem, 1.15rem + 1vw, 2rem)/1.1 var(--serif); color: var(--ink); }
+.lv-slogan em { color: var(--lilac); }
+.lv-hero .acts { margin-top: 1.75rem; }
+
+/* Chapter index: a column of chrome ticks on the right edge; the current chapter opens its name. */
+.toc { position: fixed; z-index: 40; right: 1.1rem; top: 50%; translate: 0 -50%; opacity: 0; visibility: hidden; transition: opacity 0.6s, visibility 0.6s; }
+.toc.on { opacity: 1; visibility: visible; }
+.toc ol { display: grid; gap: 0.1rem; }
+.toc a { display: flex; align-items: center; justify-content: flex-end; gap: 0.7rem; min-height: 1.75rem; padding-left: 0.75rem; }
+.toc b { order: 2; width: 1.25rem; height: 1px; background: var(--line2); font-size: 0; transition: width 0.5s var(--ease), background-color 0.4s; }
+.toc span { font: 500 0.625rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink2); opacity: 0; translate: 0.5rem 0; transition: opacity 0.4s, translate 0.5s var(--ease); white-space: nowrap; padding: 0.3rem 0.5rem; border-radius: 999px; background: rgb(8 8 10 / 0.7); }
+.toc a:hover span, .toc a:focus-visible span { opacity: 1; translate: 0 0; }
+.toc a[aria-current] b { width: 2.25rem; background: var(--chrome); }
+.toc a:hover b { background: var(--ink); }
+@media (max-width: 75rem) { .toc { display: none; } }
+
+/* 01 · Proje */
+.pj-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(3rem, 2rem + 4vw, 7rem); align-items: start; }
+.pj-main { display: grid; gap: 2.25rem; }
+.pj-intro { font: 300 clamp(1.5rem, 1.15rem + 1.4vw, 2.35rem)/1.28 var(--serif); text-wrap: pretty; }
+.pj-intro .sw { transition: opacity 0.25s linear; }
+.pj-body { display: grid; gap: 1rem; color: var(--ink2); max-width: 40rem; }
+.trust { display: grid; gap: 1rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
+.trust-row { display: flex; align-items: center; gap: 1.5rem; color: var(--ink); }
+.trust-bld { width: 3.4rem; height: auto; }
+.trust-uzm { width: 6rem; height: auto; }
+.trust-x { width: 1rem; height: 1rem; background: linear-gradient(45deg, transparent 47%, var(--ink3) 47% 53%, transparent 53%), linear-gradient(-45deg, transparent 47%, var(--ink3) 47% 53%, transparent 53%); }
+.kunye { position: sticky; top: calc(var(--hdr) + 2rem); display: grid; gap: 1.25rem; padding: 2rem; border: 1px solid var(--line); border-radius: 1.25rem; background: linear-gradient(160deg, rgb(230 228 223 / 0.04), transparent 60%); }
+.kunye-logo { width: 11rem; height: auto; margin-bottom: 0.5rem; }
+@media (max-width: 60rem) { .pj-grid { grid-template-columns: 1fr; } .kunye { position: static; } }
+
+.interlude { position: relative; height: min(78svh, 46rem); }
+.interlude .gimg { position: absolute; inset: 0; }
+.interlude .gimg img { position: absolute; inset: 0; }
+.interlude::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 45%, rgb(8 8 10 / 0.75)); }
+.interlude-copy { position: absolute; z-index: 1; left: 0; right: 0; bottom: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; }
+.int-line { font: italic 300 clamp(1.75rem, 1.3rem + 1.8vw, 3rem)/1.1 var(--serif); }
+
+/* 02 · Konum */
+.lv-figs { margin-top: clamp(3rem, 2rem + 3vw, 5rem); }
+.lv-figs .fig .l { order: -1; font: 500 0.6875rem/1.3 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink2); }
+.figs-note { margin-top: 1.5rem; font-size: 0.8125rem; color: var(--ink3); }
+.aerial-fig { margin-top: clamp(3.5rem, 2.5rem + 4vw, 6.5rem); }
+.aerial { --x: 50; position: relative; aspect-ratio: 1600 / 893; overflow: hidden; background: var(--bg2); cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.aerial > img, .aerial-night img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.aerial-night { position: absolute; inset: 0; clip-path: inset(0 0 0 calc(var(--x) * 1%)); }
+.aerial-line { position: absolute; top: 0; bottom: 0; left: calc(var(--x) * 1%); width: 1px; translate: -0.5px 0; background: var(--chrome); box-shadow: 0 0 18px rgb(198 191 224 / 0.6); pointer-events: none; }
+.aerial.gl-ready .aerial-night, .aerial.gl-ready .aerial-line { opacity: 0; }
+.aerial-knob { position: absolute; z-index: 2; top: 50%; left: calc(var(--x) * 1%); width: 3.25rem; height: 3.25rem; translate: -50% -50%; border-radius: 50%; display: grid; place-items: center; color: var(--ink); background: rgb(8 8 10 / 0.45); border: 1px solid rgb(230 228 223 / 0.6); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.aerial-knob svg { width: 1.25rem; height: 1.25rem; }
+.aerial-knob:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
+.aerial-tag { position: absolute; z-index: 1; top: 1rem; padding: 0.4rem 0.7rem; border-radius: 999px; background: rgb(8 8 10 / 0.55); color: var(--ink); }
+.aerial-tag.d { left: 1rem; }
+.aerial-tag.n { right: 1rem; }
+.aerial-cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; margin-top: 0.9rem; }
+@media (hover: none) { .aerial-hint { display: none; } }
+
+.rg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 1rem + 2vw, 3rem); margin-top: clamp(4rem, 3rem + 4vw, 7rem); }
+.rg li { display: grid; gap: 1.25rem; align-content: start; }
+.rg-pic { aspect-ratio: 4 / 5; }
+.rg li:nth-child(2) { margin-top: 3.5rem; }
+.rg li div { display: grid; gap: 0.6rem; }
+.rg li div p:not(.tag) { font-size: 0.9375rem; color: var(--ink2); }
+@media (max-width: 56rem) { .rg { grid-template-columns: 1fr; } .rg li:nth-child(2) { margin-top: 0; } .rg-pic { aspect-ratio: 16 / 10; } }
+
+/* 03 · Neden Levan */
+.neden-head { display: grid; gap: 1.25rem; }
+.neden-t { font-size: clamp(1.9rem, 1.4rem + 1.8vw, 3rem); }
+.neden .cap .t { line-height: 1.5; }
+html:not(.motion) .neden-head { margin-bottom: 1rem; }
+
+/* 04 · Vaziyet planı: the plan resolves out of the points; three zones light one at a time. */
+.vz .cloud-box { overflow: hidden; }
+.vz-svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.vz-dim { opacity: 0; transition: opacity 0.8s var(--ease); }
+.vz-map.lit .vz-dim { opacity: 0.66; }
+.vz-hole { opacity: 0; transition: opacity 0.8s var(--ease); }
+.vz-hole.on { opacity: 1; }
+.vz-edge { fill: none; stroke: #e9e6f4; stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease); }
+.vz-edge.on { stroke-dashoffset: 0; }
+.vz-pin { position: absolute; z-index: 2; width: 2.5rem; height: 2.5rem; translate: -50% -50%; border-radius: 50%; display: grid; place-items: center; font: 500 0.6875rem/1 var(--sans); letter-spacing: 0.08em; color: var(--ink); background: rgb(8 8 10 / 0.72); border: 1px solid rgb(230 228 223 / 0.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: transform 0.5s var(--ease), background-color 0.4s, color 0.4s; }
+.vz-pin[aria-pressed="true"] { background: var(--ink); color: var(--bg); transform: scale(1.12); }
+.vz-pin::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; border: 1px solid var(--lilac); opacity: 0; }
+.motion .vz-pin[aria-pressed="true"]::after { animation: halo 2.6s var(--ease) infinite; }
+@keyframes halo { 0% { transform: scale(1); opacity: 0.7; } 80%, 100% { transform: scale(2.4); opacity: 0; } }
+.vz-svg, .vz-pin { transition: opacity 0.6s; }
+.motion .vz[data-step="0"] .vz-svg, .motion .vz[data-step="0"] .vz-pin { opacity: 0; visibility: hidden; }
+.vz .cloud-box.gl-ready .vz-svg, .vz .cloud-box.gl-ready .vz-pin { opacity: var(--resolve, 0); }
+.vz .cloud-box.gl-ready:not(.resolved) .vz-pin { visibility: hidden; }
+.zones { display: grid; margin-top: 0.5rem; }
+.zone { border-top: 1px solid var(--line); }
+.zone button { width: 100%; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.1rem 0.75rem; align-items: baseline; text-align: left; padding: 0.9rem 0 0.35rem; }
+.zone button b { font: 400 1.3rem/1.15 var(--serif); transition: color 0.3s; }
+.zone .zone-sub { grid-column: 2; font-size: 0.75rem; color: var(--ink3); }
+.zone p { padding: 0 0 0.9rem 2.75rem; font-size: 0.8125rem; color: var(--ink2); }
+.zone button[aria-pressed="true"] b { color: var(--lilac); }
+.zone button[aria-pressed="true"] .tag { color: var(--ink); }
+@media (max-width: 56rem) { .zone p { display: none; } .zone button { padding: 0.7rem 0; } .motion .vz .cloud-steps { min-height: 19rem; } }
+html:not(.motion) .vz .cloud-steps { display: grid; gap: 2.5rem; }
+
+/* 05 · Konut tipleri */
+.homes { padding-bottom: clamp(5rem, 3rem + 6vw, 9rem); }
+.all-plans { margin-top: clamp(4rem, 3rem + 4vw, 7rem); }
+.all-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem 3rem; margin-bottom: 1.75rem; }
+.all-head p { max-width: 30rem; font-size: 0.875rem; color: var(--ink2); }
+.all-tbl tr.end td, .all-tbl tr.end th { border-bottom-color: var(--line2); }
+.all-tbl tbody th[scope="rowgroup"] { vertical-align: top; }
+.unit-open { min-height: 2.5rem; padding: 0 0.9rem; border-radius: 999px; border: 1px solid var(--line2); font: 500 0.625rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; transition: border-color 0.3s, background-color 0.3s, color 0.3s; }
+.unit-open:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.all-acts { margin-top: 2.5rem; justify-content: center; }
+@media (max-width: 40rem) { .all-tbl { font-size: 0.8125rem; } .tbl th, .tbl td { padding-right: 0.75rem; } }
+
+/* 06 · Olanaklar: a colonnade of tall pictures, staggered. */
+.colonnade { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(0.75rem, 0.4rem + 1vw, 1.5rem); margin-top: clamp(3rem, 2rem + 3vw, 5rem); }
+.colonnade li { display: grid; gap: 0.9rem; align-content: start; }
+.colonnade li:nth-child(even) { margin-top: 3rem; }
+.colonnade .gimg { aspect-ratio: 3 / 5; border-radius: 999px 999px 0 0; }
+.colonnade p { display: flex; gap: 0.6rem; align-items: baseline; font: 400 1.15rem/1.2 var(--serif); }
+.colonnade p b { font: 500 0.625rem/1 var(--sans); letter-spacing: 0.16em; color: var(--ink3); }
+.colonnade-cap { margin-top: 1.5rem; }
+.amen-more { display: grid; gap: 1.25rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.chips li { font-size: 0.8125rem; color: var(--ink2); padding: 0.55rem 0.95rem; border: 1px solid var(--line); border-radius: 999px; }
+@media (max-width: 64rem) { .colonnade { grid-template-columns: repeat(3, minmax(0, 1fr)); } .colonnade li:nth-child(even) { margin-top: 0; } .colonnade li:nth-child(3n+2) { margin-top: 2rem; } }
+@media (max-width: 34rem) { .colonnade { grid-template-columns: repeat(2, minmax(0, 1fr)); } .colonnade li:nth-child(3n+2) { margin-top: 0; } .colonnade li:nth-child(even) { margin-top: 2rem; } }
+
+/* 07 · İnşaat: a timeline that fills as you read; photographs develop as they rise. */
+.tl { position: relative; display: grid; gap: clamp(3rem, 2rem + 4vw, 6rem); margin-top: clamp(3.5rem, 2rem + 4vw, 6rem); --tl: 0; }
+.tl::before, .tl::after { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.tl::after { background: var(--chrome); transform: scaleY(var(--tl)); transform-origin: top; }
+.tl-i { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: center; }
+.tl-i::before { content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; translate: -50% -50%; border-radius: 50%; background: var(--bg); border: 1px solid var(--ink2); z-index: 1; transition: background-color 0.5s, border-color 0.5s; }
+.tl-i.lit::before { background: var(--lilac); border-color: var(--lilac); box-shadow: 0 0 0 6px rgb(198 191 224 / 0.12); }
+.tl-i .gimg { aspect-ratio: 4 / 5; width: min(100%, 24rem); justify-self: end; }
+.tl-i:nth-child(even) .gimg { order: 2; justify-self: start; }
+.tl-t { display: grid; gap: 0.6rem; justify-items: start; max-width: 26rem; }
+.tl-i:nth-child(even) .tl-t { justify-self: end; text-align: right; justify-items: end; }
+.tl-t time { font: 500 0.6875rem/1.3 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--lilac); }
+.tl-t h3 { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); }
+.tl-t p { color: var(--ink2); font-size: 0.9375rem; }
+@media (max-width: 48rem) {
+  .tl::before, .tl::after { left: 0.3rem; }
+  .tl-i { grid-template-columns: 1fr; padding-left: 2rem; gap: 1.25rem; }
+  .tl-i::before { left: 0.3rem; top: 1rem; }
+  .tl-i .gimg, .tl-i:nth-child(even) .gimg { order: 0; justify-self: start; width: 100%; aspect-ratio: 4 / 3; }
+  .tl-i:nth-child(even) .tl-t { justify-self: start; text-align: left; justify-items: start; }
+}
+
+.tours { margin-top: clamp(5rem, 3rem + 6vw, 9rem); display: grid; gap: 2rem; }
+.tours-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem 3rem; }
+.tours-head h3 { font-size: clamp(1.9rem, 1.5rem + 1.5vw, 2.9rem); font-weight: 300; }
+.tours-head p { max-width: 32rem; color: var(--ink2); font-size: 0.9375rem; }
+.tour-stage { position: relative; aspect-ratio: 16 / 8; overflow: hidden; border-radius: 1.25rem; border: 1px solid var(--line); background: var(--bg2); }
+.tour-stage > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.6) brightness(0.55); transition: opacity 0.6s; }
+.tour-cover { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 1.25rem; text-align: center; padding: 1rem; }
+.tour-start { display: grid; justify-items: center; gap: 1rem; }
+.tour-ring { position: relative; width: 6rem; height: 6rem; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgb(230 228 223 / 0.6); background: rgb(8 8 10 / 0.35); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: transform 0.6s var(--ease), background-color 0.4s; }
+.tour-ring svg { width: 2.25rem; height: 2.25rem; }
+.tour-ring::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; border: 1px solid var(--lilac); opacity: 0; }
+.motion .tour-ring::after { animation: halo 3s var(--ease) infinite; }
+.tour-start:hover .tour-ring { transform: scale(1.06); background: rgb(230 228 223 / 0.12); }
+.tour-go { font: 500 0.75rem/1 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; }
+.tour-when { font-size: 0.8125rem; color: var(--ink2); }
+.tour-cap { position: absolute; left: 1rem; bottom: 1rem; color: rgb(230 228 223 / 0.85); }
+.tour-stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.tour-stage.live > img, .tour-stage.live .tour-cover, .tour-stage.live .tour-cap { opacity: 0; visibility: hidden; }
+.tour-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; }
+.tour-dates { position: relative; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tour-dates button { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--line2); font-size: 0.8125rem; color: var(--ink2); transition: color 0.3s, border-color 0.3s, background-color 0.3s; }
+.tour-dates button i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid currentColor; }
+.tour-dates button small { font: 500 0.5625rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); }
+.tour-dates button:hover { color: var(--ink); border-color: var(--ink3); }
+.tour-dates button[aria-pressed="true"] { color: var(--bg); background: var(--ink); border-color: var(--ink); }
+.tour-dates button[aria-pressed="true"] i { background: var(--bg); border-color: var(--bg); }
+.tour-dates button[aria-pressed="true"] small { color: rgb(8 8 10 / 0.7); }
+@media (max-width: 48rem) { .tour-stage { aspect-ratio: 4 / 5; } }
+
+/* 08 · Galeri */
+.gal-note { margin-top: 1.5rem; }
+
+/* 10 · Satış ofisi */
+.sales-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2.5rem, 1.5rem + 4vw, 6rem); align-items: center; }
+.sales-pic { display: grid; gap: 0.75rem; }
+.sales-pic .gimg { aspect-ratio: 4 / 5; border-radius: 999px 999px 0 0; }
+.sales-info { display: grid; gap: 1.5rem; justify-items: start; }
+.sales-addr { font: 300 clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem)/1.3 var(--serif); }
+.sales-info .facts { width: 100%; }
+.sales-info .facts a:hover { color: var(--lilac); }
+@media (max-width: 56rem) { .sales-grid { grid-template-columns: 1fr; } .sales-pic { width: min(100%, 22rem); } }

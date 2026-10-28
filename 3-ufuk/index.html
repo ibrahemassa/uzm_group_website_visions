@@ -1,0 +1,1292 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UZM Group — Vizyon 3 · Ufuk</title>
+<meta name="description" content="UZM Group konsept çalışması, Vizyon 3: Ufuk. Levan Bahçeşehir'i bölüm bölüm bir film gibi anlatan sinematik bir ana sayfa.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 fill=%22%230a0a0a%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Serif:ital@0;1&display=swap">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+/* ─────────────────────────────────────────────────────────────────────────────
+   Vizyon 3 · Ufuk — the page as a film in nine chapters.
+   Black and white with concrete greys (UZM's own identity); colour only comes
+   from the pictures. Wide caps with one italic serif word, as on UZM's posts.
+   ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  --k: #0a0a0a;
+  --k2: #121212;
+  --k3: #1a1a1a;
+  --g: #8a8a8a;
+  --g2: #5c5c5c;
+  --g3: #2c2c2c;
+  --w: #f2f2f2;
+  --soft: #bdbdbd;
+  --line: rgb(242 242 242 / 0.14);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pad: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
+  --sans: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --serif: "Instrument Serif", "Times New Roman", Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--k); color: var(--w); -webkit-text-size-adjust: 100%; scroll-padding-top: 0; }
+body { font-family: var(--sans); font-size: 17px; line-height: 1.6; font-weight: 400; overflow-x: clip; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+img, video, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul, ol { list-style: none; }
+:focus-visible { outline: 2px solid var(--w); outline-offset: 3px; }
+::selection { background: var(--w); color: var(--k); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: 1rem; top: -4rem; z-index: 100; background: var(--w); color: var(--k); padding: 0.75rem 1rem; }
+.skip:focus { top: 1rem; }
+.wrap { width: 100%; max-width: 92rem; margin-inline: auto; padding-inline: var(--pad); }
+
+/* ── Type ───────────────────────────────────────────────────────────────────── */
+.caps { font-stretch: 118%; font-weight: 650; text-transform: uppercase; letter-spacing: 0.012em; }
+.caps em, .serif { font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: 0; font-stretch: 100%; }
+.caps em { font-size: 1.16em; line-height: 0.8; }
+.h1 { font-size: clamp(2rem, 1.15rem + 2.9vw, 3.9rem); line-height: 1.02; }
+.h2 { font-size: clamp(1.75rem, 1.15rem + 2vw, 3.1rem); line-height: 1.04; }
+.h3 { font-size: clamp(1.4rem, 1.05rem + 1.25vw, 2.25rem); line-height: 1.06; }
+.label { display: block; font-size: 0.72rem; line-height: 1.3; font-weight: 600; font-stretch: 116%; letter-spacing: 0.18em; text-transform: uppercase; color: var(--g); }
+.lede { font-size: clamp(1rem, 0.96rem + 0.25vw, 1.15rem); line-height: 1.65; color: var(--soft); max-width: 34rem; }
+.num { font-stretch: 112%; font-weight: 500; font-variant-numeric: tabular-nums lining-nums; letter-spacing: -0.01em; }
+.cap-note { font-size: 0.72rem; letter-spacing: 0.08em; color: rgb(242 242 242 / 0.62); }
+
+/* Masked lines: each line rises out of its own slot. */
+.ln { display: block; overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.ln > span { display: inline-block; }
+.js .lines .ln > span { transform: translateY(108%); transition: transform 1.15s var(--ease); transition-delay: calc(var(--i, 0) * 90ms + var(--dl, 0ms)); }
+.js .lines.in .ln > span, .js .active .lines .ln > span { transform: none; }
+.js [data-reveal="fade"] { opacity: 0; transform: translateY(1.25rem); transition: opacity 1s var(--ease), transform 1.2s var(--ease); transition-delay: var(--dl, 0ms); }
+.js [data-reveal="fade"].in { opacity: 1; transform: none; }
+.js [data-reveal="wipe"] img { clip-path: inset(0 0 100% 0); transform: scale(1.14); transition: clip-path 1.4s var(--ease), transform 2.2s var(--ease); transition-delay: var(--dl, 0ms); }
+.js [data-reveal="wipe"].in img { clip-path: inset(0 0 0 0); transform: scale(1); }
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+.btn { --h: 3.25rem; display: inline-flex; align-items: center; gap: 0.85rem; height: var(--h); padding: 0 1.5rem; font-size: 0.74rem; font-weight: 650; font-stretch: 120%; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgb(242 242 242 / 0.42); transition: background-color 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease); white-space: nowrap; }
+.btn .ar { display: inline-block; width: 1.4rem; height: 1px; background: currentColor; position: relative; transition: width 0.45s var(--ease); }
+.btn .ar::after { content: ""; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: rotate(45deg); }
+.btn:hover .ar { width: 2.2rem; }
+.btn:hover { background: rgb(242 242 242 / 0.08); border-color: var(--w); }
+.btn-w { background: var(--w); color: var(--k); border-color: var(--w); }
+.btn-w:hover { background: #fff; color: var(--k); }
+.btn-s { --h: 2.5rem; padding: 0 1.1rem; font-size: 0.68rem; }
+.ext::after { content: "↗"; font-stretch: 100%; letter-spacing: 0; margin-left: 0.15rem; }
+
+/* ── Fixed chrome: header, progress line, chapter counter, presenter pill ───── */
+.prog { position: fixed; inset: 0 0 auto; height: 2px; z-index: 60; pointer-events: none; }
+.prog i { display: block; height: 100%; background: var(--w); transform-origin: left; transform: scaleX(0); }
+.hdr { position: fixed; inset: 0 0 auto; z-index: 50; display: flex; align-items: center; gap: 2rem; height: 5rem; padding-inline: var(--pad); background: linear-gradient(rgb(10 10 10 / 0.72), rgb(10 10 10 / 0)); transition: transform 0.6s var(--ease); }
+.hdr[data-hide] { transform: translateY(-100%); }
+.logo { display: flex; align-items: center; min-height: 44px; }
+.logo img { height: 2.1rem; width: auto; filter: invert(1); }
+.nav { display: flex; gap: 1.9rem; margin-left: auto; }
+.nav a, .hdr-tel { font-size: 0.7rem; font-weight: 600; font-stretch: 118%; letter-spacing: 0.17em; text-transform: uppercase; color: rgb(242 242 242 / 0.78); transition: color 0.3s; position: relative; padding: 0.75rem 0; }
+.nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.45rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 0.5s var(--ease); }
+.nav a:hover, .nav a[aria-current] { color: var(--w); }
+.nav a:hover::after, .nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
+.hdr-tel { font-variant-numeric: tabular-nums; letter-spacing: 0.1em; }
+.menu-btn { display: none; margin-left: auto; height: 2.75rem; padding: 0 0.25rem; font-size: 0.7rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.18em; text-transform: uppercase; align-items: center; gap: 0.7rem; }
+.menu-btn i { display: grid; gap: 5px; width: 22px; }
+.menu-btn i::before, .menu-btn i::after { content: ""; height: 1px; background: currentColor; transition: transform 0.4s var(--ease); }
+.menu-btn[aria-expanded="true"] i::before { transform: translateY(3px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] i::after { transform: translateY(-3px) rotate(-45deg); }
+.menu { position: fixed; inset: 0; z-index: 45; background: var(--k); display: flex; flex-direction: column; justify-content: center; padding: 6rem var(--pad) 6rem; opacity: 0; visibility: hidden; transition: opacity 0.5s var(--ease), visibility 0s 0.5s; }
+.menu[data-open] { opacity: 1; visibility: visible; transition: opacity 0.5s var(--ease); }
+.menu ol { counter-reset: m; }
+.menu li { counter-increment: m; border-top: 1px solid var(--line); }
+.menu li:last-child { border-bottom: 1px solid var(--line); }
+.menu li a { display: flex; align-items: baseline; gap: 1rem; padding: 0.9rem 0; font-size: 1.6rem; font-weight: 650; font-stretch: 118%; text-transform: uppercase; }
+.menu li a::before { content: "0" counter(m); font-size: 0.7rem; color: var(--g); letter-spacing: 0.15em; }
+.menu-foot { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; align-items: center; }
+
+.chap { position: fixed; right: clamp(0.9rem, 0.4rem + 1vw, 1.6rem); top: 50%; translate: 0 -50%; z-index: 40; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; mix-blend-mode: difference; color: #fff; pointer-events: none; }
+.chap-n { font-size: 0.8rem; font-weight: 650; font-stretch: 116%; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; overflow: hidden; height: 1.2em; line-height: 1.2; }
+.chap-n span { display: block; transition: transform 0.6s var(--ease); }
+.chap-line { width: 1px; height: 3.5rem; background: rgb(255 255 255 / 0.3); position: relative; overflow: hidden; }
+.chap-line i { position: absolute; inset: 0; background: #fff; transform-origin: top; transform: scaleY(0); }
+.chap-t { font-size: 0.66rem; font-weight: 600; font-stretch: 116%; letter-spacing: 0.12em; color: rgb(255 255 255 / 0.55); font-variant-numeric: tabular-nums; }
+.chap-name { writing-mode: vertical-rl; font-size: 0.62rem; font-weight: 600; font-stretch: 118%; letter-spacing: 0.24em; text-transform: uppercase; color: rgb(255 255 255 / 0.7); margin-top: 0.4rem; }
+
+.pres { position: fixed; left: max(0.75rem, env(safe-area-inset-left)); bottom: max(0.75rem, env(safe-area-inset-bottom)); z-index: 70; display: flex; align-items: center; height: 2.4rem; background: rgb(10 10 10 / 0.78); border: 1px solid rgb(242 242 242 / 0.16); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); font-size: 0.62rem; font-weight: 600; font-stretch: 116%; letter-spacing: 0.16em; text-transform: uppercase; }
+.pres > * { display: flex; align-items: center; height: 100%; padding: 0 0.85rem; }
+.pres > * + * { border-left: 1px solid rgb(242 242 242 / 0.14); }
+.pres a { color: rgb(242 242 242 / 0.7); transition: color 0.3s, background-color 0.3s; }
+.pres a:hover { color: var(--w); background: rgb(242 242 242 / 0.06); }
+.pres b { font-weight: 650; color: var(--w); }
+.pres .arw { padding: 0 0.75rem; font-size: 0.9rem; letter-spacing: 0; }
+
+/* ── 01 Hero ───────────────────────────────────────────────────────────────── */
+.hero { position: relative; height: 100svh; min-height: 34rem; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; --p: 0; }
+.hero-media { position: absolute; inset: 0; clip-path: inset(calc(var(--p) * 5vh) calc(var(--p) * 3.5vw) round calc(var(--p) * 18px)); }
+.hero-media video, .hero-media .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1.04 + var(--p) * 0.08)); }
+.shade { position: absolute; inset: 0; pointer-events: none; }
+.hero .shade { background: linear-gradient(to top, rgb(10 10 10 / 0.92) 0%, rgb(10 10 10 / 0.35) 42%, rgb(10 10 10 / 0.25) 70%, rgb(10 10 10 / 0.55) 100%), linear-gradient(to right, rgb(10 10 10 / 0.6), transparent 60%); }
+.hero-dim { position: absolute; inset: 0; background: var(--k); opacity: calc(var(--p) * 0.7); pointer-events: none; }
+.bars { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.bars i { position: absolute; left: 0; right: 0; height: 50.5%; background: var(--k); }
+.bars i:first-child { top: 0; transform-origin: top; }
+.bars i:last-child { bottom: 0; transform-origin: bottom; }
+.js .bars i { animation: bars 2.6s var(--ease) 0.2s both; }
+@keyframes bars { 0% { transform: scaleY(1); } 38% { transform: scaleY(0.2); } 62% { transform: scaleY(0.2); } 100% { transform: scaleY(0); } }
+.hero-in { position: relative; z-index: 2; padding-bottom: clamp(5.5rem, 4rem + 6vh, 8rem); transform: translateY(calc(var(--p) * -12vh)); opacity: calc(1 - var(--p) * 1.6); }
+.hero-in .label { margin-bottom: 1.5rem; }
+.hero h1 { max-width: 15ch; }
+.hero .lede { margin-top: 1.75rem; }
+.cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
+.hero-foot { position: absolute; z-index: 2; left: 0; right: 0; bottom: 1.4rem; display: flex; justify-content: flex-end; align-items: end; gap: 2rem; opacity: calc(1 - var(--p) * 2); }
+.cue { position: absolute; left: 50%; bottom: 0; translate: -50% 0; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+.cue i { width: 1px; height: 2.6rem; background: rgb(242 242 242 / 0.25); position: relative; overflow: hidden; }
+.cue i::after { content: ""; position: absolute; left: 0; right: 0; height: 40%; background: var(--w); animation: cue 2.2s var(--ease) infinite; }
+@keyframes cue { 0% { transform: translateY(-100%); } 100% { transform: translateY(260%); } }
+.js .hero .lines .ln > span { --dl: 1150ms; }
+.js .hero [data-reveal="fade"] { --dl: 1500ms; }
+
+/* ── 02 Biz ────────────────────────────────────────────────────────────────── */
+.biz { position: relative; height: 230vh; }
+.biz-pin { position: sticky; top: 0; height: 100svh; display: flex; align-items: center; }
+.biz .h2 { margin-top: 1.25rem; }
+.words { margin-top: clamp(2rem, 1rem + 3vh, 3.5rem); max-width: 56rem; font-size: clamp(1.25rem, 0.95rem + 1.25vw, 2.15rem); line-height: 1.38; font-weight: 500; font-stretch: 104%; letter-spacing: -0.008em; }
+.js .words .w { color: var(--g3); transition: color 0.5s var(--ease); }
+.js .words .w.lit { color: var(--w); }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.facts > div { padding: 2rem 2rem 2.5rem 0; }
+.facts > div + div { border-left: 1px solid var(--line); padding-left: 2rem; }
+.facts dt { margin-bottom: 0.75rem; }
+.facts dd { font-size: 1.05rem; color: var(--soft); max-width: 22rem; }
+.facts dd strong { display: block; font-size: 1.35rem; font-weight: 650; font-stretch: 116%; text-transform: uppercase; color: var(--w); margin-bottom: 0.35rem; letter-spacing: 0.01em; }
+
+/* ── 03 Levan: the film, scrubbed by scroll ────────────────────────────────── */
+.scrub { position: relative; height: 520vh; background: var(--k); }
+.scrub-pin { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+.scrub video, .scrub .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scrub .shade { background: linear-gradient(to top, rgb(10 10 10 / 0.88), rgb(10 10 10 / 0.12) 48%, rgb(10 10 10 / 0.05) 70%, rgb(10 10 10 / 0.55)), linear-gradient(to right, rgb(10 10 10 / 0.55), transparent 55%); }
+.scrub-top { position: absolute; top: 6.5rem; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
+.scrub-top img { height: clamp(2.2rem, 1.6rem + 1.5vw, 3.2rem); width: auto; }
+.capset { position: absolute; left: 0; right: 0; bottom: clamp(6.5rem, 5rem + 6vh, 9rem); z-index: 2; }
+.capset .wrap { position: relative; }
+.cap { max-width: 38rem; }
+.cap + .cap { position: absolute; left: var(--pad); right: var(--pad); bottom: 0; }
+.js .cap { opacity: 0; visibility: hidden; transition: opacity 0.7s var(--ease), visibility 0s 0.7s; }
+.js .cap.active { opacity: 1; visibility: visible; transition: opacity 0.7s var(--ease); }
+.cap p { margin-top: 1.1rem; }
+.cap .belediye { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.cap .belediye img { height: 3.1rem; width: auto; filter: invert(1); opacity: 0.92; }
+.cap .belediye span { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); font-stretch: 116%; font-weight: 600; max-width: 12rem; line-height: 1.5; }
+.scrub-bar { position: absolute; left: 0; right: 0; bottom: 2.2rem; z-index: 2; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.25rem; }
+.tc { font-size: 0.72rem; font-weight: 600; font-stretch: 112%; letter-spacing: 0.1em; font-variant-numeric: tabular-nums; }
+.track { position: relative; height: 1px; background: rgb(242 242 242 / 0.22); }
+.track i { position: absolute; inset: 0; background: var(--w); transform-origin: left; transform: scaleX(0); }
+.track b { position: absolute; top: -3px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--w); translate: -50% 0; box-shadow: 0 0 12px rgb(255 255 255 / 0.7); }
+.track s { position: absolute; top: -4px; width: 1px; height: 9px; background: rgb(242 242 242 / 0.4); }
+
+/* ── 04 Konutlar: a pinned horizontal gallery ─────────────────────────────── */
+.types { position: relative; }
+.types-pin { position: sticky; top: 0; height: 100svh; overflow: hidden; display: flex; align-items: center; }
+.types-track { display: flex; align-items: center; gap: clamp(2.5rem, 1rem + 4vw, 6rem); padding-inline: var(--pad) calc(var(--pad) + 4rem); will-change: transform; }
+.type-intro { flex: 0 0 min(30rem, 36vw); }
+.type-intro .h2 { margin-top: 1.25rem; }
+.type-intro .lede { margin-top: 1.5rem; }
+.hint { display: inline-flex; align-items: center; gap: 0.85rem; margin-top: 2.5rem; font-size: 0.7rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.18em; text-transform: uppercase; color: var(--g); }
+.hint i { width: 3rem; height: 1px; background: currentColor; position: relative; overflow: hidden; }
+.type { flex: 0 0 min(76vw, 74rem); height: min(76vh, 46rem); display: grid; grid-template-columns: 1.75fr 1fr; gap: clamp(1.5rem, 0.5rem + 2.5vw, 3rem); align-items: end; }
+.type:nth-child(odd) { align-items: start; }
+.type-fig { position: relative; height: 100%; overflow: hidden; background: var(--k3); }
+.type-fig img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.8s var(--ease), opacity 0.7s var(--ease); }
+.js .type .type-img { transform: scale(1.14); }
+.js .type.on .type-img { transform: scale(1); }
+.type-plan { object-fit: contain !important; background: #f3efe8; padding: 1.25rem; opacity: 0; }
+.type[data-plan] .type-plan { opacity: 1; }
+.fig-cap { position: absolute; left: 1rem; bottom: 0.85rem; z-index: 2; }
+.type[data-plan] .fig-cap { color: rgb(10 10 10 / 0.6); }
+.plan-tg { position: absolute; right: 0.85rem; bottom: 0.75rem; z-index: 2; height: 2.25rem; padding: 0 0.9rem; font-size: 0.64rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.16em; text-transform: uppercase; background: rgb(10 10 10 / 0.6); border: 1px solid rgb(242 242 242 / 0.25); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); transition: background-color 0.3s, color 0.3s; }
+.plan-tg:hover { background: rgb(10 10 10 / 0.85); }
+.plan-tg[aria-pressed="true"] { background: var(--k); color: var(--w); }
+.type-txt { padding-bottom: 0.25rem; }
+.type-idx { display: block; font-size: clamp(3rem, 2rem + 2.5vw, 4.4rem); line-height: 1; font-weight: 700; font-stretch: 125%; color: transparent; -webkit-text-stroke: 1px rgb(242 242 242 / 0.28); margin-bottom: 1.25rem; font-variant-numeric: tabular-nums; }
+.type-txt .label { margin-bottom: 0.9rem; }
+.type-net { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.type-net .big { display: block; font-size: clamp(2rem, 1.35rem + 1.9vw, 3.4rem); line-height: 1; white-space: nowrap; }
+.type-net .big small { font-size: 0.42em; color: var(--g); margin-left: 0.3rem; font-stretch: 112%; }
+.type-net .label { margin: 0.6rem 0 0; }
+.type-dl { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.4rem; }
+.type-dl dd { font-size: 1.02rem; font-weight: 500; font-stretch: 108%; font-variant-numeric: tabular-nums; margin-top: 0.3rem; }
+.type-blurb { margin-top: 1.4rem; color: var(--soft); font-size: 0.98rem; max-width: 22rem; }
+.type-end { flex: 0 0 min(26rem, 34vw); }
+.type-end .h3 { margin: 1.25rem 0 2rem; }
+.type-end .cta { margin-top: 0; flex-direction: column; align-items: flex-start; }
+.types-bar { position: absolute; left: var(--pad); right: var(--pad); bottom: 2.2rem; height: 1px; background: rgb(242 242 242 / 0.14); }
+.types-bar i { position: absolute; inset: 0; background: var(--w); transform-origin: left; transform: scaleX(0); }
+.types-count { position: absolute; right: var(--pad); bottom: 3rem; }
+
+/* Native carousel (phones, reduced motion): no pin, swipe sideways. */
+.types.native { height: auto !important; padding-block: clamp(5rem, 4rem + 4vw, 8rem); }
+.types.native .types-pin { position: static; height: auto; display: block; overflow: visible; }
+.types.native .types-track { transform: none !important; overflow-x: auto; scroll-snap-type: x mandatory; align-items: stretch; gap: 1rem; padding-bottom: 1rem; scrollbar-width: none; scroll-padding-inline: var(--pad); }
+.types.native .types-track::-webkit-scrollbar { display: none; }
+.types.native .type, .types.native .type-intro, .types.native .type-end { scroll-snap-align: start; }
+.types.native .types-bar, .types.native .types-count { display: none; }
+.types.native .type-intro { padding-inline: var(--pad); margin-bottom: 2.5rem; max-width: 40rem; }
+.types.native .type:nth-child(odd) { align-items: start; }
+
+/* ── 05 Yaşam ──────────────────────────────────────────────────────────────── */
+.expand { position: relative; height: 260vh; --k: 0; --t: 0; }
+.expand-pin { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; }
+.expand-media { position: absolute; inset: 0; clip-path: inset(calc((1 - var(--k)) * 27%) calc((1 - var(--k)) * 33%)); }
+.expand-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: scale(calc(1.3 - var(--k) * 0.3)); }
+.expand-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgb(10 10 10 / 0.9), rgb(10 10 10 / 0.1) 55%, rgb(10 10 10 / 0.3)); opacity: var(--t); }
+.expand-t { position: relative; z-index: 2; width: 100%; display: flex; justify-content: space-between; padding-inline: var(--pad); pointer-events: none; }
+.expand-t > span { display: block; transition: none; }
+.expand-t .l { transform: translateX(calc(var(--k) * -18vw)); opacity: calc(1 - var(--k) * 1.4); }
+.expand-t .r { transform: translateX(calc(var(--k) * 18vw)); opacity: calc(1 - var(--k) * 1.4); text-align: right; }
+.expand-top { position: absolute; top: 6.5rem; left: 0; right: 0; z-index: 2; }
+.expand-txt { position: absolute; left: 0; right: 0; bottom: clamp(3rem, 2rem + 5vh, 6rem); z-index: 2; opacity: var(--t); transform: translateY(calc((1 - var(--t)) * 2rem)); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; }
+.expand-txt .h2 { max-width: 16ch; }
+.expand-txt .lede { margin-top: 1.25rem; }
+
+.marq { padding-block: clamp(4rem, 3rem + 4vw, 7rem); overflow: hidden; border-block: 1px solid var(--line); }
+.marq-row { display: flex; white-space: nowrap; will-change: transform; }
+.marq-in { display: flex; flex: none; }
+.marq-row + .marq-row { margin-top: 0.9rem; }
+.marq-row span { display: inline-flex; align-items: center; font-size: clamp(1.9rem, 1.25rem + 2.6vw, 3.9rem); line-height: 1.12; font-weight: 650; font-stretch: 122%; text-transform: uppercase; letter-spacing: 0.01em; padding-right: 0.55em; }
+.marq-row span:nth-child(even) { color: transparent; -webkit-text-stroke: 1px rgb(242 242 242 / 0.5); }
+.marq-row span::after { content: "/"; font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--g2); -webkit-text-stroke: 0; padding-left: 0.55em; font-stretch: 100%; }
+
+.day { padding-block: clamp(6rem, 4rem + 6vw, 11rem); }
+.day-head { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; margin-bottom: clamp(3.5rem, 2rem + 5vw, 7rem); }
+.day-head .h2 { margin-top: 1.25rem; }
+.collage { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: clamp(1rem, 0.5rem + 1.5vw, 2rem); }
+.collage figure { position: relative; will-change: transform; }
+.collage .ph { position: relative; overflow: hidden; background: var(--k3); }
+.collage img { width: 100%; height: 100%; object-fit: cover; }
+.collage figcaption { display: flex; gap: 1rem; align-items: baseline; margin-top: 0.85rem; font-size: 0.95rem; color: var(--soft); }
+.collage figcaption .label { flex: none; }
+.c1 { grid-column: 1 / 7; } .c1 .ph { aspect-ratio: 16 / 10; }
+.c2 { grid-column: 8 / 11; margin-top: 7rem; } .c2 .ph { aspect-ratio: 4 / 5; }
+.c3 { grid-column: 2 / 6; margin-top: 3rem; } .c3 .ph { aspect-ratio: 4 / 5; }
+.c4 { grid-column: 7 / 13; margin-top: 9rem; } .c4 .ph { aspect-ratio: 3 / 2; }
+.c5 { grid-column: 1 / 8; margin-top: 5rem; } .c5 .ph { aspect-ratio: 21 / 9; }
+.c6 { grid-column: 9 / 13; margin-top: 2rem; } .c6 .ph { aspect-ratio: 3 / 4; }
+.day-note { margin-top: 4rem; }
+
+/* ── 06 Konum: a time map ──────────────────────────────────────────────────── */
+.loc { position: relative; height: 240vh; background-color: var(--k); }
+.loc-pin { position: sticky; top: 0; height: 100svh; display: flex; align-items: center; overflow: hidden; background-image: linear-gradient(rgb(242 242 242 / 0.035) 1px, transparent 1px), linear-gradient(90deg, rgb(242 242 242 / 0.035) 1px, transparent 1px); background-size: 72px 72px; background-position: center; }
+.loc-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); gap: clamp(2rem, 1rem + 4vw, 6rem); align-items: center; }
+.loc-head .h2 { margin-top: 1.25rem; }
+.loc-head .lede { margin-top: 1.5rem; }
+.loc-head .cap-note { margin-top: 2rem; max-width: 26rem; line-height: 1.6; }
+.map { position: relative; width: 100%; }
+.map svg { width: 100%; height: auto; overflow: visible; }
+.route { fill: none; stroke: rgb(242 242 242 / 0.85); stroke-width: 1.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.route-bg { fill: none; stroke: rgb(242 242 242 / 0.12); stroke-width: 1; stroke-dasharray: 3 6; vector-effect: non-scaling-stroke; }
+.node { fill: var(--k); stroke: var(--w); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.hub { fill: var(--w); }
+.ring { fill: none; stroke: rgb(242 242 242 / 0.35); stroke-width: 1; vector-effect: non-scaling-stroke; transform-box: fill-box; transform-origin: center; animation: ring 3.2s var(--ease) infinite; }
+.ring.r2 { animation-delay: 1.6s; }
+@keyframes ring { from { transform: scale(0.4); opacity: 1; } to { transform: scale(2.6); opacity: 0; } }
+.dot { fill: var(--w); filter: drop-shadow(0 0 6px rgb(255 255 255 / 0.9)); }
+.dest { position: absolute; translate: 0 -50%; opacity: 0.25; transition: opacity 0.6s var(--ease); }
+.dest.on { opacity: 1; }
+.dest .min { display: flex; align-items: baseline; gap: 0.4rem; font-size: clamp(2.2rem, 1.5rem + 2vw, 3.6rem); line-height: 1; }
+.dest .min small { font-size: 0.36em; color: var(--g); font-stretch: 116%; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+.dest strong { display: block; margin-top: 0.45rem; font-size: 0.86rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.08em; text-transform: uppercase; }
+.dest span { display: block; font-size: 0.86rem; color: var(--g); margin-top: 0.15rem; }
+.hub-label { position: absolute; font-size: 0.68rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.16em; text-transform: uppercase; white-space: nowrap; }
+.region { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 0.5rem + 2vw, 2.5rem); padding-block: clamp(5rem, 3rem + 5vw, 9rem); }
+.region .ph { aspect-ratio: 4 / 3; overflow: hidden; background: var(--k3); }
+.region img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.region article:hover img { transform: scale(1.05); }
+.region .label { margin-top: 1.4rem; }
+.region h3 { margin-top: 0.6rem; font-size: 1.2rem; font-weight: 650; font-stretch: 116%; text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.2; }
+.region p { margin-top: 0.75rem; color: var(--soft); font-size: 0.98rem; }
+
+/* ── 07 Şantiye ────────────────────────────────────────────────────────────── */
+.site-hero { position: relative; height: min(110svh, 64rem); overflow: hidden; display: flex; align-items: flex-end; }
+.site-hero .bg { position: absolute; inset: -8% 0; }
+.site-hero .bg img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08) brightness(0.82); }
+.site-hero .shade { background: linear-gradient(to top, var(--k), rgb(10 10 10 / 0.35) 55%, rgb(10 10 10 / 0.5)); }
+.site-hero .wrap { position: relative; z-index: 2; padding-bottom: clamp(4rem, 3rem + 4vw, 7rem); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
+.site-hero .h2 { margin-top: 1.25rem; }
+.site-hero .lede { justify-self: end; }
+.tours { padding-block: clamp(3rem, 2rem + 3vw, 5rem) clamp(4rem, 3rem + 4vw, 7rem); }
+.tours-head { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-bottom: 3rem; }
+.tl { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); }
+.tl::before { content: ""; position: absolute; left: 0; right: 0; top: 2.35rem; height: 1px; background: rgb(242 242 242 / 0.18); }
+.tl::after { content: ""; position: absolute; left: 0; right: 0; top: 2.35rem; height: 1px; background: var(--w); transform-origin: left; transform: scaleX(0); transition: transform 2.2s var(--ease); }
+.tl.in::after { transform: scaleX(1); }
+.tl li { position: relative; padding-right: 1rem; }
+.tl a { display: block; padding-top: 0; }
+.tl time { display: block; font-size: 0.78rem; font-weight: 600; font-stretch: 116%; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); height: 1.6rem; }
+.tl .pt { display: block; width: 9px; height: 9px; border: 1px solid var(--w); background: var(--k); border-radius: 50%; margin: 0.3rem 0 1.1rem -1px; transition: background-color 0.3s, transform 0.4s var(--ease); }
+.tl a:hover .pt { background: var(--w); transform: scale(1.4); }
+.tl strong { display: block; font-size: 1rem; font-weight: 650; font-stretch: 116%; text-transform: uppercase; letter-spacing: 0.02em; }
+.tl span.go { display: inline-block; margin-top: 0.3rem; font-size: 0.86rem; color: var(--g); transition: color 0.3s; }
+.tl a:hover span.go { color: var(--w); }
+.strip { overflow: hidden; padding-bottom: clamp(5rem, 3rem + 5vw, 9rem); }
+.strip-in { display: flex; gap: clamp(0.75rem, 0.5rem + 1vw, 1.5rem); width: max-content; padding-inline: var(--pad); will-change: transform; }
+.strip figure { width: clamp(13rem, 9rem + 12vw, 21rem); }
+.strip .ph { aspect-ratio: 3 / 4; overflow: hidden; background: var(--k3); }
+.strip figure:nth-child(even) { margin-top: 3.5rem; }
+.strip img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); transition: transform 1.2s var(--ease); }
+.strip figure:hover img { transform: scale(1.04); }
+.strip figcaption { margin-top: 0.75rem; font-size: 0.86rem; color: var(--g); }
+
+/* ── 08 Projeler ───────────────────────────────────────────────────────────── */
+.rec { padding-block: clamp(6rem, 4rem + 6vw, 11rem); border-top: 1px solid var(--line); }
+.rec-head .h2 { margin-top: 1.25rem; max-width: 18ch; }
+.nums { display: grid; grid-template-columns: 0.8fr 1fr 1.4fr; margin-top: clamp(3rem, 2rem + 4vw, 6rem); border-top: 1px solid var(--line); }
+.nums > div { padding: 2.2rem 2rem 2.4rem 0; }
+.nums > div + div { border-left: 1px solid var(--line); padding-left: 2rem; }
+.nums dd { font-size: clamp(3rem, 2rem + 3.6vw, 4.4rem); line-height: 1; }
+.nums dd small { font-size: 0.36em; color: var(--g); margin-left: 0.3rem; }
+.nums dt { margin-top: 1rem; }
+.projs { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1rem, 0.5rem + 2vw, 2.5rem); margin-top: clamp(4rem, 3rem + 4vw, 7rem); }
+.proj { position: relative; }
+.proj:first-child { grid-column: 1 / 8; }
+.proj:last-child { grid-column: 8 / 13; margin-top: clamp(4rem, 2rem + 8vw, 11rem); }
+.proj .ph { position: relative; overflow: hidden; background: var(--k3); }
+.proj:first-child .ph { aspect-ratio: 4 / 3; }
+.proj:last-child .ph { aspect-ratio: 4 / 5; }
+.proj img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease); }
+.proj:hover img { transform: scale(1.045); }
+.proj .tag { position: absolute; left: 1rem; top: 1rem; z-index: 2; padding: 0.45rem 0.7rem; background: rgb(10 10 10 / 0.65); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-size: 0.62rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.16em; text-transform: uppercase; }
+.proj .fig-cap { left: auto; right: 1rem; }
+.proj h3 { margin-top: 1.5rem; }
+.proj p { margin-top: 0.75rem; color: var(--soft); max-width: 30rem; }
+.proj .label { margin-top: 0.6rem; }
+.altin { margin-top: clamp(3rem, 2rem + 3vw, 5rem); padding-top: 1.75rem; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; align-items: baseline; color: var(--soft); }
+.altin strong { font-weight: 650; font-stretch: 116%; text-transform: uppercase; letter-spacing: 0.02em; color: var(--w); }
+
+/* ── 09 Randevu ────────────────────────────────────────────────────────────── */
+.visit { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+.visit .bg { position: absolute; inset: -6% 0; }
+.visit .bg img { width: 100%; height: 100%; object-fit: cover; }
+.visit .shade { background: linear-gradient(to top, rgb(10 10 10 / 0.97) 8%, rgb(10 10 10 / 0.6) 50%, rgb(10 10 10 / 0.35)), linear-gradient(to right, rgb(10 10 10 / 0.6), transparent 70%); }
+.visit-in { position: relative; z-index: 2; padding-block: 9rem clamp(4rem, 3rem + 3vw, 6rem); }
+.visit .h2 { margin-top: 1.25rem; }
+.visit .lede { margin-top: 1.5rem; }
+.tel-big { display: inline-flex; align-items: baseline; gap: 1rem; margin-top: 2.75rem; font-size: clamp(2.6rem, 1.6rem + 3.8vw, 4.4rem); line-height: 1; font-weight: 600; font-stretch: 120%; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; position: relative; }
+.tel-big::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.35rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 0.6s var(--ease); }
+.tel-big:hover::after { transform: scaleX(1); transform-origin: left; }
+.visit .cta { margin-top: 2.25rem; }
+.addr { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: clamp(3.5rem, 2.5rem + 3vw, 5.5rem); padding-top: 2rem; border-top: 1px solid var(--line); }
+.addr p { margin-top: 0.75rem; color: var(--soft); font-size: 0.98rem; line-height: 1.6; }
+.addr a { border-bottom: 1px solid rgb(242 242 242 / 0.25); transition: border-color 0.3s, color 0.3s; }
+.addr a:hover { border-color: var(--w); color: var(--w); }
+.visit .fig-cap { position: absolute; right: var(--pad); top: 6.5rem; z-index: 2; }
+
+/* ── Footer ────────────────────────────────────────────────────────────────── */
+.foot { padding-block: clamp(4rem, 3rem + 3vw, 6rem) 5.5rem; border-top: 1px solid var(--line); }
+.foot-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap; }
+.foot-logo { height: 3rem; width: auto; filter: invert(1); }
+.foot-top .slog { margin-top: 1.25rem; font-size: 1.2rem; font-weight: 650; font-stretch: 118%; text-transform: uppercase; letter-spacing: 0.01em; }
+.foot-top .slog em { font-family: var(--serif); font-style: italic; font-weight: 400; text-transform: none; font-size: 1.15em; letter-spacing: 0; font-stretch: 100%; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.75rem; }
+.foot nav a { font-size: 0.7rem; font-weight: 600; font-stretch: 118%; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); padding: 0.6rem 0; transition: color 0.3s; }
+.foot nav a:hover { color: var(--w); }
+.foot-bot { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--g); }
+.levan-chip { display: inline-flex; align-items: center; gap: 0.75rem; }
+.levan-chip img { height: 2.4rem; width: auto; }
+
+/* ── Film dialog ───────────────────────────────────────────────────────────── */
+.film { position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; border: 0; background: var(--k); color: var(--w); padding: 0; display: none; }
+.film[open] { display: grid; grid-template-rows: auto 1fr auto; }
+.film::backdrop { background: var(--k); }
+.film-top { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem var(--pad); }
+.film video { width: 100%; height: 100%; object-fit: contain; background: #000; min-height: 0; }
+.film-x { height: 2.75rem; padding: 0 1rem; border: 1px solid rgb(242 242 242 / 0.4); font-size: 0.7rem; font-weight: 650; font-stretch: 118%; letter-spacing: 0.16em; text-transform: uppercase; }
+.film-x:hover { background: rgb(242 242 242 / 0.08); }
+.film-foot { padding: 1rem var(--pad) 1.25rem; }
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .nav, .hdr-tel { display: none; }
+  .menu-btn { display: inline-flex; }
+  .hdr .btn { margin-left: 0; }
+}
+@media (max-width: 900px) {
+  .chap { display: none; }
+  .type { flex-basis: 80vw; grid-template-columns: 1fr; height: auto; align-items: start; }
+  .type-fig { height: auto; aspect-ratio: 4 / 3; }
+  .loc-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .hdr { height: 4.25rem; gap: 1rem; }
+  .logo img { height: 1.75rem; }
+  .hdr .btn { display: none; }
+  .hero-in { padding-bottom: 7rem; }
+  .hero-foot { bottom: 4.25rem; justify-content: flex-start; padding-inline: var(--pad); }
+  .hero-foot .cap-note { display: none; }
+  .cue { display: none; }
+  .cta .btn { flex: 1 1 auto; justify-content: space-between; }
+  .biz { height: 210vh; }
+  .facts { grid-template-columns: 1fr; }
+  .facts > div { padding: 1.5rem 0; }
+  .facts > div + div { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+  .scrub { height: 430vh; }
+  .scrub-top { top: 5.25rem; }
+  .capset { bottom: 7rem; }
+  .scrub-bar { bottom: 4.25rem; grid-template-columns: auto 1fr; }
+  .scrub-bar .cap-note { display: none; }
+  .type, .type-intro, .type-end { flex-basis: 84vw; }
+  .type-fig { aspect-ratio: 4 / 5; }
+  .type-idx { font-size: 2.6rem; margin-bottom: 0.75rem; }
+  .expand { height: 220vh; }
+  .expand-media { clip-path: inset(calc((1 - var(--k)) * 30%) calc((1 - var(--k)) * 14%)); }
+  .expand-t { flex-direction: column; justify-content: center; align-items: stretch; gap: 46svh; text-align: center; }
+  .expand-t .l { transform: translateY(calc(var(--k) * -20svh)); }
+  .expand-t .r { transform: translateY(calc(var(--k) * 20svh)); text-align: center; }
+  .expand-top { top: 5.25rem; }
+  .expand-txt { grid-template-columns: 1fr; bottom: 4.5rem; gap: 1rem; }
+  .day-head { grid-template-columns: 1fr; gap: 1.5rem; }
+  .collage { grid-template-columns: 1fr 1fr; column-gap: 0.85rem; row-gap: 0; }
+  .c1, .c4, .c5 { grid-column: 1 / -1; margin-top: 2.25rem; }
+  .c2, .c3, .c6 { grid-column: span 1; margin-top: 2.25rem; }
+  .c1 { margin-top: 0; }
+  .c2 { margin-top: 2.25rem; }
+  .c3 { margin-top: 5rem; }
+  .c6 { grid-column: 2 / 3; margin-top: -2rem; }
+  .c5 { grid-column: 1 / 2; margin-top: 2.25rem; } .c5 .ph { aspect-ratio: 3 / 4; }
+  .collage figcaption { flex-direction: column; gap: 0.3rem; font-size: 0.88rem; }
+  .loc { height: 230vh; }
+  .loc-pin { align-items: flex-start; padding-top: 5.5rem; }
+  .loc-head .cap-note { display: none; }
+  .region { grid-template-columns: 1fr; gap: 3rem; }
+  .site-hero { height: 92svh; }
+  .site-hero .wrap { grid-template-columns: 1fr; gap: 1.5rem; }
+  .site-hero .lede { justify-self: start; }
+  .tours-head { flex-direction: column; gap: 0.75rem; }
+  .tl { grid-template-columns: 1fr; padding-left: 1.5rem; }
+  .tl::before, .tl::after { left: 0; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+  .tl::after { transform: scaleY(0); transform-origin: top; }
+  .tl.in::after { transform: scaleY(1); }
+  .tl li { padding: 0 0 1.75rem; }
+  .tl .pt { position: absolute; left: calc(-1.5rem - 4px); top: 0.2rem; margin: 0; }
+  .tl time { height: auto; margin-bottom: 0.35rem; }
+  .nums { grid-template-columns: 1fr 1fr; }
+  .nums > div:last-child { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+  .projs { grid-template-columns: 1fr; gap: 3.5rem; }
+  .proj:first-child, .proj:last-child { grid-column: 1 / -1; margin-top: 0; }
+  .proj:last-child .ph { aspect-ratio: 4 / 3; }
+  .addr { grid-template-columns: 1fr; gap: 1.75rem; }
+  .visit .fig-cap { top: 5.25rem; }
+  .pres { font-size: 0.56rem; letter-spacing: 0.12em; height: 2.2rem; }
+  .pres > * { padding: 0 0.6rem; }
+  .pres .full { display: none; }
+}
+
+/* ── Reduced motion: everything holds still and stays readable ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
+  .js .lines .ln > span, .js [data-reveal] { transform: none !important; opacity: 1 !important; clip-path: none !important; }
+  .js [data-reveal="wipe"] img { transform: none !important; clip-path: none !important; }
+  .js .bars { display: none; }
+  .js .words .w { color: var(--w); }
+  .biz, .expand, .loc { height: auto; }
+  .biz-pin, .expand-pin, .loc-pin { position: relative; height: auto; min-height: 100svh; padding-block: 7rem; }
+  .expand-media { clip-path: none; }
+  .expand-media img { transform: none; }
+  .expand-media::after { opacity: 1; }
+  .expand-t { display: none; }
+  .expand-txt { position: relative; opacity: 1; transform: none; bottom: auto; align-self: end; margin-top: auto; }
+  .expand-pin { display: flex; align-items: flex-end; }
+  .marq-row { white-space: normal; padding-inline: var(--pad); }
+  .marq-in { flex: 1 1 100%; flex-wrap: wrap; }
+  .marq-row .dup { display: none; }
+  .dest { opacity: 1; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<div class="prog" aria-hidden="true"><i id="progBar"></i></div>
+
+<header class="hdr" id="hdr">
+  <a class="logo" href="#ust" aria-label="UZM Group, başa dön"><img src="../assets/logo/uzm-group.svg" alt="UZM Group" width="96" height="42"></a>
+  <nav class="nav" aria-label="Ana menü">
+    <a href="#levan">Levan</a>
+    <a href="#konutlar">Konutlar</a>
+    <a href="#yasam">Yaşam</a>
+    <a href="#konum">Konum</a>
+    <a href="#projeler">Projeler</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
+  <a class="hdr-tel" href="tel:+904447039">444 70 39</a>
+  <a class="btn btn-w btn-s" href="#iletisim">Randevu alın</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menü <i aria-hidden="true"></i></button>
+</header>
+
+<div class="menu" id="menu" aria-label="Menü">
+  <ol>
+    <li><a href="#levan">Levan</a></li>
+    <li><a href="#konutlar">Konutlar</a></li>
+    <li><a href="#yasam">Yaşam</a></li>
+    <li><a href="#konum">Konum</a></li>
+    <li><a href="#projeler">Projeler</a></li>
+    <li><a href="#iletisim">İletişim</a></li>
+  </ol>
+  <div class="menu-foot">
+    <a class="btn btn-w" href="#iletisim">Randevu alın <span class="ar"></span></a>
+    <a class="btn" href="tel:+904447039">444 70 39</a>
+  </div>
+</div>
+
+<div class="chap" aria-hidden="true">
+  <span class="chap-n"><span id="chapN">01</span></span>
+  <span class="chap-line"><i id="chapFill"></i></span>
+  <span class="chap-t">09</span>
+  <span class="chap-name" id="chapName">Ufuk</span>
+</div>
+
+<nav class="pres" aria-label="Vizyonlar arasında gezinme">
+  <a href="../index.html" aria-label="Tüm vizyonlar">← <span class="full">&nbsp;Tüm vizyonlar</span></a>
+  <span>Vizyon <b>&nbsp;3 / 8&nbsp;</b> · Ufuk</span>
+  <a href="../ufuk-site/index.html" title="Ufuk vizyonunun tam sitesi">Tam site</a>
+  <a class="arw" href="../2-imza/index.html" aria-label="Önceki vizyon: İmza" title="Önceki vizyon: İmza">‹</a>
+  <a class="arw" href="../4-kesit/index.html" aria-label="Sonraki vizyon: Kesit" title="Sonraki vizyon: Kesit">›</a>
+</nav>
+
+<main id="icerik">
+
+<!-- 01 ─ Ufuk: the film, framed by a title sequence -->
+<section class="hero" id="ust" data-chapter="01" data-name="Ufuk" aria-labelledby="hero-t">
+  <div class="hero-media">
+    <video id="heroVid" autoplay muted loop playsinline preload="auto" poster="../assets/img/film--levan-hero.webp" aria-label="Levan Bahçeşehir tanıtım filmi, sessiz">
+      <source src="../assets/video/levan-film-720.mp4" type="video/mp4" media="(max-width: 760px) and (orientation: portrait)">
+      <source src="../assets/video/levan-film-1920.mp4" type="video/mp4">
+    </video>
+    <script>(function(){var v=document.getElementById("heroVid");if(matchMedia("(max-width: 760px) and (orientation: portrait)").matches)v.poster="../assets/img/film--levan-hero-tall.webp";if(matchMedia("(prefers-reduced-motion: reduce)").matches){v.removeAttribute("autoplay");v.preload="none";}})();</script>
+    <div class="shade"></div>
+    <div class="hero-dim"></div>
+  </div>
+  <div class="bars" aria-hidden="true"><i></i><i></i></div>
+
+  <div class="hero-in wrap">
+    <p class="label" data-reveal="fade">UZM Group · İnşaat ve proje geliştirme</p>
+    <h1 id="hero-t" class="h1 caps lines" data-reveal>
+      <span class="ln"><span style="--i:0">Sağlam yapı.</span></span>
+      <span class="ln"><span style="--i:1">Tutulan <em>Söz.</em></span></span>
+    </h1>
+    <p class="lede" data-reveal="fade">Lokasyondan şantiyeye, şantiyeden teslime: her projeyi baştan sona kendimiz kuruyoruz. Bugün Başakşehir Belediyesi iş birliğiyle Levan Bahçeşehir'i inşa ediyoruz.</p>
+    <div class="cta" data-reveal="fade" style="--dl:1650ms">
+      <a class="btn btn-w" href="#levan">Levan Bahçeşehir <span class="ar"></span></a>
+      <button class="btn" type="button" id="filmOpen">Filmi izleyin <span class="ar"></span></button>
+    </div>
+  </div>
+  <div class="hero-foot wrap">
+    <span class="cue label" aria-hidden="true">Kaydırın <i></i></span>
+    <span class="cap-note">Levan Bahçeşehir tanıtım filminden · Görselleştirme</span>
+  </div>
+</section>
+
+<!-- 02 ─ Biz: one statement that lights up word by word -->
+<section class="biz" id="biz" data-chapter="02" data-name="Biz" aria-labelledby="biz-t">
+  <div class="biz-pin">
+    <div class="wrap">
+      <p class="label">02 — Biz</p>
+      <h2 id="biz-t" class="h2 caps lines" data-reveal>
+        <span class="ln"><span>Temelden <em>Teslime.</em></span></span>
+      </h2>
+      <p class="words" id="words">UZM Group, İstanbul merkezli bir inşaat ve proje geliştirme grubu. İnşaat şirketimiz UZM Yapı ile 2020'den bu yana Büyükçekmece ve Arnavutköy'de villa projeleri tamamladık. Bugün aynı özenle, Başakşehir Belediyesi iş birliğiyle Türkiye'nin golf sahasına sahip ilk konut projesini inşa ediyoruz.</p>
+    </div>
+  </div>
+</section>
+<div class="wrap">
+  <dl class="facts" data-reveal="fade">
+    <div><dt class="label">İnşaat</dt><dd><strong>UZM Yapı</strong>Projelerimizi kendi inşaat şirketimizle, kendi ekibimizle yapıyoruz.</dd></div>
+    <div><dt class="label">2020'den bu yana</dt><dd><strong>Teslim edilen villalar</strong>Büyükçekmece ve Arnavutköy'de tamamlanan villa projeleri.</dd></div>
+    <div><dt class="label">Bugün</dt><dd><strong>Levan Bahçeşehir</strong>Başakşehir Belediyesi iş birliğiyle, Bahçeşehir'de.</dd></div>
+  </dl>
+</div>
+
+<!-- 03 ─ Levan: arriving at Levan, scrubbed frame by frame -->
+<section class="scrub" id="levan" data-chapter="03" data-name="Levan" aria-labelledby="levan-t">
+  <div class="scrub-pin">
+    <video id="scrubVid" muted playsinline preload="auto" poster="ufuk-scrub-poster.jpg" aria-hidden="true">
+      <source src="ufuk-scrub.mp4" type="video/mp4">
+    </video>
+    <div class="shade"></div>
+    <div class="scrub-top wrap">
+      <p class="label">03 — Levan Bahçeşehir</p>
+      <img src="../assets/logo/levan-yatay-light.webp" alt="Levan Bahçeşehir" width="540" height="188" loading="lazy">
+    </div>
+    <div class="capset">
+      <div class="wrap">
+        <div class="cap active" data-from="0" data-to="0.2">
+          <h2 id="levan-t" class="h2 caps lines"><span class="ln"><span>Levan <em>Bahçeşehir.</em></span></span></h2>
+          <p class="lede">Bahçeşehir'in doğayla iç içe yamaçlarında, Başakşehir Belediyesi iş birliğiyle yükselen yeni bir yaşam.</p>
+        </div>
+        <div class="cap" data-from="0.2" data-to="0.4">
+          <h3 class="h2 caps lines"><span class="ln"><span>Türkiye'de bir <em>İlk.</em></span></span></h3>
+          <p class="lede">Golf sahasına sahip ilk konut projesi. Saha dışarıya açık bir kulüp değil; yalnızca Levan sakinleri için.</p>
+        </div>
+        <div class="cap" data-from="0.4" data-to="0.58">
+          <h3 class="h2 caps lines"><span class="ln"><span>Yüzde yetmişi <em>Yeşil.</em></span></span></h3>
+          <p class="lede">Yatay mimari her eve gökyüzü ve bahçe bırakıyor; arazinin yüzde yetmişi yeşil alan.</p>
+        </div>
+        <div class="cap" data-from="0.58" data-to="0.8">
+          <h3 class="h2 caps lines"><span class="ln"><span>Belediyeyle <em>Birlikte.</em></span></span></h3>
+          <p class="lede">Levan Bahçeşehir, Başakşehir Belediyesi iş birliğiyle inşa ediliyor. Teslimden sonra da standart düşmesin diye site ve tesis yönetimi Emlak Yönetim'e emanet.</p>
+          <div class="belediye"><img src="../assets/logo/basaksehir-belediyesi.svg" alt="Başakşehir Belediyesi" width="57" height="50" loading="lazy"><span>Kamu iş birliğiyle güvence</span></div>
+        </div>
+        <div class="cap" data-from="0.8" data-to="1.01">
+          <p class="label">Standart değil. Levan.</p>
+          <div class="cta">
+            <a class="btn btn-w" href="#konutlar">Konut tiplerini görün <span class="ar"></span></a>
+            <a class="btn ext" href="https://levan.com.tr/" target="_blank" rel="noopener">levan.com.tr</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scrub-bar wrap" aria-hidden="true">
+      <span class="tc" id="tc">00:00 / 00:13</span>
+      <span class="track" id="track"><i id="trackFill"></i><s style="left:20%"></s><s style="left:40%"></s><s style="left:58%"></s><s style="left:80%"></s><b id="trackHead"></b></span>
+      <span class="cap-note">Levan Bahçeşehir tanıtım filminden · Görselleştirme</span>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ─ Konutlar: six homes, side by side -->
+<section class="types" id="konutlar" data-chapter="04" data-name="Konutlar" aria-labelledby="types-t">
+  <div class="types-pin">
+    <div class="types-track" id="typesTrack">
+      <div class="type-intro">
+        <p class="label">04 — Konutlar</p>
+        <h2 id="types-t" class="h2 caps lines" data-reveal><span class="ln"><span>Daireden</span></span><span class="ln"><span style="--i:1"><em>Malikâneye.</em></span></span></h2>
+        <p class="lede" data-reveal="fade">Altı konut tipi, tek bir yaşam kültürü. Her birinin net alanı, brüt alanı ve bahçesi; planına da bir dokunuşla bakın.</p>
+        <span class="hint" aria-hidden="true">Kaydırın <i></i></span>
+      </div>
+
+      <article class="type" data-counts aria-labelledby="t1">
+        <figure class="type-fig">
+          <img class="type-img" src="../assets/img/levan--ic--2-1-salon.webp" alt="2+1 dairede salon" width="1600" height="900" loading="lazy">
+          <img class="type-plan" src="../assets/img/levan--plan--2-1-a.webp" alt="2+1 A daire kat planı" width="1600" height="918" loading="lazy">
+          <figcaption class="fig-cap cap-note">Görselleştirme</figcaption>
+          <button class="plan-tg" type="button" aria-pressed="false">Planı göster</button>
+        </figure>
+        <div class="type-txt">
+          <span class="type-idx" aria-hidden="true">01</span>
+          <p class="label">Daire · 01 / 06</p>
+          <h3 id="t1" class="h3 caps">2+1 <em>Daire</em></h3>
+          <p class="type-net"><span class="big num"><span class="cnt" data-v="64.83" data-d="2">64,83</span>–<span class="cnt" data-v="70.17" data-d="2">70,17</span><small>m²</small></span><span class="label">Net alan</span></p>
+          <dl class="type-dl"><div><dt class="label">Brüt</dt><dd>73,83–81,13 m²</dd></div></dl>
+          <p class="type-blurb">Yeni başlangıçlar için: ferah, kullanışlı ve bahçe yaşamına açık.</p>
+        </div>
+      </article>
+
+      <article class="type" data-counts aria-labelledby="t2">
+        <figure class="type-fig">
+          <img class="type-img" src="../assets/img/levan--ic--3-1-salon.webp" alt="3+1 dairede salon" width="1600" height="900" loading="lazy">
+          <img class="type-plan" src="../assets/img/levan--plan--3-1-a.webp" alt="3+1 A daire kat planı" width="1600" height="918" loading="lazy">
+          <figcaption class="fig-cap cap-note">Görselleştirme</figcaption>
+          <button class="plan-tg" type="button" aria-pressed="false">Planı göster</button>
+        </figure>
+        <div class="type-txt">
+          <span class="type-idx" aria-hidden="true">02</span>
+          <p class="label">Daire · 02 / 06</p>
+          <h3 id="t2" class="h3 caps">3+1 <em>Daire</em></h3>
+          <p class="type-net"><span class="big num"><span class="cnt" data-v="113.07" data-d="2">113,07</span>–<span class="cnt" data-v="123.43" data-d="2">123,43</span><small>m²</small></span><span class="label">Net alan</span></p>
+          <dl class="type-dl"><div><dt class="label">Brüt</dt><dd>127,93–141,21 m²</dd></div></dl>
+          <p class="type-blurb">Aile yaşamına göre kurgulanmış geniş salonlar ve ebeveyn banyosu.</p>
+        </div>
+      </article>
+
+      <article class="type" data-counts aria-labelledby="t3">
+        <figure class="type-fig">
+          <img class="type-img" src="../assets/img/levan--avlu-aksam.webp" alt="Gün batımında bloklar arası avlu" width="1200" height="675" loading="lazy">
+          <img class="type-plan" src="../assets/img/levan--plan--4-1.webp" alt="4+1 daire kat planı" width="1600" height="918" loading="lazy">
+          <figcaption class="fig-cap cap-note">Görselleştirme</figcaption>
+          <button class="plan-tg" type="button" aria-pressed="false">Planı göster</button>
+        </figure>
+        <div class="type-txt">
+          <span class="type-idx" aria-hidden="true">03</span>
+          <p class="label">Daire · 03 / 06</p>
+          <h3 id="t3" class="h3 caps">4+1 <em>Daire</em></h3>
+          <p class="type-net"><span class="big num"><span class="cnt" data-v="155.71" data-d="2">155,71</span><small>m²</small></span><span class="label">Net alan</span></p>
+          <dl class="type-dl"><div><dt class="label">Brüt</dt><dd>178,13 m²</dd></div></dl>
+          <p class="type-blurb">Kalabalık aileler için cömert metrekare, gün ışığı ve geniş balkonlar.</p>
+        </div>
+      </article>
+
+      <article class="type" data-counts aria-labelledby="t4">
+        <figure class="type-fig">
+          <img class="type-img" src="../assets/img/levan--ikiz-villa-gece.webp" alt="Gece aydınlatmasıyla ikiz villalar" width="1600" height="1231" loading="lazy">
+          <img class="type-plan" src="../assets/img/levan--plan--ikiz-zemin.webp" alt="4+1 ikiz villa zemin kat planı" width="1600" height="960" loading="lazy">
+          <figcaption class="fig-cap cap-note">Görselleştirme</figcaption>
+          <button class="plan-tg" type="button" aria-pressed="false">Planı göster</button>
+        </figure>
+        <div class="type-txt">
+          <span class="type-idx" aria-hidden="true">04</span>
+          <p class="label">Villa · 04 / 06</p>
+          <h3 id="t4" class="h3 caps">4+1 İkiz <em>Villa</em></h3>
+          <p class="type-net"><span class="big num"><span class="cnt" data-v="271.02" data-d="2">271,02</span><small>m²</small></span><span class="label">Net alan</span></p>
+          <dl class="type-dl"><div><dt class="label">Brüt</dt><dd>310,12 m²</dd></div><div><dt class="label">Tahsisli bahçe</dt><dd>85,74 m²</dd></div></dl>
+          <p class="type-blurb">Bodrum, zemin ve birinci kattan oluşan yaşam; özel bahçe.</p>
+        </div>
+      </article>
+
+      <article class="type" data-counts aria-labelledby="t5">
+        <figure class="type-fig">
+          <img class="type-img" src="../assets/img/levan--villa-gece.webp" alt="Gece bir müstakil villa" width="1200" height="923" loading="lazy">
+          <img class="type-plan" src="../assets/img/levan--plan--mustakil-zemin.webp" alt="5+1 müstakil villa zemin kat planı" width="1600" height="960" loading="lazy">
+          <figcaption class="fig-cap cap-note">Görselleştirme</figcaption>
+          <button class="plan-tg" type="button" aria-pressed="false">Planı göster</button>
+        </figure>
+        <div class="type-txt">
+          <span class="type-idx" aria-hidden="true">05</span>
+          <p class="label">Villa · 05 / 06</p>
+          <h3 id="t5" class="h3 caps">5+1 Müstakil <em>Villa</em></h3>
+          <p class="type-net"><span class="big num"><span class="cnt" data-v="329.89" data-d="2">329,89</span><small>m²</small></span><span class="label">Net alan</span></p>
+          <dl class="type-dl"><div><dt class="label">Brüt</dt><dd>378,10 m²</dd></div></dl>
+          <p class="type-blurb">Kendi bahçesi ve kendi kapısıyla; gökyüzüyle arada engel yok.</p>
+        </div>
+      </article>
+
+      <article class="type" data-counts aria-labelledby="t6">
+        <figure class="type-fig">
+          <img class="type-img" src="../assets/img/levan--gece-vaziyet.webp" alt="Levan Bahçeşehir gece havadan" width="1600" height="893" loading="lazy">
+          <img class="type-plan" src="../assets/img/levan--plan--malikane.webp" alt="6+1 malikâne kat planı" width="1600" height="1194" loading="lazy">
+          <figcaption class="fig-cap cap-note">Görselleştirme</figcaption>
+          <button class="plan-tg" type="button" aria-pressed="false">Planı göster</button>
+        </figure>
+        <div class="type-txt">
+          <span class="type-idx" aria-hidden="true">06</span>
+          <p class="label">Malikâne · 06 / 06</p>
+          <h3 id="t6" class="h3 caps">6+1 <em>Malikâne</em></h3>
+          <p class="type-net"><span class="big num"><span class="cnt" data-v="268.35" data-d="2">268,35</span><small>m²</small></span><span class="label">Net alan</span></p>
+          <dl class="type-dl"><div><dt class="label">Brüt</dt><dd>301,80 m²</dd></div><div><dt class="label">Tahsisli bahçe</dt><dd><span class="cnt" data-v="1159.09" data-d="2">1.159,09</span> m²</dd></div></dl>
+          <p class="type-blurb">Levan'ın zirvesi: geniş tahsisli bahçesiyle.</p>
+        </div>
+      </article>
+
+      <div class="type-end">
+        <p class="label">Planlar ve iç mekânlar</p>
+        <h3 class="h3 caps">Hangisi <em>Sizin?</em></h3>
+        <div class="cta">
+          <a class="btn btn-w" href="#iletisim">Randevu alın <span class="ar"></span></a>
+          <a class="btn ext" href="https://levan.com.tr/#konutlar" target="_blank" rel="noopener">Tüm planlar · levan.com.tr</a>
+        </div>
+      </div>
+    </div>
+    <div class="types-bar" aria-hidden="true"><i id="typesFill"></i></div>
+  </div>
+</section>
+
+<!-- 05 ─ Yaşam: a window that opens onto the golf course, then the day -->
+<section id="yasam" data-chapter="05" data-name="Yaşam" aria-labelledby="life-t">
+  <div class="expand" id="expand">
+    <div class="expand-pin">
+      <div class="expand-media">
+        <img src="../assets/img/levan--gun--golf.webp" alt="Villaların önündeki golf sahasında bir oyuncu" width="1920" height="810" loading="lazy">
+      </div>
+      <div class="expand-top wrap"><p class="label">05 — Yaşam</p></div>
+      <p class="expand-t h2 caps" aria-hidden="true"><span class="l">Golf,</span><span class="r">kapınızın <em>Önünde.</em></span></p>
+      <div class="expand-txt wrap">
+        <div>
+          <h2 id="life-t" class="h2 caps">Golf, kapınızın <em>Önünde.</em></h2>
+          <p class="lede">Golf sahası dışarıya açık bir kulüp değil; yalnızca Levan sakinleri için. Tenis kortu, futbol sahası ve çocuk oyun alanı evinize birkaç adım uzaklıkta.</p>
+        </div>
+        <span class="cap-note">Levan Bahçeşehir tanıtım filminden · Görselleştirme</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="marq" id="marq">
+    <h3 class="sr-only">Sosyal olanaklar</h3>
+    <ul class="sr-only">
+      <li>Müstakil yaşam</li><li>Golf sahası</li><li>Site içi ring hattı</li><li>Tenis kortu</li><li>Spor salonu</li><li>Kapalı havuz</li><li>Hamam</li><li>Jakuzi</li><li>Buhar odası</li><li>Sauna</li><li>Futbol sahası</li><li>Çocuk oyun alanı</li><li>Kapalı otopark</li><li>Akıllı ev sistemleri</li><li>Levan App</li>
+    </ul>
+    <div class="marq-row" aria-hidden="true"><div class="marq-in"><span>Golf sahası</span><span>Kapalı havuz</span><span>Hamam</span><span>Sauna</span><span>Buhar odası</span><span>Jakuzi</span><span>Spor salonu</span><span>Tenis kortu</span></div></div>
+    <div class="marq-row" aria-hidden="true" data-dir="-1"><div class="marq-in"><span>Müstakil yaşam</span><span>Futbol sahası</span><span>Çocuk oyun alanı</span><span>Site içi ring hattı</span><span>Kapalı otopark</span><span>Akıllı ev sistemleri</span><span>Levan App</span></div></div>
+  </div>
+
+  <div class="day wrap">
+    <div class="day-head">
+      <div>
+        <p class="label">Levan'da bir gün</p>
+        <h2 class="h2 caps lines" data-reveal><span class="ln"><span>Sabahtan geceye,</span></span><span class="ln"><span style="--i:1">her şey <em>Yakın.</em></span></span></h2>
+      </div>
+      <p class="lede" data-reveal="fade">Kahvaltı bahçede, öğleden sonra havuz, akşam son ışık. Kapalı havuz, spor salonu, hamam, sauna ve buhar odası; hepsi site sakinlerine özel, hepsi birkaç adım ötede.</p>
+    </div>
+    <div class="collage">
+      <figure class="c1" data-speed="-0.6"><div class="ph" data-reveal="wipe"><img src="../assets/img/levan--gun--kahvalti.webp" alt="Bir aile villanın bahçesinde kahvaltı ediyor" width="1920" height="810" loading="lazy"></div><figcaption><span class="label">Sabah</span>Kahvaltı, bahçede</figcaption></figure>
+      <figure class="c2" data-speed="0.8"><div class="ph" data-reveal="wipe" style="--dl:120ms"><img src="../assets/img/levan--tesis--havuz.webp" alt="Levan'ın kapalı yüzme havuzu" width="620" height="789" loading="lazy"></div><figcaption><span class="label">Öğle</span>Kapalı havuz</figcaption></figure>
+      <figure class="c3" data-speed="0.4"><div class="ph" data-reveal="wipe"><img src="../assets/img/levan--gun--cocuklar.webp" alt="İki çocuk Levan yazısının önünden bisikletle geçiyor" width="1920" height="810" loading="lazy" style="object-position:62% 50%"></div><figcaption><span class="label">Öğleden sonra</span>Çocuklar dışarıda</figcaption></figure>
+      <figure class="c4" data-speed="-0.5"><div class="ph" data-reveal="wipe" style="--dl:120ms"><img src="../assets/img/levan--tesis--hamam.webp" alt="Levan'ın hamamı" width="1200" height="800" loading="lazy"></div><figcaption><span class="label">Akşamüstü</span>Hamam ve sauna</figcaption></figure>
+      <figure class="c5" data-speed="0.5"><div class="ph" data-reveal="wipe"><img src="../assets/img/levan--gun--gun-batimi.webp" alt="Gün batımında bahçede esneyen bir anne ve kızı" width="1920" height="810" loading="lazy" style="object-position:40% 50%"></div><figcaption><span class="label">Gün batımı</span>Bahçede son ışık</figcaption></figure>
+      <figure class="c6" data-speed="-0.7"><div class="ph" data-reveal="wipe" style="--dl:120ms"><img src="../assets/img/levan--gun--gece.webp" alt="Gece aydınlatmasıyla bir Levan villası" width="1920" height="810" loading="lazy"></div><figcaption><span class="label">Gece</span>Levan'ın ışıkları</figcaption></figure>
+    </div>
+    <p class="cap-note day-note">Görseller Levan Bahçeşehir tanıtım çalışmalarındandır · Görselleştirme</p>
+  </div>
+</section>
+
+<!-- 06 ─ Konum: minutes, drawn as routes -->
+<section class="loc" id="konum" data-chapter="06" data-name="Konum" aria-labelledby="loc-t">
+  <div class="loc-pin">
+    <div class="wrap loc-grid">
+      <div class="loc-head">
+        <p class="label">06 — Konum</p>
+        <h2 id="loc-t" class="h2 caps lines" data-reveal><span class="ln"><span>Merkeze</span></span><span class="ln"><span style="--i:1"><em>Dakikalar.</em></span></span></h2>
+        <p class="lede" data-reveal="fade">Bahçeşehir'in yeşil yamaçlarında; yapımı süren Sazlıdere Köprüsü ile şehrin iş merkezine dakikalar uzaklıkta.</p>
+        <p class="cap-note">Şematik gösterim, ölçekli değildir. Süreler projenin yayımladığı sürüş süreleridir; 5. Levent süresi yapımı süren Sazlıdere Köprüsü iledir.</p>
+      </div>
+      <div class="map" id="map">
+        <svg id="mapSvg" role="img" aria-labelledby="map-t">
+          <title id="map-t">Levan Bahçeşehir'den sürüş süreleri: İstanbul Havalimanı 20 dakika, 5. Levent 15 dakika, İSTOÇ 15 dakika.</title>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="wrap region">
+  <article data-reveal="fade">
+    <div class="ph"><img src="../assets/img/basaksehir--sazlidere-koprusu.webp" alt="Sazlıdere Köprüsü" width="1000" height="720" loading="lazy"></div>
+    <span class="label">Yapım aşamasında</span>
+    <h3>Sazlıdere Köprüsü</h3>
+    <p>Bahçeşehir'i şehrin doğusuna bağlayan en kısa yol. Tamamlandığında 5. Levent yaklaşık 15 dakika.</p>
+  </article>
+  <article data-reveal="fade" style="--dl:120ms">
+    <div class="ph"><img src="../assets/img/basaksehir--cebeci-tuneli.webp" alt="Cebeci Tüneli ve 5. Levent bağlantısı" width="1280" height="720" loading="lazy"></div>
+    <span class="label">5. Levent aksı</span>
+    <h3>Cebeci Tüneli bağlantısı</h3>
+    <p>Köprü hattıyla bütünleşen tünel bağlantısı, Maslak ve Levent'e gidiş-dönüşü kısaltıyor.</p>
+  </article>
+  <article data-reveal="fade" style="--dl:240ms">
+    <div class="ph"><img src="../assets/img/basaksehir--sehir.webp" alt="Başakşehir'in havadan görünümü" width="1700" height="943" loading="lazy"></div>
+    <span class="label">Bölgesel gelişim</span>
+    <h3>Başakşehir</h3>
+    <p>Şehir hastanesi, millet bahçesi ve yeni ulaşım yatırımlarıyla İstanbul'un en hızlı gelişen ilçelerinden biri.</p>
+  </article>
+</div>
+
+<!-- 07 ─ Şantiye: the real site, in black and white -->
+<section class="site" id="santiye" data-chapter="07" data-name="Şantiye" aria-labelledby="site-t">
+  <div class="site-hero" id="siteHero">
+    <div class="bg"><img src="../assets/img/saha--kazi-havadan.webp" alt="Levan Bahçeşehir şantiyesi, havadan" width="1776" height="801" loading="lazy"></div>
+    <div class="shade"></div>
+    <div class="wrap">
+      <div>
+        <p class="label">07 — Şantiye · Fotoğraf</p>
+        <h2 id="site-t" class="h2 caps lines" data-reveal><span class="ln"><span>İnşaat</span></span><span class="ln"><span style="--i:1"><em>Sürüyor.</em></span></span></h2>
+      </div>
+      <p class="lede" data-reveal="fade">Levan Bahçeşehir'in şantiyesini ilk kazıdan bugüne, tarihleriyle belgeliyoruz. 360° turlarla ilerlemeyi bulunduğunuz yerden adım adım takip edin.</p>
+    </div>
+  </div>
+  <div class="wrap tours">
+    <div class="tours-head">
+      <p class="label">360° şantiye turları</p>
+      <p class="cap-note">Turlar Kuula'da, yeni sekmede açılır.</p>
+    </div>
+    <ol class="tl" data-reveal>
+      <li><a href="https://kuula.co/share/collection/7TpMp?logo=1&amp;info=0&amp;fs=1&amp;vr=0&amp;initload=1&amp;autorotate=0.1&amp;thumbs=1" target="_blank" rel="noopener"><time datetime="2025-12-09">9 Aralık 2025</time><span class="pt"></span><strong>İlk tur</strong><span class="go">360° turu açın ↗</span></a></li>
+      <li><a href="https://kuula.co/share/collection/7MjPt?logo=1&amp;info=0&amp;fs=1&amp;vr=0&amp;initload=1&amp;autorotate=0.1&amp;thumbs=1" target="_blank" rel="noopener"><time datetime="2026-04-25">25 Nisan 2026</time><span class="pt"></span><strong>Nisan</strong><span class="go">360° turu açın ↗</span></a></li>
+      <li><a href="https://kuula.co/share/collection/7MStF?logo=1&amp;info=0&amp;fs=1&amp;vr=0&amp;initload=1&amp;autorotate=0.1&amp;thumbs=1" target="_blank" rel="noopener"><time datetime="2026-05-16">16 Mayıs 2026</time><span class="pt"></span><strong>Mayıs</strong><span class="go">360° turu açın ↗</span></a></li>
+      <li><a href="https://kuula.co/share/collection/7TmW3?logo=1&amp;info=0&amp;fs=1&amp;vr=0&amp;initload=1&amp;autorotate=0.1&amp;thumbs=1" target="_blank" rel="noopener"><time datetime="2026-06-06">6 Haziran 2026</time><span class="pt"></span><strong>Haziran</strong><span class="go">360° turu açın ↗</span></a></li>
+      <li><a href="https://kuula.co/share/collection/7TvYt?logo=1&amp;info=0&amp;fs=1&amp;vr=0&amp;initload=1&amp;autorotate=0.1&amp;thumbs=1" target="_blank" rel="noopener"><time datetime="2026-06-25">25 Haziran 2026</time><span class="pt"></span><strong>En güncel</strong><span class="go">360° turu açın ↗</span></a></li>
+    </ol>
+  </div>
+  <div class="strip" id="strip">
+    <div class="strip-in" id="stripIn">
+      <figure><div class="ph"><img src="../assets/img/saha--temel-kazi.webp" alt="Temel kazısında iş makinesi" width="640" height="1136" loading="lazy"></div><figcaption>Temel kazısı</figcaption></figure>
+      <figure><div class="ph"><img src="../assets/img/saha--ilk-beton.webp" alt="UZM yeleği giymiş bir şantiye çalışanı" width="720" height="1040" loading="lazy"></div><figcaption>Sahada UZM ekibi</figcaption></figure>
+      <figure><div class="ph"><img src="../assets/img/saha--usta.webp" alt="Şantiyede çalışan bir usta" width="720" height="1280" loading="lazy"></div><figcaption>Usta işi</figcaption></figure>
+      <figure><div class="ph"><img src="../assets/img/saha--beton-pompasi.webp" alt="Beton pompasının başında şantiye ekibi" width="720" height="1040" loading="lazy"></div><figcaption>Beton pompası başında</figcaption></figure>
+      <figure><div class="ph"><img src="../assets/img/saha--vinc.webp" alt="Şantiyede bir vinç" width="720" height="1280" loading="lazy"></div><figcaption>Vinç</figcaption></figure>
+      <figure><div class="ph"><img src="../assets/img/saha--imza.webp" alt="Şantiyede belgeler imzalanıyor" width="720" height="1040" loading="lazy"></div><figcaption>Her adım kayıtlı</figcaption></figure>
+      <figure><div class="ph"><img src="../assets/img/saha--ofis-havadan-dikey.webp" alt="Levan satış ofisi, havadan" width="1080" height="1350" loading="lazy"></div><figcaption>Levan satış ofisi</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ─ Projeler: what we have already delivered -->
+<section class="rec" id="projeler" data-chapter="08" data-name="Projeler" aria-labelledby="rec-t">
+  <div class="wrap">
+    <div class="rec-head">
+      <p class="label">08 — Geçmiş projeler</p>
+      <h2 id="rec-t" class="h2 caps lines" data-reveal><span class="ln"><span>Söz verdik,</span></span><span class="ln"><span style="--i:1"><em>Teslim</em> ettik.</span></span></h2>
+    </div>
+    <dl class="nums" data-counts data-reveal="fade">
+      <div><dd class="num"><span class="cnt" data-v="4">4</span></dd><dt class="label">Proje</dt></div>
+      <div><dd class="num"><span class="cnt" data-v="23">23</span></dd><dt class="label">Villa tamamlandı</dt></div>
+      <div><dd class="num"><span class="cnt" data-v="31546">31.546</span><small>m²</small></dd><dt class="label">Tamamlanan proje alanı</dt></div>
+    </dl>
+    <div class="projs">
+      <article class="proj">
+        <div class="ph" data-reveal="wipe"><img src="../assets/img/viktorya--havuz.webp" alt="Viktorya Park Villaları, havuz ve bahçe" width="1600" height="1067" loading="lazy"><span class="tag">Tamamlandı</span><span class="fig-cap cap-note">Fotoğraf</span></div>
+        <h3 class="h3 caps">Viktorya Park <em>Villaları</em></h3>
+        <p class="label">Büyükçekmece, İstanbul</p>
+        <p>10 villa, 5.200 m² proje alanı; teslim edildi, tapuları hazır.</p>
+      </article>
+      <article class="proj">
+        <div class="ph" data-reveal="wipe" style="--dl:150ms"><img src="../assets/img/agacelebi--kapak.webp" alt="Ağaçelebi Sarayları, özel havuzlu bir villa" width="1600" height="900" loading="lazy" style="object-position:42% 50%"><span class="tag">Tamamlandı</span><span class="fig-cap cap-note">Fotoğraf</span></div>
+        <h3 class="h3 caps">Ağaçelebi <em>Sarayları</em></h3>
+        <p class="label">Arnavutköy (Bolluca), İstanbul</p>
+        <p>Özel havuzlu ve bahçeli 13 villa, 26.346 m² proje alanı.</p>
+      </article>
+    </div>
+    <p class="altin"><strong>Altın Sarayı</strong> <span>Büyükçekmece — UZM Yapı'nın ilk projelerinden.</span></p>
+  </div>
+</section>
+
+<!-- 09 ─ Randevu: the invitation -->
+<section class="visit" id="iletisim" data-chapter="09" data-name="Randevu" aria-labelledby="visit-t">
+  <div class="bg" id="visitBg"><img src="../assets/img/film--levan-dusk.webp" alt="" width="1920" height="810" loading="lazy"></div>
+  <div class="shade"></div>
+  <span class="fig-cap cap-note">Görselleştirme</span>
+  <div class="wrap visit-in">
+    <p class="label">09 — Randevu</p>
+    <h2 id="visit-t" class="h2 caps lines" data-reveal><span class="ln"><span>Levan'ı yerinde</span></span><span class="ln"><span style="--i:1"><em>Görün.</em></span></span></h2>
+    <p class="lede" data-reveal="fade">Levan Bahçeşehir satış ofisinde sizi ağırlayalım; konut tiplerini ve planları birlikte inceleyelim.</p>
+    <a class="tel-big" href="tel:+904447039" aria-label="444 70 39'u arayın">444 70 39</a>
+    <div class="cta">
+      <a class="btn btn-w" href="tel:+904447039">Hemen arayın <span class="ar"></span></a>
+      <a class="btn ext" href="https://wa.me/904447039" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn ext" href="https://www.google.com/maps/search/?api=1&amp;query=Levan%20Bah%C3%A7e%C5%9Fehir%20Sat%C4%B1%C5%9F%20Ofisi" target="_blank" rel="noopener">Yol tarifi</a>
+    </div>
+    <div class="addr">
+      <div><span class="label">Levan satış ofisi</span><p>Bahçeşehir 1. Kısım, 2801. Sk.<br>34488 Başakşehir / İstanbul</p></div>
+      <div><span class="label">Genel merkez</span><p>Kayabaşı Mah. 15 Temmuz Sk. No: 2<br>Başakşehir / İstanbul</p></div>
+      <div><span class="label">E-posta</span><p><a href="mailto:info@levan.com.tr">info@levan.com.tr</a><br><a href="mailto:info@uzmgroup.com.tr">info@uzmgroup.com.tr</a></p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <img class="foot-logo" src="../assets/logo/uzm-group.svg" alt="UZM Group" width="110" height="48" loading="lazy">
+        <p class="slog">Sağlam yapı. Tutulan <em>Söz.</em></p>
+      </div>
+      <nav aria-label="Alt menü">
+        <a href="#levan">Levan</a><a href="#konutlar">Konutlar</a><a href="#yasam">Yaşam</a><a href="#konum">Konum</a><a href="#santiye">Şantiye</a><a href="#projeler">Projeler</a><a href="#iletisim">İletişim</a>
+      </nav>
+      <a class="levan-chip" href="https://levan.com.tr/" target="_blank" rel="noopener" aria-label="levan.com.tr"><img src="../assets/logo/levan-yatay-light.webp" alt="Levan Bahçeşehir" width="540" height="188" loading="lazy"></a>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 UZM Group. Levan görselleri tanıtım amaçlı görselleştirmelerdir; uygulamada farklılık gösterebilir.</span>
+      <span>Konsept çalışma · Vizyon 3 — Ufuk</span>
+    </div>
+  </div>
+</footer>
+
+<dialog class="film" id="film" aria-label="Levan Bahçeşehir tanıtım filmi">
+  <div class="film-top">
+    <span class="label">Levan Bahçeşehir tanıtım filmi</span>
+    <button class="film-x" type="button" id="filmClose">Kapat ✕</button>
+  </div>
+  <video id="filmVid" controls playsinline preload="none" poster="../assets/img/film--levan-hero.webp">
+    <source src="../assets/video/levan-film-1920.mp4" type="video/mp4">
+  </video>
+  <p class="film-foot cap-note">Görselleştirme · Uygulamada farklılık gösterebilir.</p>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script>
+addEventListener("DOMContentLoaded", () => {
+  const d = document;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  const $ = (s, r = d) => r.querySelector(s);
+  const $$ = (s, r = d) => [...r.querySelectorAll(s)];
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const ease = (t) => 1 - Math.pow(1 - t, 3);
+  const nf = {};
+  const fmt = (v, dec = 0) => (nf[dec] ??= new Intl.NumberFormat("tr-TR", { minimumFractionDigits: dec, maximumFractionDigits: dec })).format(v);
+
+  /* Smooth scrolling for mouse and trackpad (Lenis); touch and reduced motion keep native scrolling. */
+  let lenis = null;
+  if (!reduce && fine && window.Lenis) lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+
+  /* Menu */
+  const menuBtn = $(".menu-btn"), menu = $("#menu");
+  const setMenu = (open) => {
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menu.toggleAttribute("data-open", open);
+    d.documentElement.style.overflow = open ? "hidden" : "";
+    if (lenis) open ? lenis.stop() : lenis.start();
+  };
+  menuBtn.addEventListener("click", () => setMenu(menuBtn.getAttribute("aria-expanded") !== "true"));
+  addEventListener("keydown", (e) => e.key === "Escape" && menu.hasAttribute("data-open") && setMenu(false));
+
+  /* In-page links glide (or jump, under reduced motion). */
+  d.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute("href");
+    const t = id.length > 1 && d.querySelector(id);
+    if (!t) return;
+    e.preventDefault();
+    if (menu.hasAttribute("data-open")) setMenu(false);
+    if (lenis) lenis.scrollTo(t, { duration: 1.6 });
+    else t.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+    history.replaceState(null, "", id === "#ust" ? location.pathname : id);
+  });
+
+  /* Reveals: masked lines rise, pictures wipe in, words fade up. */
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px", threshold: 0.12 });
+  $$("[data-reveal]").forEach((el) => io.observe(el));
+  // The hero waits for its title sequence.
+  const hero = $(".hero");
+  $$("[data-reveal]", hero).forEach((el) => { io.unobserve(el); requestAnimationFrame(() => el.classList.add("in")); });
+
+  /* Counters: count up once, the first time their block is half in view. */
+  const countUp = (el) => {
+    if (el.dataset.done) return;
+    el.dataset.done = "1";
+    const v = +el.dataset.v, dec = +(el.dataset.d || 0);
+    if (reduce) return void (el.textContent = fmt(v, dec));
+    const t0 = performance.now(), D = 1600;
+    const step = (t) => { const k = clamp((t - t0) / D); el.textContent = fmt(v * (1 - Math.pow(1 - k, 4)), dec); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  if (!reduce) $$(".cnt").forEach((el) => (el.textContent = fmt(0, +(el.dataset.d || 0))));
+  const cio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("on"); $$(".cnt", e.target).forEach(countUp); cio.unobserve(e.target); } }), { threshold: 0.45 });
+  $$("[data-counts]").forEach((el) => cio.observe(el));
+
+  /* Plan toggles on the home types. */
+  $$(".plan-tg").forEach((b) => b.addEventListener("click", () => {
+    const on = b.getAttribute("aria-pressed") !== "true";
+    b.setAttribute("aria-pressed", String(on));
+    b.textContent = on ? "Görseli göster" : "Planı göster";
+    b.closest(".type").toggleAttribute("data-plan", on);
+  }));
+
+  /* Film dialog */
+  const film = $("#film"), filmVid = $("#filmVid"), heroVid = $("#heroVid");
+  $("#filmOpen").addEventListener("click", () => { film.showModal(); filmVid.currentTime = 0; filmVid.play().catch(() => {}); heroVid.pause(); lenis && lenis.stop(); });
+  const closeFilm = () => film.open && film.close();
+  $("#filmClose").addEventListener("click", closeFilm);
+  film.addEventListener("close", () => { filmVid.pause(); if (!reduce) heroVid.play().catch(() => {}); lenis && lenis.start(); $("#filmOpen").focus(); });
+
+  /* Chapters: the counter at the right edge follows the section in the middle of the screen. */
+  const chapN = $("#chapN"), chapName = $("#chapName"), chapFill = $("#chapFill");
+  const chapters = $$("[data-chapter]");
+  let current = null;
+  const navLinks = $$(".nav a");
+  const setChapter = (el) => {
+    if (el === current) return;
+    current = el;
+    chapN.style.transform = "translateY(-110%)";
+    setTimeout(() => { chapN.textContent = el.dataset.chapter; chapName.textContent = el.dataset.name; chapN.style.transition = "none"; chapN.style.transform = "translateY(110%)"; requestAnimationFrame(() => { chapN.style.transition = ""; chapN.style.transform = ""; }); }, reduce ? 0 : 220);
+    navLinks.forEach((a) => a.toggleAttribute("aria-current", a.getAttribute("href") === "#" + el.id));
+  };
+  const chio = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && setChapter(e.target)), { rootMargin: "-50% 0px -50% 0px" });
+  chapters.forEach((c) => chio.observe(c));
+
+  /* Biz: split the statement into words that light up as you scroll. */
+  const words = $("#words");
+  const W = words.textContent.trim().split(/\s+/);
+  words.innerHTML = W.map((w) => `<span class="w">${w}</span>`).join(" ");
+  const wordEls = $$(".w", words);
+  let lit = -1;
+
+  /* Scenes: functions run every frame with a progress for their element. */
+  const prog = (el) => { const r = el.getBoundingClientRect(); const run = r.height - innerHeight; return run > 0 ? clamp(-r.top / run) : r.top <= 0 ? 1 : 0; };
+  const view = (el) => { const r = el.getBoundingClientRect(); return clamp((innerHeight - r.top) / (innerHeight + r.height)); };
+  const inView = (el) => { const r = el.getBoundingClientRect(); return r.bottom > -innerHeight * 0.5 && r.top < innerHeight * 1.5; };
+
+  // 03 · the scrubbed film
+  const scrub = $("#levan"), sv = $("#scrubVid"), caps = $$(".cap", scrub), tc = $("#tc"), trackFill = $("#trackFill"), trackHead = $("#trackHead");
+  const scrubMode = !reduce && fine;
+  let dur = 13.28, tgt = 0, cur = 0;
+  sv.addEventListener("loadedmetadata", () => {
+    dur = sv.duration || dur;
+    // A server that ignores byte ranges (python -m http.server) leaves the film unseekable: load it whole, as a blob.
+    if (scrubMode && !sv.src.startsWith("blob:") && !(sv.seekable.length && sv.seekable.end(0) > 1)) {
+      fetch(sv.currentSrc).then((r) => r.blob()).then((b) => { sv.src = URL.createObjectURL(b); }).catch(() => {});
+    }
+  });
+  if (!scrubMode && !reduce) {
+    sv.loop = true;
+    new IntersectionObserver(([e]) => (e.isIntersecting ? sv.play().catch(() => {}) : sv.pause()), { threshold: 0.2 }).observe(scrub);
+  }
+  const mmss = (s) => `00:${String(Math.floor(s)).padStart(2, "0")}`;
+  let capIdx = 0;
+
+  // 04 · the horizontal gallery
+  const types = $("#konutlar"), track = $("#typesTrack"), typesFill = $("#typesFill");
+  let dist = 0, native = false;
+  const pin = $(".types-pin", types), intro = $(".type-intro", types);
+  const layoutTypes = () => {
+    native = reduce || innerWidth <= 900;
+    types.classList.toggle("native", native);
+    // On a swipe carousel the introduction sits above the cards; in the pinned gallery it is the first frame.
+    if (native && intro.parentElement === track) pin.insertBefore(intro, track);
+    if (!native && intro.parentElement !== track) track.insertBefore(intro, track.firstChild);
+    if (native) { types.style.height = ""; track.style.transform = ""; return; }
+    dist = Math.max(0, track.scrollWidth - innerWidth);
+    types.style.height = `${dist + innerHeight}px`;
+  };
+
+  // 05 · the opening window, the marquee, the collage
+  const expand = $("#expand");
+  const rows = $$(".marq-row").map((row) => {
+    const inner = $(".marq-in", row);
+    const dup = inner.cloneNode(true);
+    dup.classList.add("dup");
+    row.appendChild(dup);
+    return { row, inner, dir: +(row.dataset.dir || 1), off: 0, w: 0 };
+  });
+  const measureRows = () => rows.forEach((r) => (r.w = r.inner.getBoundingClientRect().width));
+  const collage = $$(".collage figure");
+
+  // 06 · the time map, drawn for the screen's shape
+  const map = $("#map"), svg = $("#mapSvg"), loc = $("#konum");
+  const DESTS = [
+    { min: 20, name: "İstanbul Havalimanı", note: "Kuzey Marmara bağlantısı" },
+    { min: 15, name: "5. Levent", note: "Sazlıdere Köprüsü ile" },
+    { min: 15, name: "İSTOÇ", note: "Ticaret aksına yakın" },
+  ];
+  let routes = [];
+  const buildMap = () => {
+    const tall = innerWidth <= 900;
+    const V = tall ? { w: 360, h: 470, hub: [26, 34], nodes: [[86, 150], [86, 290], [86, 430]], lab: 106 } : { w: 720, h: 470, hub: [70, 235], nodes: [[400, 70], [400, 235], [400, 400]], lab: 428 };
+    svg.setAttribute("viewBox", `0 0 ${V.w} ${V.h}`);
+    $$(".dest, .hub-label", map).forEach((n) => n.remove());
+    svg.querySelectorAll("g").forEach((g) => g.remove());
+    const ns = "http://www.w3.org/2000/svg";
+    const g = d.createElementNS(ns, "g");
+    const [hx, hy] = V.hub;
+    routes = V.nodes.map(([x, y], i) => {
+      const dd = tall ? `M${hx} ${hy} C ${hx} ${y - 50}, ${hx + 10} ${y}, ${x} ${y}` : `M${hx} ${hy} C ${hx + 150} ${hy}, ${x - 190} ${y}, ${x} ${y}`;
+      const bg = d.createElementNS(ns, "path"); bg.setAttribute("d", dd); bg.setAttribute("class", "route-bg");
+      const p = d.createElementNS(ns, "path"); p.setAttribute("d", dd); p.setAttribute("class", "route");
+      const n = d.createElementNS(ns, "circle"); n.setAttribute("cx", x); n.setAttribute("cy", y); n.setAttribute("r", 5); n.setAttribute("class", "node");
+      const dot = d.createElementNS(ns, "circle"); dot.setAttribute("r", 3.5); dot.setAttribute("class", "dot");
+      g.append(bg, p, n, dot);
+      const lab = d.createElement("div");
+      lab.className = "dest";
+      lab.style.left = `${(V.lab / V.w) * 100}%`;
+      lab.style.top = `${(y / V.h) * 100}%`;
+      lab.innerHTML = `<span class="min num"><span class="m">${DESTS[i].min}</span><small>dk</small></span><strong>${DESTS[i].name}</strong><span>${DESTS[i].note}</span>`;
+      map.appendChild(lab);
+      return { p, dot, lab, m: $(".m", lab), min: DESTS[i].min, len: 0, x, y };
+    });
+    [["ring", 14], ["ring r2", 14]].forEach(([c, r]) => { const ring = d.createElementNS(ns, "circle"); ring.setAttribute("cx", hx); ring.setAttribute("cy", hy); ring.setAttribute("r", r); ring.setAttribute("class", c); g.appendChild(ring); });
+    const hub = d.createElementNS(ns, "circle"); hub.setAttribute("cx", hx); hub.setAttribute("cy", hy); hub.setAttribute("r", 6); hub.setAttribute("class", "hub"); g.appendChild(hub);
+    svg.appendChild(g);
+    const hl = d.createElement("span");
+    hl.className = "hub-label";
+    hl.textContent = "Levan Bahçeşehir";
+    hl.style.left = tall ? `${((hx + 18) / V.w) * 100}%` : `${((hx - 22) / V.w) * 100}%`;
+    hl.style.top = tall ? `calc(${(hy / V.h) * 100}% - 0.5em)` : `calc(${((hy + 22) / V.h) * 100}%)`;
+    map.appendChild(hl);
+    routes.forEach((r) => { r.len = r.p.getTotalLength(); r.p.style.strokeDasharray = r.len; r.p.style.strokeDashoffset = r.len; });
+    drawMap(reduce ? 1 : lastMapP);
+  };
+  let lastMapP = 0;
+  const drawMap = (p) => {
+    lastMapP = p;
+    routes.forEach((r, i) => {
+      const k = reduce ? 1 : ease(clamp((p - 0.06 - i * 0.12) / 0.42));
+      r.p.style.strokeDashoffset = r.len * (1 - k);
+      const pt = r.p.getPointAtLength(r.len * k);
+      r.dot.setAttribute("cx", pt.x); r.dot.setAttribute("cy", pt.y);
+      r.dot.style.opacity = k > 0 && k < 1 ? 1 : 0;
+      r.m.textContent = Math.round(r.min * k);
+      r.lab.classList.toggle("on", k > 0.98);
+    });
+  };
+
+  // 07 · the site
+  const siteBg = $("#siteHero .bg"), strip = $("#strip"), stripIn = $("#stripIn"), visitBg = $("#visitBg");
+
+  /* Header: hides on the way down, returns on the way up. */
+  const hdr = $("#hdr"), progBar = $("#progBar");
+  let lastY = scrollY, vel = 0;
+
+  const frame = (t) => {
+    if (lenis) lenis.raf(t);
+    const y = scrollY;
+    const dy = y - lastY;
+    vel = vel * 0.86 + dy * 0.14;
+    if (Math.abs(dy) > 0.5 && !menu.hasAttribute("data-open")) hdr.toggleAttribute("data-hide", dy > 0 && y > innerHeight * 0.6);
+    lastY = y;
+    const max = d.documentElement.scrollHeight - innerHeight;
+    progBar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (current) chapFill.style.transform = `scaleY(${prog(current)})`;
+
+    if (!reduce) {
+      // 01 hero: the frame closes in as you leave
+      if (y < innerHeight * 1.2) hero.style.setProperty("--p", clamp(y / innerHeight).toFixed(4));
+
+      // 02 words
+      if (inView($("#biz"))) {
+        const n = Math.round(clamp(prog($("#biz")) * 1.25) * wordEls.length);
+        if (n !== lit) { wordEls.forEach((w, i) => w.classList.toggle("lit", i < n)); lit = n; }
+      }
+    }
+
+    // 03 scrub
+    if (inView(scrub)) {
+      const p = prog(scrub);
+      const i = caps.findIndex((c) => p >= +c.dataset.from && p < +c.dataset.to);
+      if (i > -1 && i !== capIdx) { caps[capIdx].classList.remove("active"); caps[i].classList.add("active"); capIdx = i; }
+      if (scrubMode) {
+        tgt = p * (dur - 0.05);
+        cur += (tgt - cur) * 0.16;
+        if (Math.abs(tgt - cur) < 0.002) cur = tgt;
+        if (!sv.seeking && sv.readyState >= 1 && Math.abs(sv.currentTime - cur) > 0.035) sv.currentTime = cur;
+      } else cur = sv.currentTime || 0;
+      const k = scrubMode ? cur / dur : p;
+      tc.textContent = `${mmss(scrubMode ? cur : p * dur)} / ${mmss(dur)}`;
+      trackFill.style.transform = `scaleX(${k})`;
+      trackHead.style.left = `${k * 100}%`;
+    }
+
+    // 04 gallery
+    if (!native && inView(types)) {
+      const p = prog(types);
+      track.style.transform = `translate3d(${-p * dist}px,0,0)`;
+      typesFill.style.transform = `scaleX(${p})`;
+    }
+
+    if (!reduce) {
+      // 05 window
+      if (inView(expand)) {
+        const p = prog(expand);
+        expand.style.setProperty("--k", ease(clamp(p / 0.68)).toFixed(4));
+        expand.style.setProperty("--t", clamp((p - 0.7) / 0.2).toFixed(4));
+      }
+      // marquee drifts, faster when you scroll
+      rows.forEach((r) => {
+        if (!r.w) return;
+        r.off = (r.off + (0.45 + Math.min(14, Math.abs(vel)) * 0.35) * r.dir + r.w) % r.w;
+        r.row.style.transform = `translate3d(${-r.off}px,0,0)`;
+      });
+      // collage parallax
+      collage.forEach((f) => { if (inView(f)) f.style.transform = `translate3d(0,${((0.5 - view(f)) * +f.dataset.speed * 90).toFixed(1)}px,0)`; });
+      // 06 map
+      if (inView(loc)) drawMap(prog(loc));
+      // 07 site
+      if (inView(siteBg)) siteBg.style.transform = `translate3d(0,${((view(siteBg) - 0.5) * -10).toFixed(2)}%,0)`;
+      if (inView(strip)) stripIn.style.transform = `translate3d(${(-view(strip) * Math.max(0, stripIn.scrollWidth - innerWidth)).toFixed(1)}px,0,0)`;
+      if (inView(visitBg)) visitBg.style.transform = `translate3d(0,${((view(visitBg) - 0.5) * -8).toFixed(2)}%,0)`;
+    }
+    requestAnimationFrame(frame);
+  };
+
+  const layout = () => { layoutTypes(); measureRows(); buildMap(); };
+  layout();
+  let rt;
+  addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(layout, 120); });
+  d.fonts && d.fonts.ready.then(() => { layoutTypes(); measureRows(); });
+  addEventListener("load", () => { layoutTypes(); measureRows(); });
+  requestAnimationFrame(frame);
+});
+</script>
+</body>
+</html>

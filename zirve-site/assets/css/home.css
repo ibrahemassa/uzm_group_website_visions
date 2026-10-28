@@ -1,0 +1,87 @@
+/* Zirve · home page. */
+
+.hero { height: 100svh; max-height: none; min-height: 36rem; }
+.hero .ph-copy { padding-bottom: clamp(6rem, 3rem + 9vh, 8.5rem); }
+.hero .lede { max-width: 29rem; }
+.hero .acts { margin-top: 2rem; }
+@media (max-width: 48rem) { .hero .acts .btn { min-height: 2.875rem; padding: 0 1.25rem; } .hero .ph-copy { padding-bottom: 7.5rem; } }
+
+/* 01 · İlke: the manifesto lights up word by word as it passes. */
+.ilke-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2.5rem var(--gut); }
+.ilke-grid > .label { grid-column: 1 / 4; align-self: start; padding-top: 0.9rem; }
+.mani { grid-column: 4 / 12; font: 300 clamp(1.7rem, 1.15rem + 2vw, 2.9rem)/1.2 var(--serif); letter-spacing: -0.005em; text-wrap: pretty; }
+.mani .sw { transition: opacity 0.25s linear; }
+.mani em { color: var(--lilac); }
+.ilke-def { grid-column: 4 / 10; display: grid; gap: 1.5rem; justify-items: start; color: var(--ink2); max-width: 36rem; }
+.ilke .figs { margin-top: clamp(4rem, 3rem + 4vw, 7rem); }
+@media (max-width: 56rem) { .ilke-grid > .label, .mani, .ilke-def { grid-column: 1 / -1; } .ilke-grid > .label { padding-top: 0; } }
+
+/* 03 · Konutlar */
+.homes { padding-bottom: clamp(5rem, 3rem + 6vw, 9rem); }
+
+/* 05 · Olanaklar: list with the cursor-following picture (WebGL); phones get a thumbnail per row. */
+.amen-list { margin-top: clamp(3rem, 2rem + 3vw, 5rem); border-bottom: 1px solid var(--line); }
+.arow { position: relative; display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 0.9fr) auto; align-items: center; gap: 1.5rem; padding: 1.6rem 0; border-top: 1px solid var(--line); }
+.arow::before { content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--chrome); transform: scaleX(0); transform-origin: right; transition: transform 0.8s var(--ease); }
+.arow:hover::before { transform: scaleX(1); transform-origin: left; }
+.arow .i { font: 500 0.6875rem/1 var(--sans); letter-spacing: 0.16em; color: var(--ink3); }
+.arow h3 { font: 300 clamp(1.7rem, 1.3rem + 1.5vw, 2.6rem)/1.05 var(--serif); transition: transform 0.7s var(--ease), color 0.4s; }
+.arow:hover h3 { transform: translateX(0.75rem); color: var(--lilac); }
+.arow p { font-size: 0.875rem; color: var(--ink2); }
+.arow .tag { white-space: nowrap; }
+.arow .thumb { display: none; width: 4.75rem; height: auto; aspect-ratio: 1; object-fit: cover; }
+@media (hover: none), (max-width: 48rem) {
+  .arow { grid-template-columns: 4.75rem minmax(0, 1fr); gap: 0.4rem 1.1rem; align-items: start; }
+  .arow .thumb { display: block; grid-row: 1 / 4; }
+  .arow .i { display: none; }
+  .arow .tag { grid-column: 2; }
+}
+html:not(.gl) .arow .thumb { display: block; }
+html:not(.gl) .arow { grid-template-columns: 4.75rem 3rem minmax(0, 1fr) minmax(0, 0.9fr) auto; }
+@media (hover: none), (max-width: 48rem) { html:not(.gl) .arow { grid-template-columns: 4.75rem minmax(0, 1fr); } }
+.chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.25rem; }
+.chips li { font-size: 0.8125rem; color: var(--ink2); padding: 0.55rem 0.95rem; border: 1px solid var(--line); border-radius: 999px; }
+
+/* 06 · Konum */
+.konum-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 3rem var(--gut); margin-top: clamp(3rem, 2rem + 3vw, 5rem); align-items: start; }
+.drives { grid-column: 1 / 6; display: grid; }
+.drive { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.4rem 1.5rem; padding: 1.75rem 0; border-top: 1px solid var(--line); }
+.drive .v { grid-row: 1 / 3; font: 300 clamp(3rem, 2.2rem + 2.6vw, 4.5rem)/0.9 var(--serif); font-variant-numeric: lining-nums; min-width: 5.5ch; }
+.drive .v small { font: 500 0.6875rem/1 var(--sans); letter-spacing: 0.16em; color: var(--ink3); margin-left: 0.35rem; text-transform: uppercase; }
+.drive b { font-weight: 500; font-size: 1.0625rem; align-self: end; }
+.drive > span:not(.v) { font-size: 0.8125rem; color: var(--ink3); }
+.drive .bar { grid-column: 1 / -1; height: 1px; background: var(--line); margin-top: 1rem; position: relative; overflow: hidden; }
+.drive .bar i { position: absolute; inset: 0; right: auto; width: var(--w); background: var(--chrome); transform: scaleX(0); transform-origin: left; transition: transform 1.8s var(--ease) var(--d, 0s); }
+.drive.in .bar i, html:not(.motion) .drive .bar i { transform: scaleX(1); }
+.drives .note { font-size: 0.75rem; color: var(--ink3); padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.konum-media { grid-column: 7 / 13; display: grid; gap: 2rem; justify-items: start; }
+.k-main { aspect-ratio: 16 / 10; width: 100%; }
+.region { display: grid; width: 100%; }
+.region li { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); font-size: 0.875rem; }
+.region b { font-weight: 500; }
+.region span { color: var(--ink2); }
+@media (max-width: 56rem) { .drives, .konum-media { grid-column: 1 / -1; } .region li { grid-template-columns: 1fr; gap: 0.25rem; } }
+
+/* 07 · Şantiye: three columns that drift apart; photographs develop as they rise. */
+.diary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 0.5rem + 2vw, 3rem); margin-top: clamp(3.5rem, 2rem + 4vw, 6rem); align-items: start; }
+.dcol { display: grid; gap: clamp(2.5rem, 1.5rem + 3vw, 4.5rem); will-change: transform; }
+.dcol:nth-child(2) { padding-top: 6rem; }
+.dcol:nth-child(3) { padding-top: 2.5rem; }
+.entry { display: grid; gap: 0.6rem; justify-items: start; }
+.entry .gimg { aspect-ratio: 4 / 5; width: 100%; margin-bottom: 0.6rem; }
+.entry time { font: 500 0.625rem/1.3 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink3); }
+.entry h3 { font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.75rem); }
+.entry p { font-size: 0.875rem; color: var(--ink2); }
+.diary-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink2); font-size: 0.9375rem; }
+.diary-foot p { max-width: 44rem; }
+.diary-foot b { color: var(--ink); font-weight: 500; }
+@media (max-width: 56rem) { .diary { grid-template-columns: repeat(2, minmax(0, 1fr)); } .dcol { display: contents; } }
+@media (max-width: 34rem) { .diary { grid-template-columns: 1fr; } }
+
+/* 08 · Projeler */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 1rem + 2vw, 3rem); margin-top: clamp(3rem, 2rem + 3vw, 5rem); }
+.pair .pcard:nth-child(2) { margin-top: clamp(0rem, -2rem + 8vw, 7rem); }
+.pair .gimg { aspect-ratio: 5 / 4; }
+.also { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.25rem 2rem; margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink2); }
+.also b { color: var(--ink); font-weight: 500; }
+@media (max-width: 48rem) { .pair { grid-template-columns: 1fr; } }

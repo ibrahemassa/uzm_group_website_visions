@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:,">
+<title>Işık · UZM Group</title>
+<meta name="description" content="Vizyon 5 · Işık: cam, ışık ve derinlik. UZM Group ana sayfa tasarım önerisi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap">
+<link rel="preload" as="image" href="../assets/img/film--levan-hero.webp" media="(min-aspect-ratio: 4/5)">
+<link rel="preload" as="image" href="../assets/img/film--levan-hero-tall.webp" media="(max-aspect-ratio: 4/5)">
+<style>
+/* ── Tokens. The time-of-day engine (script) rewrites the colour tokens on <html> as the page moves from morning to night. */
+:root {
+  --bg: #f5f6f8;
+  --b1: #d8e4f4;
+  --b2: #ebe8f3;
+  --b3: #ffffff;
+  --ink: #1b1d21;
+  --ink2: #555b67;
+  --ink3: #7a808b;
+  --line: rgb(27 29 33 / 0.1);
+  --glass: rgb(255 255 255 / 0.55);
+  --glass-edge: rgb(255 255 255 / 0.95);
+  --glass-edge2: rgb(255 255 255 / 0.5);
+  --glass-shadow: rgb(36 48 78 / 0.14);
+  --dark: 0;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --shell: 84rem;
+  --gut: clamp(1rem, 0.4rem + 3vw, 3.5rem);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); color-scheme: light; }
+body {
+  margin: 0;
+  color: var(--ink);
+  font: 400 1rem/1.6 "Manrope", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img, video, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, p, dl, dd, figure, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 0.5rem; }
+.on-media :focus-visible, .media :focus-visible { outline-color: #fff; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.shell { width: 100%; max-width: var(--shell); margin-inline: auto; padding-inline: var(--gut); }
+
+/* Light blooms behind everything; their colours follow the time of day. */
+.sky {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(60vw 55vh at 10% 6%, var(--b1), transparent 70%),
+    radial-gradient(55vw 60vh at 94% 34%, var(--b2), transparent 70%),
+    radial-gradient(75vw 55vh at 46% 108%, var(--b3), transparent 70%),
+    var(--bg);
+}
+
+/* ── Type */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3);
+}
+.eyebrow::before {
+  content: ""; width: 0.4rem; height: 0.4rem; border-radius: 50%;
+  background: currentColor; box-shadow: 0 0 0.75rem currentColor;
+}
+.h2 { font-size: clamp(1.875rem, 1.3rem + 2.2vw, 3.25rem); line-height: 1.08; letter-spacing: -0.035em; font-weight: 600; margin-top: 0.9rem; text-wrap: balance; }
+.h2 em, h1 em, .statement em, .cap h3 em { font-style: normal; font-weight: 300; color: var(--ink2); }
+.lede { font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1875rem); color: var(--ink2); max-width: 38rem; margin-top: 1.1rem; text-wrap: pretty; }
+.fine { font-size: 0.8125rem; color: var(--ink3); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ── Glass. Fallback is frosted CSS glass; in Chromium the script adds real refraction (SVG displacement) to [data-lg]. */
+.glass {
+  position: relative;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  backdrop-filter: blur(22px) saturate(170%);
+  border-radius: 1.5rem;
+  box-shadow: inset 0 1px 0 0 var(--glass-edge2), 0 1.25rem 3rem -1.25rem var(--glass-shadow);
+}
+.glass::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(145deg, var(--glass-edge), transparent 32%, transparent 64%, var(--glass-edge2));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+/* Glass laid over imagery: always clear, white text. */
+.media {
+  --ink: #fff; --ink2: rgb(255 255 255 / 0.8); --ink3: rgb(255 255 255 / 0.66); --line: rgb(255 255 255 / 0.18);
+  --glass: linear-gradient(160deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.06));
+  --glass-edge: rgb(255 255 255 / 0.85); --glass-edge2: rgb(255 255 255 / 0.28); --glass-shadow: rgb(0 0 0 / 0.35);
+  color: var(--ink);
+}
+.media.glass { background: linear-gradient(160deg, rgb(255 255 255 / 0.16), rgb(255 255 255 / 0.03)), rgb(14 16 22 / 0.24); }
+.tag {
+  position: absolute; top: 0.75rem; left: 0.75rem; z-index: 2;
+  font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; color: #fff;
+  padding: 0.3rem 0.65rem; border-radius: 999px;
+  background: rgb(14 16 22 / 0.28); border: 1px solid rgb(255 255 255 / 0.3);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+}
+
+/* ── Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+  height: 2.875rem; padding-inline: 1.3rem; border-radius: 999px;
+  font-size: 0.875rem; font-weight: 600; letter-spacing: -0.005em; white-space: nowrap;
+  transition: transform 0.5s var(--ease), background-color 0.3s, box-shadow 0.3s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: scale(0.97); transition-duration: 0.15s; }
+.btn svg { width: 1rem; height: 1rem; flex: none; }
+.btn-light { background: #fff; color: #15161a; box-shadow: 0 0.5rem 1.5rem -0.5rem rgb(0 0 0 / 0.35); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-glass {
+  background: var(--glass); color: var(--ink);
+  -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: inset 0 0 0 1px var(--glass-edge2), inset 0 1px 0 var(--glass-edge2);
+}
+.media .btn-glass { background: rgb(255 255 255 / 0.14); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.4), inset 0 1px 0 rgb(255 255 255 / 0.5); }
+
+/* ── Navigation: a floating liquid-glass bar */
+.nav-wrap { position: fixed; z-index: 50; top: 0.875rem; left: 0; right: 0; display: flex; justify-content: center; padding-inline: 0.875rem; pointer-events: none; }
+.nav {
+  pointer-events: auto;
+  display: flex; align-items: center; gap: 0.25rem;
+  width: min(100%, 60rem); height: 3.5rem; padding: 0 0.4rem 0 1.25rem; border-radius: 999px;
+  transition: color 0.4s, box-shadow 0.4s;
+}
+.nav.on-media { --ink: #fff; --ink2: rgb(255 255 255 / 0.82); --glass: rgb(255 255 255 / 0.1); --glass-edge: rgb(255 255 255 / 0.8); --glass-edge2: rgb(255 255 255 / 0.3); --glass-shadow: rgb(0 0 0 / 0.25); color: #fff; }
+.brand { display: block; width: 4.25rem; flex: none; color: var(--ink); }
+.brand svg { width: 100%; height: auto; }
+.links { display: flex; gap: 0.125rem; margin-left: auto; }
+.links a { display: block; padding: 0.5rem 0.8rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 500; color: var(--ink2); transition: color 0.3s, background-color 0.3s; }
+.links a:hover, .links a[aria-current] { color: var(--ink); background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.nav-cta { margin-left: 0.5rem; height: 2.75rem; padding-inline: 1.15rem; border-radius: 999px; display: inline-flex; align-items: center; font-size: 0.8125rem; font-weight: 700; background: var(--ink); color: var(--bg); font-variant-numeric: tabular-nums; }
+.nav.on-media .nav-cta { background: #fff; color: #15161a; }
+.menu-btn { display: none; margin-left: auto; height: 2.75rem; padding-inline: 1.1rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 600; align-items: center; gap: 0.6rem; }
+.menu-btn i { width: 1rem; height: 0.5rem; border-block: 1.5px solid currentColor; }
+@media (max-width: 62rem) {
+  .links, .nav-cta { display: none; }
+  .menu-btn { display: inline-flex; }
+  .nav { padding-left: 1.1rem; }
+}
+.menu {
+  position: fixed; z-index: 60; inset: 0.875rem 0.875rem auto; padding: 1.25rem 1.25rem 1.5rem; border-radius: 1.75rem;
+  opacity: 0; transform: translateY(-0.75rem) scale(0.98); pointer-events: none; visibility: hidden;
+  transition: opacity 0.35s var(--ease), transform 0.5s var(--ease), visibility 0s 0.5s;
+  background: rgb(250 251 253 / 0.72); color: #1b1d21;
+  --ink: #1b1d21; --ink2: #555b67; --glass-edge: #fff; --glass-edge2: rgb(255 255 255 / 0.6);
+}
+.menu[data-open] { opacity: 1; transform: none; pointer-events: auto; visibility: visible; transition: opacity 0.35s var(--ease), transform 0.5s var(--ease); }
+.menu-top { display: flex; justify-content: space-between; align-items: center; }
+.menu ol { margin-top: 1.25rem; display: grid; }
+.menu ol a { display: flex; justify-content: space-between; padding: 0.8rem 0.25rem; font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; border-bottom: 1px solid rgb(27 29 33 / 0.08); }
+.menu ol a span { font-size: 0.75rem; color: #7a808b; font-weight: 600; }
+.menu .btn { margin-top: 1.25rem; width: 100%; }
+
+/* ── Presenter pill */
+.pres {
+  position: fixed; z-index: 55; left: 0.875rem; bottom: 0.875rem;
+  display: flex; align-items: center; gap: 0.15rem; height: 2.625rem; padding: 0 0.3rem; border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600; transition: color 0.4s;
+}
+.pres.on-media { --ink: #fff; --ink2: rgb(255 255 255 / 0.8); --glass: rgb(14 16 22 / 0.3); --glass-edge: rgb(255 255 255 / 0.7); --glass-edge2: rgb(255 255 255 / 0.25); color: #fff; }
+.pres a { display: inline-flex; align-items: center; height: 2rem; padding: 0 0.7rem; border-radius: 999px; transition: background-color 0.3s; }
+.pres a:hover { background: color-mix(in srgb, var(--ink) 10%, transparent); }
+.pres .arw { width: 2rem; padding: 0; justify-content: center; font-size: 1rem; }
+.pres .cur { padding: 0 0.6rem; color: var(--ink2); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+.pres .cur b { color: var(--ink); font-weight: 700; }
+@media (max-width: 40rem) { .pres .full, .pres .now { display: none; } }
+
+/* ── 01 · Hero */
+.hero { position: relative; height: 100svh; min-height: 36rem; overflow: hidden; background: #0d0e12; color: #fff; }
+.hero-media { position: absolute; inset: 0; }
+.hero-media img, .hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.hero-media video { opacity: 0; transition: opacity 1.2s var(--ease); }
+.hero-media.playing video { opacity: 1; }
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(8 10 14 / 0.38), transparent 22%, transparent 48%, rgb(8 10 14 / 0.55)); }
+.hero-inner { position: absolute; inset: auto 0 0; padding-bottom: clamp(4.5rem, 3rem + 5vh, 6.5rem); }
+.hero-plate.media.glass { background: linear-gradient(160deg, rgb(255 255 255 / 0.14), rgb(255 255 255 / 0.02)), rgb(12 14 20 / 0.32); }
+.hero-plate { width: min(100%, 35rem); padding: clamp(1.4rem, 1rem + 1.4vw, 2.25rem); border-radius: 2rem; will-change: transform, opacity; }
+.hero-plate .eyebrow { color: rgb(255 255 255 / 0.82); }
+.hero h1 { font-size: clamp(2.25rem, 1.5rem + 3vw, 4.25rem); line-height: 1.02; letter-spacing: -0.045em; font-weight: 650; margin-top: 0.9rem; }
+.hero h1 em { color: rgb(255 255 255 / 0.78); font-weight: 250; }
+.hero-plate > p:not(.eyebrow) { margin-top: 1rem; color: rgb(255 255 255 / 0.86); font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem); max-width: 28rem; }
+.acts { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-top: 1.5rem; }
+.hero-tag { position: absolute; right: var(--gut); bottom: clamp(4.5rem, 3rem + 5vh, 6.5rem); top: auto; left: auto; }
+.cue { position: absolute; left: 50%; bottom: 1.4rem; translate: -50% 0; font-size: 0.6875rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgb(255 255 255 / 0.7); display: grid; justify-items: center; gap: 0.5rem; }
+.cue i { width: 1px; height: 2rem; background: linear-gradient(rgb(255 255 255 / 0.8), transparent); animation: cue 2.4s var(--ease) infinite; transform-origin: top; }
+@keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+@media (max-width: 48rem) {
+  .hero-tag { right: auto; left: var(--gut); top: 5.25rem; bottom: auto; }
+  .cue { display: none; }
+  .hero-inner { padding-bottom: 4.25rem; }
+}
+
+/* ── Sections */
+.sec { position: relative; padding-block: clamp(5rem, 3.5rem + 7vw, 10rem); }
+.head { max-width: 46rem; }
+.head-row { display: flex; align-items: end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+
+/* Reveal */
+.js [data-r] { opacity: 0; transform: translateY(1.5rem); filter: blur(6px); transition: opacity 1s var(--ease), transform 1.2s var(--ease), filter 1s var(--ease); }
+.js [data-r].in { opacity: 1; transform: none; filter: none; }
+.js [data-r][data-d="1"] { transition-delay: 0.08s; } .js [data-r][data-d="2"] { transition-delay: 0.16s; } .js [data-r][data-d="3"] { transition-delay: 0.24s; }
+
+/* ── 02 · İlke */
+.statement { font-size: clamp(1.625rem, 1.1rem + 1.9vw, 2.875rem); line-height: 1.16; letter-spacing: -0.035em; font-weight: 600; margin-top: 1.1rem; max-width: 56rem; text-wrap: balance; }
+.ilke .lede { max-width: 44rem; }
+.ilke-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: clamp(2rem, 1rem + 4vw, 5rem); align-items: end; }
+.ilke-pic { position: relative; aspect-ratio: 4 / 5; border-radius: 2rem; overflow: hidden; background: #dfe4ea; box-shadow: 0 2rem 4rem -2rem rgb(28 36 60 / 0.35); }
+.ilke-pic img { width: 100%; height: 100%; object-fit: cover; }
+.ilke-pic figcaption { position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0.75rem; padding: 0.8rem 1rem; border-radius: 1.1rem; font-size: 0.8125rem; }
+.ilke-pic figcaption b { display: block; font-size: 0.9375rem; font-weight: 650; }
+@media (max-width: 56rem) { .ilke-grid { grid-template-columns: 1fr; } .ilke-pic { aspect-ratio: 4 / 3; } }
+.figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
+.fig { padding: 1.5rem 1.4rem 1.4rem; border-radius: 1.5rem; min-height: 11rem; display: flex; flex-direction: column; }
+.fig .v { font-size: clamp(2rem, 1.6rem + 1.4vw, 2.875rem); font-weight: 300; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.fig .v small { font-size: 0.45em; font-weight: 500; margin-left: 0.15em; letter-spacing: 0; color: var(--ink2); }
+.fig b { display: block; margin-top: auto; padding-top: 1.25rem; font-size: 0.9375rem; font-weight: 600; }
+.fig .note { font-size: 0.8125rem; color: var(--ink3); }
+@media (max-width: 56rem) { .figs { grid-template-columns: 1fr 1fr; } .fig { min-height: 9.5rem; } }
+
+/* ── 03 · Konutlar: a deck of glass cards that fans out */
+.homes { position: relative; height: 430svh; }
+.homes-stage {
+  position: sticky; top: 0; height: 100svh; overflow: hidden;
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: clamp(0.75rem, 0.5rem + 1vh, 1.5rem);
+  padding-block: 6rem 4.25rem;
+  --ch: min(30rem, 46svh); --cw: calc(var(--ch) * 0.74);
+}
+.homes-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; }
+.homes-head .h2 { margin-top: 0.6rem; }
+.pager { display: flex; gap: 0.25rem; padding: 0.3rem; border-radius: 999px; }
+.pager button { height: 2.25rem; padding-inline: 0.85rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; color: var(--ink2); transition: background-color 0.4s var(--ease), color 0.3s; }
+.pager button[aria-current] { background: var(--ink); color: var(--bg); }
+.rig-wrap { position: relative; display: grid; place-items: center; perspective: 1500px; perspective-origin: 50% 40%; }
+.rig { position: relative; width: var(--cw); height: var(--ch); transform-style: preserve-3d; }
+.card {
+  position: absolute; inset: 0; display: flex; flex-direction: column; text-align: left;
+  padding: 0.5rem; border-radius: 1.75rem; transform-style: preserve-3d; will-change: transform, opacity;
+  background: linear-gradient(160deg, rgb(255 255 255 / 0.86), rgb(255 255 255 / 0.5));
+  box-shadow: inset 0 1px 0 #fff, 0 2rem 4rem -1.5rem rgb(28 36 60 / 0.38), 0 0.5rem 1.25rem -0.5rem rgb(28 36 60 / 0.16);
+  color: #1b1d21;
+}
+.card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(150deg, #fff, rgb(255 255 255 / 0.2) 40%, rgb(255 255 255 / 0.6)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+.card-img { position: relative; flex: 1; min-height: 0; border-radius: 1.3rem; overflow: hidden; background: #dfe4ea; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; }
+.card-body { padding: 0.85rem 0.6rem 0.35rem; display: grid; gap: 0.1rem; }
+.card-body .n { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; color: #7a808b; }
+.card-body .t { font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3125rem); font-weight: 650; letter-spacing: -0.025em; }
+.card-body .a { font-size: 0.8125rem; color: #555b67; font-variant-numeric: tabular-nums; }
+.glare { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; mix-blend-mode: soft-light;
+  background: radial-gradient(70% 55% at var(--gx, 50%) var(--gy, 0%), rgb(255 255 255 / 0.95), rgb(255 255 255 / 0) 70%); opacity: var(--go, 0.6); }
+.sheen { position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(105deg, transparent calc(var(--sx, 50%) - 18%), rgb(255 255 255 / 0.32) var(--sx, 50%), transparent calc(var(--sx, 50%) + 18%)); mix-blend-mode: overlay; }
+.home-info { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.3fr) auto; align-items: center; gap: 1.5rem 2rem; padding: 1.1rem 1.1rem 1.1rem 1.6rem; border-radius: 1.75rem; }
+.hi-main { min-width: 0; transition: opacity 0.35s, transform 0.5s var(--ease); }
+.hi-main[data-swap], .hi-specs[data-swap] { opacity: 0; transform: translateY(0.4rem); }
+.hi-idx { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--ink3); font-variant-numeric: tabular-nums; }
+.hi-main h3 { font-size: 1.375rem; font-weight: 650; letter-spacing: -0.025em; line-height: 1.2; margin-top: 0.15rem; }
+.hi-main p:last-child { font-size: 0.875rem; color: var(--ink2); margin-top: 0.15rem; }
+.hi-specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; transition: opacity 0.35s, transform 0.5s var(--ease); }
+.hi-specs dt { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); }
+.hi-specs dd { font-size: 1rem; font-weight: 600; margin-top: 0.2rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hi-specs dd small { font-weight: 500; color: var(--ink2); font-size: 0.75rem; }
+@media (max-width: 62rem) {
+  .home-info { grid-template-columns: 1fr auto; gap: 0.75rem 1rem; padding: 0.9rem 0.9rem 0.9rem 1.2rem; }
+  .hi-main p:last-child { display: none; }
+  .hi-specs { grid-column: 1 / -1; grid-row: 2; gap: 0.5rem; }
+  .hi-specs dd { font-size: 0.8125rem; white-space: normal; line-height: 1.35; }
+  .pager { display: none; }
+  .homes-stage { --ch: min(26rem, 41svh); padding-block: 5.25rem 4rem; }
+}
+
+/* ── 04 · Olanaklar: glass bento with a light that follows the cursor */
+.bento { display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: clamp(11rem, 7rem + 8vw, 15.5rem); margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); grid-auto-flow: dense; }
+.tile { position: relative; border-radius: 1.75rem; overflow: hidden; isolation: isolate; background: #cfd6df; }
+.tile > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+.tile:hover > img { transform: scale(1.04); }
+.tile::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none; z-index: 3;
+  background: radial-gradient(16rem circle at var(--lx, -40%) var(--ly, -40%), rgb(255 255 255 / 0.95), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: var(--lo, 0); transition: opacity 0.5s; }
+.tile .light { position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: soft-light; background: radial-gradient(22rem circle at var(--lx, -40%) var(--ly, -40%), rgb(255 255 255 / 0.7), transparent 65%); opacity: var(--lo, 0); transition: opacity 0.5s; }
+.tile-cap { position: absolute; z-index: 2; left: 0.75rem; right: auto; bottom: 0.75rem; max-width: calc(100% - 1.5rem); padding: 0.75rem 1rem; border-radius: 1.1rem; display: grid; }
+.tile-cap b { font-size: 1rem; font-weight: 650; letter-spacing: -0.015em; }
+.tile-cap span { font-size: 0.8125rem; color: rgb(255 255 255 / 0.84); }
+.t-golf { grid-column: span 2; grid-row: span 2; }
+.t-golf .tile-cap { padding: 1rem 1.25rem; max-width: 24rem; }
+.t-golf .tile-cap b { font-size: 1.25rem; }
+.t-spor { grid-row: span 2; }
+.t-list { grid-column: span 2; background: var(--glass); overflow: visible; padding: 1.4rem 1.5rem; display: flex; flex-direction: column; }
+.t-list::after { border-radius: 1.75rem; }
+.t-list h3 { font-size: 1.125rem; font-weight: 650; letter-spacing: -0.02em; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 1rem; }
+.chips li { font-size: 0.8125rem; font-weight: 500; padding: 0.4rem 0.8rem; border-radius: 999px; background: color-mix(in srgb, var(--ink) 6%, transparent); box-shadow: inset 0 0 0 1px var(--line); }
+@media (max-width: 56rem) {
+  .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 11.5rem; gap: 0.75rem; }
+  .t-golf { grid-row: span 1; grid-column: span 2; }
+  .t-list { grid-column: span 2; }
+  .tile-cap { padding: 0.6rem 0.8rem; }
+  .tile-cap b { font-size: 0.9375rem; }
+  .tile-cap span { display: none; }
+  .t-golf .tile-cap span { display: block; }
+}
+
+/* ── 05 · Bir gün: the day passes, the page darkens with it */
+.gun-intro { padding-block: clamp(5rem, 3.5rem + 7vw, 9rem) clamp(2rem, 1.5rem + 2vw, 3rem); }
+.gun-track { position: relative; height: 560svh; }
+.gun-stage { position: sticky; top: 0; height: 100svh; padding: 5.25rem clamp(0.75rem, 0.2rem + 2vw, 2.5rem) 1.25rem; }
+.win { position: relative; height: 100%; border-radius: clamp(1.25rem, 1rem + 1vw, 2.25rem); overflow: hidden; background: #0f1116; box-shadow: 0 2.5rem 5rem -2rem rgb(10 14 30 / 0.45); isolation: isolate; }
+.win img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: opacity, transform; }
+.win img:first-child { opacity: 1; }
+.win-shade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgb(8 10 14 / 0.3), transparent 28%, transparent 52%, rgb(8 10 14 / 0.55)); pointer-events: none; }
+.win .tag { top: 1rem; left: 1rem; }
+.sun { position: absolute; z-index: 2; top: 1rem; right: 1rem; width: 11.5rem; padding: 0.75rem 0.9rem 0.65rem; border-radius: 1.25rem; }
+.sun-arc { position: relative; aspect-ratio: 160 / 52; }
+.sun-arc svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.sun-arc path { fill: none; stroke-linecap: round; }
+.arc-base { stroke: rgb(255 255 255 / 0.28); stroke-width: 1.2; stroke-dasharray: 2 4; }
+.arc-fill { stroke: rgb(255 255 255 / 0.9); stroke-width: 1.6; stroke-dasharray: 1 1; }
+.orb { position: absolute; width: 0.75rem; height: 0.75rem; margin: -0.375rem 0 0 -0.375rem; border-radius: 50%; background: #fff; box-shadow: 0 0 0.6rem 0.2rem rgb(255 255 255 / 0.85), 0 0 1.8rem 0.6rem rgb(220 232 255 / 0.55); transition: box-shadow 0.6s, background-color 0.6s; }
+.orb.moon { background: #dfe6f5; box-shadow: inset -0.2rem -0.1rem 0 0 rgb(120 130 160 / 0.8), 0 0 1.2rem 0.3rem rgb(170 190 240 / 0.45); }
+.sun-row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.4rem; font-size: 0.75rem; font-weight: 600; color: rgb(255 255 255 / 0.9); }
+.sun-row span:last-child { color: rgb(255 255 255 / 0.6); font-variant-numeric: tabular-nums; }
+.caps { position: absolute; z-index: 2; left: 1rem; bottom: 1rem; width: min(30rem, calc(100% - 2rem)); }
+.cap { position: absolute; left: 0; bottom: 0; width: 100%; padding: 1.25rem 1.4rem 1.35rem; border-radius: 1.5rem; opacity: 0; will-change: opacity, transform; }
+.cap:first-child { position: relative; }
+.cap .eyebrow { color: rgb(255 255 255 / 0.8); }
+.cap h3 { font-size: clamp(1.375rem, 1.1rem + 1vw, 2rem); font-weight: 650; letter-spacing: -0.035em; line-height: 1.12; margin-top: 0.5rem; }
+.cap h3 em { color: rgb(255 255 255 / 0.78); }
+.cap p { margin-top: 0.55rem; font-size: 0.9375rem; color: rgb(255 255 255 / 0.86); }
+.beats { position: absolute; z-index: 2; right: 1rem; bottom: 1rem; display: flex; gap: 0.35rem; padding: 0.6rem 0.75rem; border-radius: 999px; }
+.beats i { width: 1.75rem; height: 3px; border-radius: 3px; background: rgb(255 255 255 / 0.25); overflow: hidden; position: relative; }
+.beats i::after { content: ""; position: absolute; inset: 0; background: #fff; transform-origin: left; transform: scaleX(var(--f, 0)); }
+@media (max-width: 48rem) {
+  .gun-stage { padding: 4.75rem 0.5rem 0.5rem; }
+  .sun { width: 9rem; top: 0.75rem; right: 0.75rem; }
+  .win .tag { top: 0.75rem; left: 0.75rem; }
+  .caps { left: 0.6rem; bottom: 3.75rem; width: calc(100% - 1.2rem); }
+  .cap { padding: 1rem 1.1rem 1.1rem; }
+  .cap p { font-size: 0.875rem; }
+  .beats { right: auto; left: 50%; translate: -50% 0; bottom: auto; top: 4.25rem; display: none; }
+}
+
+/* ── 06 · Konum */
+.map { position: relative; margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); border-radius: 2rem; overflow: hidden; aspect-ratio: 1600 / 893; background: #0d0f14; }
+.map > img { width: 100%; height: 100%; object-fit: cover; }
+.drive { position: absolute; right: 1.25rem; bottom: 1.25rem; width: min(26rem, 42%); padding: 1.6rem 1.6rem 1.4rem; border-radius: 1.75rem; display: flex; flex-direction: column; }
+.drive ul { margin-top: 1.25rem; display: grid; gap: 1.1rem; }
+.drive li { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 0.15rem 1rem; }
+.drive li b { font-size: 1.0625rem; font-weight: 650; display: block; letter-spacing: -0.015em; }
+.drive li span { font-size: 0.8125rem; color: var(--ink3); }
+.drive strong { font-size: 2rem; font-weight: 250; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.drive strong small { font-size: 0.8125rem; font-weight: 600; letter-spacing: 0; margin-left: 0.2rem; color: var(--ink2); }
+.track { grid-column: 1 / -1; position: relative; height: 3px; margin-top: 0.55rem; border-radius: 3px; background: rgb(255 255 255 / 0.16); }
+.track i { position: absolute; inset: 0 auto 0 0; width: calc(var(--v) * 100%); border-radius: inherit; background: linear-gradient(90deg, rgb(255 255 255 / 0.2), #fff); transform-origin: left; transform: scaleX(0); transition: transform 1.6s var(--ease); }
+.track i::after { content: ""; position: absolute; right: -0.3rem; top: 50%; width: 0.6rem; height: 0.6rem; margin-top: -0.3rem; border-radius: 50%; background: #fff; box-shadow: 0 0 0.9rem 0.25rem rgb(210 225 255 / 0.8); }
+.drive.in .track i { transform: scaleX(1); }
+.drive li:nth-child(2) .track i { transition-delay: 0.15s; } .drive li:nth-child(3) .track i { transition-delay: 0.3s; }
+.drive .fine { padding-top: 1.4rem; color: rgb(255 255 255 / 0.66); }
+.region { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); margin-top: 1rem; border-radius: 2rem; overflow: hidden; }
+.region-img { position: relative; min-height: 18rem; overflow: hidden; }
+.region-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.region-body { padding: clamp(1.5rem, 1rem + 2vw, 2.75rem); display: flex; flex-direction: column; justify-content: center; }
+.region-body h3 { font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem); font-weight: 650; letter-spacing: -0.03em; margin-top: 0.7rem; }
+.region-body p:last-child { color: var(--ink2); margin-top: 0.75rem; max-width: 30rem; }
+@media (max-width: 56rem) {
+  .map { aspect-ratio: auto; overflow: visible; background: none; border-radius: 0; }
+  .map > img { border-radius: 1.5rem; aspect-ratio: 4 / 3; }
+  .drive { position: relative; inset: auto; width: auto; margin: -3.5rem 0.6rem 0; }
+  .region { grid-template-columns: 1fr; }
+  .region-img { min-height: 14rem; }
+}
+
+/* ── 07 · Şantiye: a rail of glass log cards */
+.rail-arrows { display: flex; gap: 0.5rem; }
+.rail-arrows button { width: 2.875rem; height: 2.875rem; border-radius: 50%; display: grid; place-items: center; }
+.rail-arrows svg { width: 1.1rem; height: 1.1rem; }
+.rail { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  padding: 0.5rem max(var(--gut), calc((100vw - var(--shell)) / 2 + var(--gut))) 2.5rem; scroll-padding-inline: max(var(--gut), calc((100vw - var(--shell)) / 2 + var(--gut))); }
+.rail::-webkit-scrollbar { display: none; }
+.log { flex: none; width: min(21rem, 78vw); scroll-snap-align: start; padding: 0.5rem 0.5rem 1.25rem; border-radius: 1.75rem; }
+.log-img { position: relative; aspect-ratio: 4 / 3; border-radius: 1.35rem; overflow: hidden; background: #1c1f27; }
+.log-img img { width: 100%; height: 100%; object-fit: cover; }
+.log-n { margin: 1rem 0.75rem 0; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; color: var(--ink3); }
+.log h3 { margin: 0.25rem 0.75rem 0; font-size: 1.125rem; font-weight: 650; letter-spacing: -0.02em; }
+.log p:last-child { margin: 0.35rem 0.75rem 0; font-size: 0.875rem; color: var(--ink2); }
+.saha-foot { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+/* ── 08 · Projeler */
+.pj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
+.pj { position: relative; }
+.pj-img { position: relative; aspect-ratio: 5 / 4; border-radius: 2rem; overflow: hidden; background: #1c1f27; }
+.pj-img img { width: 100%; height: 100%; object-fit: cover; }
+.pj-card { position: relative; margin: -5.5rem 1rem 0; padding: 1.4rem 1.5rem 1.25rem; border-radius: 1.5rem; }
+.pj-card h3 { font-size: 1.375rem; font-weight: 650; letter-spacing: -0.025em; }
+.pj-loc { font-size: 0.875rem; color: var(--ink2); }
+.pj-card dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.pj-card dt { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); }
+.pj-card dd { font-size: 0.9375rem; font-weight: 600; margin-top: 0.2rem; }
+.also { margin-top: 2rem; color: var(--ink2); }
+.also b { color: var(--ink); font-weight: 650; }
+.trust { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
+.trust article { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; padding: 1.6rem 1.75rem; border-radius: 1.75rem; }
+.trust .ico { width: 3.25rem; height: 3.25rem; border-radius: 1rem; display: grid; place-items: center; background: color-mix(in srgb, var(--ink) 7%, transparent); box-shadow: inset 0 0 0 1px var(--line); }
+.trust .ico svg { width: 2rem; height: 2rem; color: var(--ink); }
+.trust h3 { font-size: 1.0625rem; font-weight: 650; letter-spacing: -0.015em; }
+.trust p { font-size: 0.875rem; color: var(--ink2); margin-top: 0.35rem; }
+@media (max-width: 56rem) {
+  .pj-grid, .trust { grid-template-columns: 1fr; }
+  .pj-card { margin: -4rem 0.6rem 0; padding: 1.2rem 1.2rem 1.1rem; }
+  .pj-card dl { grid-template-columns: 1fr 1fr; }
+  .trust article { padding: 1.3rem 1.3rem; gap: 1rem; }
+}
+
+/* ── 09 · Davet */
+.davet { position: relative; min-height: 100svh; display: grid; align-items: center; overflow: hidden; color: #fff; padding-block: 7rem 5rem; }
+.davet-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.davet-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(8 10 14 / 0.55), rgb(8 10 14 / 0.1) 60%), linear-gradient(180deg, rgb(8 10 14 / 0.45), transparent 30%, transparent 70%, rgb(8 10 14 / 0.6)); }
+.davet .tag { top: auto; left: auto; right: var(--gut); bottom: 1.25rem; }
+.invite { width: min(100%, 33rem); padding: clamp(1.5rem, 1rem + 2vw, 2.5rem); border-radius: 2.25rem; }
+.invite .eyebrow { color: rgb(255 255 255 / 0.8); }
+.invite .h2 em { color: rgb(255 255 255 / 0.78); }
+.invite > p:not(.eyebrow) { margin-top: 0.9rem; color: rgb(255 255 255 / 0.86); }
+.invite dl { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgb(255 255 255 / 0.2); }
+.invite dl div:first-child { grid-column: 1 / -1; }
+.invite dt { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(255 255 255 / 0.6); }
+.invite dd { margin-top: 0.2rem; font-weight: 600; font-size: 0.9375rem; }
+
+/* ── Footer */
+.foot { padding-block: clamp(4rem, 3rem + 4vw, 6rem) 5rem; }
+.foot-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 2rem; }
+.foot .brand { width: 5.5rem; }
+.foot-grid > div:first-child p { margin-top: 1rem; color: var(--ink2); font-size: 0.875rem; max-width: 20rem; }
+.foot h4 { margin: 0; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); }
+.foot-col { display: grid; align-content: start; gap: 0.4rem; font-size: 0.875rem; color: var(--ink2); }
+.foot-col a:hover { color: var(--ink); }
+.foot-base { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.75rem; color: var(--ink3); }
+@media (max-width: 56rem) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-grid > div:first-child { grid-column: 1 / -1; } }
+
+/* ── Dialogs */
+dialog { border: 0; padding: 0; background: transparent; color: inherit; max-width: none; max-height: none; }
+dialog::backdrop { background: rgb(10 12 18 / 0.5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.sheet { width: min(100% - 1.5rem, 52rem); margin: auto; }
+.sheet-in { padding: 1.25rem; border-radius: 2rem; background: rgb(250 251 253 / 0.82); color: #1b1d21; --ink: #1b1d21; --ink2: #555b67; --ink3: #7a808b; --line: rgb(27 29 33 / 0.1); --glass-edge: #fff; --glass-edge2: rgb(255 255 255 / 0.7); }
+.sheet-head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; padding: 0.25rem 0.25rem 1rem; }
+.sheet-head h3 { font-size: 1.5rem; font-weight: 650; letter-spacing: -0.03em; margin-top: 0.4rem; }
+.x { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; background: rgb(27 29 33 / 0.06); flex: none; }
+.x svg { width: 0.9rem; height: 0.9rem; }
+.sheet-img { border-radius: 1.25rem; overflow: hidden; background: #fff; box-shadow: inset 0 0 0 1px rgb(27 29 33 / 0.06); }
+.sheet-img img { width: 100%; max-height: 60svh; object-fit: contain; }
+.sheet-specs { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; padding: 1.1rem 0.25rem 0.5rem; }
+.sheet-specs dt { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #7a808b; }
+.sheet-specs dd { font-weight: 650; font-variant-numeric: tabular-nums; }
+.sheet .fine { padding: 0.25rem; }
+.sheet .fine a { text-decoration: underline; text-underline-offset: 0.2em; color: #1b1d21; }
+.sheet[open] .sheet-in { animation: pop 0.6s var(--ease); }
+@keyframes pop { from { opacity: 0; transform: translateY(1rem) scale(0.97); } }
+.film { width: min(100% - 1.5rem, 72rem); margin: auto; }
+.film-in { padding: 0.5rem; border-radius: 1.75rem; }
+.film video { width: 100%; border-radius: 1.35rem; background: #000; aspect-ratio: 16 / 9; }
+.film-bar { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0.75rem 0.25rem; font-size: 0.8125rem; font-weight: 600; color: rgb(255 255 255 / 0.8); }
+.film-bar button { padding: 0.4rem 0.8rem; border-radius: 999px; background: rgb(255 255 255 / 0.12); }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-r] { opacity: 1; transform: none; filter: none; transition: none; }
+  .cue i { animation: none; }
+  .track i { transition: none; transform: none; }
+  .btn, .tile > img { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="uzm-group" viewBox="0 0 2858.218249 1253.285931"><g transform="translate(-3.017733,1253.095662) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M46 12514 c-14 -14 -16 -221 -16 -2132 0 -2647 2 -2713 100 -3372 17 -121 50 -286 81 -410 6 -25 17 -74 25 -109 8 -35 19 -72 25 -82 5 -10 14 -38 19 -61 8 -41 17 -69 63 -198 21 -57 59 -153 83 -207 8 -17 14 -34 14 -37 0 -4 22 -50 48 -104 45 -90 71 -137 111 -204 9 -14 30 -51 48 -80 115 -199 367 -484 563 -639 156 -124 186 -144 358 -245 49 -29 221 -114 230 -114 4 0 19 -6 34 -14 14 -8 43 -19 63 -26 20 -7 49 -18 63 -26 15 -8 36 -14 47 -14 11 0 38 -9 60 -20 22 -11 47 -19 55 -20 8 0 44 -8 80 -19 139 -42 393 -89 545 -102 406 -34 762 -35 1130 -5 169 15 276 31 500 76 130 27 353 94 495 150 75 30 244 103 255 111 13 9 79 46 125 71 19 10 47 26 62 36 15 9 52 33 84 52 99 61 305 230 414 339 101 101 272 306 335 401 17 25 33 47 36 50 3 3 14 19 23 35 9 17 25 44 36 60 11 17 27 44 36 60 8 17 26 48 38 70 75 131 71 123 123 235 22 47 44 96 48 110 4 14 11 30 15 35 4 6 13 27 20 48 7 22 18 51 26 65 8 15 14 34 14 42 0 8 9 33 20 55 11 22 20 49 20 60 0 11 9 38 20 60 11 22 19 50 20 62 0 13 7 40 16 62 14 36 21 62 54 206 6 28 18 77 26 110 8 33 21 98 28 145 8 47 19 110 24 140 19 95 43 302 59 502 14 167 17 503 20 2491 4 2297 4 2297 -22 2307 -44 17 -1700 13 -1714 -3 -7 -10 -11 -665 -13 -2323 -3 -2503 -3 -2504 -59 -2839 -19 -116 -25 -145 -53 -265 -24 -99 -95 -302 -146 -415 -5 -11 -14 -31 -20 -45 -5 -14 -20 -41 -32 -62 -13 -20 -38 -62 -57 -94 -101 -174 -360 -433 -516 -517 -70 -37 -155 -77 -165 -77 -5 0 -27 -9 -47 -20 -21 -11 -46 -20 -57 -20 -11 0 -47 -9 -80 -19 -227 -71 -916 -68 -1099 4 -20 8 -45 15 -55 15 -9 1 -35 9 -57 20 -22 11 -47 20 -55 20 -8 0 -26 9 -40 20 -14 11 -31 20 -38 20 -12 0 -72 36 -117 70 -48 36 -192 181 -244 245 -161 197 -295 526 -346 850 -8 50 -19 117 -24 150 -25 145 -31 704 -31 2943 0 2332 0 2332 -26 2342 -16 6 -341 10 -859 10 -744 0 -835 -2 -849 -16z"/> <path d="M8003 12520 c-23 -9 -23 -9 -23 -860 0 -850 0 -850 26 -860 16 -7 1312 -10 3629 -10 3604 0 3604 0 3615 -21 17 -31 -5 -78 -39 -85 -14 -3 -39 -11 -56 -19 -32 -15 -93 -38 -165 -61 -25 -8 -59 -21 -77 -29 -17 -8 -37 -15 -43 -15 -7 0 -31 -8 -54 -19 -23 -10 -56 -23 -73 -30 -18 -6 -48 -16 -65 -22 -18 -7 -53 -19 -78 -29 -25 -10 -60 -22 -77 -29 -18 -6 -48 -16 -65 -22 -18 -7 -51 -20 -74 -30 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -29 -14 -40 -14 -11 0 -37 -9 -58 -20 -20 -11 -44 -20 -52 -20 -8 0 -34 -8 -57 -19 -24 -10 -58 -24 -75 -30 -84 -29 -101 -35 -139 -52 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -29 -14 -40 -14 -11 0 -37 -9 -58 -20 -20 -11 -44 -20 -52 -20 -8 0 -34 -8 -57 -19 -24 -10 -58 -24 -75 -30 -84 -29 -101 -35 -139 -52 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -29 -14 -40 -14 -11 0 -37 -9 -58 -20 -20 -11 -44 -20 -52 -20 -8 0 -34 -8 -57 -19 -24 -10 -58 -24 -75 -30 -84 -29 -101 -35 -139 -52 -23 -11 -47 -19 -54 -19 -6 0 -26 -7 -43 -14 -33 -15 -126 -49 -187 -68 -19 -5 -44 -17 -55 -24 -11 -8 -28 -14 -39 -14 -10 0 -37 -8 -60 -19 -38 -17 -59 -25 -141 -53 -16 -6 -50 -18 -75 -28 -25 -10 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -30 -9 -51 -20 -20 -11 -42 -20 -49 -20 -12 0 -37 -9 -168 -60 -25 -9 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -30 -9 -51 -20 -20 -11 -42 -20 -49 -20 -12 0 -37 -9 -168 -60 -25 -9 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -30 -9 -51 -20 -20 -11 -42 -20 -49 -20 -12 0 -37 -9 -168 -60 -25 -9 -61 -23 -80 -30 -19 -7 -53 -19 -75 -26 -22 -8 -49 -19 -60 -24 -11 -6 -40 -16 -65 -24 -67 -21 -131 -45 -167 -61 -17 -8 -37 -15 -45 -15 -7 0 -26 -7 -43 -16 -16 -9 -43 -20 -60 -25 -41 -11 -145 -48 -170 -59 -11 -5 -38 -16 -60 -24 -22 -7 -56 -19 -75 -26 -19 -7 -55 -21 -80 -30 -131 -51 -156 -60 -167 -60 -7 0 -19 -10 -27 -22 -14 -20 -16 -207 -16 -1795 0 -1773 0 -1773 26 -1783 35 -14 7553 -14 7588 0 26 10 26 10 26 860 0 850 0 850 -26 860 -16 7 -1333 10 -3690 10 -3664 0 -3664 0 -3676 25 -15 34 9 68 64 88 112 40 134 48 153 57 11 5 40 17 65 26 109 39 126 45 145 54 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 30 13 55 23 160 60 23 9 51 20 62 25 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 31 13 57 24 157 59 25 9 54 21 65 26 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 30 13 61 25 147 55 19 7 53 20 75 30 22 10 56 23 75 30 19 7 53 18 75 26 22 8 52 21 67 29 14 8 31 15 38 15 7 0 26 7 43 15 30 13 61 25 147 55 19 7 53 20 75 30 22 10 56 23 75 30 19 7 53 18 75 26 22 8 52 21 67 29 14 8 31 15 38 15 7 0 26 7 43 15 30 13 61 25 147 55 19 7 53 20 75 30 22 10 56 23 75 30 90 31 117 42 145 54 17 7 46 19 65 26 85 30 117 42 147 55 17 8 36 15 43 15 7 0 24 7 38 15 15 8 45 21 67 29 22 8 56 19 75 26 19 7 53 20 75 30 22 10 56 23 75 30 86 30 117 42 147 55 17 8 36 15 43 15 7 0 24 7 38 15 15 8 45 21 67 29 22 8 56 19 75 26 19 7 53 20 75 30 22 10 56 23 75 30 86 30 117 42 147 55 17 8 36 15 43 15 7 0 24 7 38 15 15 8 45 21 67 29 22 8 56 19 75 26 19 7 49 19 65 26 17 7 49 20 73 29 108 39 129 47 159 60 17 8 36 15 42 15 6 0 30 9 53 19 24 11 70 29 103 41 33 12 74 28 90 36 17 7 49 20 73 29 108 39 129 47 159 60 17 8 36 15 42 15 6 0 30 9 53 19 24 11 70 29 103 41 33 12 74 28 90 36 17 7 49 20 73 29 23 8 61 22 85 30 23 9 51 20 62 25 11 5 38 16 60 24 22 8 65 24 95 36 54 21 110 42 200 74 25 9 54 21 65 26 11 5 52 21 90 35 39 14 89 35 113 45 23 11 47 20 53 20 6 0 25 7 42 15 30 13 55 23 160 60 23 9 51 20 62 25 11 5 52 21 90 35 89 33 166 66 183 78 9 8 12 366 12 1733 0 1724 0 1724 -26 1734 -33 13 -7440 12 -7471 0z"/> <path d="M16806 12514 c-24 -24 -24 -8044 0 -8068 14 -14 105 -16 852 -16 510 0 843 4 852 10 13 8 16 459 20 3922 l5 3913 29 0 c33 0 42 -19 76 -150 11 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 27 -95 34 -125 7 -30 20 -77 29 -105 16 -53 47 -156 77 -265 10 -36 27 -96 38 -135 11 -38 29 -101 40 -140 11 -38 30 -103 41 -142 12 -40 30 -104 41 -143 11 -38 29 -101 40 -140 11 -38 29 -103 41 -142 11 -40 29 -103 40 -140 10 -38 28 -101 40 -140 11 -40 30 -104 41 -143 11 -38 29 -101 40 -140 11 -38 28 -100 39 -137 10 -38 28 -101 40 -140 11 -40 29 -102 39 -138 10 -36 28 -99 40 -140 12 -41 30 -104 40 -140 10 -36 28 -99 40 -140 12 -41 30 -105 41 -142 10 -38 28 -98 38 -135 61 -216 100 -349 118 -408 9 -27 22 -75 29 -105 7 -30 22 -86 34 -125 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 30 -101 40 -140 10 -38 28 -101 40 -140 12 -38 28 -97 36 -130 20 -83 34 -114 55 -125 25 -14 3664 -13 3690 0 10 6 19 18 19 28 0 9 9 44 19 77 11 33 28 92 39 130 11 39 30 104 42 145 12 41 30 104 40 140 36 127 62 216 81 275 10 33 19 68 19 78 0 11 7 33 15 50 8 18 21 59 29 92 8 33 24 92 36 130 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 99 38 135 21 66 29 95 62 210 10 36 28 98 39 138 12 39 30 105 42 145 11 39 30 104 41 142 11 39 29 102 40 140 11 39 28 99 38 135 10 36 28 98 39 138 12 39 30 102 40 140 11 37 25 85 31 107 7 22 21 69 32 105 10 36 28 97 38 135 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 27 93 34 120 7 28 20 73 29 100 16 50 42 142 78 268 24 85 53 187 80 280 11 39 29 102 40 140 10 37 28 99 39 137 11 39 29 102 40 140 19 65 43 151 70 245 7 22 21 69 32 105 10 36 28 97 38 135 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 28 102 40 140 12 39 30 102 40 140 10 39 23 84 28 100 6 17 21 63 33 103 22 67 26 73 49 70 25 -3 25 -3 28 -3916 2 -3913 2 -3913 28 -3922 16 -6 342 -10 859 -10 744 0 835 2 849 16 24 24 24 8044 0 8068 -14 14 -185 16 -1730 16 -1111 0 -1722 -3 -1734 -10 -19 -10 -32 -41 -69 -167 -11 -40 -31 -106 -42 -145 -12 -40 -30 -97 -40 -126 -11 -30 -19 -64 -19 -75 0 -12 -6 -34 -14 -49 -8 -15 -17 -42 -21 -60 -7 -34 -34 -123 -66 -216 -11 -30 -19 -64 -19 -75 0 -12 -6 -34 -14 -49 -8 -15 -17 -42 -21 -60 -3 -18 -14 -58 -24 -88 -10 -30 -27 -86 -39 -125 -11 -38 -29 -101 -41 -140 -11 -38 -27 -92 -36 -120 -9 -27 -20 -66 -24 -86 -4 -19 -11 -41 -16 -48 -4 -7 -16 -44 -26 -82 -29 -105 -56 -201 -67 -234 -6 -16 -15 -46 -22 -65 -6 -19 -20 -65 -31 -102 -33 -116 -57 -200 -79 -273 -12 -38 -28 -95 -36 -125 -9 -30 -22 -69 -30 -87 -8 -17 -14 -40 -14 -51 0 -11 -8 -44 -19 -74 -32 -93 -59 -182 -66 -216 -4 -18 -13 -45 -21 -60 -8 -15 -14 -37 -14 -49 0 -11 -8 -45 -19 -75 -10 -29 -28 -86 -40 -125 -51 -177 -65 -221 -81 -273 -9 -30 -26 -86 -38 -125 -38 -132 -65 -220 -82 -275 -18 -57 -46 -152 -82 -275 -11 -38 -29 -94 -39 -123 -11 -30 -19 -64 -19 -75 0 -12 -6 -34 -14 -49 -8 -15 -17 -42 -21 -60 -7 -34 -34 -123 -66 -216 -11 -30 -19 -63 -19 -74 0 -11 -6 -34 -14 -51 -8 -18 -21 -57 -30 -87 -8 -30 -24 -86 -36 -125 -22 -73 -46 -157 -79 -272 -11 -38 -24 -83 -30 -100 -6 -18 -16 -48 -22 -65 -11 -34 -37 -123 -68 -239 -10 -37 -22 -73 -26 -80 -5 -7 -12 -29 -16 -48 -4 -20 -15 -58 -24 -86 -9 -27 -25 -80 -35 -117 -43 -147 -64 -215 -81 -268 -10 -30 -21 -70 -24 -88 -4 -18 -13 -45 -21 -60 -8 -15 -14 -37 -14 -49 0 -11 -8 -45 -19 -75 -32 -93 -59 -182 -66 -216 -4 -18 -13 -45 -21 -60 -8 -15 -14 -37 -14 -49 0 -11 -8 -45 -19 -75 -10 -29 -28 -86 -40 -125 -51 -177 -65 -221 -81 -273 -9 -30 -27 -88 -39 -127 -26 -88 -57 -195 -72 -246 -16 -55 -33 -67 -93 -67 -74 0 -72 -3 -136 235 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -30 102 -40 140 -10 39 -28 102 -40 140 -12 39 -27 93 -34 120 -9 35 -20 54 -37 62 -19 10 -408 13 -1786 13 -1588 0 -1763 -2 -1777 -16z"/> <path d="M9905 1920 c-55 -4 -122 -14 -148 -23 -26 -10 -55 -17 -65 -17 -9 -1 -35 -9 -57 -20 -22 -11 -47 -20 -55 -20 -8 -1 -35 -15 -60 -30 -25 -16 -61 -38 -80 -49 -43 -24 -167 -151 -206 -211 -93 -146 -133 -316 -134 -570 0 -350 71 -571 237 -731 73 -71 227 -169 265 -169 7 0 25 -7 41 -15 15 -7 69 -21 120 -30 50 -9 94 -20 95 -25 6 -17 324 -12 346 5 10 8 39 17 65 21 25 3 61 15 79 25 18 10 37 19 42 19 22 0 103 66 135 108 18 26 43 59 54 73 11 14 23 38 26 52 4 15 12 27 17 27 7 0 8 -41 4 -124 -10 -178 -24 -166 194 -166 167 0 180 1 190 19 6 13 10 185 10 491 0 470 0 470 -26 480 -39 15 -1007 13 -1022 -2 -13 -13 -18 -262 -6 -292 5 -14 42 -16 306 -16 194 0 306 -4 319 -11 18 -9 20 -17 14 -52 -4 -23 -14 -53 -23 -67 -10 -14 -22 -37 -28 -51 -15 -34 -86 -90 -154 -121 -105 -49 -166 -62 -322 -66 -158 -4 -236 11 -347 69 -100 52 -185 173 -222 317 -27 106 -27 363 0 460 54 195 159 305 350 368 102 33 301 35 406 3 188 -57 320 -169 339 -288 5 -33 12 -44 33 -52 36 -13 358 -8 373 7 14 14 -14 197 -35 226 -8 13 -15 28 -15 35 0 25 -86 137 -147 192 -139 126 -357 203 -618 221 -142 10 -145 10 -290 0z"/> <path d="M14310 1910 c-89 -15 -188 -40 -216 -55 -16 -8 -36 -15 -44 -15 -8 0 -26 -9 -40 -20 -14 -11 -31 -20 -38 -20 -14 0 -99 -58 -157 -107 -34 -29 -55 -53 -112 -128 -25 -32 -63 -96 -63 -105 0 -6 -7 -25 -16 -42 -9 -17 -27 -76 -41 -131 -23 -96 -24 -113 -21 -326 4 -233 14 -298 59 -411 9 -25 20 -52 23 -60 10 -26 72 -121 119 -183 29 -37 136 -126 187 -156 89 -52 233 -105 315 -116 28 -4 60 -13 72 -21 32 -20 369 -20 408 0 15 8 51 17 79 21 186 24 400 145 517 292 49 61 139 227 139 256 0 8 10 43 21 78 33 98 33 542 1 638 -12 35 -22 67 -22 72 0 8 -42 97 -71 149 -55 99 -251 280 -304 280 -8 0 -16 4 -19 9 -14 23 -189 78 -321 101 -60 10 -392 10 -455 0z m429 -376 c86 -24 174 -70 230 -120 48 -44 111 -125 111 -144 0 -5 10 -29 23 -52 21 -40 22 -55 22 -233 0 -176 -2 -193 -23 -237 -12 -26 -22 -52 -22 -58 0 -15 -66 -108 -109 -154 -126 -134 -347 -187 -591 -141 -149 27 -295 136 -358 267 -44 92 -54 125 -63 207 -46 385 124 631 471 681 76 12 242 3 309 -16z"/> <path d="M11483 1880 c-23 -9 -23 -9 -23 -900 0 -595 3 -898 10 -911 10 -18 23 -19 190 -19 167 0 180 1 190 19 6 12 10 116 10 269 0 228 2 250 18 265 17 15 64 17 464 17 418 0 446 -1 461 -18 15 -16 17 -50 17 -266 0 -151 4 -255 10 -267 10 -18 23 -19 190 -19 167 0 180 1 190 19 6 13 10 173 10 451 0 503 20 450 -171 450 -115 0 -155 11 -85 24 18 4 41 15 51 26 10 11 27 20 38 20 34 0 134 113 152 172 30 102 13 284 -36 378 -12 25 -26 47 -29 50 -4 3 -12 15 -19 27 -11 22 -143 133 -158 133 -4 1 -26 9 -48 20 -22 11 -47 19 -56 20 -9 0 -45 10 -80 22 -63 21 -77 22 -669 25 -367 1 -614 -1 -627 -7z m1140 -389 c43 -10 88 -27 100 -38 65 -58 76 -72 91 -117 21 -65 20 -100 -5 -174 -29 -87 -118 -152 -229 -167 -76 -10 -667 -6 -696 5 -24 10 -24 10 -24 240 0 140 4 239 10 251 10 18 25 19 343 19 288 -1 342 -3 410 -19z"/> <path d="M15952 1879 c-23 -9 -23 -9 -19 -586 2 -401 7 -599 16 -648 54 -305 164 -470 384 -577 31 -15 70 -28 85 -28 15 0 45 -9 67 -20 51 -26 340 -30 378 -6 12 8 48 19 79 25 32 6 71 17 87 26 17 8 36 15 43 16 28 2 165 107 205 159 70 90 78 102 107 170 15 36 31 73 37 83 9 17 34 126 49 222 14 85 12 1149 -2 1163 -18 18 -362 17 -376 -1 -7 -9 -12 -199 -15 -587 -3 -513 -5 -581 -21 -630 -47 -149 -118 -238 -223 -279 -55 -21 -73 -23 -170 -18 -126 5 -173 24 -227 91 -97 119 -98 127 -105 824 -5 511 -8 594 -21 602 -19 12 -328 12 -358 -1z"/> <path d="M18002 1868 c-15 -15 -18 -1751 -2 -1793 10 -25 10 -25 197 -23 l188 3 5 317 c3 191 9 321 15 327 6 5 157 11 360 14 350 4 350 4 430 35 44 16 100 40 125 52 49 25 140 113 162 157 8 15 19 37 25 48 84 159 79 467 -11 599 -91 134 -181 200 -335 249 -63 19 -94 21 -606 24 -422 3 -543 1 -553 -9z m1032 -338 c114 -32 159 -78 178 -178 22 -117 -28 -231 -124 -283 -42 -23 -50 -23 -356 -27 -230 -2 -317 0 -328 9 -17 14 -21 430 -4 473 10 26 10 26 287 26 246 0 286 -2 347 -20z"/> </g></symbol><symbol id="belediye" viewBox="0 0 1078.881718 944.504027"><g transform="translate(-647.910015,1071.844275) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"> <path d="M11747 10706 c-15 -8 -51 -22 -80 -30 -82 -23 -178 -53 -222 -69 l-40 -15 -5 -974 -5 -973 -35 0 -35 0 -5 537 c-3 362 -8 541 -16 548 -6 6 -34 19 -62 30 -29 11 -73 29 -99 39 -27 11 -64 25 -83 31 -19 7 -53 21 -75 32 -22 10 -53 20 -70 21 -30 2 -30 2 -35 -618 l-5 -620 -35 0 -35 0 -5 620 -5 620 -34 -3 c-19 -1 -49 -11 -66 -22 -18 -11 -39 -20 -46 -20 -8 -1 -32 -9 -54 -20 -22 -11 -46 -19 -53 -20 -7 0 -30 -9 -50 -20 -20 -10 -48 -21 -62 -24 -14 -3 -34 -12 -45 -20 -19 -14 -20 -29 -25 -553 l-5 -538 -70 -3 c-129 -4 -115 42 -115 -375 0 -204 5 -388 10 -422 6 -33 15 -87 21 -119 5 -32 16 -68 24 -80 8 -11 15 -27 15 -36 1 -8 18 -44 40 -79 21 -36 37 -68 34 -73 -3 -4 -25 -8 -49 -8 -24 0 -55 -4 -69 -10 -26 -10 -26 -10 -26 -363 0 -314 2 -364 20 -448 53 -254 178 -453 365 -581 55 -38 156 -88 177 -88 8 0 23 -6 34 -14 46 -33 192 -48 548 -57 222 -6 355 -14 363 -21 10 -8 13 -53 13 -179 0 -156 1 -169 19 -179 26 -13 316 -13 342 0 18 10 19 23 19 179 0 125 3 171 13 179 8 7 130 13 332 17 334 6 465 19 560 56 28 10 55 19 60 19 16 1 95 42 160 84 189 120 321 330 376 596 17 83 19 138 19 443 0 347 0 347 -26 357 -14 6 -45 10 -69 10 -24 0 -46 4 -49 8 -3 5 11 33 31 63 102 154 113 224 113 715 0 452 14 402 -115 406 l-70 3 -5 537 c-3 362 -8 541 -16 548 -6 6 -34 19 -62 30 -29 11 -73 29 -99 39 -27 11 -64 25 -83 31 -19 7 -53 21 -75 32 -22 10 -53 20 -70 21 -30 2 -30 2 -35 -618 l-5 -620 -35 0 -35 0 -5 620 c-5 620 -5 620 -35 618 -16 -1 -48 -11 -70 -21 -22 -11 -56 -25 -75 -32 -19 -6 -56 -20 -82 -31 -27 -10 -72 -28 -100 -39 -29 -11 -59 -28 -65 -37 -10 -13 -13 -138 -13 -545 0 -528 0 -528 -26 -538 -56 -22 -54 -71 -56 982 l-3 970 -40 15 c-41 15 -133 44 -220 69 -27 8 -65 21 -83 30 -18 8 -45 14 -60 12 -27 -3 -27 -3 -32 -1178 l-5 -1175 -32 -3 c-18 -2 -34 -2 -35 0 -2 2 -5 532 -8 1178 l-5 1175 -30 3 c-16 1 -42 -4 -58 -12z m-502 -2500 c80 -12 139 -30 185 -57 8 -5 31 -18 51 -28 88 -48 181 -189 200 -301 10 -61 12 -399 3 -424 -9 -23 -24 -20 -70 17 -23 18 -61 41 -85 51 -24 10 -60 25 -79 34 -27 12 -88 17 -265 22 -178 5 -237 10 -260 21 -16 9 -55 28 -85 44 -128 65 -213 158 -255 280 -22 60 -25 88 -25 201 0 88 4 134 12 142 18 18 554 16 673 -2z m1943 2 c8 -8 12 -54 12 -142 0 -113 -3 -141 -25 -201 -42 -122 -127 -215 -255 -280 -30 -16 -68 -35 -85 -44 -24 -12 -81 -16 -275 -21 -212 -4 -248 -7 -270 -22 -13 -10 -31 -18 -39 -18 -15 0 -116 -64 -126 -80 -12 -20 -45 -10 -51 16 -4 14 -4 118 -2 232 5 199 6 210 32 272 66 155 200 251 396 285 102 18 671 20 688 3z m-1993 -1158 c110 -10 127 -14 203 -52 113 -56 185 -128 243 -245 44 -88 44 -88 47 -248 2 -90 -1 -166 -7 -174 -8 -12 -67 -14 -362 -12 -373 3 -383 4 -474 54 -11 6 -31 16 -46 24 -38 19 -146 120 -162 151 -7 15 -18 36 -24 47 -46 83 -53 121 -53 282 0 110 4 163 12 171 15 15 449 16 623 2z m1989 -6 c13 -13 16 -43 16 -170 0 -157 -7 -196 -53 -279 -6 -11 -17 -32 -24 -47 -16 -31 -124 -132 -162 -151 -15 -8 -35 -18 -46 -24 -91 -50 -101 -51 -473 -54 -298 -2 -355 0 -363 12 -6 8 -9 83 -7 174 3 160 3 160 47 248 58 117 130 189 243 245 103 52 165 59 545 61 226 1 264 -1 277 -15z"/> <path d="M9433 6629 c-8 -8 -13 -40 -13 -78 0 -76 26 -337 35 -351 3 -5 12 -38 20 -72 27 -119 94 -282 150 -363 98 -144 241 -281 345 -333 14 -7 43 -23 65 -37 22 -14 47 -28 55 -31 8 -3 33 -13 55 -23 105 -48 136 -61 148 -61 7 0 29 -9 50 -20 20 -11 45 -20 55 -20 9 0 34 -9 55 -20 20 -11 44 -20 52 -20 8 0 34 -9 57 -19 24 -10 68 -29 98 -41 58 -23 72 -30 127 -61 69 -39 89 -54 144 -109 95 -95 135 -180 148 -319 6 -64 12 -87 26 -98 15 -10 89 -13 352 -13 393 0 359 -17 348 175 -6 109 -42 299 -65 344 -5 9 -22 46 -39 82 -36 79 -100 166 -173 235 -56 53 -195 144 -219 144 -8 0 -20 5 -25 10 -12 12 -132 57 -184 70 -211 49 -429 111 -498 141 -23 11 -47 19 -52 19 -11 0 -100 43 -183 89 -192 105 -317 272 -366 491 -45 196 -176 285 -436 297 -91 4 -123 2 -132 -8z"/> <path d="M14100 6633 c-55 -10 -153 -44 -195 -68 -66 -39 -123 -127 -146 -225 -49 -219 -174 -386 -366 -491 -83 -46 -172 -89 -183 -89 -5 0 -29 -8 -52 -19 -69 -30 -287 -92 -498 -141 -52 -13 -172 -58 -184 -70 -5 -5 -17 -10 -25 -10 -23 0 -157 -89 -218 -144 -69 -62 -137 -154 -174 -235 -17 -36 -34 -73 -39 -82 -23 -45 -59 -235 -65 -344 -11 -192 -45 -175 348 -175 263 0 337 3 352 13 14 11 20 34 26 98 13 139 53 224 148 319 55 55 75 70 144 109 55 31 69 38 127 61 30 12 74 31 98 41 23 10 49 19 57 19 8 0 32 9 52 20 21 11 46 20 55 20 10 0 35 9 55 20 21 11 43 20 50 20 12 0 43 13 148 61 22 10 47 20 55 23 8 3 33 17 55 31 22 14 51 30 65 37 104 52 247 189 345 333 56 81 123 244 150 363 8 34 17 67 20 72 9 14 35 275 35 351 0 37 -5 70 -12 77 -12 12 -170 15 -228 5z"/> <path d="M9128 3896 c-185 -67 -276 -173 -286 -332 -7 -126 34 -213 133 -278 57 -39 128 -63 351 -120 27 -7 69 -25 92 -39 76 -49 80 -95 11 -143 -40 -28 -47 -29 -148 -28 -100 0 -109 2 -166 33 -33 18 -74 46 -90 62 -44 41 -57 37 -146 -38 -99 -86 -102 -102 -25 -167 29 -25 57 -46 62 -46 5 0 20 -9 34 -20 14 -11 34 -20 45 -20 11 0 32 -6 46 -14 14 -7 43 -16 65 -20 55 -11 64 -22 64 -77 0 -62 13 -69 128 -69 104 0 122 11 122 77 0 45 9 56 60 71 205 61 307 173 317 347 12 195 -101 305 -378 369 -207 47 -253 67 -262 113 -20 106 137 160 286 97 34 -15 75 -37 90 -50 16 -13 34 -24 41 -24 21 0 186 141 186 160 0 22 -79 88 -140 117 -91 44 -151 56 -290 60 -123 3 -141 1 -202 -21z"/> <path d="M12685 3914 c-58 -13 -133 -40 -157 -56 -14 -10 -31 -18 -36 -18 -19 0 -127 -128 -141 -166 -25 -71 -26 -199 0 -258 47 -109 138 -168 344 -220 33 -8 86 -21 117 -29 145 -38 196 -125 106 -184 -39 -26 -48 -28 -147 -27 -119 1 -157 14 -243 85 -26 21 -54 39 -63 39 -22 0 -185 -141 -185 -160 0 -50 188 -169 310 -195 51 -11 60 -22 60 -76 0 -62 12 -69 130 -69 102 0 110 6 110 90 0 35 3 40 28 46 169 38 277 110 337 224 41 79 42 219 2 296 -56 106 -151 162 -348 208 -35 8 -92 21 -126 29 -150 35 -186 115 -84 184 65 44 225 23 296 -37 50 -43 77 -45 117 -8 7 7 39 32 71 56 75 56 78 85 13 134 -105 81 -201 110 -366 114 -69 2 -134 1 -145 -2z"/> <path d="M6492 3888 c-13 -13 -18 -1110 -6 -1142 5 -14 47 -16 360 -16 333 0 358 1 416 21 93 31 139 67 193 149 28 43 29 50 30 160 0 115 0 115 -36 165 -19 28 -49 59 -66 70 -17 11 -39 25 -49 32 -18 12 -17 14 11 35 115 87 154 217 104 348 -35 94 -107 150 -224 176 -82 18 -715 20 -733 2z m580 -234 c105 -40 115 -133 22 -195 -35 -23 -270 -29 -292 -7 -15 15 -16 156 -2 192 9 26 11 26 120 26 77 0 122 -5 152 -16z m55 -470 c37 -27 50 -80 34 -134 -19 -65 -60 -80 -221 -80 -154 0 -150 -3 -150 130 0 113 0 113 171 108 121 -3 141 -6 166 -24z"/> <path d="M7997 3886 c-16 -13 -35 -52 -67 -146 -7 -19 -21 -54 -31 -78 -11 -23 -19 -48 -19 -55 -1 -6 -9 -30 -20 -52 -11 -22 -20 -47 -20 -55 0 -8 -9 -33 -20 -55 -11 -22 -19 -46 -20 -54 0 -8 -8 -32 -19 -55 -10 -23 -24 -57 -31 -76 -6 -19 -23 -64 -37 -100 -13 -36 -28 -79 -34 -97 -5 -18 -16 -45 -24 -60 -8 -15 -15 -34 -15 -42 0 -8 -8 -32 -19 -55 -27 -61 -43 -107 -48 -143 -5 -33 -5 -33 135 -33 151 0 154 1 172 57 28 87 49 136 61 144 8 5 103 9 211 9 l198 0 23 -47 c14 -27 27 -64 31 -84 13 -72 33 -80 197 -77 137 3 144 4 142 23 -1 20 -25 93 -43 130 -11 25 -48 129 -59 170 -5 17 -16 44 -25 60 -9 17 -16 36 -16 43 0 8 -7 28 -15 45 -16 35 -39 98 -61 167 -8 25 -21 59 -29 77 -8 17 -15 37 -15 43 0 7 -8 31 -19 54 -17 38 -23 55 -52 139 -6 17 -20 51 -30 75 -11 23 -19 51 -19 62 0 10 -12 32 -26 49 -26 31 -26 31 -172 31 -108 -1 -152 -4 -165 -14z m178 -397 c30 -74 54 -146 66 -194 6 -21 15 -45 20 -52 6 -6 9 -22 7 -35 -3 -22 -7 -23 -109 -26 -156 -4 -155 -10 -58 263 10 28 21 63 24 78 8 40 25 29 50 -34z"/> <path d="M10286 3878 c-25 -39 -86 -194 -86 -218 0 -9 -6 -25 -14 -36 -8 -11 -19 -40 -26 -64 -7 -24 -18 -53 -26 -64 -8 -11 -14 -28 -14 -38 0 -10 -8 -37 -19 -60 -10 -24 -24 -58 -30 -75 -6 -18 -16 -48 -22 -65 -6 -18 -18 -46 -25 -63 -15 -35 -39 -100 -60 -165 -8 -25 -18 -54 -24 -65 -5 -11 -16 -39 -25 -62 -8 -24 -22 -62 -30 -85 -31 -81 -29 -83 128 -86 l137 -3 25 57 c14 31 25 65 25 74 0 10 12 32 26 49 26 31 26 31 209 31 200 0 232 -6 241 -49 3 -14 14 -44 25 -67 10 -23 19 -48 19 -56 0 -33 25 -39 171 -36 144 3 144 3 147 29 2 15 -6 44 -17 65 -12 21 -21 45 -21 52 0 8 -7 28 -15 45 -16 35 -39 98 -61 167 -8 25 -21 59 -29 77 -8 17 -15 37 -15 43 0 7 -8 31 -19 54 -10 23 -23 56 -30 74 -6 17 -16 47 -22 65 -7 17 -19 52 -29 77 -10 25 -22 60 -29 78 -6 17 -16 47 -22 65 -7 17 -20 50 -30 73 -11 23 -19 47 -19 55 -1 8 -9 32 -20 54 -11 22 -19 48 -20 57 0 31 -36 38 -189 38 -145 0 -151 -1 -165 -22z m193 -386 c5 -26 17 -61 25 -77 9 -17 16 -38 16 -48 0 -10 9 -38 21 -63 12 -27 19 -60 17 -82 -3 -37 -3 -37 -112 -37 -133 0 -141 6 -110 87 32 83 55 150 65 193 21 83 62 98 78 27z"/> <path d="M11172 3888 c-13 -13 -18 -1110 -6 -1142 9 -24 299 -24 308 0 3 9 6 85 6 171 l0 155 62 64 c68 72 80 76 101 37 7 -16 23 -45 35 -65 12 -21 31 -54 42 -73 11 -19 29 -51 40 -70 11 -19 29 -51 40 -70 11 -19 30 -52 41 -72 56 -99 40 -93 225 -93 198 0 191 -10 98 147 -10 17 -48 81 -84 143 -36 62 -75 128 -87 148 -12 21 -27 46 -32 57 -6 11 -22 38 -36 60 -14 22 -32 54 -40 72 -8 17 -19 34 -25 38 -5 3 -10 15 -10 25 0 17 131 184 288 367 92 107 90 108 -98 108 l-155 0 -189 -235 c-103 -129 -193 -235 -200 -235 -8 0 -12 66 -14 224 -1 145 -6 229 -13 238 -15 18 -279 19 -297 1z"/> <path d="M13440 3874 c-6 -15 -10 -236 -10 -559 0 -323 4 -544 10 -559 10 -26 10 -26 444 -26 506 0 456 -14 456 128 0 130 19 122 -304 122 -266 0 -266 0 -276 26 -14 36 -13 167 2 182 9 9 76 12 238 12 162 0 229 3 238 12 8 8 12 47 12 108 0 61 -4 100 -12 108 -9 9 -76 12 -238 12 -162 0 -229 3 -238 12 -19 19 -16 163 4 182 13 14 53 16 284 16 315 0 290 -11 290 128 0 133 42 122 -464 122 -426 0 -426 0 -436 -26z"/> <path d="M14532 3888 c-13 -13 -18 -1110 -6 -1142 9 -24 299 -24 308 0 3 9 6 106 6 217 0 111 4 208 8 215 7 9 52 12 193 10 l184 -3 5 -215 c3 -118 9 -221 13 -227 6 -9 46 -13 142 -13 123 0 135 2 145 19 6 13 10 209 10 569 0 519 -1 550 -18 565 -24 22 -265 25 -279 5 -4 -7 -10 -107 -13 -223 l-5 -210 -184 -3 c-141 -2 -186 1 -193 10 -4 7 -8 103 -8 214 0 142 -3 203 -12 212 -17 17 -279 17 -296 0z"/> <path d="M15757 3882 c-13 -14 -17 -39 -17 -106 0 -106 0 -106 160 -106 160 0 160 0 160 108 0 122 -1 122 -162 122 -108 0 -127 -2 -141 -18z"/> <path d="M16277 3882 c-15 -17 -17 -71 -17 -566 0 -358 4 -554 10 -567 10 -17 22 -19 146 -19 165 0 154 -15 154 220 0 190 0 190 75 190 41 0 85 -38 112 -95 8 -16 36 -66 63 -110 27 -44 54 -91 60 -104 6 -13 24 -41 41 -62 31 -39 31 -39 190 -39 196 0 190 -11 82 156 -7 10 -23 36 -35 58 -26 44 -30 50 -78 126 -61 95 -64 107 -32 127 54 35 122 107 143 152 11 25 26 57 32 70 19 39 14 178 -8 236 -35 93 -85 148 -175 194 -83 43 -158 51 -467 51 -258 0 -281 -1 -296 -18z m556 -238 c66 -22 87 -53 87 -126 0 -73 -9 -91 -63 -125 -36 -22 -56 -27 -139 -31 -157 -7 -148 -16 -148 143 0 117 2 135 18 144 28 17 192 13 245 -5z"/> <path d="M15752 3548 c-16 -16 -17 -769 -2 -799 10 -17 23 -19 150 -19 127 0 140 2 150 19 15 30 14 783 -2 799 -17 17 -279 17 -296 0z"/> <path d="M12463 2273 c-9 -3 -13 -29 -13 -78 0 -92 5 -95 128 -95 111 0 122 9 122 96 0 33 -5 65 -12 72 -12 12 -198 16 -225 5z"/> <path d="M14745 2257 c-154 -58 -240 -228 -192 -382 34 -110 81 -140 346 -220 126 -38 162 -87 107 -146 -62 -67 -218 -45 -312 44 -25 22 -37 27 -55 22 -35 -11 -129 -105 -129 -128 0 -24 89 -112 123 -123 12 -3 42 -16 67 -27 72 -33 302 -31 383 4 74 33 137 85 172 145 41 70 42 208 2 276 -27 47 -103 118 -126 118 -7 0 -25 7 -40 15 -16 8 -57 21 -92 29 -172 39 -209 59 -209 113 0 14 13 37 29 54 26 25 37 29 86 29 58 0 149 -34 175 -65 20 -24 38 -18 101 33 87 70 88 106 6 160 -83 53 -123 64 -257 68 -110 3 -132 1 -185 -19z"/> <path d="M15407 2273 c-12 -12 -8 -148 5 -161 8 -8 48 -12 115 -12 102 0 104 0 113 26 14 36 12 128 -2 142 -13 13 -219 18 -231 5z"/> <path d="M8120 2244 c-6 -15 -10 -203 -10 -464 0 -261 4 -449 10 -464 10 -26 10 -26 289 -26 273 0 282 1 334 24 95 42 167 148 167 248 0 63 -37 149 -80 188 -45 41 -49 59 -19 86 75 68 98 218 46 307 -63 107 -139 127 -476 127 -251 0 -251 0 -261 -26z m469 -194 c63 -32 70 -83 17 -136 -35 -35 -35 -35 -138 -32 l-103 3 -3 70 c-5 117 -7 115 99 115 69 0 98 -4 128 -20z m17 -378 c53 -28 56 -125 5 -162 -39 -27 -235 -31 -245 -4 -11 29 -6 160 7 173 15 16 201 11 233 -7z"/> <path d="M9030 2251 c-6 -13 -10 -179 -10 -471 0 -292 4 -458 10 -471 10 -18 25 -19 346 -19 382 0 354 -9 354 110 0 91 4 90 -236 90 -204 0 -204 0 -214 26 -14 36 -12 138 2 152 8 8 63 12 183 12 120 0 175 4 183 12 16 16 16 160 0 176 -8 8 -63 12 -183 12 -120 0 -175 4 -183 12 -14 14 -16 106 -2 142 10 26 10 26 220 26 241 0 230 -5 230 105 0 113 27 105 -354 105 -321 0 -336 -1 -346 -19z"/> <path d="M9880 2244 c-6 -15 -10 -203 -10 -464 0 -261 4 -449 10 -464 10 -26 10 -26 340 -26 378 0 350 -9 350 110 0 91 3 90 -235 90 -176 0 -204 2 -209 16 -3 9 -6 177 -6 374 0 197 -3 365 -6 374 -5 13 -25 16 -115 16 -108 0 -110 0 -119 -26z"/> <path d="M10680 2244 c-13 -34 -13 -894 0 -928 10 -26 10 -26 357 -24 l348 3 3 88 c4 111 13 107 -253 107 -237 0 -218 -10 -213 115 l3 70 190 6 c105 3 191 6 193 7 1 1 2 43 2 92 0 50 -1 91 -2 92 -2 1 -88 4 -193 7 l-190 6 -3 73 c-2 46 2 79 9 88 9 11 52 14 214 14 240 0 235 -2 235 104 0 115 30 106 -356 106 -334 0 -334 0 -344 -26z"/> <path d="M11526 2254 c-8 -20 -8 -928 0 -948 10 -25 477 -23 549 2 103 36 177 101 217 193 22 51 23 65 23 284 0 224 -1 231 -25 280 -50 103 -126 159 -257 189 -104 23 -498 24 -507 0z m444 -212 c30 -12 53 -30 72 -57 27 -40 27 -41 28 -208 0 -161 -1 -169 -25 -207 -36 -57 -97 -82 -195 -78 l-75 3 -3 270 c-2 245 -1 271 15 283 24 17 130 14 183 -6z"/> <path d="M12784 2239 c3 -17 12 -42 18 -54 7 -13 27 -50 44 -82 17 -32 45 -84 62 -115 17 -31 37 -67 43 -80 7 -13 16 -30 20 -38 119 -221 109 -187 109 -376 0 -95 3 -179 6 -188 9 -24 219 -24 228 0 3 9 6 92 6 185 0 183 -3 171 69 299 4 8 13 25 20 38 6 13 26 49 43 80 17 31 44 82 60 112 16 30 49 92 73 138 25 46 45 90 45 98 0 11 -21 14 -108 14 -133 0 -124 8 -222 -190 -39 -80 -77 -146 -85 -148 -16 -4 -16 -3 -115 188 l-75 145 -124 3 c-124 3 -124 3 -117 -29z"/> <path d="M13720 2244 c-6 -15 -10 -203 -10 -464 0 -261 4 -449 10 -464 10 -26 10 -26 344 -26 387 0 356 -10 356 110 0 91 3 90 -251 90 -199 0 -199 0 -209 26 -14 36 -12 138 2 152 8 8 63 12 183 12 120 0 175 4 183 12 16 16 16 160 0 176 -8 8 -63 12 -183 12 -120 0 -175 4 -183 12 -14 14 -16 106 -2 142 10 26 10 26 218 26 248 0 242 -3 242 104 0 115 30 106 -356 106 -334 0 -334 0 -344 -26z"/> <path d="M12446 1974 c-3 -9 -6 -159 -6 -334 0 -175 3 -325 6 -334 5 -13 25 -16 115 -16 108 0 110 0 119 26 6 14 10 154 10 324 0 170 -4 310 -10 324 -9 26 -11 26 -119 26 -90 0 -110 -3 -115 -16z"/> <path d="M15406 1974 c-3 -9 -6 -159 -6 -334 0 -175 3 -325 6 -334 5 -13 25 -16 115 -16 108 0 110 0 119 26 6 14 10 154 10 324 0 170 -4 310 -10 324 -9 26 -11 26 -119 26 -90 0 -110 -3 -115 -16z"/> </g></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false" id="lgDefs"></svg>
+
+<header class="nav-wrap">
+  <nav class="nav glass on-media" id="nav" data-lg="nav" aria-label="Ana menü">
+    <a class="brand" href="#ust" aria-label="UZM Group, başa dön"><svg viewBox="0 0 2858.218249 1253.285931" aria-hidden="true"><use href="#uzm-group" /></svg></a>
+    <ul class="links">
+      <li><a href="#ilke">UZM</a></li>
+      <li><a href="#konutlar">Konutlar</a></li>
+      <li><a href="#olanaklar">Olanaklar</a></li>
+      <li><a href="#gun">Bir gün</a></li>
+      <li><a href="#konum">Konum</a></li>
+      <li><a href="#projeler">Projeler</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:+904447039">444 70 39</a>
+    <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="menu">Menü <i aria-hidden="true"></i></button>
+  </nav>
+</header>
+
+<div class="menu glass" id="menu">
+  <div class="menu-top">
+    <svg class="brand" viewBox="0 0 2858.218249 1253.285931" role="img" aria-label="UZM Group" style="width:4.25rem"><use href="#uzm-group" /></svg>
+    <button class="x" type="button" id="menuClose" aria-label="Menüyü kapat"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12" stroke="currentColor" stroke-width="1.6" /></svg></button>
+  </div>
+  <ol>
+    <li><a href="#ilke">UZM Group <span>02</span></a></li>
+    <li><a href="#konutlar">Konutlar <span>03</span></a></li>
+    <li><a href="#olanaklar">Olanaklar <span>04</span></a></li>
+    <li><a href="#gun">Levan'da bir gün <span>05</span></a></li>
+    <li><a href="#konum">Konum <span>06</span></a></li>
+    <li><a href="#projeler">Projeler <span>08</span></a></li>
+    <li><a href="#davet">İletişim <span>09</span></a></li>
+  </ol>
+  <a class="btn btn-ink" href="tel:+904447039">444 70 39</a>
+</div>
+
+<nav class="pres glass on-media" id="pres" aria-label="Vizyonlar arasında gezinme">
+  <a href="../index.html" aria-label="Tüm vizyonlar">←<span class="full">&nbsp;Tüm vizyonlar</span></a>
+  <span class="cur">Vizyon&nbsp;<b>5 / 8</b><span class="now">&nbsp;· Işık</span></span>
+  <a href="../isik-site/index.html" title="Işık vizyonunun tam sitesi">Tam site</a>
+  <a class="arw" href="../4-kesit/index.html" aria-label="Önceki vizyon: Kesit" title="Önceki vizyon: Kesit">‹</a>
+  <a class="arw" href="../6-zirve/index.html" aria-label="Sonraki vizyon: Zirve" title="Sonraki vizyon: Zirve">›</a>
+</nav>
+
+<main>
+  <!-- 01 · Hero: the film behind a liquid-glass plate -->
+  <section class="hero" id="ust" data-t="0" data-media aria-label="Levan Bahçeşehir filmi">
+    <div class="hero-media" id="heroMedia">
+      <picture>
+        <source media="(max-aspect-ratio: 4/5)" srcset="../assets/img/film--levan-hero-tall.webp">
+        <img class="poster" src="../assets/img/film--levan-hero.webp" alt="" fetchpriority="high">
+      </picture>
+      <video id="heroVid" muted loop playsinline preload="auto" aria-hidden="true"></video>
+      <div class="hero-shade"></div>
+    </div>
+    <span class="tag hero-tag">Görselleştirme · Levan Bahçeşehir tanıtım filminden</span>
+    <div class="hero-inner shell">
+      <div class="hero-plate glass media" id="heroPlate" data-lg="hero">
+        <p class="eyebrow">UZM Group · Levan Bahçeşehir</p>
+        <h1>Sağlam yapı.<br><em>Tutulan söz.</em></h1>
+        <p>Başakşehir Belediyesi iş birliğiyle, Türkiye'nin golf sahasına sahip ilk konut projesini inşa ediyoruz.</p>
+        <div class="acts">
+          <a class="btn btn-light" href="#konutlar">Levan'ı keşfedin <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></a>
+          <button class="btn btn-glass" type="button" id="filmOpen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor" /></svg> Filmi izleyin</button>
+        </div>
+      </div>
+    </div>
+    <div class="cue" aria-hidden="true">Kaydırın<i></i></div>
+  </section>
+
+  <!-- 02 · İlke -->
+  <section class="sec ilke" id="ilke" data-t="0">
+    <div class="shell">
+      <div class="ilke-grid">
+        <div>
+          <p class="eyebrow" data-r>UZM Group</p>
+          <h2 class="statement" data-r data-d="1">Her projeyi arsadan anahtara aynı ilkeyle yürütüyoruz: <em>şeffaf süreç, sağlam yapı, verilen takvime sadakat.</em></h2>
+          <p class="lede" data-r data-d="2">UZM Group, İstanbul merkezli bir inşaat ve proje geliştirme grubu. İnşaat şirketi UZM Yapı ile 2020'den bu yana Büyükçekmece ve Arnavutköy'de villa projeleri tamamladı; bugün Başakşehir Belediyesi iş birliğiyle Levan Bahçeşehir'i inşa ediyor.</p>
+        </div>
+        <figure class="ilke-pic" data-r data-d="2">
+          <span data-fp style="position:absolute;inset:0"><img src="../assets/img/levan--peyzaj.webp" alt="Levan Bahçeşehir'de gölet ve yürüyüş yolları" loading="lazy" style="object-position:35% 50%"></span>
+          <span class="tag">Görselleştirme</span>
+          <figcaption class="glass media"><b>Levan Bahçeşehir</b>Arazinin yüzde yetmişi yeşil.</figcaption>
+        </figure>
+      </div>
+      <div class="figs" id="figs">
+        <div class="fig glass" data-r><span class="v num" data-count="2016" data-plain>2016</span><b>Kuruluş</b><span class="note">İstanbul</span></div>
+        <div class="fig glass" data-r data-d="1"><span class="v num" data-count="4">4</span><b>Konut projesi</b><span class="note">2020'den bu yana İstanbul'da</span></div>
+        <div class="fig glass" data-r data-d="2"><span class="v num" data-count="23">23</span><b>Villa tamamlandı</b><span class="note">Viktorya Park ve Ağaçelebi Sarayları</span></div>
+        <div class="fig glass" data-r data-d="3"><span class="v"><span class="num" data-count="31546">31.546</span><small>m²</small></span><b>Tamamlanan proje alanı</b><span class="note">Büyükçekmece ve Arnavutköy</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · Konutlar: the deck fans out as you scroll -->
+  <section class="homes" id="konutlar" data-t="0.12" aria-label="Konut tipleri">
+    <div class="homes-stage" id="homesStage">
+      <div class="homes-head shell">
+        <div>
+          <p class="eyebrow">Konut tipleri</p>
+          <h2 class="h2">2+1 daireden <em>malikaneye.</em></h2>
+        </div>
+        <div class="pager glass" id="pager" aria-label="Konut tipi seçin">
+          <button type="button" data-go="0">2+1</button><button type="button" data-go="1">3+1</button><button type="button" data-go="2">4+1</button><button type="button" data-go="3">İkiz Villa</button><button type="button" data-go="4">Müstakil</button><button type="button" data-go="5">Malikane</button>
+        </div>
+      </div>
+      <div class="rig-wrap" id="rigWrap">
+        <div class="rig" id="rig">
+          <button class="card" type="button" data-i="0" aria-label="2+1 Daire: planı görün">
+            <span class="card-img"><img src="../assets/img/levan--ic--2-1-salon.webp" alt="2+1 dairede salon" loading="lazy"><span class="tag">Görselleştirme</span></span>
+            <span class="card-body"><span class="n">01</span><span class="t">2+1 Daire</span><span class="a">Net 64,83–70,17 m²</span></span>
+            <span class="glare"></span><span class="sheen"></span>
+          </button>
+          <button class="card" type="button" data-i="1" aria-label="3+1 Daire: planı görün">
+            <span class="card-img"><img src="../assets/img/levan--ic--3-1-salon.webp" alt="3+1 dairede salon" loading="lazy"><span class="tag">Görselleştirme</span></span>
+            <span class="card-body"><span class="n">02</span><span class="t">3+1 Daire</span><span class="a">Net 113,07–123,43 m²</span></span>
+            <span class="glare"></span><span class="sheen"></span>
+          </button>
+          <button class="card" type="button" data-i="2" aria-label="4+1 Daire: planı görün">
+            <span class="card-img"><img src="../assets/img/levan--bloklar.webp" alt="Apartman blokları arasında peyzajlı avlu" loading="lazy" style="object-position:40% 50%"><span class="tag">Görselleştirme</span></span>
+            <span class="card-body"><span class="n">03</span><span class="t">4+1 Daire</span><span class="a">Net 155,71 m²</span></span>
+            <span class="glare"></span><span class="sheen"></span>
+          </button>
+          <button class="card" type="button" data-i="3" aria-label="4+1 İkiz Villa: planı görün">
+            <span class="card-img"><img src="../assets/img/levan--ikiz-villa.webp" alt="Bahçeli ikiz villalar" loading="lazy" style="object-position:45% 50%"><span class="tag">Görselleştirme</span></span>
+            <span class="card-body"><span class="n">04</span><span class="t">4+1 İkiz Villa</span><span class="a">Net 271,02 m² · Bahçe 85,74 m²</span></span>
+            <span class="glare"></span><span class="sheen"></span>
+          </button>
+          <button class="card" type="button" data-i="4" aria-label="5+1 Müstakil Villa: planı görün">
+            <span class="card-img"><img src="../assets/img/levan--villa.webp" alt="Bahçeli bir Levan villası" loading="lazy" style="object-position:30% 50%"><span class="tag">Görselleştirme</span></span>
+            <span class="card-body"><span class="n">05</span><span class="t">5+1 Müstakil Villa</span><span class="a">Net 329,89 m²</span></span>
+            <span class="glare"></span><span class="sheen"></span>
+          </button>
+          <button class="card" type="button" data-i="5" aria-label="6+1 Malikane: planı görün">
+            <span class="card-img"><img src="../assets/img/levan--vaziyet-gunduz.webp" alt="Levan Bahçeşehir, havadan" loading="lazy" style="object-position:62% 60%"><span class="tag">Görselleştirme</span></span>
+            <span class="card-body"><span class="n">06</span><span class="t">6+1 Malikane</span><span class="a">Net 268,35 m² · Bahçe 1.159,09 m²</span></span>
+            <span class="glare"></span><span class="sheen"></span>
+          </button>
+        </div>
+      </div>
+      <div class="shell">
+        <div class="home-info glass" id="homeInfo" aria-live="polite">
+          <div class="hi-main" id="hiMain">
+            <p class="hi-idx"><span id="hiIdx">01</span> / 06</p>
+            <h3 id="hiName">2+1 Daire</h3>
+            <p id="hiBlurb">Yeni başlangıçlar için: ferah, kullanışlı ve bahçe yaşamına açık.</p>
+          </div>
+          <dl class="hi-specs" id="hiSpecs">
+            <div><dt>Net alan</dt><dd id="hiNet">64,83–<wbr>70,17 <small>m²</small></dd></div>
+            <div><dt>Brüt alan</dt><dd id="hiGross">73,83–<wbr>81,13 <small>m²</small></dd></div>
+            <div><dt>Bahçe</dt><dd id="hiGarden">—</dd></div>
+          </dl>
+          <button class="btn btn-ink" type="button" id="planOpen">Planı görün</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · Olanaklar -->
+  <section class="sec" id="olanaklar" data-t="0.28">
+    <div class="shell">
+      <div class="head">
+        <p class="eyebrow" data-r>Olanaklar</p>
+        <h2 class="h2" data-r data-d="1">Hepsi sakinlere özel, <em>hepsi birkaç adım ötede.</em></h2>
+        <p class="lede" data-r data-d="2">Golf sahası, tenis kortu, kapalı havuz, spor salonu, hamam ve sauna; evin hemen yanında.</p>
+      </div>
+      <div class="bento" id="bento">
+        <figure class="tile t-golf" data-r>
+          <img src="../assets/img/levan--tesis--golf.webp" alt="Gün batımında golf" loading="lazy" style="object-position:70% 50%">
+          <i class="light"></i><span class="tag">Görselleştirme</span>
+          <figcaption class="tile-cap glass media"><b>Golf sahası</b><span>Türkiye'de golf sahasına sahip ilk konut projesi. Yaklaşık bir dönüm; yalnızca site sakinlerine özel.</span></figcaption>
+        </figure>
+        <figure class="tile" data-r data-d="1">
+          <img src="../assets/img/levan--tesis--havuz.webp" alt="Kapalı havuz" loading="lazy">
+          <i class="light"></i><span class="tag">Görselleştirme</span>
+          <figcaption class="tile-cap glass media"><b>Kapalı havuz</b><span>Jakuzi ve buhar odasıyla</span></figcaption>
+        </figure>
+        <figure class="tile t-spor" data-r data-d="2">
+          <img src="../assets/img/levan--tesis--spor-salonu.webp" alt="Spor salonu" loading="lazy">
+          <i class="light"></i><span class="tag">Görselleştirme</span>
+          <figcaption class="tile-cap glass media"><b>Spor salonu</b><span>Site sakinlerine özel</span></figcaption>
+        </figure>
+        <figure class="tile" data-r data-d="1">
+          <img src="../assets/img/levan--tesis--tenis.webp" alt="Tenis kortunda bir oyuncu" loading="lazy">
+          <i class="light"></i><span class="tag">Görselleştirme</span>
+          <figcaption class="tile-cap glass media"><b>Tenis kortu</b><span>Komşularla dostane bir rekabet</span></figcaption>
+        </figure>
+        <figure class="tile" data-r>
+          <img src="../assets/img/levan--tesis--hamam.webp" alt="Hamam" loading="lazy">
+          <i class="light"></i><span class="tag">Görselleştirme</span>
+          <figcaption class="tile-cap glass media"><b>Hamam</b></figcaption>
+        </figure>
+        <figure class="tile" data-r data-d="1">
+          <img src="../assets/img/levan--tesis--sauna.webp" alt="Sauna" loading="lazy">
+          <i class="light"></i><span class="tag">Görselleştirme</span>
+          <figcaption class="tile-cap glass media"><b>Sauna</b></figcaption>
+        </figure>
+        <div class="tile t-list glass" data-r data-d="2">
+          <h3>Ve dahası</h3>
+          <ul class="chips">
+            <li>Müstakil yaşam</li><li>Site içi ring hattı</li><li>Jakuzi</li><li>Buhar odası</li><li>Futbol sahası</li><li>Çocuk oyun alanı</li><li>Kapalı otopark</li><li>Akıllı ev sistemleri</li><li>Levan App</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · Bir gün: scrolling runs the day; the page itself turns to evening -->
+  <section id="gun" aria-label="Levan'da bir gün">
+    <div class="gun-intro shell" data-t="0.3">
+      <div class="head">
+        <p class="eyebrow" data-r>Levan'da bir gün</p>
+        <h2 class="h2" data-r data-d="1">Sabahtan geceye, <em>ışığı izleyin.</em></h2>
+        <p class="lede" data-r data-d="2">Aşağı kaydırdıkça gün ilerliyor; sayfa da onunla birlikte akşama dönüyor.</p>
+      </div>
+    </div>
+    <div class="gun-track" id="gunTrack" data-t="gun" data-media="pill">
+      <div class="gun-stage">
+        <div class="win" id="win">
+          <img src="../assets/img/levan--gun--kahvalti.webp" alt="Bir aile villanın bahçesinde kahvaltı ediyor" loading="lazy" style="object-position:42% 50%">
+          <img src="../assets/img/levan--gun--golf.webp" alt="Villaların önündeki golf sahasında bir oyuncu" loading="lazy">
+          <img src="../assets/img/levan--gun--cocuklar.webp" alt="İki çocuk Levan yazısının önünden bisikletle geçiyor" loading="lazy">
+          <img src="../assets/img/levan--gun--havuz.webp" alt="Levan'ın kapalı yüzme havuzu" loading="lazy">
+          <img src="../assets/img/levan--gun--gun-batimi.webp" alt="Gün batımında bahçede esneyen bir anne ve kızı" loading="lazy" style="object-position:40% 50%">
+          <img src="../assets/img/levan--gun--gece.webp" alt="Gece aydınlatmasıyla bir Levan villası" loading="lazy">
+          <div class="win-shade"></div>
+          <span class="tag">Görselleştirme · Levan Bahçeşehir tanıtım filminden</span>
+          <div class="sun glass media" aria-hidden="true">
+            <div class="sun-arc">
+              <svg viewBox="0 0 160 52" preserveAspectRatio="none"><path class="arc-base" d="M6 50 Q80 -18 154 50" /><path class="arc-fill" id="arcFill" d="M6 50 Q80 -18 154 50" pathLength="1" /></svg>
+              <i class="orb" id="orb"></i>
+            </div>
+            <div class="sun-row"><span id="sunLabel">Sabah</span><span id="sunIdx">1 / 6</span></div>
+          </div>
+          <div class="caps" id="caps">
+            <div class="cap glass media"><p class="eyebrow">Sabah</p><h3>Kahvaltı, <em>bahçede.</em></h3><p>Güne gökyüzünün altında başlayın. Yatay mimari her eve bir bahçe ve kendi gökyüzünü bırakıyor.</p></div>
+            <div class="cap glass media"><p class="eyebrow">Öğleden önce</p><h3>Golf, <em>kapınızın önünde.</em></h3><p>Türkiye'de golf sahasına sahip ilk konut projesi. Saha dışarıya açık bir kulüp değil; yalnızca Levan sakinleri için.</p></div>
+            <div class="cap glass media"><p class="eyebrow">Öğleden sonra</p><h3>Çocuklar, <em>dışarıda.</em></h3><p>Arazinin yüzde yetmişi yeşil: yürüyüş yolları, çocuk oyun alanı ve futbol sahası, evin hemen yanında.</p></div>
+            <div class="cap glass media"><p class="eyebrow">Akşamüstü</p><h3>Havuz, hamam, <em>sauna.</em></h3><p>Kapalı havuz, spor salonu, hamam, sauna ve buhar odası: hepsi site sakinlerine özel, hepsi birkaç adım ötede.</p></div>
+            <div class="cap glass media"><p class="eyebrow">Gün batımı</p><h3>Günün son ışığı, <em>sizin bahçenizde.</em></h3><p>Servilerin arasından süzülen akşam güneşi; komşunun duvarı değil, gökyüzü.</p></div>
+            <div class="cap glass media"><p class="eyebrow">Gece</p><h3>Ve gece, <em>Levan'ın ışıkları.</em></h3><p>Gün biter, ev kalır. Levan'da her gün böyle başlar, böyle biter.</p></div>
+          </div>
+          <div class="beats glass media" id="beats" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · Konum -->
+  <section class="sec" id="konum" data-t="1">
+    <div class="shell">
+      <div class="head">
+        <p class="eyebrow" data-r>Konum</p>
+        <h2 class="h2" data-r data-d="1">5. Levent'e <em>yaklaşık 15 dakika.</em></h2>
+        <p class="lede" data-r data-d="2">Yapımı süren Sazlıdere Köprüsü ve yeni yollarla 5. Levent ve İSTOÇ yaklaşık 15, İstanbul Havalimanı yaklaşık 20 dakika uzaklıkta. Şehrin temposuna bağlanırken kazanılan zaman, Levan'daki hayata kalıyor.</p>
+      </div>
+      <div class="map" data-media data-r>
+        <img src="../assets/img/levan--gece-vaziyet.webp" alt="Levan Bahçeşehir gece havadan; Sazlıdere Köprüsü ve Nakkaş–Başakşehir Otoyolu ile" loading="lazy">
+        <span class="tag">Görselleştirme</span>
+        <div class="drive glass media" id="drive" data-lg="drive">
+          <p class="eyebrow">Sürüş süreleri</p>
+          <ul>
+            <li style="--v:.75"><div><b>5. Levent</b><span>Sazlıdere Köprüsü ile</span></div><strong>~15<small>dk</small></strong><i class="track"><i></i></i></li>
+            <li style="--v:.75"><div><b>İSTOÇ</b><span>Ticaret aksına yakın</span></div><strong>~15<small>dk</small></strong><i class="track"><i></i></i></li>
+            <li style="--v:1"><div><b>İstanbul Havalimanı</b><span>Kuzey Marmara bağlantısı</span></div><strong>~20<small>dk</small></strong><i class="track"><i></i></i></li>
+          </ul>
+          <p class="fine">Yaklaşık sürüş süreleri, projenin yayımladığı biçimiyle. Sazlıdere Köprüsü yapım aşamasında.</p>
+        </div>
+      </div>
+      <article class="region glass" data-r>
+        <div class="region-img" data-fp><img src="../assets/img/saha--kopru-pilon.webp" alt="Yapımı süren Sazlıdere Köprüsü'nün pilonu" loading="lazy"><span class="tag">Fotoğraf</span></div>
+        <div class="region-body">
+          <p class="eyebrow">Yapım aşamasında</p>
+          <h3>Sazlıdere Köprüsü</h3>
+          <p>Bahçeşehir'i şehrin doğusuna bağlayan en kısa, yüksek kapasiteli yol. Tamamlandığında projeden çıkan bir araç yaklaşık 15 dakikada 5. Levent'e ulaşacak.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 07 · Şantiye -->
+  <section class="sec" id="saha" data-t="1">
+    <div class="shell head-row">
+      <div class="head">
+        <p class="eyebrow" data-r>Şantiye</p>
+        <h2 class="h2" data-r data-d="1">Sahadan, <em>adım adım.</em></h2>
+        <p class="lede" data-r data-d="2">İnşaat sürüyor. Her adımı sahadan, olduğu gibi paylaşıyoruz.</p>
+      </div>
+      <div class="rail-arrows" data-r>
+        <button class="btn-glass" type="button" id="railPrev" aria-label="Önceki kayıt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
+        <button class="btn-glass" type="button" id="railNext" aria-label="Sonraki kayıt"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
+      </div>
+    </div>
+    <div class="rail" id="rail" tabindex="0" aria-label="Şantiye kayıtları">
+      <article class="log glass"><div class="log-img" data-fp><img src="../assets/img/saha--temel-kazi.webp" alt="Bahçeşehir'de şantiye alanı, havadan" loading="lazy"><span class="tag">Fotoğraf</span></div><p class="log-n">Kayıt 01</p><h3>Kazı başladı</h3><p>Temel kazı çalışmaları planlanan takvim doğrultusunda ilerliyor.</p></article>
+      <article class="log glass"><div class="log-img" data-fp><img src="../assets/img/saha--vinc.webp" alt="Şantiyede mobil vinç" loading="lazy"><span class="tag">Fotoğraf</span></div><p class="log-n">Kayıt 02</p><h3>Hazırlık bitti, tam gaz</h3><p>Saha hazırlığı tamamlandı; makineler işbaşında.</p></article>
+      <article class="log glass"><div class="log-img" data-fp><img src="../assets/img/saha--kepce.webp" alt="Hafriyatta çalışan ekskavatör" loading="lazy"><span class="tag">Fotoğraf</span></div><p class="log-n">Kayıt 03</p><h3>Toprak kalkıyor</h3><p>Hafriyat sürüyor: toprak kalkıyor, hayaller yükseliyor.</p></article>
+      <article class="log glass"><div class="log-img" data-fp><img src="../assets/img/saha--usta.webp" alt="Baretli ve yelekli bir saha çalışanı" loading="lazy"><span class="tag">Fotoğraf</span></div><p class="log-n">Kayıt 04</p><h3>Hafriyat tamamlandı</h3><p>Hafriyat bitti; sıra fore kazıklarda.</p></article>
+      <article class="log glass"><div class="log-img" data-fp><img src="../assets/img/saha--ilk-beton.webp" alt="UZM Group yelekli bir çalışan beton mikserinin yanında" loading="lazy"><span class="tag">Fotoğraf</span></div><p class="log-n">Kayıt 05</p><h3>İlk beton döküldü</h3><p>Fore kazıklar için dökülen ilk beton, metrelerce derinde yükseleceğimiz zemini oluşturuyor.</p></article>
+      <article class="log glass"><div class="log-img" data-fp><img src="../assets/img/saha--beton-pompasi.webp" alt="Beton pompası başında saha mühendisi ve operatör" loading="lazy"><span class="tag">Fotoğraf</span></div><p class="log-n">Kayıt 06</p><h3>Temel hazırlığı son hız</h3><p>Şantiyede temel hazırlık çalışmaları son hız devam ediyor.</p></article>
+    </div>
+    <div class="shell saha-foot">
+      <a class="btn btn-glass" href="https://levan.com.tr/#insaat" target="_blank" rel="noopener">360° şantiye turları <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></a>
+      <p class="fine">Şantiyenin 360° turları levan.com.tr'de.</p>
+    </div>
+  </section>
+
+  <!-- 08 · Projeler -->
+  <section class="sec" id="projeler" data-t="1">
+    <div class="shell">
+      <div class="head">
+        <p class="eyebrow" data-r>Tamamlanan projeler</p>
+        <h2 class="h2" data-r data-d="1">Bugüne kadar <em>tamamladıklarımız.</em></h2>
+        <p class="lede" data-r data-d="2">İnşaat şirketimiz UZM Yapı'nın İstanbul'da tamamladığı villa projeleri.</p>
+      </div>
+      <div class="pj-grid">
+        <article class="pj" data-r>
+          <div class="pj-img" data-fp><img src="../assets/img/agacelebi--havadan.webp" alt="Ağaçelebi Sarayları'nın havadan görünümü" loading="lazy"><span class="tag">Fotoğraf</span></div>
+          <div class="pj-card glass">
+            <h3>Ağaçelebi Sarayları</h3>
+            <p class="pj-loc">Bolluca, Arnavutköy / İstanbul</p>
+            <dl><div><dt>Proje alanı</dt><dd>26.346 m²</dd></div><div><dt>Villa</dt><dd>13 · özel havuzlu</dd></div><div><dt>Durum</dt><dd>Tamamlandı</dd></div></dl>
+          </div>
+        </article>
+        <article class="pj" data-r data-d="1">
+          <div class="pj-img" data-fp><img src="../assets/img/viktorya--havuz.webp" alt="Viktorya Park Villaları havuz ve bahçe" loading="lazy"><span class="tag">Fotoğraf</span></div>
+          <div class="pj-card glass">
+            <h3>Viktorya Park Villaları</h3>
+            <p class="pj-loc">Büyükçekmece / İstanbul</p>
+            <dl><div><dt>Proje alanı</dt><dd>5.200 m²</dd></div><div><dt>Villa</dt><dd>10 · 470–590 m²</dd></div><div><dt>Durum</dt><dd>Tamamlandı, tapu hazır</dd></div></dl>
+          </div>
+        </article>
+      </div>
+      <p class="also" data-r><b>Altın Sarayı</b> · Büyükçekmece. UZM Yapı'nın Büyükçekmece'deki ilk projelerinden.</p>
+      <div class="trust">
+        <article class="glass" data-r>
+          <span class="ico"><svg viewBox="0 0 1078.881718 944.504027" role="img" aria-label="Başakşehir Belediyesi"><use href="#belediye" /></svg></span>
+          <div><h3>Başakşehir Belediyesi iş birliğiyle</h3><p>Başakşehir Belediyesi'nin gayrimenkuldeki köklü tecrübesi, Levan Bahçeşehir için bir güven mührü.</p></div>
+        </article>
+        <article class="glass" data-r data-d="1">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:1.5rem;height:1.5rem"><circle cx="8" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5" /><path d="M12 12h9M18 12v3M21 12v2" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></span>
+          <div><h3>Site ve tesis yönetimi Emlak Yönetim'e emanet</h3><p>Yaşam standardı anahtar tesliminden sonra da korunuyor: sitenin ve tesislerin yönetimi Emlak Yönetim'in profesyonel tecrübesine emanet.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 · Davet -->
+  <section class="davet" id="davet" data-t="1" data-media>
+    <img class="davet-bg" id="davetBg" src="../assets/img/levan--ikiz-villa-gece.webp" alt="Gece aydınlatmasıyla ikiz villalar" loading="lazy">
+    <div class="davet-shade"></div>
+    <span class="tag">Görselleştirme</span>
+    <div class="shell">
+      <div class="invite glass media" data-lg="invite" data-r>
+        <p class="eyebrow">Davet</p>
+        <h2 class="h2">Bir gün de <em>siz gelin.</em></h2>
+        <p>Satış ofisimizde planları ve konut tiplerini birlikte inceleyelim, sorularınızı yanıtlayalım.</p>
+        <dl>
+          <div><dt>Satış ofisi</dt><dd>Bahçeşehir 1. Kısım, 2801. Sk., 34488 Başakşehir / İstanbul</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+904447039">444 70 39</a></dd></div>
+          <div><dt>E-posta</dt><dd><a href="mailto:info@levan.com.tr">info@levan.com.tr</a></dd></div>
+        </dl>
+        <div class="acts">
+          <a class="btn btn-light" href="https://levan.com.tr/#iletisim" target="_blank" rel="noopener">Ziyaret planlayın <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></a>
+          <a class="btn btn-glass" href="https://www.google.com/maps/search/?api=1&amp;query=41.0837055%2C28.6808779" target="_blank" rel="noopener">Yol tarifi <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" data-t="1">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <svg class="brand" viewBox="0 0 2858.218249 1253.285931" role="img" aria-label="UZM Group"><use href="#uzm-group" /></svg>
+        <p>Sağlam yapı. Tutulan söz. İstanbul merkezli inşaat ve proje geliştirme grubu.</p>
+      </div>
+      <div class="foot-col"><h4>Merkez</h4><span>Kayabaşı Mah. 15 Temmuz Sk. No: 2</span><span>Başakşehir / İstanbul</span></div>
+      <div class="foot-col"><h4>İletişim</h4><a href="tel:+904447039">444 70 39</a><a href="mailto:info@uzmgroup.com.tr">info@uzmgroup.com.tr</a></div>
+      <div class="foot-col"><h4>Levan</h4><a href="https://levan.com.tr/" target="_blank" rel="noopener">levan.com.tr</a><a href="https://www.instagram.com/levanbahcesehir/" target="_blank" rel="noopener">Instagram</a><a href="https://www.instagram.com/uzm.group/" target="_blank" rel="noopener">UZM Instagram</a></div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 UZM Group</span>
+      <span>Levan Bahçeşehir görselleri ve film görselleştirmedir; şantiye ve tamamlanan projeler fotoğraftır.</span>
+    </div>
+  </div>
+</footer>
+
+<dialog class="sheet" id="planDlg" aria-labelledby="planTitle">
+  <div class="sheet-in glass">
+    <div class="sheet-head">
+      <div><p class="eyebrow">Konut planı</p><h3 id="planTitle">2+1 A</h3></div>
+      <button class="x" type="button" id="planClose" aria-label="Kapat"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12" stroke="currentColor" stroke-width="1.6" /></svg></button>
+    </div>
+    <div class="sheet-img"><img id="planImg" src="" alt=""></div>
+    <dl class="sheet-specs">
+      <div><dt>Net alan</dt><dd id="planNet"></dd></div>
+      <div><dt>Brüt alan</dt><dd id="planGross"></dd></div>
+      <div id="planGardenRow"><dt>Bahçe</dt><dd id="planGarden"></dd></div>
+    </dl>
+    <p class="fine">Plan, levan.com.tr'de yayımlanan çizimdir. <a href="https://levan.com.tr/#konutlar" target="_blank" rel="noopener">Tüm planlar levan.com.tr'de ↗</a></p>
+  </div>
+</dialog>
+
+<dialog class="film" id="film" aria-label="Levan Bahçeşehir filmi">
+  <div class="film-in glass media">
+    <video id="filmVid" controls playsinline preload="none" poster="../assets/img/film--levan.webp"></video>
+    <div class="film-bar"><span>Levan Bahçeşehir · Görselleştirme</span><button type="button" id="filmClose">Kapat</button></div>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script>
+document.documentElement.classList.add("js");
+addEventListener("DOMContentLoaded", () => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  const chromium = !!(navigator.userAgentData && navigator.userAgentData.brands.some((b) => /Chromium|Google Chrome|Microsoft Edge/.test(b.brand)));
+  const clamp = (n, a = 0, b = 1) => Math.min(b, Math.max(a, n));
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const smooth = (a, b, x) => { const k = clamp((x - a) / (b - a)); return k * k * (3 - 2 * k); };
+  const easeOut = (k) => 1 - Math.pow(1 - k, 3);
+  const trf = new Intl.NumberFormat("tr-TR");
+  let vh = innerHeight;
+
+  /* ── Smooth scroll (desktop) */
+  let lenis = null;
+  if (!reduce && fine && window.Lenis) {
+    lenis = new window.Lenis({ lerp: 0.1 });
+    const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+  }
+  const scrollToY = (y) => lenis ? lenis.scrollTo(y, { duration: 1.4 }) : scrollTo({ top: y, behavior: reduce ? "auto" : "smooth" });
+  $$('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
+    const id = a.getAttribute("href"), el = id === "#ust" ? null : $(id);
+    if (id !== "#ust" && !el) return;
+    e.preventDefault(); closeMenu();
+    scrollToY(el ? el.getBoundingClientRect().top + scrollY : 0);
+  }));
+
+  /* ── Menu */
+  const menu = $("#menu"), menuBtn = $("#menuBtn");
+  function closeMenu() { if (!menu.hasAttribute("data-open")) return; menu.removeAttribute("data-open"); menuBtn.setAttribute("aria-expanded", "false"); lenis && lenis.start(); }
+  menuBtn.addEventListener("click", () => { menu.setAttribute("data-open", ""); menuBtn.setAttribute("aria-expanded", "true"); lenis && lenis.stop(); });
+  $("#menuClose").addEventListener("click", closeMenu);
+  addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+
+  /* ── Liquid glass: a displacement map per element bends the backdrop at the rim, like a thick lens (Chromium only) */
+  const defs = $("#lgDefs"), NS = "http://www.w3.org/2000/svg";
+  const LG = { nav: { bevel: 18, scale: 38, blur: 2, ca: false }, hero: { bevel: 34, scale: 70, blur: 7, ca: true }, drive: { bevel: 30, scale: 60, blur: 9, ca: true }, invite: { bevel: 34, scale: 70, blur: 8, ca: true } };
+  function lgMap(W, H, R, B) {
+    const c = document.createElement("canvas"); c.width = W; c.height = H;
+    const g = c.getContext("2d"), d = g.createImageData(W, H), a = d.data, hw = W / 2, hh = H / 2;
+    for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) {
+      const px = i + 0.5 - hw, py = j + 0.5 - hh;
+      const qx = Math.abs(px) - (hw - R), qy = Math.abs(py) - (hh - R);
+      const dist = -(Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - R);
+      let dx = 0, dy = 0;
+      if (dist >= 0 && dist < B) {
+        let nx, ny;
+        if (qx > 0 && qy > 0) { const l = Math.hypot(qx, qy) || 1; nx = qx / l; ny = qy / l; } else if (qx > qy) { nx = 1; ny = 0; } else { nx = 0; ny = 1; }
+        nx *= Math.sign(px) || 1; ny *= Math.sign(py) || 1;
+        const k = 1 - dist / B, m = 1 - Math.sqrt(1 - k * k);
+        dx = -nx * m; dy = -ny * m; // sample inward: the rim magnifies what is under the glass and never reads past its edge
+      }
+      const o = (j * W + i) * 4; a[o] = 128 + dx * 127; a[o + 1] = 128 + dy * 127; a[o + 2] = 128; a[o + 3] = 255;
+    }
+    g.putImageData(d, 0, 0); return c.toDataURL();
+  }
+  function liquid(el) {
+    const cfg = LG[el.dataset.lg], id = `lg-${el.dataset.lg}`;
+    const f = document.createElementNS(NS, "filter");
+    f.setAttribute("id", id); f.setAttribute("x", "0"); f.setAttribute("y", "0"); f.setAttribute("width", "100%"); f.setAttribute("height", "100%"); f.setAttribute("color-interpolation-filters", "sRGB");
+    const ch = (n) => `<feColorMatrix in="d${n}" type="matrix" values="${n === "r" ? "1 0 0 0 0" : "0 0 0 0 0"} ${n === "g" ? "0 1 0 0 0" : "0 0 0 0 0"} ${n === "b" ? "0 0 1 0 0" : "0 0 0 0 0"} 0 0 0 1 0" result="c${n}"/>`;
+    f.innerHTML = `<feGaussianBlur in="SourceGraphic" stdDeviation="${cfg.blur}" result="bl"/><feImage result="map" x="0" y="0" preserveAspectRatio="none"/>` +
+      (cfg.ca
+        ? `<feDisplacementMap in="bl" in2="map" scale="${cfg.scale}" xChannelSelector="R" yChannelSelector="G" result="dr"/><feDisplacementMap in="bl" in2="map" scale="${cfg.scale * 1.08}" xChannelSelector="R" yChannelSelector="G" result="dg"/><feDisplacementMap in="bl" in2="map" scale="${cfg.scale * 1.16}" xChannelSelector="R" yChannelSelector="G" result="db"/>${ch("r")}${ch("g")}${ch("b")}<feBlend in="cr" in2="cg" mode="screen" result="rg"/><feBlend in="rg" in2="cb" mode="screen"/>`
+        : `<feDisplacementMap in="bl" in2="map" scale="${cfg.scale}" xChannelSelector="R" yChannelSelector="G"/>`);
+    defs.appendChild(f);
+    const img = f.querySelector("feImage");
+    let last = "";
+    const build = () => {
+      const W = Math.round(el.offsetWidth), H = Math.round(el.offsetHeight);
+      if (!W || !H || `${W}x${H}` === last) return; last = `${W}x${H}`;
+      const R = Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0, H / 2, W / 2);
+      img.setAttribute("width", W); img.setAttribute("height", H);
+      img.setAttribute("href", lgMap(W, H, R, Math.min(cfg.bevel, H / 2.2)));
+      el.style.backdropFilter = `url(#${id}) saturate(1.5) brightness(1.04)`;
+    };
+    let tm; new ResizeObserver(() => { clearTimeout(tm); tm = setTimeout(build, 120); }).observe(el);
+    build();
+  }
+  if (chromium) $$("[data-lg]").forEach(liquid);
+
+  /* ── Hero film */
+  const vid = $("#heroVid"), heroMedia = $("#heroMedia"), heroPlate = $("#heroPlate");
+  vid.src = matchMedia("(max-width: 48rem)").matches ? "../assets/video/levan-film-720.mp4" : "../assets/video/levan-film-1920.mp4";
+  vid.addEventListener("playing", () => heroMedia.classList.add("playing"), { once: true });
+  if (!reduce) vid.play().catch(() => {});
+  new IntersectionObserver(([e]) => { if (reduce) return; e.isIntersecting ? vid.play().catch(() => {}) : vid.pause(); }).observe(heroMedia);
+
+  const film = $("#film"), filmVid = $("#filmVid");
+  $("#filmOpen").addEventListener("click", () => {
+    if (!filmVid.src) filmVid.src = "../assets/video/levan-film-1920.mp4";
+    film.showModal(); filmVid.currentTime = 0; filmVid.play().catch(() => {}); vid.pause(); lenis && lenis.stop();
+  });
+  const closeFilm = () => film.open && film.close();
+  $("#filmClose").addEventListener("click", closeFilm);
+  film.addEventListener("click", (e) => { if (e.target === film) closeFilm(); });
+  film.addEventListener("close", () => { filmVid.pause(); lenis && lenis.start(); if (!reduce) vid.play().catch(() => {}); });
+
+  /* ── Reveals and count-ups */
+  const count = (el) => {
+    const to = +el.dataset.count, plain = el.hasAttribute("data-plain");
+    if (reduce) return;
+    const from = plain ? to - 12 : 0, t0 = performance.now(), dur = 1700;
+    const step = (t) => {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 4), v = Math.round(from + (to - from) * e);
+      el.textContent = plain ? String(v) : trf.format(v);
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("in");
+    $$("[data-count]", e.target).forEach((c) => count(c));
+    io.unobserve(e.target);
+  }), { rootMargin: "0px 0px -10% 0px" });
+  $$("[data-r], #drive").forEach((el) => io.observe(el));
+
+  /* ── Konut data (areas as published on levan.com.tr) */
+  const HOMES = [
+    { name: "2+1 Daire", blurb: "Yeni başlangıçlar için: ferah, kullanışlı ve bahçe yaşamına açık.", net: "64,83–<wbr>70,17", gross: "73,83–<wbr>81,13", plan: ["2+1 A", "levan--plan--2-1-a", "64,83", "73,83"] },
+    { name: "3+1 Daire", blurb: "Aile yaşamına göre kurgulanmış geniş salonlar ve ebeveyn banyosu.", net: "113,07–<wbr>123,43", gross: "127,93–<wbr>141,21", plan: ["3+1 A", "levan--plan--3-1-a", "118,41", "135,95"] },
+    { name: "4+1 Daire", blurb: "Kalabalık aileler için cömert metrekare, gün ışığı ve geniş balkonlar.", net: "155,71", gross: "178,13", plan: ["4+1", "levan--plan--4-1", "155,71", "178,13"] },
+    { name: "4+1 İkiz Villa", blurb: "Bodrum, zemin ve birinci kattan oluşan yaşam; özel bahçe.", net: "271,02", gross: "310,12", garden: "85,74", plan: ["4+1 İkiz Villa · Zemin kat", "levan--plan--ikiz-zemin", "271,02", "310,12", "85,74"] },
+    { name: "5+1 Müstakil Villa", blurb: "Kendi bahçesi ve kendi kapısıyla; gökyüzüyle arada engel yok.", net: "329,89", gross: "378,10", plan: ["5+1 Müstakil Villa · Zemin kat", "levan--plan--mustakil-zemin", "329,89", "378,10"] },
+    { name: "6+1 Malikane", blurb: "Levan'ın zirvesi: geniş tahsisli bahçesiyle.", net: "268,35", gross: "301,80", garden: "1.159,09", plan: ["6+1 Malikane", "levan--plan--malikane", "268,35", "301,80", "1.159,09"] },
+  ];
+  const m2 = (v) => `${v} <small>m²</small>`;
+
+  /* ── Layout cache: everything scroll-driven reads these instead of measuring every frame */
+  const homes = $("#konutlar"), gunTrack = $("#gunTrack"), rig = $("#rig"), rigWrap = $("#rigWrap"), davet = $("#davet");
+  const cards = $$(".card", rig), N = cards.length;
+  const tSecs = $$("[data-t]").map((el) => ({ el, v: el.dataset.t, top: 0, bottom: 0 }));
+  // The pinned day window only ever sits under the pill, never under the nav (it starts below it).
+  const medias = $$("[data-media]").map((el) => ({ el, pillOnly: el.dataset.media === "pill", top: 0, bottom: 0 }));
+  const secIds = ["ilke", "konutlar", "olanaklar", "gun", "konum", "projeler"].map((id) => ({ el: $(`#${id}`), top: 0 }));
+  const fps = $$("[data-fp]").map((el) => ({ el, img: el.querySelector("img"), top: 0, h: 0, b: -1 }));
+  const L = { homesTop: 0, homesH: 0, gunTop: 0, gunH: 0, cw: 0, ch: 0, rigX: 0, rigY: 0, davetTop: 0, davetH: 0 };
+  function measure() {
+    vh = innerHeight;
+    const y = scrollY, abs = (el) => el.getBoundingClientRect().top + y;
+    tSecs.forEach((s) => { s.top = abs(s.el); s.bottom = s.top + s.el.offsetHeight; });
+    medias.forEach((m) => { m.top = abs(m.el); m.bottom = m.top + m.el.offsetHeight; });
+    fps.forEach((f) => { f.top = abs(f.el); f.h = f.el.offsetHeight; });
+    secIds.forEach((s) => { s.top = abs(s.el); });
+    L.davetTop = abs(davet); L.davetH = davet.offsetHeight;
+    L.homesTop = abs(homes); L.homesH = homes.offsetHeight;
+    L.gunTop = abs(gunTrack); L.gunH = gunTrack.offsetHeight;
+    L.cw = rig.offsetWidth; L.ch = rig.offsetHeight;
+    const wr = rigWrap.getBoundingClientRect(); L.rigX = wr.left + wr.width / 2; L.rigY = wr.height / 2;
+    dirty = true;
+  }
+
+  /* ── Time of day: section → t (0 morning … 1 night) → colour tokens */
+  const BEAT_T = [0.3, 0.36, 0.44, 0.54, 0.68, 1];
+  const progress = (top, h, y) => clamp((y - top) / Math.max(1, h - vh));
+  const beatPos = (y) => progress(L.gunTop, L.gunH, y) * (BEAT_T.length - 1);
+  const beatT = (b) => { const i = Math.min(BEAT_T.length - 2, Math.floor(b)); return lerp(BEAT_T[i], BEAT_T[i + 1], smooth(0.3, 0.7, b - i)); };
+  const tOf = (s, y) => s.v === "gun" ? beatT(beatPos(y)) : +s.v;
+  function targetT(y) {
+    const mid = y + vh * 0.5, Z = vh * 0.3;
+    let i = tSecs.findIndex((s) => mid < s.bottom); if (i < 0) i = tSecs.length - 1;
+    const s = tSecs[i]; let t = tOf(s, y);
+    if (i > 0 && mid - s.top < Z) t = lerp(tOf(tSecs[i - 1], y), t, (mid - s.top + Z) / (2 * Z));
+    else if (i < tSecs.length - 1 && s.bottom - mid < Z) t = lerp(t, tOf(tSecs[i + 1], y), (mid - s.bottom + Z) / (2 * Z));
+    return t;
+  }
+  const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const STOPS = [
+    [0, ["#f5f6f8", "#d8e4f4", "#ebe8f3", "#ffffff"]],
+    [0.3, ["#e5e9ef", "#cbd9ec", "#e0dcef", "#f3f5f9"]],
+    [0.55, ["#d3d0df", "#bcc4df", "#dad1e6", "#e7e5ef"]],
+    [0.68, ["#b9b3ca", "#a3abcf", "#c2b5d6", "#cfcadc"]],
+    [0.8, ["#3a3c4e", "#3a4466", "#463d62", "#40414f"]],
+    [0.9, ["#202229", "#232c47", "#29233f", "#1f2128"]],
+    [1, ["#14151a", "#1d2742", "#26213e", "#191b22"]],
+  ].map(([t, cs]) => [t, cs.map(hex)]);
+  const mix = (a, b, k) => a.map((v, i) => Math.round(lerp(v, b[i], k)));
+  const rgb = (c) => `rgb(${c[0]} ${c[1]} ${c[2]})`;
+  const root = document.documentElement.style;
+  let tCur = -1, tShown = -1;
+  function paint(t) {
+    let i = 0; while (i < STOPS.length - 2 && t > STOPS[i + 1][0]) i++;
+    const [t0, c0] = STOPS[i], [t1, c1] = STOPS[i + 1], k = clamp((t - t0) / (t1 - t0));
+    const cs = c0.map((c, j) => mix(c, c1[j], k)), dk = smooth(0.72, 0.76, t);
+    root.setProperty("--bg", rgb(cs[0])); root.setProperty("--b1", rgb(cs[1])); root.setProperty("--b2", rgb(cs[2])); root.setProperty("--b3", rgb(cs[3]));
+    root.setProperty("--ink", rgb(mix([27, 29, 33], [238, 240, 244], dk)));
+    root.setProperty("--ink2", rgb(mix([85, 91, 103], [169, 174, 185], dk)));
+    root.setProperty("--ink3", rgb(mix([122, 128, 139], [128, 134, 146], dk)));
+    root.setProperty("--line", `rgb(${dk > 0.5 ? "255 255 255" : "27 29 33"} / 0.1)`);
+    root.setProperty("--glass", `rgb(${mix([255, 255, 255], [40, 43, 54], dk).join(" ")} / ${lerp(0.55, 0.5, dk).toFixed(3)})`);
+    root.setProperty("--glass-edge", `rgb(255 255 255 / ${lerp(0.95, 0.22, dk).toFixed(3)})`);
+    root.setProperty("--glass-edge2", `rgb(255 255 255 / ${lerp(0.5, 0.07, dk).toFixed(3)})`);
+    root.setProperty("--glass-shadow", `rgb(${mix([36, 48, 78], [0, 0, 0], dk).join(" ")} / ${lerp(0.14, 0.45, dk).toFixed(3)})`);
+    root.setProperty("--dark", dk.toFixed(3));
+    document.documentElement.style.colorScheme = dk > 0.5 ? "dark" : "light";
+  }
+
+  /* ── Konutlar: deck → fan → cover flow, with tilt and a glare that follows the pointer */
+  const DECK = [[0, 0, 0], [-2.5, 6, -26], [2, -7, -52], [-1.5, 10, -78], [3, -9, -104], [-1, 4, -130]];
+  const hiMain = $("#hiMain"), hiSpecs = $("#hiSpecs"), pagerBtns = $$("#pager button");
+  let active = -1, tilt = { x: 0, y: 0, tx: 0, ty: 0 }, ptr = null;
+  function setActive(i) {
+    if (i === active) return;
+    const first = active < 0; active = i; const h = HOMES[i];
+    const fill = () => {
+      $("#hiIdx").textContent = String(i + 1).padStart(2, "0");
+      $("#hiName").textContent = h.name; $("#hiBlurb").textContent = h.blurb;
+      $("#hiNet").innerHTML = m2(h.net); $("#hiGross").innerHTML = m2(h.gross); $("#hiGarden").innerHTML = h.garden ? m2(h.garden) : "—";
+      hiMain.removeAttribute("data-swap"); hiSpecs.removeAttribute("data-swap");
+    };
+    pagerBtns.forEach((b, j) => b.toggleAttribute("aria-current", j === i));
+    cards.forEach((c, j) => c.setAttribute("tabindex", j === i ? "0" : "-1"));
+    if (first || reduce) return fill();
+    hiMain.setAttribute("data-swap", ""); hiSpecs.setAttribute("data-swap", "");
+    setTimeout(fill, 180);
+  }
+  const FAN = 0.16, FLOW0 = 0.2, FLOW1 = 0.94;
+  function homesFrame(y) {
+    const p = progress(L.homesTop, L.homesH, y);
+    const a = reduce ? 1 : easeOut(clamp(p / FAN));
+    const f = clamp((p - FLOW0) / (FLOW1 - FLOW0)) * (N - 1);
+    setActive(Math.round(f));
+    const W = L.cw, S1 = W * 0.7, S2 = W * 0.34;
+    tilt.x = lerp(tilt.x, tilt.tx, 0.12); tilt.y = lerp(tilt.y, tilt.ty, 0.12);
+    rig.style.transform = `rotateX(${tilt.y.toFixed(2)}deg) rotateY(${tilt.x.toFixed(2)}deg)`;
+    cards.forEach((c, i) => {
+      const d = i - f, ad = Math.abs(d), sd = Math.sign(d);
+      const fx = sd * (ad < 1 ? ad * S1 : S1 + (ad - 1) * S2), fry = -clamp(d, -1, 1) * 38;
+      const fz = -Math.min(ad, 1) * 150 - Math.max(ad - 1, 0) * 60, fo = clamp(3.4 - ad);
+      const [drz, dy, dz] = DECK[i];
+      const X = lerp(0, fx, a), Y = lerp(dy, 0, a), Z = lerp(dz, fz, a), RY = lerp(0, fry, a), RZ = lerp(drz, 0, a), O = lerp(1, fo, a);
+      c.style.transform = `translate3d(${X.toFixed(1)}px, ${Y.toFixed(1)}px, ${Z.toFixed(1)}px) rotateY(${RY.toFixed(2)}deg) rotateZ(${RZ.toFixed(2)}deg)`;
+      c.style.opacity = O.toFixed(3);
+      c.style.zIndex = String(100 - Math.round((a * ad + (1 - a) * i) * 10));
+      // specular: a sheen that slides as the card turns, plus a glare under the pointer
+      c.style.setProperty("--sx", `${(50 - RY * 2.2).toFixed(1)}%`);
+      if (ptr) {
+        c.style.setProperty("--gx", `${(50 + ((ptr.x - (L.rigX + X)) / W) * 100).toFixed(1)}%`);
+        c.style.setProperty("--gy", `${(50 + ((ptr.y - L.rigY) / L.ch) * 100).toFixed(1)}%`);
+        c.style.setProperty("--go", ad < 0.5 ? "0.9" : "0.45");
+      } else {
+        c.style.setProperty("--gx", `${(50 - RY).toFixed(1)}%`); c.style.setProperty("--gy", "0%"); c.style.setProperty("--go", "0.55");
+      }
+    });
+  }
+  if (fine && !reduce) {
+    rigWrap.addEventListener("pointermove", (e) => {
+      const r = rigWrap.getBoundingClientRect();
+      ptr = { x: e.clientX, y: e.clientY - r.top };
+      tilt.tx = ((e.clientX - r.left) / r.width - 0.5) * 8; tilt.ty = -((e.clientY - r.top) / r.height - 0.5) * 6;
+      dirty = true;
+    });
+    rigWrap.addEventListener("pointerleave", () => { ptr = null; tilt.tx = 0; tilt.ty = 0; dirty = true; });
+  }
+  const goHome = (i) => scrollToY(L.homesTop + (FLOW0 + (i / (N - 1)) * (FLOW1 - FLOW0)) * (L.homesH - vh) + 2);
+  pagerBtns.forEach((b) => b.addEventListener("click", () => goHome(+b.dataset.go)));
+  cards.forEach((c, i) => c.addEventListener("click", () => (i === active ? openPlan(i) : goHome(i))));
+
+  /* ── Plan dialog */
+  const planDlg = $("#planDlg");
+  function openPlan(i) {
+    const [name, img, net, gross, garden] = HOMES[i].plan;
+    $("#planTitle").textContent = name;
+    const pi = $("#planImg"); pi.src = `../assets/img/${img}.webp`; pi.alt = `${name} kat planı`;
+    $("#planNet").textContent = `${net} m²`; $("#planGross").textContent = `${gross} m²`;
+    $("#planGardenRow").hidden = !garden; $("#planGarden").textContent = garden ? `${garden} m²` : "";
+    planDlg.showModal(); lenis && lenis.stop();
+  }
+  $("#planOpen").addEventListener("click", () => openPlan(Math.max(0, active)));
+  $("#planClose").addEventListener("click", () => planDlg.close());
+  planDlg.addEventListener("click", (e) => { if (e.target === planDlg) planDlg.close(); });
+  planDlg.addEventListener("close", () => lenis && lenis.start());
+
+  /* ── Bento: one light source, shared by every tile */
+  const bento = $("#bento"), tiles = $$(".tile", bento);
+  if (fine && !reduce) {
+    bento.addEventListener("pointermove", (e) => {
+      const b = bento.getBoundingClientRect(), x = e.clientX - b.left, y = e.clientY - b.top;
+      tiles.forEach((t) => { t.style.setProperty("--lx", `${x - t.offsetLeft}px`); t.style.setProperty("--ly", `${y - t.offsetTop}px`); });
+    });
+    bento.addEventListener("pointerenter", () => bento.style.setProperty("--lo", "1"));
+    bento.addEventListener("pointerleave", () => bento.style.setProperty("--lo", "0"));
+  }
+
+  /* ── Bir gün: pictures dissolve, a sun (then a moon) crosses the arc */
+  const wins = $$("#win > img"), caps = $$("#caps .cap"), beats = $$("#beats i");
+  const orb = $("#orb"), arcFill = $("#arcFill"), sunLabel = $("#sunLabel"), sunIdx = $("#sunIdx");
+  const PERIOD = ["Sabah", "Öğleden önce", "Öğleden sonra", "Akşamüstü", "Gün batımı", "Gece"];
+  const AT = [450, 600, 840, 1020, 1170, 1320], RISE = 360, SET = 1230;
+  let beatShown = -1;
+  function gunFrame(y) {
+    const b = beatPos(y), F = 0.36;
+    wins.forEach((im, i) => {
+      const o = i === 0 ? 1 : clamp((b - (i - 0.5) + F / 2) / F);
+      const s = reduce ? 1 : 1.07 - 0.07 * clamp(1 - Math.abs(b - i) * 0.8);
+      im.style.opacity = o.toFixed(3); im.style.transform = `scale(${s.toFixed(4)})`;
+    });
+    caps.forEach((c, i) => {
+      const o = clamp(1 - (Math.abs(b - i) - 0.28) / 0.18);
+      c.style.opacity = o.toFixed(3);
+      c.style.transform = reduce ? "none" : `translateY(${((i - b) * 28).toFixed(1)}px)`;
+      c.style.visibility = o > 0 ? "visible" : "hidden";
+    });
+    beats.forEach((el, i) => el.style.setProperty("--f", clamp(b - i + 1).toFixed(3)));
+    const n = Math.min(AT.length - 2, Math.floor(b)), m = lerp(AT[n], AT[n + 1], clamp(b - n));
+    const night = m > SET, k = night ? clamp((m - SET) / 570) : clamp((m - RISE) / (SET - RISE));
+    const P = [[6, 50], [80, -18], [154, 50]], q = (j) => (1 - k) ** 2 * P[0][j] + 2 * (1 - k) * k * P[1][j] + k * k * P[2][j];
+    orb.style.left = `${(q(0) / 160) * 100}%`; orb.style.top = `${(q(1) / 52) * 100}%`;
+    orb.classList.toggle("moon", night);
+    arcFill.style.strokeDashoffset = String(1 - k);
+    const idx = Math.round(b);
+    if (idx !== beatShown) { beatShown = idx; sunLabel.textContent = PERIOD[idx]; sunIdx.textContent = `${idx + 1} / 6`; }
+  }
+
+  /* ── Focus pull: pictures settle into focus as they reach the middle of the screen */
+  function focusFrame(y) {
+    for (const f of fps) {
+      const top = f.top - y; if (top > vh || top + f.h < 0) continue;
+      const d = Math.abs(top + f.h / 2 - vh / 2) / (vh / 2 + f.h / 2), k = clamp((d - 0.35) / 0.6), b = Math.round(k * k * 60) / 10;
+      if (b === f.b) continue; f.b = b;
+      f.img.style.filter = b > 0.2 ? `blur(${b}px)` : "none";
+      f.img.style.transform = `scale(${(1 + k * 0.05).toFixed(3)})`;
+    }
+  }
+
+  /* ── Rail */
+  const rail = $("#rail");
+  const step = () => (rail.querySelector(".log")?.offsetWidth || 300) + 16;
+  $("#railPrev").addEventListener("click", () => rail.scrollBy({ left: -step(), behavior: reduce ? "auto" : "smooth" }));
+  $("#railNext").addEventListener("click", () => rail.scrollBy({ left: step(), behavior: reduce ? "auto" : "smooth" }));
+
+  /* ── Chrome: nav and pill read as clear glass over pictures, tinted glass over the page */
+  const nav = $("#nav"), pres = $("#pres"), navLinks = $$(".links a");
+  const overMedia = (docY, pill) => medias.some((m) => (pill || !m.pillOnly) && docY >= m.top && docY <= m.bottom);
+  let curSec;
+  function chromeFrame(y) {
+    nav.classList.toggle("on-media", overMedia(y + 42, false));
+    pres.classList.toggle("on-media", overMedia(y + vh - 36, true));
+    const mid = y + vh * 0.4; let cur = null;
+    secIds.forEach((s) => { if (s.top <= mid) cur = s.el; });
+    if (cur === curSec) return; curSec = cur;
+    navLinks.forEach((a) => a.toggleAttribute("aria-current", !!cur && a.getAttribute("href") === `#${cur.id}`));
+  }
+
+  /* ── Hero parallax and the davet picture drift */
+  const davetBg = $("#davetBg");
+  function heroFrame(y) {
+    if (reduce) return;
+    if (y < vh * 1.2) {
+      const p = y / vh;
+      heroMedia.style.transform = `translateY(${(p * 18).toFixed(1)}%) scale(${(1 + p * 0.06).toFixed(3)})`;
+      heroPlate.style.transform = `translateY(${(p * -70).toFixed(1)}px)`;
+      heroPlate.style.opacity = String(clamp(1 - p * 1.5));
+    }
+    const dt = L.davetTop - y;
+    if (dt < vh && dt > -L.davetH) davetBg.style.transform = `translateY(${((dt / vh) * 8).toFixed(2)}%) scale(1.12)`;
+  }
+
+  /* ── One loop */
+  let lastY = -1, dirty = true, tPrev = performance.now();
+  function frame(now) {
+    const y = scrollY, dt = Math.min(64, now - tPrev); tPrev = now;
+    const moved = y !== lastY || dirty; lastY = y; dirty = false;
+    const tt = targetT(y);
+    if (tCur < 0) tCur = tt;
+    tCur = reduce ? tt : lerp(tCur, tt, 1 - Math.exp(-dt / 140));
+    if (Math.abs(tCur - tShown) > 0.0008) { tShown = tCur; paint(tCur); }
+    if (moved || Math.abs(tilt.x - tilt.tx) > 0.01 || Math.abs(tilt.y - tilt.ty) > 0.01) {
+      homesFrame(y); gunFrame(y); focusFrame(y); chromeFrame(y); heroFrame(y);
+    }
+    requestAnimationFrame(frame);
+  }
+  measure();
+  addEventListener("resize", measure);
+  addEventListener("load", measure);
+  document.fonts && document.fonts.ready.then(measure);
+  new ResizeObserver(() => measure()).observe(document.body);
+  requestAnimationFrame(frame);
+});
+</script>
+</body>
+</html>

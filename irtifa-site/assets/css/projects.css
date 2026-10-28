@@ -1,0 +1,449 @@
+/* İrtifa · projects: the night map of the projects (Projeler) and the completed projects' pages.
+   Pinned scenes (.pjh, .pool, .gal) get their progress in --p from projects.mjs; without scripts, or with reduced
+   motion, they collapse into a plain page. */
+
+/* ── Route (breadcrumb) ── */
+.route ol { display: flex; flex-wrap: wrap; gap: 0.2rem 0; font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+.route li { display: flex; align-items: center; }
+.route li + li::before { content: "/"; margin-inline: 0.7rem; color: var(--gold-lo); }
+.route a { text-decoration: none; color: var(--ink-2); padding-block: 0.3rem; transition: color 0.3s; }
+.route a:hover { color: var(--gold); }
+.route [aria-current] { color: var(--gold); }
+
+/* Live LED */
+.live { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: blink 2.4s steps(1) infinite; flex: none; }
+.st { display: inline-flex; align-items: center; gap: 0.55rem; white-space: nowrap; font: 500 0.625rem/1.3 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-2); }
+.st::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dim); box-shadow: 0 0 0 3px rgb(141 145 153 / 0.15); flex: none; }
+.st.live { color: var(--gold); }
+.st.live::before { background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: blink 2.4s steps(1) infinite; }
+
+/* Keep content clear of the HUD's altimeter rail on the right (centred text, like the invitation, stays centred) */
+
+/* ════════════════ Projeler · the night map ════════════════ */
+
+/* Wide screens: the map fills the section; the title, the readouts and the route list float over it.
+   --pw is the list's width; the camera keeps its targets in the free band between the overlays. */
+.atlas {
+  --pw: clamp(20rem, 26vw, 25rem);
+  --hw: min(30rem, 34vw);
+  --rg: max(var(--gut), 4.25rem);
+  position: relative; isolation: isolate; overflow: clip;
+  min-height: 100vh; min-height: max(100svh, 48rem);
+  display: grid;
+  grid-template-columns: var(--gut) minmax(0, var(--hw)) minmax(0, 1fr) var(--pw) var(--rg);
+  grid-template-rows: calc(var(--hdr-h) + 2rem) auto 1fr;
+  background: var(--void);
+}
+.atlas-map {
+  grid-area: 1 / 1 / -1 / -1; position: relative; container-type: size; overflow: hidden;
+  /* the middle of the free band between the title and the list (a little left of it: labels run rightwards) */
+  --sx: calc((100cqw + var(--gut) + var(--hw) - var(--pw) - var(--rg)) / 2 - 2rem);
+}
+.atlas-head { grid-area: 2 / 2; position: relative; z-index: 3; display: grid; gap: 1.1rem; align-content: start; }
+.atlas-head .h1 { font-size: clamp(2.2rem, 0.8rem + 3.3vw, 4rem); }
+.atlas-head .lede { font-size: 1.02rem; max-width: 28rem; }
+.atlas-panel { grid-area: 2 / 4 / 4 / 5; position: relative; z-index: 3; align-self: start; margin-bottom: 4rem; }
+
+/* The drawn chart: there first, and for good without WebGL, scripts or tiles */
+.sheet { position: absolute; inset: 0; transition: opacity 1.2s var(--ease), visibility 0s; }
+.sheet-in {
+  position: absolute; left: var(--sx); top: 52%;
+  width: min(calc((100cqw - var(--gut) - var(--hw) - var(--pw) - var(--rg) - 3rem) * 2.6), 150cqh);
+  aspect-ratio: 1.6; translate: -50% -50%;
+}
+.sheet svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.sheet .grat line { stroke: rgb(220 180 106 / 0.09); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.sheet text { font: 500 13px/1 var(--f-mono); letter-spacing: 0.12em; fill: var(--dim); }
+.sheet .rings circle { fill: none; stroke: rgb(220 180 106 / 0.5); stroke-dasharray: 3 6; vector-effect: non-scaling-stroke; }
+.sheet .ring-t text { fill: var(--gold); font-size: 14px; }
+.sheet .cross { stroke: rgb(220 180 106 / 0.35); vector-effect: non-scaling-stroke; }
+.sheet .north circle { fill: none; stroke: rgb(236 234 228 / 0.25); vector-effect: non-scaling-stroke; }
+.sheet .north path { fill: none; stroke: var(--ink-2); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.sheet .north text { text-anchor: middle; fill: var(--ink-2); }
+/* a radar sweep round Levan, out to the 15 km ring */
+.sweep { position: absolute; left: 50%; top: 50%; width: 50.8%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; pointer-events: none; background: conic-gradient(from 0deg, rgb(220 180 106 / 0.28), rgb(220 180 106 / 0.06) 40deg, transparent 70deg); -webkit-mask: radial-gradient(circle, #000 69%, transparent 70.5%); mask: radial-gradient(circle, #000 69%, transparent 70.5%); animation: sweep 7s linear infinite; }
+@keyframes sweep { to { rotate: 360deg; } }
+.sheet .pin { position: absolute; left: var(--x); top: var(--y); }
+
+/* two classes: maplibre-gl.css loads later and would make the container position: relative */
+.atlas-map .atlas-gl { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.6s var(--ease); }
+.atlas-map.gl .atlas-gl { opacity: 1; }
+.atlas-map.gl .sheet { opacity: 0; visibility: hidden; transition: opacity 1.2s var(--ease), visibility 0s 1.2s; }
+.atlas-shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgb(5 6 8 / 0.92), rgb(5 6 8 / 0.55) 24%, transparent 42%), linear-gradient(270deg, rgb(5 6 8 / 0.6), transparent 26%), linear-gradient(180deg, rgb(5 6 8 / 0.65), transparent 20%), linear-gradient(0deg, rgb(5 6 8 / 0.85), transparent 26%); }
+
+/* MapLibre: dark controls, out from under the list */
+.atlas-gl .maplibregl-ctrl-bottom-right { right: calc(var(--pw) + max(var(--gut), 4.25rem) + 1rem); bottom: 3rem; }
+.atlas-gl .maplibregl-ctrl-group { background: rgb(10 12 16 / 0.85); border: 1px solid var(--line-2); border-radius: 999px; overflow: hidden; box-shadow: none; }
+.atlas-gl .maplibregl-ctrl-group button { width: 34px; height: 34px; }
+.atlas-gl .maplibregl-ctrl-group button + button { border-top: 1px solid var(--line); }
+.atlas-gl .maplibregl-ctrl-icon { filter: invert(0.9) sepia(0.4); }
+.atlas-gl .maplibregl-cooperative-gesture-screen { background: rgb(5 6 8 / 0.7); color: var(--ink); font: 500 0.75rem/1.5 var(--f-mono); letter-spacing: 0.06em; }
+
+/* Bottom-left dock: readouts, reset, credit */
+.atlas-dock { position: absolute; z-index: 3; left: var(--gut); bottom: 3.6rem; display: grid; gap: 0.9rem; justify-items: start; max-width: 30rem; }
+.atlas-read { display: grid; gap: 0.75rem; }
+.atlas-stat { display: flex; align-items: center; gap: 0.6rem; font-size: 0.5625rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.atlas-stat i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold); animation: blink 1.2s steps(1) infinite; }
+.atlas-read dl { display: grid; grid-template-columns: repeat(3, auto); gap: 0.7rem 1.8rem; padding-top: 0.75rem; border-top: 1px solid var(--line-2); font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.atlas-read dl > div { display: grid; gap: 0.3rem; }
+.atlas-read dl > div:first-child { grid-column: span 2; }
+.atlas-read dt { color: var(--dim); }
+.atlas-read dd { color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 10ch; }
+.atlas-read dd[data-a-name] { color: var(--gold-hi); }
+.atlas-reset { margin-top: 0.1rem; }
+.atlas-attr { font-size: 0.5rem; letter-spacing: 0.08em; color: var(--dim); }
+.atlas-load { position: absolute; z-index: 3; left: var(--sx); top: calc(var(--hdr-h) + 1.4rem); translate: -50% 0; white-space: nowrap; font: 500 0.5625rem/1 var(--f-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+
+/* The route list */
+.atlas-panel {
+  display: grid; gap: 0.75rem; align-content: start;
+  max-height: calc(100svh - var(--hdr-h) - 3.5rem); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  padding: 1.1rem 1.15rem 1rem;
+  border: 1px solid var(--line-2); border-radius: 1rem;
+  background: linear-gradient(180deg, rgb(15 18 24 / 0.86), rgb(8 10 13 / 0.9));
+  -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2);
+}
+.atlas-panel-k { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--line); font-size: 0.5625rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.atlas-panel-t { font-size: 1.3rem; font-weight: 520; font-variation-settings: "wdth" 114; letter-spacing: -0.015em; line-height: 1.12; text-wrap: balance; }
+.atlas-panel-t em { font-style: italic; font-weight: 380; font-variation-settings: "wdth" 75; color: var(--gold); }
+.places { border-top: 1px solid var(--line-2); margin-top: 0.2rem; }
+.places > li { position: relative; border-bottom: 1px solid var(--line); }
+.places > li::before { content: ""; position: absolute; left: 0; top: 0.6rem; bottom: 0.6rem; width: 2px; background: var(--gold); transform: scaleY(0); transition: transform 0.5s var(--ease); }
+.places > li.on::before { transform: none; }
+.place {
+  width: 100%; display: grid; grid-template-columns: 1.8rem minmax(0, 1fr) auto; gap: 0 0.6rem; align-items: center;
+  padding: 0.65rem 0.35rem; border: 0; border-radius: 0.4rem; background: none; text-align: left; cursor: pointer;
+  transition: padding 0.5s var(--ease), background-color 0.3s;
+}
+button.place:hover { background: rgb(236 234 228 / 0.04); }
+.place-n { font: 500 0.625rem/1 var(--f-mono); color: var(--dim); transition: color 0.3s; }
+.place-t { display: grid; gap: 0.2rem; min-width: 0; }
+.place-k { font: 500 0.5625rem/1.3 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.place-nm { font-size: 1.02rem; font-weight: 520; font-variation-settings: "wdth" 110; letter-spacing: -0.01em; line-height: 1.2; transition: color 0.3s; }
+.place-d { font: 500 0.6875rem/1 var(--f-mono); color: var(--gold); white-space: nowrap; }
+.places > li.hot .place, .places > li.on .place { padding-left: 0.75rem; }
+.places > li.on .place { background: rgb(220 180 106 / 0.07); }
+.places > li.on .place-n, .places > li.hot .place-n { color: var(--gold); }
+.places > li.on .place-nm { color: var(--gold-hi); }
+.place-more { display: grid; gap: 0.15rem; padding: 0.1rem 0.35rem 0.8rem 2.75rem; }
+.place-nt { font-size: 0.8125rem; color: var(--ink-2); }
+.place-more .more { font-size: 0.6875rem; padding-block: 0.4rem 0.1rem; }
+.js .place-more:not([hidden]) { animation: faqIn 0.6s var(--ease); }
+.places-note { padding-top: 0.2rem; }
+
+/* Pins: the same markup on the drawn chart and as live map markers */
+.mk-box { pointer-events: auto; }
+.pin { position: relative; width: 0; height: 0; cursor: pointer; }
+.pin i { position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px 3px rgb(220 180 106 / 0.65); transition: transform 0.5s var(--ease); }
+.pin i::after { content: ""; position: absolute; inset: -12px; }
+.pin s { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); opacity: 0; animation: beacon 2.8s var(--ease) infinite; pointer-events: none; }
+.pin s + s { animation-delay: 1.4s; }
+@keyframes beacon { from { transform: scale(0.2); opacity: 1; } to { transform: scale(1.5); opacity: 0; } }
+.pin b { position: absolute; left: 14px; top: -7px; font: 500 0.5625rem/1.25 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); white-space: nowrap; text-shadow: 0 0 10px #000, 0 0 3px #000, 0 0 2px #000; pointer-events: none; transition: opacity 0.4s, color 0.4s; }
+.pin b small { display: block; margin-top: 0.25rem; font-size: 0.5rem; letter-spacing: 0.14em; color: var(--gold); }
+.pin.k-levan i { left: -7px; top: -7px; width: 14px; height: 14px; background: var(--gold-hi); box-shadow: 0 0 20px 6px rgb(220 180 106 / 0.8); }
+.pin.k-levan s { left: -32px; top: -32px; width: 64px; height: 64px; }
+.pin.k-levan b { left: auto; right: 16px; top: -22px; font-size: 0.625rem; color: var(--gold-hi); }
+.pin.k-office i { left: -4px; top: -4px; width: 8px; height: 8px; border-radius: 1px; background: var(--void); border: 1.5px solid var(--ink-2); box-shadow: 0 0 0 3px rgb(5 6 8 / 0.6); transform: rotate(45deg); }
+.pin.k-office b { opacity: 0; left: 0; top: 24px; translate: -50% 0; }
+.pin.lab-l b { left: auto; right: 14px; text-align: right; }
+.pin.hot, .pin.on { z-index: 3; }
+.pin.hot b, .pin.on b { opacity: 1; color: var(--gold-hi); }
+.pin.hot i { transform: scale(1.35); }
+.pin.k-office.hot i { transform: rotate(45deg) scale(1.35); }
+/* the lock: four brackets close in round the chosen pin */
+.pin::after {
+  content: ""; position: absolute; left: -19px; top: -19px; width: 38px; height: 38px; opacity: 0; transform: scale(2.2); pointer-events: none;
+  --c: var(--gold-hi);
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / 10px 1.5px, linear-gradient(var(--c), var(--c)) 0 0 / 1.5px 10px,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 10px 1.5px, linear-gradient(var(--c), var(--c)) 100% 0 / 1.5px 10px,
+    linear-gradient(var(--c), var(--c)) 0 100% / 10px 1.5px, linear-gradient(var(--c), var(--c)) 0 100% / 1.5px 10px,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 10px 1.5px, linear-gradient(var(--c), var(--c)) 100% 100% / 1.5px 10px;
+  background-repeat: no-repeat;
+  transition: opacity 0.4s, transform 0.9s var(--ease);
+}
+.pin.on::after { opacity: 1; transform: none; }
+.pin.on.locked::after { animation: lockBlink 0.45s steps(1) 3; }
+@keyframes lockBlink { 50% { opacity: 0.15; } }
+/* live map extras: ring labels and the sweep laid flat on the map */
+.mk-ring { font: 500 0.5625rem/1 var(--f-mono); letter-spacing: 0.16em; color: var(--gold); text-shadow: 0 0 8px #000; pointer-events: none; white-space: nowrap; }
+.mk-sweep { pointer-events: none !important; }
+.mk-sweep span { display: block; width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(from 0deg, rgb(220 180 106 / 0.24), rgb(220 180 106 / 0.05) 40deg, transparent 70deg); animation: sweep 7s linear infinite; opacity: var(--so, 1); transition: opacity 0.6s; }
+
+/* ════════════════ Projeler · the work ════════════════ */
+.pr-work { padding-top: clamp(4rem, 3rem + 5vw, 8rem); }
+.flag { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); gap: 2.5rem clamp(2rem, 1rem + 4vw, 5.5rem); align-items: center; margin-bottom: clamp(4.5rem, 3rem + 5vw, 8rem); }
+.flag-pic { display: grid; gap: 0.7rem; text-decoration: none; }
+.flag-pic .pic { aspect-ratio: 16 / 10; }
+.flag-txt { display: grid; gap: 1.15rem; justify-items: start; }
+.flag-txt > p:not(.label):not(.cap) { color: var(--ink-2); }
+.flag-txt .label.plain { gap: 0.7rem; color: var(--gold); }
+.facts { width: 100%; display: grid; border-top: 1px solid var(--line-2); }
+.facts > div { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 0.75rem 0; border-bottom: 1px solid var(--line); }
+.facts dt { font: 500 0.625rem/1.6 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
+.facts dd { text-align: right; font-size: 0.9375rem; }
+
+/* Target cards: brackets lock onto the picture on hover; the lens layer takes the picture over */
+.pcards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.75rem, 3vw, 3rem); }
+.pcard { position: relative; display: grid; gap: 0.6rem; align-content: start; text-decoration: none; }
+.tgt-tag { font-size: 0.5625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); transition: color 0.4s; }
+.tgt-box { position: relative; margin-bottom: 0.5rem; }
+.pcard .pic { aspect-ratio: 4 / 3; }
+.pic img { transition: transform 1.2s var(--ease), filter 0.8s var(--ease); }
+.tgt .pic img { filter: brightness(0.84) saturate(0.9); }
+.tgt:hover .pic img, .tgt:focus-visible .pic img { transform: scale(1.04); filter: none; }
+.tgt:hover .tgt-tag, .tgt:focus-visible .tgt-tag { color: var(--gold); }
+.tgt-lock { position: absolute; inset: -8px; z-index: 5; pointer-events: none; opacity: 0; transition: transform 0.8s var(--ease), opacity 0.4s; }
+/* the lock starts wide and closes in; only where there is a hover to close it (wide, it would widen a phone's page) */
+@media (hover: hover) and (pointer: fine) { .tgt-lock { transform: scale(1.06); } }
+.tgt-lock i { position: absolute; width: 16px; height: 16px; border: 0 solid var(--gold-hi); }
+.tgt-lock i:nth-child(1) { top: 0; left: 0; border-top-width: 1.5px; border-left-width: 1.5px; }
+.tgt-lock i:nth-child(2) { top: 0; right: 0; border-top-width: 1.5px; border-right-width: 1.5px; }
+.tgt-lock i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+.tgt-lock i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+.tgt:hover .tgt-lock, .tgt:focus-visible .tgt-lock { opacity: 1; transform: none; }
+.tgt:hover .tgt-lock i, .tgt:focus-visible .tgt-lock i { animation: lockBlink 0.4s 0.5s steps(1) 2; }
+.pcard .h3 { transition: color 0.3s; }
+.pcard-d { color: var(--ink-2); font-size: 0.9375rem; }
+.pcard .more { justify-self: start; margin-top: 0.2rem; }
+.pcard.quiet .pic img { filter: brightness(0.7) saturate(0.7); }
+.soon { font-size: 0.625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 0.2rem; }
+
+/* ════════════════ Projeler · the instrument panel ════════════════ */
+.pr-tbl { padding-top: clamp(1rem, 0.5rem + 2vw, 3rem); }
+.panel { position: relative; padding: 0.5rem clamp(1rem, 0.5rem + 2vw, 2.25rem) 0.75rem; border: 1px solid var(--line-2); border-radius: 1rem; background: linear-gradient(180deg, rgb(22 26 34 / 0.75), rgb(10 12 16 / 0.92)); }
+.panel-bar { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.85rem; border-bottom: 1px solid var(--line-2); font-size: 0.5625rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+.panel-bar span { display: flex; align-items: center; gap: 0.6rem; }
+.panel-bar i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold); animation: blink 2.4s steps(1) infinite; }
+.panel-bar span + span { color: var(--dim); }
+/* a scan passes down the panel once as it arrives */
+.panel-scan { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; }
+.panel-scan::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40%; background: linear-gradient(transparent, rgb(220 180 106 / 0.06) 85%, rgb(220 180 106 / 0.55) 99.5%, transparent); transform: translateY(-105%); }
+html.js:not(.rm) .panel.in .panel-scan::after { animation: panelScan 2.4s 0.35s var(--ease-io) both; }
+@keyframes panelScan { to { transform: translateY(260%); opacity: 0; } }
+.tbl { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+.tbl th, .tbl td { text-align: left; padding: 1.15rem 1.2rem 1.15rem 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.tbl tbody tr:last-child > * { border-bottom: 0; }
+.tbl thead th { padding-block: 1.1rem 0.85rem; font: 500 0.5625rem/1.4 var(--f-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); border-bottom-color: var(--line-2); }
+.tbl tbody th { font-size: 1.15rem; font-weight: 520; font-variation-settings: "wdth" 112; letter-spacing: -0.01em; }
+.tbl tbody th a { text-decoration: none; background: linear-gradient(var(--gold), var(--gold)) 0 100% / 0 1px no-repeat; transition: background-size 0.6s var(--ease), color 0.3s; }
+.tbl tbody th a:hover { background-size: 100% 1px; color: var(--gold-hi); }
+.tbl tbody tr { transition: background-color 0.3s; }
+.tbl tbody tr:hover { background: linear-gradient(90deg, rgb(220 180 106 / 0.07), transparent 70%); }
+.tbl td { color: var(--ink-2); }
+.tbl .v { font-size: 1.45rem; font-weight: 470; font-variation-settings: "wdth" 125; letter-spacing: -0.02em; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tbl .v small { font-size: 0.5em; color: var(--ink-2); font-variation-settings: "wdth" 100; letter-spacing: 0; }
+.tbl .na { font: 400 0.625rem/1.4 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.tbl .na::before { content: "— "; color: var(--gold-lo); }
+
+/* ════════════════ Project pages · x-ray hero ════════════════ */
+.pjh { position: relative; height: 290vh; }
+.pjh-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; }
+.pjh-fig { position: absolute; inset: 0; z-index: -2; background: var(--void); }
+.pjh-fig img, .pjh-neg, .pjh-gl { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pjh-neg { display: none; }
+/* Without WebGL the same story in CSS: a gold negative, the photograph uncovered from the top by --scan */
+html.js:not(.rm) .pjh-neg { display: block; }
+.pjh-neg img { filter: grayscale(1) invert(1) contrast(1.5) brightness(0.6); }
+.pjh-neg::after { content: ""; position: absolute; inset: 0; background: var(--gold); mix-blend-mode: multiply; }
+html.js:not(.rm) .pjh-photo { clip-path: inset(0 0 calc((1 - var(--scan, 0)) * 100%) 0); }
+.pjh-line { position: absolute; left: 0; right: 0; top: calc(var(--scan, 0) * 100%); height: 1px; background: var(--gold-hi); box-shadow: 0 0 18px 3px rgb(220 180 106 / 0.55); opacity: calc(min(1, var(--scan, 0) * 40) * min(1, (1 - var(--scan, 0)) * 40)); display: none; }
+html.js:not(.rm) .pjh-line { display: block; }
+.pjh.gl-on .pjh-fig img, .pjh.gl-on .pjh-neg, .pjh.gl-on .pjh-line { opacity: 0; }
+.pjh-shade { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(0deg, rgb(5 6 8 / 0.9), rgb(5 6 8 / 0.35) 45%, transparent 70%), linear-gradient(90deg, rgb(5 6 8 / 0.7), transparent 55%), linear-gradient(270deg, rgb(5 6 8 / 0.5), transparent 16%), linear-gradient(180deg, rgb(5 6 8 / 0.6), transparent 24%); }
+.pjh-copy {
+  position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(4.5rem, 3rem + 6vh, 7.5rem);
+  display: grid; gap: 1.1rem; justify-items: start; max-width: 50rem;
+  opacity: calc(1 - var(--out)); transform: translateY(calc(var(--out) * -8vh)); filter: blur(calc(var(--out) * 10px));
+  visibility: var(--copy-vis, visible);
+}
+.pjh-copy .lede { color: var(--ink); }
+.pjh-cue { display: flex; align-items: center; gap: 0.8rem; font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); margin-top: 0.6rem; }
+.pjh-cue i { position: relative; width: 1px; height: 2.6rem; background: var(--line-2); overflow: hidden; }
+.pjh-cue i::after { content: ""; position: absolute; inset: 0; background: var(--gold); animation: cue 2s var(--ease-io) infinite; }
+@keyframes cue { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+.pjh-done {
+  position: absolute; left: var(--gut); right: var(--gut); bottom: clamp(4.5rem, 3rem + 6vh, 7.5rem);
+  display: grid; gap: 1rem; max-width: 34rem;
+  opacity: var(--done, 0); transform: translateY(calc((1 - var(--done, 0)) * 2.5rem)); filter: blur(calc((1 - var(--done, 0)) * 8px));
+  pointer-events: none;
+}
+.pjh-done > p:last-child { color: var(--ink); font-size: clamp(1.02rem, 0.95rem + 0.3vw, 1.2rem); max-width: 30rem; }
+.pjh-stamp { font-size: clamp(2.25rem, 1.4rem + 3.2vw, 4.4rem); font-weight: 520; font-variation-settings: "wdth" 118; letter-spacing: -0.025em; line-height: 1; }
+.pjh-stamp em { font-style: italic; font-weight: 380; font-variation-settings: "wdth" 75; color: var(--gold); }
+.pjh-read { position: absolute; right: 3.6rem; bottom: 3.4rem; display: grid; grid-template-columns: repeat(2, auto); gap: 0.9rem 2rem; font-size: 0.5625rem; letter-spacing: 0.14em; text-transform: uppercase; pointer-events: none; }
+.pjh-read p { display: grid; gap: 0.35rem; }
+.pjh-read span { color: var(--dim); }
+.pjh-read b { font-weight: 400; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pjh-read p:first-child b { color: var(--gold); }
+.pjh-read i { font-style: normal; }
+.pjh-cap { position: absolute; right: 3.6rem; top: calc(var(--hdr-h) + 0.75rem); padding: 0.4rem 0.75rem; border-radius: 999px; background: rgb(5 6 8 / 0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); color: var(--ink-2); }
+.pjh-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--line); }
+.pjh-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold-lo), var(--gold)); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+
+/* ════════════════ Project pages · the facts ════════════════ */
+.pj-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr); gap: 3.5rem clamp(2rem, 1rem + 5vw, 7rem); align-items: start; }
+.pj-main { display: grid; gap: 1.4rem; justify-items: start; }
+.pj-intro { font-size: clamp(1.12rem, 1rem + 0.45vw, 1.38rem); line-height: 1.5; max-width: 40rem; }
+.pj-body { color: var(--ink-2); max-width: 38rem; }
+.pj-amen-t { margin-top: 1.2rem; }
+.pj-amen { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; border-top: 1px solid var(--line-2); }
+.pj-amen li { position: relative; display: flex; align-items: baseline; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; font-variation-settings: "wdth" 108; transition: color 0.4s, padding 0.6s var(--ease); }
+.pj-amen li span { font: 500 0.625rem/1 var(--f-mono); color: var(--gold); flex: none; }
+.pj-amen li::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.7s var(--ease); }
+.pj-amen li:hover { color: var(--gold-hi); padding-left: 0.5rem; }
+.pj-amen li:hover::after { transform: none; }
+
+/* The künye as a HUD panel */
+.kunye { position: sticky; top: calc(var(--hdr-h) + 1.5rem); display: grid; gap: 1.1rem; padding: 1.3rem 1.4rem 1.5rem; border: 1px solid var(--line-2); border-radius: 1rem; background: linear-gradient(180deg, rgb(22 26 34 / 0.85), rgb(10 12 16 / 0.95)); }
+.kunye-bar { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--line); font-size: 0.5625rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+.kunye-bar span { display: flex; align-items: center; gap: 0.55rem; }
+.kunye-bar span + span { color: var(--dim); }
+.kunye-bar i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold); animation: blink 2.4s steps(1) infinite; }
+.kunye-t { font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem); font-weight: 520; font-variation-settings: "wdth" 118; letter-spacing: -0.02em; line-height: 1; margin-top: -0.4rem; }
+.kunye-figs { display: grid; border-top: 1px solid var(--line-2); }
+.kunye-figs > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 1rem; align-items: end; padding: 0.95rem 0; border-bottom: 1px solid var(--line); }
+.kunye-figs dt { grid-area: 1 / 1; font: 500 0.5625rem/1.4 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+.kunye-figs .small { grid-area: 2 / 1; }
+.kv { grid-area: 1 / 2 / 3 / 3; font-size: clamp(1.9rem, 1.4rem + 1.4vw, 2.75rem); font-weight: 460; font-variation-settings: "wdth" 125; letter-spacing: -0.03em; line-height: 0.95; font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.kv small { font-size: 0.42em; color: var(--ink-2); font-variation-settings: "wdth" 100; letter-spacing: 0; }
+.kunye-rows { display: grid; font-size: 0.875rem; }
+.kunye-rows > div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px dashed var(--line-2); }
+.kunye-rows dt { font: 500 0.5625rem/1.6 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
+.kunye-rows dd { text-align: right; color: var(--ink); }
+.kunye .btn { justify-self: start; margin-top: 0.3rem; }
+
+/* ════════════════ Viktorya · the porthole on the pool ════════════════ */
+.pool { position: relative; height: 240vh; }
+.pool-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; isolation: isolate; display: grid; align-items: end; }
+.pool-media { --r: calc(16vmin + var(--iris, 1) * 60vmax); position: absolute; inset: 0; z-index: -2; clip-path: circle(var(--r) at 50% 46%); background: var(--panel); }
+.pool-media img, .pool-gl { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pool.gl-on .pool-media img { opacity: 0; }
+.pool-pin::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(0deg, rgb(5 6 8 / 0.92), rgb(5 6 8 / 0.4) 45%, transparent 68%), linear-gradient(90deg, rgb(5 6 8 / 0.45), transparent 50%), linear-gradient(180deg, var(--void), transparent 12%); opacity: var(--txt, 1); }
+.pool-ring { position: absolute; left: 50%; top: 46%; width: calc(2 * (16vmin + var(--iris, 1) * 60vmax)); aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; border: 1px solid rgb(220 180 106 / 0.75); pointer-events: none; opacity: calc(1 - var(--iris, 1) * 3); }
+.pool-ring::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; border: 1px dashed rgb(220 180 106 / 0.45); animation: sweep 30s linear infinite; }
+.pool-ring i { position: absolute; inset: -30px; background: linear-gradient(var(--gold), var(--gold)) 50% 0 / 1px 12px, linear-gradient(var(--gold), var(--gold)) 50% 100% / 1px 12px, linear-gradient(var(--gold), var(--gold)) 0 50% / 12px 1px, linear-gradient(var(--gold), var(--gold)) 100% 50% / 12px 1px; background-repeat: no-repeat; }
+.pool-in { display: grid; gap: 1.1rem; justify-items: start; padding-bottom: clamp(4rem, 3rem + 5vh, 7rem); opacity: var(--txt, 1); transform: translateY(calc((1 - var(--txt, 1)) * 3rem)); }
+.pool-in .h1 { max-width: 52rem; }
+
+/* ════════════════ Ağaçelebi · the arches develop ════════════════ */
+.arcs { padding-top: clamp(2rem, 1rem + 4vw, 6rem); }
+.arcs-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 2.5vw, 2.5rem); align-items: start; }
+.arc { display: grid; gap: 0.8rem; }
+.arc:nth-child(2) { margin-top: clamp(2rem, 6vw, 6rem); }
+.arc-pic { --k: 1; position: relative; aspect-ratio: 3 / 4; border-radius: 0.75rem; background: var(--panel); }
+.arc-pic > img, .arc-neg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
+.arc-neg { display: none; overflow: hidden; }
+.arc-neg img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) invert(1) contrast(1.5) brightness(0.7); }
+.arc-neg::after { content: ""; position: absolute; inset: 0; background: var(--gold); mix-blend-mode: multiply; }
+.arc-line { position: absolute; left: 0; right: 0; top: calc(var(--k) * 100%); height: 1px; background: var(--gold-hi); box-shadow: 0 0 16px 3px rgb(220 180 106 / 0.55); opacity: 0; pointer-events: none; }
+html.js:not(.rm) .arc-neg { display: block; }
+html.js:not(.rm) .arc-pic { --k: 0; }
+html.js:not(.rm) .arc-photo { clip-path: inset(0 0 calc((1 - var(--k)) * 100%) 0 round 0.75rem); transition: clip-path 1.8s var(--ease-io); }
+html.js:not(.rm) .arc-line { transition: top 1.8s var(--ease-io), opacity 0.3s; }
+html.js:not(.rm) .arc.dev .arc-pic { --k: 1; }
+html.js:not(.rm) .arc.dev .arc-photo { clip-path: inset(0 0 0 0 round 0.75rem); }
+html.js:not(.rm) .arc.dev .arc-line { top: 100%; opacity: 1; transition: top 1.8s var(--ease-io), opacity 0.3s 1.6s; }
+html.js:not(.rm) .arc.dev.done .arc-line { opacity: 0; }
+/* the pointer's x-ray lens: a hole in the photograph shows the negative under it */
+.arc-pic.peek .arc-photo { -webkit-mask: radial-gradient(circle 5.5rem at var(--mx, 50%) var(--my, 50%), transparent 97%, #000 100%); mask: radial-gradient(circle 5.5rem at var(--mx, 50%) var(--my, 50%), transparent 97%, #000 100%); }
+.arc figcaption { display: flex; gap: 0.7rem; align-items: baseline; font-size: 0.9375rem; font-variation-settings: "wdth" 108; }
+.arc figcaption .mono { font-size: 0.625rem; color: var(--gold); }
+.arcs-note { margin-top: 2.5rem; }
+
+/* ════════════════ Project pages · sideways gallery ════════════════ */
+.gal { position: relative; }
+.gal-pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr auto; gap: 1.5rem; padding-block: calc(var(--hdr-h) + 1rem) 2.5rem; overflow: hidden; }
+.gal-head { display: grid; gap: 0.9rem; }
+.gal-head .lede { max-width: 34rem; }
+.gal-track { justify-self: start; display: flex; align-items: center; gap: clamp(1.25rem, 2.5vw, 2.5rem); padding-inline: var(--gut) 24vw; width: max-content; min-height: 0; transform: translate3d(var(--x, 0px), 0, 0); will-change: transform; touch-action: pan-y; }
+.gcard { flex: none; width: clamp(17rem, 32vw, 34rem); display: grid; gap: 0.65rem; transform: skewX(calc(var(--vel, 0) * -6deg)); }
+.gcard:nth-child(even) { margin-top: clamp(2rem, 9vh, 6rem); }
+.gcard:nth-child(3n) { width: clamp(15rem, 25vw, 26rem); }
+.gcard .pic { aspect-ratio: 3 / 2; cursor: zoom-in; }
+.gcard:nth-child(3n) .pic { aspect-ratio: 4 / 5; max-height: 52vh; }
+.gcard-cap { display: flex; gap: 0.8rem; align-items: baseline; font-size: 0.9375rem; font-variation-settings: "wdth" 108; }
+.gcard-cap .mono { font-size: 0.5625rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+.gal-rail { display: flex; align-items: center; gap: 1.5rem; }
+.gal-line { position: relative; flex: 1; height: 1px; background: var(--line-2); }
+.gal-line i { position: absolute; inset: 0; background: var(--gold); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+.gal-k { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
+.gal-k b { color: var(--gold); font-weight: 500; }
+.gal-rail .cap { white-space: nowrap; }
+.gal.drag .gal-track { cursor: grabbing; -webkit-user-select: none; user-select: none; }
+
+/* ════════════════ Project pages · questions, other addresses ════════════════ */
+.pj-faq-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 3rem clamp(2rem, 6vw, 7rem); }
+.pj-faq-head { display: grid; gap: 1.1rem; align-content: start; }
+.pj-more { border-top: 1px solid var(--line); }
+
+/* ════════════════ Small screens ════════════════ */
+@media (max-width: 60rem) {
+  .atlas { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 1.5rem; padding: calc(var(--hdr-h) + 1.25rem) var(--gut) clamp(3rem, 2rem + 4vw, 5rem); min-height: 0; }
+  .atlas-head, .atlas-map, .atlas-panel { grid-area: auto; }
+  .atlas-map { height: min(68svh, 38rem); min-height: 24rem; border: 1px solid var(--line-2); border-radius: 1rem; }
+  .atlas-map { --sx: 50%; }
+  .sheet-in { top: 46%; width: min(290cqw, 230cqh); }
+  .atlas-load { top: 1rem; }
+  .atlas-shade { background: linear-gradient(0deg, rgb(5 6 8 / 0.9), rgb(5 6 8 / 0.4) 32%, transparent 52%); }
+  .atlas-dock { left: 0.9rem; right: 0.9rem; bottom: 0.9rem; max-width: none; gap: 0.6rem; }
+  .atlas-read dl { grid-template-columns: repeat(3, minmax(0, auto)); gap: 0.55rem 1rem; font-size: 0.5625rem; padding-top: 0.55rem; }
+  .atlas-read dd { min-width: 0; }
+  .atlas-reset { position: absolute; right: 0; bottom: 0; }
+  .atlas-gl .maplibregl-ctrl-bottom-right { right: 0; bottom: auto; top: 0; }
+  .atlas-panel { max-height: none; overflow: visible; margin: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .flag, .pcards, .pj-grid, .pj-faq-grid { grid-template-columns: minmax(0, 1fr); }
+  .kunye { position: relative; top: auto; }
+  .pcards { gap: 3rem; }
+  .tbl thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); }
+  .tbl tr { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; padding-block: 1.3rem; border-bottom: 1px solid var(--line); }
+  .tbl tbody tr:last-child { border-bottom: 0; }
+  .tbl th, .tbl td { display: block; padding: 0; border: 0; }
+  .tbl tbody th { grid-column: 1 / -1; font-size: 1.3rem; }
+  .tbl td::before { content: attr(data-l); display: block; margin-bottom: 0.35rem; font: 500 0.5625rem/1.3 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+  .tbl .na::before { content: attr(data-l); color: var(--dim); }
+  .tbl .na { font-family: var(--f-mono); }
+  .arcs-row { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .arc:nth-child(2) { margin-top: 0; }
+  .arc-pic { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 48rem) {
+  .pjh { height: 230vh; }
+  .pjh-copy, .pjh-done { bottom: 4.6rem; }
+  .pjh-read { left: var(--gut); right: var(--gut); top: calc(var(--hdr-h) + 0.5rem); bottom: auto; grid-template-columns: repeat(2, auto); justify-content: space-between; gap: 0.6rem 1rem; padding: 0.55rem 0.75rem; border: 1px solid var(--line); border-radius: 0.6rem; background: rgb(5 6 8 / 0.62); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: 0.5rem; }
+  .pjh-read p:nth-child(n + 3) { display: none; }
+  .pjh-cap { display: none; }
+  .pjh-shade { background: linear-gradient(0deg, rgb(5 6 8 / 0.92), rgb(5 6 8 / 0.4) 55%, transparent 75%), linear-gradient(180deg, rgb(5 6 8 / 0.7), transparent 25%); }
+  .pj-amen { grid-template-columns: minmax(0, 1fr); }
+  .pool { height: 200vh; }
+  /* the gallery scrolls by hand: a snap strip */
+  .gal { height: auto !important; }
+  .gal-pin { position: relative; height: auto; padding-block: 5rem 3rem; }
+  .gal-track { transform: none !important; justify-self: stretch; width: auto; max-width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--gut) 1rem; contain: paint; scrollbar-width: none; }
+  .gal-track::-webkit-scrollbar { display: none; }
+  .gcard, .gcard:nth-child(3n) { width: 80vw; scroll-snap-align: center; transform: none; }
+  .gcard:nth-child(even) { margin-top: 0; }
+  .gcard:nth-child(3n) .pic { aspect-ratio: 3 / 2; max-height: none; }
+  .gal-rail { flex-wrap: wrap; gap: 0.8rem 1.5rem; }
+  .gal-rail .cap { white-space: normal; }
+}
+
+/* ════════════════ Without scripts, or with reduced motion: nothing pinned, everything visible ════════════════ */
+html:not(.js) .pjh, html.rm .pjh, html:not(.js) .pool, html.rm .pool, html:not(.js) .gal, html.rm .gal { height: auto !important; }
+html:not(.js) .pjh-pin, html.rm .pjh-pin { position: relative; height: auto; min-height: 100svh; display: grid; align-content: end; gap: 2.5rem; padding: 42svh var(--gut) 4rem; }
+html:not(.js) .pjh-copy, html.rm .pjh-copy, html:not(.js) .pjh-done, html.rm .pjh-done { position: relative; inset: auto; opacity: 1; transform: none; filter: none; }
+html:not(.js) .pjh-read, html.rm .pjh-read, html:not(.js) .pjh-cue, html.rm .pjh-cue, html:not(.js) .pjh-bar, html.rm .pjh-bar { display: none; }
+html:not(.js) .pjh-stamp, html.rm .pjh-stamp { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.4rem); }
+html:not(.js) .pool-pin, html.rm .pool-pin { position: relative; height: auto; min-height: 90svh; }
+html:not(.js) .pool-media, html.rm .pool-media { clip-path: none; }
+html:not(.js) .pool-ring, html.rm .pool-ring { display: none; }
+html:not(.js) .pool-in, html.rm .pool-in, html:not(.js) .pool-pin::after, html.rm .pool-pin::after { opacity: 1; transform: none; }
+html:not(.js) .gal-pin, html.rm .gal-pin { position: relative; height: auto; padding-block: clamp(5rem, 3rem + 8vw, 10rem); }
+html:not(.js) .gal-track, html.rm .gal-track { transform: none; width: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); align-items: start; padding-inline: var(--gut); overflow: visible; contain: none; }
+html:not(.js) .gcard, html.rm .gcard { width: auto !important; transform: none; margin-top: 0 !important; }
+html:not(.js) .gcard .pic, html.rm .gcard .pic { aspect-ratio: 3 / 2 !important; max-height: none !important; }
+html:not(.js) .gal-line, html.rm .gal-line, html:not(.js) .gal-k, html.rm .gal-k { display: none; }
+html.rm .sweep, html.rm .mk-sweep span, html.rm .pin s, html.rm .live, html.rm .atlas-stat i { animation: none; }
+html.rm .pin s { display: none; }
+html.rm .sweep, html.rm .mk-sweep { display: none; }
