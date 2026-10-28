@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="data:," />
-<title>UZM Group · On vizyon</title>
+<title>UZM Group · On bir vizyon</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
@@ -51,6 +51,7 @@
   .card-wide .shot { aspect-ratio: auto; min-height: 100%; }
   .card-wide .shot img { position: absolute; inset: 0; }
   .card-wide.card-new { border-color: rgb(220 180 106 / 0.6); }
+  .card-wide.card-net { border-color: rgb(255 255 255 / 0.55); }
   @media (max-width: 62rem) { .grid > .card.card-wide { grid-template-columns: 1fr; } .card-wide .shot { aspect-ratio: 16 / 10; } }
   .card-new .num:first-of-type { color: #e9d6b4; border-color: rgb(216 191 149 / 0.45); }
 
@@ -123,9 +124,9 @@
   <main class="shell">
     <section class="intro">
       <p class="eyebrow">uzmgroup.com.tr · Tasarım önerileri</p>
-      <h1>Bir site, <span>on karakter.</span></h1>
+      <h1>Bir site, <span>on bir karakter.</span></h1>
       <p class="lede">
-        Aynı içerik, aynı doğru bilgiler; on ayrı tasarım dili. Her biri tüm sayfalarıyla bir site olarak hazırlandı:
+        Aynı içerik, aynı doğru bilgiler; on bir ayrı tasarım dili. Her biri tüm sayfalarıyla bir site olarak hazırlandı:
         ana sayfa, Levan Bahçeşehir, projeler, hakkımızda, grup şirketleri, iletişim. Açın, sayfalar arasında gezin ve karşılaştırın.
       </p>
     </section>
@@ -309,12 +310,29 @@
           </div>
         </div>
       </article>
+      <article class="card card-new card-wide card-net" style="--i: 10">
+        <div class="shot"><img src="assets/cover/11-net.jpg" alt="Net sitesinin ana sayfası: Levan Bahçeşehir filmi ve randevu düğmesi" /></div>
+        <span class="num">Vizyon 11 · Yeni</span>
+        <span class="num num-r">Gerçek site · 3B maket</span>
+        <div class="body">
+          <h2 class="name"><a class="stretch" href="net-site/">Net</a></h2>
+          <p class="tag">Etkileyici, ama gerçek site olarak yayına hazır.</p>
+          <p class="desc">Şirketin gerçek sitesi olarak tasarlandı ve hareketle canlandırıldı: film çerçeveden açılarak başlar, başlıklar satır satır yükselir, Levan'ın canlı 3B maketinde bir evi kaldırıp kat planını açarsınız, harita İstanbul'dan Levan'a uçar. Altında gerçek bir sitenin temeli: Türkçe ve İngilizce sayfalar (canlı sitenin adresleriyle), hızlı yükleme, erişilebilirlik, arama motoru uyumu, randevu ve bilgi formu.</p>
+          <div class="spec">
+            <span class="swatches" aria-hidden="true"><i style="background:#ffffff"></i><i style="background:#111214"></i><i style="background:#0d5a36"></i></span>
+            <span class="type">Inter</span>
+          </div>
+          <div class="opens">
+            <span class="open">Siteyi açın <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></span>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section class="notes" aria-label="Notlar">
-      <p><b>İçerik.</b> On vizyon da yalnızca sitede zaten yayımlanan bilgileri kullanır. Fiyat, satış rakamı, konut sayısı ve teslim tarihi yoktur.</p>
+      <p><b>İçerik.</b> On bir vizyon da yalnızca sitede zaten yayımlanan bilgileri kullanır. Fiyat, satış rakamı, konut sayısı ve teslim tarihi yoktur.</p>
       <p><b>Görseller.</b> Levan Bahçeşehir görselleri, film ve 3B maket görselleştirmedir; şantiye ve tamamlanan projeler fotoğraftır.</p>
-      <p><b>Sunum.</b> <kbd>1</kbd>–<kbd>9</kbd> ve <kbd>0</kbd> tuşları vizyonların tam sitesini, <kbd>Shift</kbd> ile birlikte ilk yedisinin tek sayfalık hâlini açar. Her sayfadaki küçük sunum düğmesi buraya döner.</p>
+      <p><b>Sunum.</b> <kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd> ve <kbd>N</kbd> tuşları vizyonların tam sitesini, <kbd>Shift</kbd> ile birlikte ilk yedisinin tek sayfalık hâlini açar. Her sayfadaki küçük sunum düğmesi buraya döner.</p>
       <p><b>Tek sayfa.</b> Kartlardaki "Tek sayfa" bağlantısı, vizyonun ilk sunulan tek sayfalık hâlidir; tam site aynı dili tüm sayfalara taşır.</p>
     </section>
   </main>
@@ -324,10 +342,11 @@
   </svg>
 
   <script>
-    // Presenting: 1–9 and 0 open each vision's full site, Shift+1–7 its single page (Maket, Huzur and İrtifa have none).
+    // Presenting: 1–9, 0 and N open each vision's full site, Shift+1–7 its single page (Maket, Huzur, İrtifa and Net have none).
     const slugs = ["galeri", "imza", "ufuk", "kesit", "isik", "zirve", "sergi", "maket", "huzur", "irtifa"];
     addEventListener("keydown", (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.code === "KeyN") { location.href = "net-site/"; return; }
       const n = /^Digit([0-9])$/.exec(e.code);
       if (!n) return;
       const i = +n[1] || 10, slug = slugs[i - 1];

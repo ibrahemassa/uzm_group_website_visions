@@ -1,0 +1,48 @@
+/* Net · the live 3D model section (templates/maket.html, js/maket-net.mjs). The model sits on a lit table in a
+   dark room: a rounded stage, the controls under it, a card for a home picked up beside it. */
+.maket-box { position: relative; display: grid; gap: 1rem; }
+.maket-stage { position: relative; aspect-ratio: 16 / 8.5; border-radius: var(--radius); overflow: hidden; background: #e7e4dd; isolation: isolate; outline-offset: 4px; touch-action: pan-y; }
+.maket-stage:focus-visible { outline: 2px solid #fff; }
+.maket-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1s var(--ease); }
+.maket.live .maket-poster { opacity: 0; pointer-events: none; }
+.maket-stage canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; display: block; cursor: grab; opacity: 0; transition: opacity 1s var(--ease); }
+.maket.live .maket-stage canvas { opacity: 1; }
+.maket-stage.dragging canvas { cursor: grabbing; }
+.maket-stage.over canvas { cursor: pointer; }
+.maket-load { position: absolute; z-index: 3; left: 50%; top: 50%; translate: -50% -50%; box-shadow: 0 12px 40px -10px rgb(0 0 0 / 0.5); }
+.maket-size { font-weight: 500; opacity: 0.6; }
+.maket-loader { position: absolute; z-index: 3; inset: 0; display: grid; place-content: center; justify-items: center; gap: 0.6rem; background: rgb(17 18 20 / 0.35); color: #fff; transition: opacity 0.6s; }
+.maket-loader.done { opacity: 0; }
+.maket-loader .small { color: rgb(255 255 255 / 0.85); }
+.maket-ring { width: 3.5rem; height: 3.5rem; border-radius: 50%; background: conic-gradient(#fff calc(var(--p, 0) * 360deg), rgb(255 255 255 / 0.2) 0); -webkit-mask: radial-gradient(circle, transparent 62%, #000 63%); mask: radial-gradient(circle, transparent 62%, #000 63%); }
+.maket-pct { font-weight: 600; font-variant-numeric: tabular-nums; }
+.maket-fail { position: absolute; z-index: 3; left: 1rem; right: 1rem; bottom: 1rem; padding: 0.75rem 1rem; border-radius: var(--radius-sm); background: rgb(17 18 20 / 0.8); color: #fff !important; }
+.maket-tags { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.maket-tags span { position: absolute; left: 0; top: 0; padding: 0.3rem 0.65rem; border-radius: 999px; background: var(--ink); color: #fff; font-size: 0.8125rem; font-weight: 600; white-space: nowrap; opacity: 0; transition: opacity 0.4s; box-shadow: 0 6px 18px -6px rgb(0 0 0 / 0.5); }
+.maket-tags span.on { opacity: 1; }
+.maket-cursor { position: absolute; left: 0; top: 0; z-index: 2; padding: 0.3rem 0.6rem; border-radius: 999px; background: #fff; color: var(--ink); font-size: 0.8125rem; font-weight: 600; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s; box-shadow: 0 6px 18px -6px rgb(0 0 0 / 0.4); }
+.maket-cursor.on { opacity: 1; }
+.maket-ui { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; }
+.maket-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.maket-chips button { min-height: 2.5rem; padding: 0 1rem; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.28); background: transparent; color: var(--on-dark); font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+.maket-chips button:hover { border-color: #fff; }
+.maket-chips button[aria-pressed="true"] { background: #fff; color: var(--ink); border-color: #fff; }
+.maket-tools { display: flex; gap: 0.4rem; margin-left: auto; }
+.maket-tools .icon-btn { background: transparent; border-color: rgb(255 255 255 / 0.28); color: #fff; }
+.maket-tools .icon-btn:hover, .maket-tools [aria-pressed="true"] { border-color: #fff; background: rgb(255 255 255 / 0.1); }
+.maket-hint { flex-basis: 100%; color: var(--on-dark-2) !important; }
+.maket-card { position: absolute; z-index: 4; top: 1rem; right: 1rem; width: min(22rem, calc(100% - 2rem)); display: grid; gap: 0.6rem; padding: 1.25rem; border-radius: var(--radius); background: rgb(17 18 20 / 0.88); color: var(--on-dark); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 20px 60px -20px rgb(0 0 0 / 0.6); opacity: 0; transform: translateY(8px); transition: opacity 0.4s var(--ease), transform 0.5s var(--ease); }
+.maket-card.on { opacity: 1; transform: none; }
+.maket-card .h3 { color: #fff; padding-right: 2.5rem; }
+.maket-card .eyebrow { color: var(--gold); }
+.maket-card .muted { color: var(--on-dark-2); }
+.maket-card-a { font-weight: 600; }
+.maket-card-x { position: absolute; top: 0.75rem; right: 0.75rem; background: transparent; border-color: rgb(255 255 255 / 0.3); color: #fff; }
+.maket-cap { margin-top: 0.75rem; color: var(--on-dark-2) !important; }
+@media (max-width: 47.99rem) {
+  .maket-stage { aspect-ratio: 4 / 5; }
+  .maket-card { position: relative; top: auto; right: auto; width: auto; }
+  .maket-tools { margin-left: 0; }
+  .maket-chips { flex-wrap: nowrap; overflow-x: auto; contain: paint; padding-bottom: 0.25rem; }
+  .maket-chips button { flex: none; }
+}
